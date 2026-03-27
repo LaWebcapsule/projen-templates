@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+ - name: Request a new feature
+   url: https://github.com/LaWebcapsule/{{PROJECT_NAME}}/discussions/new?category=feature-requests
+   about: Share your ideas on how to make {{PROJECT_NAME}} better.
+ - name: Suggest improvements for the docs
+   url: https://github.com/LaWebcapsule/{{PROJECT_NAME}}/discussions/new?category=docs-suggestions
+   about: Share your ideas on how to improve the documentation of {{PROJECT_NAME}}.

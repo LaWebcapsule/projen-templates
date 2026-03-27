@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+ - name: Request a new feature
+   url: https://github.com/LaWebcapsule/my-test-project/discussions/new?category=feature-requests
+   about: Share your ideas on how to make my-test-project better.
+ - name: Suggest improvements for the docs
+   url: https://github.com/LaWebcapsule/my-test-project/discussions/new?category=docs-suggestions
+   about: Share your ideas on how to improve the documentation of my-test-project.
