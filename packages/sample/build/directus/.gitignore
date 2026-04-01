@@ -36,6 +36,7 @@ junit.xml
 /dist/version.txt
 /extensions/
 !/docker-compose.yml
+!/Dockerfile
 !/.github/workflows/pull-request-lint.yml
 !/.github/pull_request_template.md
 !/.github/workflows/sast-analysis.yml

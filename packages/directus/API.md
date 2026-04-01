@@ -761,6 +761,7 @@ When given a project, this it the project itself.
 | <code><a href="#@wbce/projen-directus.DirectusProject.property.githubConfig">githubConfig</a></code> | <code>@wbce/projen-shared.GitHubConfig</code> | *No description.* |
 | <code><a href="#@wbce/projen-directus.DirectusProject.property.applySchemaTask">applySchemaTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@wbce/projen-directus.DirectusProject.property.buildExtensionTask">buildExtensionTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-directus.DirectusProject.property.dockerfile">dockerfile</a></code> | <code>@wbce/projen-shared.Dockerfile</code> | *No description.* |
 | <code><a href="#@wbce/projen-directus.DirectusProject.property.extensionFolder">extensionFolder</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@wbce/projen-directus.DirectusProject.property.extensions">extensions</a></code> | <code>@wbce/projen-directus-extension.ExtensionFolder</code> | *No description.* |
 
@@ -1443,6 +1444,16 @@ public readonly buildExtensionTask: Task;
 ```
 
 - *Type:* projen.Task
+
+---
+
+##### `dockerfile`<sup>Required</sup> <a name="dockerfile" id="@wbce/projen-directus.DirectusProject.property.dockerfile"></a>
+
+```typescript
+public readonly dockerfile: Dockerfile;
+```
+
+- *Type:* @wbce/projen-shared.Dockerfile
 
 ---
 

@@ -1,8 +1,6 @@
-import { readFileSync } from 'fs';
-import { join } from 'path';
 import { AddExtensionOptions, DirectusExtensionType, ExtensionFolder } from '@wbce/projen-directus-extension';
-import { GitHubConfig, GitHubConfigOptions } from '@wbce/projen-shared';
-import { DockerCompose, javascript, SampleFile, Task, typescript } from 'projen';
+import { GitHubConfig, GitHubConfigOptions, Dockerfile } from '@wbce/projen-shared';
+import { DockerCompose, javascript, Task, typescript } from 'projen';
 
 export interface DirectusProjectOptions extends typescript.TypeScriptProjectOptions {
   /**
@@ -26,6 +24,7 @@ export class DirectusProject extends javascript.NodeProject {
   public extensionFolder!: string;
   public applySchemaTask!: Task;
   public buildExtensionTask!: Task;
+  public dockerfile!: Dockerfile;
 
   constructor(protected options: DirectusProjectOptions) {
     super({
@@ -209,9 +208,23 @@ export class DirectusProject extends javascript.NodeProject {
   }
 
   private addDockerfile() {
-    new SampleFile(this, 'Dockerfile', {
-      contents: readFileSync(join(__dirname, '..', 'Dockerfile')).toString(),
-    });
+    this.dockerfile = new Dockerfile(this)
+      .from('node', '22-bookworm-slim')
+      .step('update-npm', 'Update npm to fix dependencies')
+      .run('npm install -g npm@11.8.0')
+      .step('copy-package', 'Copy package.json and package-lock.json first to leverage Docker layer caching')
+      .copy('package*.json', '/app/')
+      .step('workdir', 'Set working directory')
+      .workdir('/app')
+      .step('install-deps', 'Install dependencies - without dev dependencies')
+      .run('NODE_ENV=production npm install')
+      .step('cleanup', 'Cleaning benchmarks folder in tedious module for security')
+      .run('rm -rf node_modules/tedious/benchmarks')
+      .step('copy-source', 'Copy the rest of the application code')
+      .copy('.', '.')
+      .step('start', 'Start Directus server')
+      .cmdExec(['npx', 'directus', 'start']);
+    return this.dockerfile;
   }
 
 }
