@@ -1,4 +1,4 @@
-import { defineInterface } from '@directus/extensions-sdk';
+import { defineInterface } from '@wbce-d9/extensions-sdk';
 
 export default defineInterface({
   id: 'my-interface',

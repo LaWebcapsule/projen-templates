@@ -87,7 +87,23 @@
       "type": "build"
     },
     {
-      "name": "tsx",
+      "name": "@types/pg",
+      "type": "bundled"
+    },
+    {
+      "name": "@types/pg-copy-streams",
+      "type": "bundled"
+    },
+    {
+      "name": "commander",
+      "type": "bundled"
+    },
+    {
+      "name": "pg",
+      "type": "bundled"
+    },
+    {
+      "name": "pg-copy-streams",
       "type": "bundled"
     },
     {

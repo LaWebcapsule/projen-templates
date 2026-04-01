@@ -1,4 +1,4 @@
-import { defineModule } from '@directus/extensions-sdk';
+import { defineModule } from '@wbce-d9/extensions-sdk';
 
 export default defineModule({
   id: 'my-module',

@@ -1,4 +1,4 @@
-import { defineOperationApi } from '@directus/extensions-sdk';
+import { defineOperationApi } from '@wbce-d9/extensions-sdk';
 
 export default defineOperationApi({
   id: 'my-operation',

@@ -4,7 +4,7 @@ import { DirectusExtensionProject, DirectusExtensionType } from '../src';
 test('DirectusExtensionProject can be instantiated', () => {
   const project = new DirectusExtensionProject({
     name: 'test-extension',
-    extensionType: DirectusExtensionType.HOOK,
+    extensionTypes: [DirectusExtensionType.HOOK],
     defaultReleaseBranch: 'main',
   });
   const snapshot = Testing.synth(project);

@@ -1,4 +1,4 @@
-import { defineDisplay } from '@directus/extensions-sdk';
+import { defineDisplay } from '@wbce-d9/extensions-sdk';
 
 export default defineDisplay({
   id: 'my-display',

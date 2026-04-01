@@ -479,7 +479,7 @@ Add a dependency to the default catalog.
 
 - *Type:* string
 
-The package name (e.g. "@directus/extensions-sdk").
+The package name (e.g. "@wbce-d9/extensions-sdk").
 
 ---
 
@@ -586,6 +586,7 @@ Test whether the given construct is a component.
 | --- | --- | --- |
 | <code><a href="#@wbce/projen-shared.PnpmWorkspace.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@wbce/projen-shared.PnpmWorkspace.property.project">project</a></code> | <code>projen.Project</code> | *No description.* |
+| <code><a href="#@wbce/projen-shared.PnpmWorkspace.property.workspaceYaml">workspaceYaml</a></code> | <code>projen.YamlFile</code> | *No description.* |
 
 ---
 
@@ -608,6 +609,16 @@ public readonly project: Project;
 ```
 
 - *Type:* projen.Project
+
+---
+
+##### `workspaceYaml`<sup>Required</sup> <a name="workspaceYaml" id="@wbce/projen-shared.PnpmWorkspace.property.workspaceYaml"></a>
+
+```typescript
+public readonly workspaceYaml: YamlFile;
+```
+
+- *Type:* projen.YamlFile
 
 ---
 

@@ -82,6 +82,10 @@
       "type": "build"
     },
     {
+      "name": "tsx",
+      "type": "bundled"
+    },
+    {
       "name": "@wbce/projen-shared",
       "type": "peer"
     },

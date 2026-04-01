@@ -744,8 +744,7 @@ When given a project, this it the project itself.
 | <code><a href="#@wbce/projen-directus-extension.DirectusExtensionProject.property.tsconfig">tsconfig</a></code> | <code>projen.javascript.TypescriptConfig</code> | *No description.* |
 | <code><a href="#@wbce/projen-directus-extension.DirectusExtensionProject.property.tsconfigEslint">tsconfigEslint</a></code> | <code>projen.javascript.TypescriptConfig</code> | *No description.* |
 | <code><a href="#@wbce/projen-directus-extension.DirectusExtensionProject.property.extensionName">extensionName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus-extension.DirectusExtensionProject.property.extensionType">extensionType</a></code> | <code><a href="#@wbce/projen-directus-extension.DirectusExtensionType">DirectusExtensionType</a></code> | *No description.* |
-| <code><a href="#@wbce/projen-directus-extension.DirectusExtensionProject.property.githubConfig">githubConfig</a></code> | <code>@wbce/projen-shared.GitHubConfig</code> | *No description.* |
+| <code><a href="#@wbce/projen-directus-extension.DirectusExtensionProject.property.extensionTypes">extensionTypes</a></code> | <code><a href="#@wbce/projen-directus-extension.DirectusExtensionType">DirectusExtensionType</a>[]</code> | *No description.* |
 
 ---
 
@@ -1519,23 +1518,13 @@ public readonly extensionName: string;
 
 ---
 
-##### `extensionType`<sup>Required</sup> <a name="extensionType" id="@wbce/projen-directus-extension.DirectusExtensionProject.property.extensionType"></a>
+##### `extensionTypes`<sup>Required</sup> <a name="extensionTypes" id="@wbce/projen-directus-extension.DirectusExtensionProject.property.extensionTypes"></a>
 
 ```typescript
-public readonly extensionType: DirectusExtensionType;
+public readonly extensionTypes: DirectusExtensionType[];
 ```
 
-- *Type:* <a href="#@wbce/projen-directus-extension.DirectusExtensionType">DirectusExtensionType</a>
-
----
-
-##### `githubConfig`<sup>Optional</sup> <a name="githubConfig" id="@wbce/projen-directus-extension.DirectusExtensionProject.property.githubConfig"></a>
-
-```typescript
-public readonly githubConfig: GitHubConfig;
-```
-
-- *Type:* @wbce/projen-shared.GitHubConfig
+- *Type:* <a href="#@wbce/projen-directus-extension.DirectusExtensionType">DirectusExtensionType</a>[]
 
 ---
 
@@ -1576,6 +1565,9 @@ public readonly DEFAULT_TS_JEST_TRANFORM_PATTERN: string;
 ### ExtensionFolder <a name="ExtensionFolder" id="@wbce/projen-directus-extension.ExtensionFolder"></a>
 
 A folder that acts as a pnpm workspace containing Directus extensions.
+
+Extensions can be added programmatically via addExtension() or
+declared in extensions.json and loaded automatically.
 
 *Example*
 
@@ -1640,7 +1632,7 @@ new ExtensionFolder(parentProject: Project, folderName: string, options?: Extens
 | <code><a href="#@wbce/projen-directus-extension.ExtensionFolder.tryFindJsonFile">tryFindJsonFile</a></code> | Finds a json file by name. |
 | <code><a href="#@wbce/projen-directus-extension.ExtensionFolder.tryFindObjectFile">tryFindObjectFile</a></code> | Finds an object file (like JsonFile, YamlFile, etc.) by name. |
 | <code><a href="#@wbce/projen-directus-extension.ExtensionFolder.tryRemoveFile">tryRemoveFile</a></code> | Finds a file at the specified relative path within this project and removes it. |
-| <code><a href="#@wbce/projen-directus-extension.ExtensionFolder.addExtension">addExtension</a></code> | Add a Directus extension to this folder. |
+| <code><a href="#@wbce/projen-directus-extension.ExtensionFolder.add">add</a></code> | Add a Directus extension to this folder. |
 
 ---
 
@@ -1927,27 +1919,27 @@ resolved from the root of _this_ project.
 
 ---
 
-##### `addExtension` <a name="addExtension" id="@wbce/projen-directus-extension.ExtensionFolder.addExtension"></a>
+##### `add` <a name="add" id="@wbce/projen-directus-extension.ExtensionFolder.add"></a>
 
 ```typescript
-public addExtension(name: string, extensionType: DirectusExtensionType, options?: AddExtensionOptions): DirectusExtensionProject
+public add(name: string, extensionTypes: DirectusExtensionType[], options?: AddExtensionOptions): DirectusExtensionProject
 ```
 
 Add a Directus extension to this folder.
 
-###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-directus-extension.ExtensionFolder.addExtension.parameter.name"></a>
+###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-directus-extension.ExtensionFolder.add.parameter.name"></a>
 
 - *Type:* string
 
 ---
 
-###### `extensionType`<sup>Required</sup> <a name="extensionType" id="@wbce/projen-directus-extension.ExtensionFolder.addExtension.parameter.extensionType"></a>
+###### `extensionTypes`<sup>Required</sup> <a name="extensionTypes" id="@wbce/projen-directus-extension.ExtensionFolder.add.parameter.extensionTypes"></a>
 
-- *Type:* <a href="#@wbce/projen-directus-extension.DirectusExtensionType">DirectusExtensionType</a>
+- *Type:* <a href="#@wbce/projen-directus-extension.DirectusExtensionType">DirectusExtensionType</a>[]
 
 ---
 
-###### `options`<sup>Optional</sup> <a name="options" id="@wbce/projen-directus-extension.ExtensionFolder.addExtension.parameter.options"></a>
+###### `options`<sup>Optional</sup> <a name="options" id="@wbce/projen-directus-extension.ExtensionFolder.add.parameter.options"></a>
 
 - *Type:* <a href="#@wbce/projen-directus-extension.AddExtensionOptions">AddExtensionOptions</a>
 
@@ -2058,6 +2050,7 @@ When given a project, this it the project itself.
 | <code><a href="#@wbce/projen-directus-extension.ExtensionFolder.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | This is the "default" task, the one that executes "projen". |
 | <code><a href="#@wbce/projen-directus-extension.ExtensionFolder.property.initProject">initProject</a></code> | <code>projen.InitProject</code> | The options used when this project is bootstrapped via `projen new`. |
 | <code><a href="#@wbce/projen-directus-extension.ExtensionFolder.property.parent">parent</a></code> | <code>projen.Project</code> | A parent project. |
+| <code><a href="#@wbce/projen-directus-extension.ExtensionFolder.property.workspace">workspace</a></code> | <code>@wbce/projen-shared.PnpmWorkspace</code> | *No description.* |
 
 ---
 
@@ -2358,6 +2351,16 @@ If undefined, this is the root project.
 
 ---
 
+##### `workspace`<sup>Required</sup> <a name="workspace" id="@wbce/projen-directus-extension.ExtensionFolder.property.workspace"></a>
+
+```typescript
+public readonly workspace: PnpmWorkspace;
+```
+
+- *Type:* @wbce/projen-shared.PnpmWorkspace
+
+---
+
 #### Constants <a name="Constants" id="Constants"></a>
 
 | **Name** | **Type** | **Description** |
@@ -2399,23 +2402,8 @@ const addExtensionOptions: AddExtensionOptions = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@wbce/projen-directus-extension.AddExtensionOptions.property.defaultReleaseBranch">defaultReleaseBranch</a></code> | <code>string</code> | The default release branch. |
 | <code><a href="#@wbce/projen-directus-extension.AddExtensionOptions.property.deps">deps</a></code> | <code>string[]</code> | Additional dependencies. |
 | <code><a href="#@wbce/projen-directus-extension.AddExtensionOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | Additional dev dependencies. |
-| <code><a href="#@wbce/projen-directus-extension.AddExtensionOptions.property.extensionName">extensionName</a></code> | <code>string</code> | The name of the extension (used in the directus:extension config). |
-
----
-
-##### `defaultReleaseBranch`<sup>Optional</sup> <a name="defaultReleaseBranch" id="@wbce/projen-directus-extension.AddExtensionOptions.property.defaultReleaseBranch"></a>
-
-```typescript
-public readonly defaultReleaseBranch: string;
-```
-
-- *Type:* string
-- *Default:* "main"
-
-The default release branch.
 
 ---
 
@@ -2440,19 +2428,6 @@ public readonly devDeps: string[];
 - *Type:* string[]
 
 Additional dev dependencies.
-
----
-
-##### `extensionName`<sup>Optional</sup> <a name="extensionName" id="@wbce/projen-directus-extension.AddExtensionOptions.property.extensionName"></a>
-
-```typescript
-public readonly extensionName: string;
-```
-
-- *Type:* string
-- *Default:* the extension project name
-
-The name of the extension (used in the directus:extension config).
 
 ---
 
@@ -2626,9 +2601,7 @@ const directusExtensionProjectOptions: DirectusExtensionProjectOptions = { ... }
 | <code><a href="#@wbce/projen-directus-extension.DirectusExtensionProjectOptions.property.tsconfigDevFile">tsconfigDevFile</a></code> | <code>string</code> | The name of the development tsconfig.json file. |
 | <code><a href="#@wbce/projen-directus-extension.DirectusExtensionProjectOptions.property.tsJestOptions">tsJestOptions</a></code> | <code>projen.typescript.TsJestOptions</code> | Options for ts-jest. |
 | <code><a href="#@wbce/projen-directus-extension.DirectusExtensionProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
-| <code><a href="#@wbce/projen-directus-extension.DirectusExtensionProjectOptions.property.extensionType">extensionType</a></code> | <code><a href="#@wbce/projen-directus-extension.DirectusExtensionType">DirectusExtensionType</a></code> | The type of Directus extension. |
-| <code><a href="#@wbce/projen-directus-extension.DirectusExtensionProjectOptions.property.extensionName">extensionName</a></code> | <code>string</code> | The name of the extension (used in the directus:extension config). |
-| <code><a href="#@wbce/projen-directus-extension.DirectusExtensionProjectOptions.property.githubConfig">githubConfig</a></code> | <code>boolean \| @wbce/projen-shared.GitHubConfigOptions</code> | Options for the GitHub configuration. |
+| <code><a href="#@wbce/projen-directus-extension.DirectusExtensionProjectOptions.property.extensionTypes">extensionTypes</a></code> | <code><a href="#@wbce/projen-directus-extension.DirectusExtensionType">DirectusExtensionType</a>[]</code> | The type of Directus extension. |
 
 ---
 
@@ -4881,43 +4854,15 @@ same minor, so we recommend using a `~` dependency (e.g. `~1.2.3`).
 
 ---
 
-##### `extensionType`<sup>Required</sup> <a name="extensionType" id="@wbce/projen-directus-extension.DirectusExtensionProjectOptions.property.extensionType"></a>
+##### `extensionTypes`<sup>Required</sup> <a name="extensionTypes" id="@wbce/projen-directus-extension.DirectusExtensionProjectOptions.property.extensionTypes"></a>
 
 ```typescript
-public readonly extensionType: DirectusExtensionType;
+public readonly extensionTypes: DirectusExtensionType[];
 ```
 
-- *Type:* <a href="#@wbce/projen-directus-extension.DirectusExtensionType">DirectusExtensionType</a>
+- *Type:* <a href="#@wbce/projen-directus-extension.DirectusExtensionType">DirectusExtensionType</a>[]
 
 The type of Directus extension.
-
----
-
-##### `extensionName`<sup>Optional</sup> <a name="extensionName" id="@wbce/projen-directus-extension.DirectusExtensionProjectOptions.property.extensionName"></a>
-
-```typescript
-public readonly extensionName: string;
-```
-
-- *Type:* string
-- *Default:* project name
-
-The name of the extension (used in the directus:extension config).
-
----
-
-##### `githubConfig`<sup>Optional</sup> <a name="githubConfig" id="@wbce/projen-directus-extension.DirectusExtensionProjectOptions.property.githubConfig"></a>
-
-```typescript
-public readonly githubConfig: boolean | GitHubConfigOptions;
-```
-
-- *Type:* boolean | @wbce/projen-shared.GitHubConfigOptions
-- *Default:* default GitHubConfig with project defaults
-
-Options for the GitHub configuration.
-
-Set to false to disable GitHub config entirely.
 
 ---
 

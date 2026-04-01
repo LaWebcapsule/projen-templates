@@ -1,4 +1,4 @@
-import { definePanel } from '@directus/extensions-sdk';
+import { definePanel } from '@wbce-d9/extensions-sdk';
 
 export default definePanel({
   id: 'my-panel',

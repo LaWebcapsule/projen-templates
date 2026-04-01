@@ -59,6 +59,7 @@ new DirectusProject(options: DirectusProjectOptions)
 | <code><a href="#@wbce/projen-directus.DirectusProject.removeScript">removeScript</a></code> | Removes the npm script (always successful). |
 | <code><a href="#@wbce/projen-directus.DirectusProject.renderWorkflowSetup">renderWorkflowSetup</a></code> | Returns the set of workflow steps which should be executed to bootstrap a workflow. |
 | <code><a href="#@wbce/projen-directus.DirectusProject.setScript">setScript</a></code> | Replaces the contents of an npm package.json script. |
+| <code><a href="#@wbce/projen-directus.DirectusProject.addExtension">addExtension</a></code> | *No description.* |
 
 ---
 
@@ -600,6 +601,30 @@ The command to execute.
 
 ---
 
+##### `addExtension` <a name="addExtension" id="@wbce/projen-directus.DirectusProject.addExtension"></a>
+
+```typescript
+public addExtension(name: string, extensionTypes: DirectusExtensionType[], options?: AddExtensionOptions): DirectusExtensionProject
+```
+
+###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-directus.DirectusProject.addExtension.parameter.name"></a>
+
+- *Type:* string
+
+---
+
+###### `extensionTypes`<sup>Required</sup> <a name="extensionTypes" id="@wbce/projen-directus.DirectusProject.addExtension.parameter.extensionTypes"></a>
+
+- *Type:* @wbce/projen-directus-extension.DirectusExtensionType[]
+
+---
+
+###### `options`<sup>Optional</sup> <a name="options" id="@wbce/projen-directus.DirectusProject.addExtension.parameter.options"></a>
+
+- *Type:* @wbce/projen-directus-extension.AddExtensionOptions
+
+---
+
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
 | **Name** | **Description** |
@@ -733,18 +758,11 @@ When given a project, this it the project itself.
 | <code><a href="#@wbce/projen-directus.DirectusProject.property.publisher">publisher</a></code> | <code>projen.release.Publisher</code> | Package publisher. |
 | <code><a href="#@wbce/projen-directus.DirectusProject.property.release">release</a></code> | <code>projen.release.Release</code> | Release management. |
 | <code><a href="#@wbce/projen-directus.DirectusProject.property.upgradeWorkflow">upgradeWorkflow</a></code> | <code>projen.javascript.UpgradeDependencies</code> | The upgrade workflow. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.docsDirectory">docsDirectory</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.libdir">libdir</a></code> | <code>string</code> | The directory in which compiled .js files reside. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.srcdir">srcdir</a></code> | <code>string</code> | The directory in which the .ts sources reside. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.testdir">testdir</a></code> | <code>string</code> | The directory in which tests reside. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.tsconfigDev">tsconfigDev</a></code> | <code>projen.javascript.TypescriptConfig</code> | A typescript configuration file which covers all files (sources, tests, projen). |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.watchTask">watchTask</a></code> | <code>projen.Task</code> | The "watch" task. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.docgen">docgen</a></code> | <code>boolean</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.eslint">eslint</a></code> | <code>projen.javascript.Eslint</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.tsconfig">tsconfig</a></code> | <code>projen.javascript.TypescriptConfig</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.tsconfigEslint">tsconfigEslint</a></code> | <code>projen.javascript.TypescriptConfig</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.extensions">extensions</a></code> | <code>@wbce/projen-directus-extension.ExtensionFolder</code> | *No description.* |
 | <code><a href="#@wbce/projen-directus.DirectusProject.property.githubConfig">githubConfig</a></code> | <code>@wbce/projen-shared.GitHubConfig</code> | *No description.* |
+| <code><a href="#@wbce/projen-directus.DirectusProject.property.applySchemaTask">applySchemaTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-directus.DirectusProject.property.buildExtensionTask">buildExtensionTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-directus.DirectusProject.property.extensionFolder">extensionFolder</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@wbce/projen-directus.DirectusProject.property.extensions">extensions</a></code> | <code>@wbce/projen-directus-extension.ExtensionFolder</code> | *No description.* |
 
 ---
 
@@ -1398,113 +1416,43 @@ The upgrade workflow.
 
 ---
 
-##### `docsDirectory`<sup>Required</sup> <a name="docsDirectory" id="@wbce/projen-directus.DirectusProject.property.docsDirectory"></a>
+##### `githubConfig`<sup>Optional</sup> <a name="githubConfig" id="@wbce/projen-directus.DirectusProject.property.githubConfig"></a>
 
 ```typescript
-public readonly docsDirectory: string;
+public readonly githubConfig: GitHubConfig;
 ```
 
-- *Type:* string
+- *Type:* @wbce/projen-shared.GitHubConfig
 
 ---
 
-##### `libdir`<sup>Required</sup> <a name="libdir" id="@wbce/projen-directus.DirectusProject.property.libdir"></a>
+##### `applySchemaTask`<sup>Required</sup> <a name="applySchemaTask" id="@wbce/projen-directus.DirectusProject.property.applySchemaTask"></a>
 
 ```typescript
-public readonly libdir: string;
-```
-
-- *Type:* string
-
-The directory in which compiled .js files reside.
-
----
-
-##### `srcdir`<sup>Required</sup> <a name="srcdir" id="@wbce/projen-directus.DirectusProject.property.srcdir"></a>
-
-```typescript
-public readonly srcdir: string;
-```
-
-- *Type:* string
-
-The directory in which the .ts sources reside.
-
----
-
-##### `testdir`<sup>Required</sup> <a name="testdir" id="@wbce/projen-directus.DirectusProject.property.testdir"></a>
-
-```typescript
-public readonly testdir: string;
-```
-
-- *Type:* string
-
-The directory in which tests reside.
-
----
-
-##### `tsconfigDev`<sup>Required</sup> <a name="tsconfigDev" id="@wbce/projen-directus.DirectusProject.property.tsconfigDev"></a>
-
-```typescript
-public readonly tsconfigDev: TypescriptConfig;
-```
-
-- *Type:* projen.javascript.TypescriptConfig
-
-A typescript configuration file which covers all files (sources, tests, projen).
-
----
-
-##### `watchTask`<sup>Required</sup> <a name="watchTask" id="@wbce/projen-directus.DirectusProject.property.watchTask"></a>
-
-```typescript
-public readonly watchTask: Task;
+public readonly applySchemaTask: Task;
 ```
 
 - *Type:* projen.Task
 
-The "watch" task.
+---
+
+##### `buildExtensionTask`<sup>Required</sup> <a name="buildExtensionTask" id="@wbce/projen-directus.DirectusProject.property.buildExtensionTask"></a>
+
+```typescript
+public readonly buildExtensionTask: Task;
+```
+
+- *Type:* projen.Task
 
 ---
 
-##### `docgen`<sup>Optional</sup> <a name="docgen" id="@wbce/projen-directus.DirectusProject.property.docgen"></a>
+##### `extensionFolder`<sup>Required</sup> <a name="extensionFolder" id="@wbce/projen-directus.DirectusProject.property.extensionFolder"></a>
 
 ```typescript
-public readonly docgen: boolean;
+public readonly extensionFolder: string;
 ```
 
-- *Type:* boolean
-
----
-
-##### `eslint`<sup>Optional</sup> <a name="eslint" id="@wbce/projen-directus.DirectusProject.property.eslint"></a>
-
-```typescript
-public readonly eslint: Eslint;
-```
-
-- *Type:* projen.javascript.Eslint
-
----
-
-##### `tsconfig`<sup>Optional</sup> <a name="tsconfig" id="@wbce/projen-directus.DirectusProject.property.tsconfig"></a>
-
-```typescript
-public readonly tsconfig: TypescriptConfig;
-```
-
-- *Type:* projen.javascript.TypescriptConfig
-
----
-
-##### `tsconfigEslint`<sup>Optional</sup> <a name="tsconfigEslint" id="@wbce/projen-directus.DirectusProject.property.tsconfigEslint"></a>
-
-```typescript
-public readonly tsconfigEslint: TypescriptConfig;
-```
-
-- *Type:* projen.javascript.TypescriptConfig
+- *Type:* string
 
 ---
 
@@ -1518,22 +1466,11 @@ public readonly extensions: ExtensionFolder;
 
 ---
 
-##### `githubConfig`<sup>Optional</sup> <a name="githubConfig" id="@wbce/projen-directus.DirectusProject.property.githubConfig"></a>
-
-```typescript
-public readonly githubConfig: GitHubConfig;
-```
-
-- *Type:* @wbce/projen-shared.GitHubConfig
-
----
-
 #### Constants <a name="Constants" id="Constants"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@wbce/projen-directus.DirectusProject.property.DEFAULT_TASK">DEFAULT_TASK</a></code> | <code>string</code> | The name of the default task (the task executed when `projen` is run without arguments). |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.DEFAULT_TS_JEST_TRANFORM_PATTERN">DEFAULT_TS_JEST_TRANFORM_PATTERN</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -1549,16 +1486,6 @@ The name of the default task (the task executed when `projen` is run without arg
 
 Normally
 this task should synthesize the project files.
-
----
-
-##### `DEFAULT_TS_JEST_TRANFORM_PATTERN`<sup>Required</sup> <a name="DEFAULT_TS_JEST_TRANFORM_PATTERN" id="@wbce/projen-directus.DirectusProject.property.DEFAULT_TS_JEST_TRANFORM_PATTERN"></a>
-
-```typescript
-public readonly DEFAULT_TS_JEST_TRANFORM_PATTERN: string;
-```
-
-- *Type:* string
 
 ---
 

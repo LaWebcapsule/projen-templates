@@ -1,4 +1,4 @@
-import { defineLayout } from '@directus/extensions-sdk';
+import { defineLayout } from '@wbce-d9/extensions-sdk';
 
 export default defineLayout({
   id: 'my-layout',

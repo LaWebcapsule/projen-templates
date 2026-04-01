@@ -1,6 +1,8 @@
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import { AddExtensionOptions, DirectusExtensionType, ExtensionFolder } from '@wbce/projen-directus-extension';
 import { GitHubConfig, GitHubConfigOptions } from '@wbce/projen-shared';
-import { DockerCompose, typescript } from 'projen';
+import { DockerCompose, javascript, SampleFile, Task, typescript } from 'projen';
 
 export interface DirectusProjectOptions extends typescript.TypeScriptProjectOptions {
   /**
@@ -17,40 +19,100 @@ export interface DirectusProjectOptions extends typescript.TypeScriptProjectOpti
   readonly extensionsFolderName?: string;
 }
 
-export class DirectusProject extends typescript.TypeScriptProject {
+export class DirectusProject extends javascript.NodeProject {
 
   public readonly githubConfig?: GitHubConfig;
   public extensions!: ExtensionFolder;
+  public extensionFolder!: string;
+  public applySchemaTask!: Task;
+  public buildExtensionTask!: Task;
 
   constructor(protected options: DirectusProjectOptions) {
     super({
       ...options,
+      packageManager: options.packageManager ?? javascript.NodePackageManager.NPM,
       github: false, // We use our own GitHubConfig instead
-      sampleCode: false,
       devDeps: [
         '@wbce/projen-directus',
         '@wbce/projen-directus-extension',
         ...(options.devDeps ?? []),
       ],
+      deps: ['@wbce-d9/directus9@12.0.1'],
     });
+
+    // No tsconfig means no tsc --build in compile
+    this.compileTask.reset();
+
+    // Override install task to first link local @wbce/* packages (for dev),
+    // then run npm install. In production the links silently fail and npm install resolves from registry.
+    const installTask = this.tasks.tryFind('install')!;
+    (installTask as any)._locked = false;
+    installTask.reset('npm link @wbce/projen-directus @wbce/projen-directus-extension 2>/dev/null || true');
+    installTask.exec('npm install');
 
     this.addExtensionFolder();
     this.addDockerCompose();
+    this.addApplySchemaTask();
+    this.addFirstRunTask();
+    this.addBuildExtensionTask();
+    this.addRunTask();
+    this.addDockerfile();
 
     if (options.githubConfig !== false) {
       this.githubConfig = new GitHubConfig(this, options.githubConfig);
     }
   }
 
-  private addExtensionFolder(){
-    const folderName = this.options.extensionsFolderName ?? 'extension-packages';
+  private addExtensionFolder() {
+    const folderName = this.options.extensionsFolderName ?? 'plugins';
     this.extensions = new ExtensionFolder(this, folderName);
-    this.gitignore.addPatterns(`/extensions/`);
+    this.extensionFolder = folderName;
+    this.gitignore.addPatterns('/extensions/');
   }
 
-  public addExtension(name: string, extensionType: DirectusExtensionType, options: AddExtensionOptions ){
-    return this.extensions.addExtension(name, extensionType, options)
+  public addExtension(name: string, extensionTypes: DirectusExtensionType[], options?: AddExtensionOptions ) {
+    return this.extensions.add(name, extensionTypes, options);
   }
+
+  private addFirstRunTask() {
+    const task = this.addTask('first-run', {
+      description: 'Initialize and start a fresh Directus instance',
+    });
+    const randomAdmin = Math.floor(Math.random()*100);
+    task.exec('docker compose up -d database cache');
+    task.spawn(this.applySchemaTask);
+    task.exec(`ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc "SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1") && docker compose run --rm directus npx d9 users create --email admin+${randomAdmin}@example.com --password totototo --role "$ADMIN_ROLE_ID"`);
+    task.say(`User admin+${randomAdmin}@example.com has been created with password totototo`);
+    task.exec('docker compose up directus');
+  }
+
+  private addRunTask() {
+    const task = this.addTask('run', {
+      description: 'start the Directus instance',
+    });
+    task.exec('docker compose up directus');
+  }
+
+  private addApplySchemaTask() {
+    this.applySchemaTask = this.addTask('apply-schema', {
+      description: 'Apply SQL snapshot to the local Directus database',
+    });
+    this.applySchemaTask.exec('npx wbce-directus apply-snapshot --host localhost --user directus --password directus --database directus', {
+      condition: 'test -d ./sql',
+    });
+    this.applySchemaTask.exec('docker compose run --rm directus npx d9 bootstrap', {
+      condition: 'test ! -d ./sql',
+    });
+  }
+
+  private addBuildExtensionTask() {
+    this.buildExtensionTask = this.addTask('build-extensions', {
+      description: 'Build the directus extensions',
+    });
+    this.buildExtensionTask.exec(`cd ${this.extensionFolder} && pnpm install`);
+    this.buildExtensionTask.exec(`cd ${this.extensionFolder} && pnpm run --recursive build`);
+  }
+
 
   private addDockerCompose() {
     const dc = new DockerCompose(this, {
@@ -92,8 +154,8 @@ export class DirectusProject extends typescript.TypeScriptProject {
             DockerCompose.serviceName('database'),
           ],
           environment: {
-            KEY: 'toto',
-            SECRET: '1234',
+            KEY: 'some-random-key',
+            SECRET: 'another-random-key',
             DB_CLIENT: 'pg',
             DB_HOST: 'database',
             DB_PORT: '5432',
@@ -142,8 +204,14 @@ export class DirectusProject extends typescript.TypeScriptProject {
       cache: { condition: 'service_healthy' },
       database: { condition: 'service_healthy' },
     });
-    
+
     return dc;
+  }
+
+  private addDockerfile() {
+    new SampleFile(this, 'Dockerfile', {
+      contents: readFileSync(join(__dirname, '..', 'Dockerfile')).toString(),
+    });
   }
 
 }

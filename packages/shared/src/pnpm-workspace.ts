@@ -8,11 +8,12 @@ import { Component, Project, YamlFile } from 'projen';
 export class PnpmWorkspace extends Component {
   private readonly catalog: Record<string, string> = {};
   private readonly namedCatalogs: Record<string, Record<string, string>> = {};
+  public workspaceYaml: YamlFile;
 
   constructor(rootProject: Project) {
     super(rootProject);
 
-    new YamlFile(rootProject, 'pnpm-workspace.yaml', {
+    this.workspaceYaml = new YamlFile(rootProject, 'pnpm-workspace.yaml', {
       obj: () => {
         const obj: Record<string, unknown> = {
           packages: rootProject.subprojects.map((subproject) =>
@@ -37,7 +38,7 @@ export class PnpmWorkspace extends Component {
 
   /**
    * Add a dependency to the default catalog.
-   * @param name The package name (e.g. "@directus/extensions-sdk")
+   * @param name The package name (e.g. "@wbce-d9/extensions-sdk")
    * @param version The version range (e.g. "^10.0.0")
    */
   public addToCatalog(name: string, version: string): void {

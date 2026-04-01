@@ -40,6 +40,7 @@ const root = new typescript.TypeScriptProject({
   sampleCode: false,
   buildWorkflow: false,
   release: false,
+  disableTsconfig: true,
   depsUpgradeOptions: { workflow: false },
   devDeps: [
     '@changesets/cli',
@@ -47,6 +48,7 @@ const root = new typescript.TypeScriptProject({
     '@wbce/projen-shared@workspace:*',
   ],
 });
+root.compileTask.reset();
 
 // NPM config
 root.package.addField('packageManager', 'pnpm@10.30.3');
@@ -81,7 +83,7 @@ new cdk.JsiiProject({
 });
 
 // --- directus ---
-new cdk.JsiiProject({
+const directus = new cdk.JsiiProject({
   ...commonJsiiOptions,
   parent: root,
   outdir: './packages/directus',
@@ -89,6 +91,12 @@ new cdk.JsiiProject({
   peerDeps: ['constructs', 'projen', '@wbce/projen-shared', '@wbce/projen-directus-extension'],
   devDeps: ['@wbce/projen-shared@workspace:*', '@wbce/projen-directus-extension@workspace:*'],
 });
+directus.npmrc.addConfig('node-linker', 'hoisted');
+directus.addBundledDeps("commander");
+directus.addBundledDeps("pg");
+directus.addBundledDeps("pg-copy-streams");
+directus.addBundledDeps("@types/pg");
+directus.addBundledDeps("@types/pg-copy-streams");
 
 
 // --- directus extension ---
@@ -101,6 +109,7 @@ const directusExtension = new cdk.JsiiProject({
   devDeps: ['@wbce/projen-shared@workspace:*'],
   bundledDeps: ['tsx'],
 });
+directusExtension.npmrc.addConfig('node-linker', 'hoisted');
 directusExtension.postCompileTask.exec('cp -r templates lib/');
 
 
@@ -121,6 +130,40 @@ new cdk.JsiiProject({
   name: '@wbce/projen-react',
   peerDeps: ['constructs', 'projen'],
 });
+
+// --- sample ---
+const sample = new typescript.TypeScriptProject({
+  parent: root,
+  outdir: './packages/sample',
+  name: '@wbce/sample',
+  defaultReleaseBranch,
+  packageManager: javascript.NodePackageManager.PNPM,
+  eslint: false,
+  jest: false,
+  sampleCode: false,
+  buildWorkflow: false,
+  release: false,
+  disableTsconfig: true,
+  depsUpgradeOptions: { workflow: false },
+  github: false,
+  devDeps: [
+    '@wbce/projen-blank@workspace:*',
+    '@wbce/projen-directus@workspace:*',
+  ],
+  deps: ['tsx'],
+});
+sample.compileTask.reset();
+sample.package.addField('private', true);
+sample.addTask('synth', { exec: 'tsx index.ts' });
+
+// Task to test generated projects locally by patching @wbce/* deps to file: paths
+const testTask = sample.addTask('test:local', {
+  description: 'Synth sample projects and install deps using local packages',
+});
+testTask.exec('tsx index.ts');
+testTask.exec('tsx patch-local-deps.ts');
+testTask.exec('cd build/directus && npm install');
+testTask.exec('cd build/directus/extension-packages/test && npm install');
 
 // ─── Custom components (order matters: after subprojects are defined) ────────
 
