@@ -24,7 +24,7 @@ new BaseProject(options: BaseProjectOptions)
 
 ---
 
-#### Methods  <a name="Methods" id="Methods"></a>
+#### Methods <a name="Methods" id="Methods"></a>
 
 | **Name** | **Description** |
 | --- | --- |

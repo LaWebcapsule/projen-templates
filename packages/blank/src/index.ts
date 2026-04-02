@@ -12,7 +12,7 @@ export interface BaseProjectOptions extends ProjectOptions {
   readonly githubConfig?: GitHubConfigOptions | false;
 
 }
-
+//base project
 export class BaseProject extends Project {
 
   public readonly githubConfig?: GitHubConfig;
