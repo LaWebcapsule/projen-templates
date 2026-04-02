@@ -1,6 +1,29 @@
+import * as fs from 'fs';
+import * as path from 'path';
 import { PnpmWorkspace } from '@wbce/projen-shared';
 import { cdk, javascript, typescript } from 'projen';
 import { Workflow } from './projenrc/workflow';
+
+/** Read the current version from an existing package.json so changesets-managed versions survive projen synth. */
+function readPackageVersion(outdir: string): string {
+  try {
+    const pkgPath = path.join(outdir, 'package.json');
+    const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
+    if (pkg.version && pkg.version !== '0.0.0') {
+      return pkg.version;
+    }
+    // Fallback: read latest version from CHANGELOG.md (written by changesets)
+    const changelogPath = path.join(outdir, 'CHANGELOG.md');
+    const changelog = fs.readFileSync(changelogPath, 'utf-8');
+    const match = changelog.match(/^## (\d+\.\d+\.\d+)/m);
+    if (match) {
+      return match[1];
+    }
+  } catch {
+    // ignore
+  }
+  return '0.0.0';
+}
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 
@@ -71,10 +94,11 @@ const shared = new cdk.JsiiProject({
   name: '@wbce/projen-shared',
   peerDeps: ['constructs', 'projen'],
 });
+shared.package.addVersion(readPackageVersion('./packages/shared'));
 shared.postCompileTask.exec('cp -r src/templates lib/');
 
 // --- blank ---
-new cdk.JsiiProject({
+const blank = new cdk.JsiiProject({
   ...commonJsiiOptions,
   parent: root,
   outdir: './packages/blank',
@@ -82,6 +106,7 @@ new cdk.JsiiProject({
   peerDeps: ['constructs', 'projen', '@wbce/projen-shared'],
   devDeps: ['@wbce/projen-shared@workspace:*'],
 });
+blank.package.addVersion(readPackageVersion('./packages/blank'));
 
 // --- directus ---
 const directus = new cdk.JsiiProject({
@@ -92,6 +117,7 @@ const directus = new cdk.JsiiProject({
   peerDeps: ['constructs', 'projen', '@wbce/projen-shared', '@wbce/projen-directus-extension'],
   devDeps: ['@wbce/projen-shared@workspace:*', '@wbce/projen-directus-extension@workspace:*'],
 });
+directus.package.addVersion(readPackageVersion('./packages/directus'));
 directus.npmrc.addConfig('node-linker', 'hoisted');
 directus.addBundledDeps("commander");
 directus.addBundledDeps("pg");
@@ -110,27 +136,30 @@ const directusExtension = new cdk.JsiiProject({
   devDeps: ['@wbce/projen-shared@workspace:*'],
   bundledDeps: ['tsx'],
 });
+directusExtension.package.addVersion(readPackageVersion('./packages/directus-extension'));
 directusExtension.npmrc.addConfig('node-linker', 'hoisted');
 directusExtension.postCompileTask.exec('cp -r templates lib/');
 
 
 // --- keycloak ---
-new cdk.JsiiProject({
+const keycloak = new cdk.JsiiProject({
   ...commonJsiiOptions,
   parent: root,
   outdir: './packages/keycloak',
   name: '@wbce/projen-keycloak',
   peerDeps: ['constructs', 'projen'],
 });
+keycloak.package.addVersion(readPackageVersion('./packages/keycloak'));
 
 // --- react ---
-new cdk.JsiiProject({
+const react = new cdk.JsiiProject({
   ...commonJsiiOptions,
   parent: root,
   outdir: './packages/react',
   name: '@wbce/projen-react',
   peerDeps: ['constructs', 'projen'],
 });
+react.package.addVersion(readPackageVersion('./packages/react'));
 
 // --- sample ---
 const sample = new typescript.TypeScriptProject({
