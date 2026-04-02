@@ -3,7 +3,6 @@ import { typescript } from 'projen';
 import { workflows } from 'projen/lib/github';
 
 const NODE_VERSION = '20';
-const PNPM_VERSION = '10';
 
 export interface WorkflowOptions {
   /**
@@ -34,7 +33,6 @@ export class Workflow extends Component {
       {
         name: 'Setup pnpm',
         uses: 'pnpm/action-setup@v4',
-        with: { version: PNPM_VERSION },
       },
       {
         name: 'Setup Node.js',
