@@ -21,6 +21,7 @@ const commonJsiiOptions = {
   repositoryUrl,
   license,
   licensed: true,
+  npmAccess: javascript.NpmAccess.PUBLIC,
   packageManager: javascript.NodePackageManager.PNPM,
   github: false, // Managed at root level
   buildWorkflow: false, // NX handles builds
@@ -57,7 +58,7 @@ root.npmrc.addConfig('link-workspace-packages', 'true');
 
 // CI publish script
 root.addTask('ci:publish', {
-  exec: 'pnpm publish -r',
+  exec: "pnpm publish -r --filter '!@wbce/sample'",
 });
 
 // ─── Packages ────────────────────────────────────────────────────────────────
