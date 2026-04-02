@@ -14,4 +14,5 @@ const project = new DirectusProject({
 
 project.addExtension("test2", [DirectusExtensionType.HOOK, DirectusExtensionType.ENDPOINT]);
 
+
 project.synth();
