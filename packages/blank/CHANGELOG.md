@@ -1,5 +1,11 @@
 # @wbce/projen-blank
 
+## 0.0.2
+
+### Patch Changes
+
+- bce1c51: Increment version
+
 ## 0.0.1
 
 ### Patch Changes
