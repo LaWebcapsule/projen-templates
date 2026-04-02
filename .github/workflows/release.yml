@@ -36,3 +36,4 @@ jobs:
         with:
           commit: "chore: update versions"
           title: "chore: update versions"
+          publish: pnpm --filter "!@wbce/root" --filter "!@wbce/sample" -r publish
