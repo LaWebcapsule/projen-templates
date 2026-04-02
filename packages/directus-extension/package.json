@@ -32,7 +32,7 @@
     "@types/node": "^22.19.15",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
-    "@wbce/projen-shared": "0.0.0",
+    "@wbce/projen-shared": "0.0.1",
     "constructs": "10.6.0",
     "eslint": "^9",
     "eslint-import-resolver-typescript": "^4.4.4",
@@ -49,7 +49,7 @@
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
-    "@wbce/projen-shared": "^0.0.0",
+    "@wbce/projen-shared": "^0.0.1",
     "constructs": "^10.6.0",
     "projen": "^0.99.24"
   },
@@ -61,7 +61,7 @@
   ],
   "main": "lib/index.js",
   "license": "GPL-3.0-or-later",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "jest": {
     "coverageProvider": "v8",
     "testMatch": [
