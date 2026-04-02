@@ -81,7 +81,7 @@ root.npmrc.addConfig('link-workspace-packages', 'true');
 
 // CI publish script
 root.addTask('ci:publish', {
-  exec: "pnpm publish -r --filter '!@wbce/sample'",
+  exec: "pnpm publish -r --filter '!@wbce/sample' --filter '!@wbce/root'",
 });
 
 // ─── Packages ────────────────────────────────────────────────────────────────
