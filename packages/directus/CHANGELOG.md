@@ -1,5 +1,13 @@
 # @wbce/projen-directus
 
+## 0.0.3
+
+### Patch Changes
+
+- b34fb4c: some updates
+- Updated dependencies [b34fb4c]
+  - @wbce/projen-directus-extension@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes
