@@ -1,5 +1,13 @@
 # @wbce/projen-directus
 
+## 0.0.2
+
+### Patch Changes
+
+- e0bb9f9: constructor parameters
+- Updated dependencies [e0bb9f9]
+  - @wbce/projen-directus-extension@0.0.2
+
 ## 0.0.1
 
 ### Patch Changes
