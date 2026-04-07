@@ -1,7 +1,6 @@
 {
   "files": [
     ".gitattributes",
-    ".github/dependabot.yml",
     ".github/DISCUSSION_TEMPLATE/docs-suggestions.yml",
     ".github/DISCUSSION_TEMPLATE/feature-requests.yml",
     ".github/ISSUE_TEMPLATE/bug_report.yml",

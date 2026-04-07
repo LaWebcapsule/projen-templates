@@ -254,6 +254,8 @@ export class DirectusProject extends javascript.NodeProject {
       .from('node', '22-bookworm-slim')
       .step('update-npm', 'Update npm to fix dependencies')
       .run('npm install -g npm@11.8.0')
+      .step('install-pnpm', 'install pnpm')
+      .run('wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" PNPM_VERSION="10.33.0" bash -')
       .step('copy-package', 'Copy package.json and package-lock.json first to leverage Docker layer caching')
       .copy('package*.json', '/app/')
       .step('workdir', 'Set working directory')
