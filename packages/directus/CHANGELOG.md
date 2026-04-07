@@ -1,5 +1,11 @@
 # @wbce/projen-directus
 
+## 0.0.5
+
+### Patch Changes
+
+- ee7e7c7: add a github workflow for save pr
+
 ## 0.0.4
 
 ### Patch Changes

@@ -99,8 +99,8 @@ export class Workflow extends Component {
           with: {
             commit: 'chore: update versions',
             title: 'chore: update versions',
-            version: 'pnpm exec changeset version && pnpm install',
-            publish: 'pnpm exec changeset publish'
+            version: "bash -c 'pnpm changeset version && pnpm install'",
+            publish: 'pnpm changeset publish'
           },
           env: {
             GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}',
