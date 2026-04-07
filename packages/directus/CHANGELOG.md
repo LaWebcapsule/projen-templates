@@ -1,5 +1,11 @@
 # @wbce/projen-directus
 
+## 0.0.7
+
+### Patch Changes
+
+- 08bd82f: modify dockerfile
+
 ## 0.0.6
 
 ### Patch Changes
