@@ -176,10 +176,6 @@ importers:
         version: 5.9.3
 
   packages/directus-extension:
-    dependencies:
-      tsx:
-        specifier: ^4.21.0
-        version: 4.21.0
     devDependencies:
       '@stylistic/eslint-plugin':
         specifier: ^2

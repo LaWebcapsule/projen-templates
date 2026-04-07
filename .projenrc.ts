@@ -134,7 +134,6 @@ const directusExtension = new cdk.JsiiProject({
   name: '@wbce/projen-directus-extension',
   peerDeps: ['constructs', 'projen', '@wbce/projen-shared'],
   devDeps: ['@wbce/projen-shared@workspace:*'],
-  bundledDeps: ['tsx'],
 });
 directusExtension.package.addVersion(readPackageVersion('./packages/directus-extension'));
 directusExtension.npmrc.addConfig('node-linker', 'hoisted');

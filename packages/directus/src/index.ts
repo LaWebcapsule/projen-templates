@@ -46,6 +46,7 @@ export class DirectusProject extends javascript.NodeProject {
           schedule: UpgradeDependenciesSchedule.DAILY,
         },
       },
+      licensed: false,
       devDeps: [
         '@wbce/projen-directus',
         '@wbce/projen-directus-extension',
