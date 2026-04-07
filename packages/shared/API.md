@@ -2200,7 +2200,6 @@ const gitHubConfigOptions: GitHubConfigOptions = { ... }
 | <code><a href="#@wbce/projen-shared.GitHubConfigOptions.property.pullRequestLintOptions">pullRequestLintOptions</a></code> | <code>projen.github.PullRequestLintOptions</code> | Options for configuring a pull request linter. |
 | <code><a href="#@wbce/projen-shared.GitHubConfigOptions.property.workflows">workflows</a></code> | <code>boolean</code> | Enables GitHub workflows. |
 | <code><a href="#@wbce/projen-shared.GitHubConfigOptions.property.branches">branches</a></code> | <code>string[]</code> | Branch names used in workflow triggers (e.g. pull_request). |
-| <code><a href="#@wbce/projen-shared.GitHubConfigOptions.property.dependabot">dependabot</a></code> | <code>boolean \| projen.github.DependabotOptions</code> | /* dependencies. |
 | <code><a href="#@wbce/projen-shared.GitHubConfigOptions.property.discussionTemplates">discussionTemplates</a></code> | <code>boolean</code> | Whether to include discussion templates. |
 | <code><a href="#@wbce/projen-shared.GitHubConfigOptions.property.issueTemplates">issueTemplates</a></code> | <code>boolean</code> | Whether to include issue templates. |
 | <code><a href="#@wbce/projen-shared.GitHubConfigOptions.property.pullRequestTemplate">pullRequestTemplate</a></code> | <code>boolean</code> | Whether to include the pull request template. |
@@ -2388,21 +2387,6 @@ public readonly branches: string[];
 - *Default:* ["main"]
 
 Branch names used in workflow triggers (e.g. pull_request).
-
----
-
-##### `dependabot`<sup>Optional</sup> <a name="dependabot" id="@wbce/projen-shared.GitHubConfigOptions.property.dependabot"></a>
-
-```typescript
-public readonly dependabot: boolean | DependabotOptions;
-```
-
-- *Type:* boolean | projen.github.DependabotOptions
-- *Default:* true
-
-/* dependencies.
-
-Pass `true` for defaults, or a `DependabotOptions` object to customise.
 
 ---
 

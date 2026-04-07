@@ -1,6 +1,7 @@
 import { AddExtensionOptions, DirectusExtensionType, ExtensionFolder } from '@wbce/projen-directus-extension';
 import { GitHubConfig, GitHubConfigOptions, Dockerfile } from '@wbce/projen-shared';
 import { AiAgent, AiInstructions, DockerCompose, javascript, Task, typescript } from 'projen';
+import { UpgradeDependenciesSchedule } from 'projen/lib/javascript';
 
 export interface PackageVersions {
   readonly d9?: string;
@@ -38,6 +39,12 @@ export class DirectusProject extends javascript.NodeProject {
       ...options,
       packageManager: options.packageManager ?? javascript.NodePackageManager.NPM,
       github: false, // We use our own GitHubConfig instead
+      depsUpgrade: true,
+      depsUpgradeOptions: {
+        workflowOptions: {
+          schedule: UpgradeDependenciesSchedule.DAILY,
+        },
+      },
       devDeps: [
         '@wbce/projen-directus',
         '@wbce/projen-directus-extension',

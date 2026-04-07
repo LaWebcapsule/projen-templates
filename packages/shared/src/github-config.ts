@@ -2,7 +2,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { Project, TextFile } from 'projen';
 import { GitHub, GitHubOptions, GithubWorkflow } from 'projen/lib/github';
-import { DependabotOptions } from 'projen/lib/github/dependabot';
 import { JobPermission } from 'projen/lib/github/workflows-model';
 
 const TEMPLATES_DIR = path.join(__dirname, 'templates');
@@ -50,13 +49,6 @@ export interface GitHubConfigOptions extends GitHubOptions {
    * @default true
    */
   readonly pullRequestTemplate?: boolean;
-
-  /**
-  /* dependencies.
-   * Pass `true` for defaults, or a `DependabotOptions` object to customise.
-   * @default true
-   */
-  readonly dependabot?: boolean | DependabotOptions;
 
 }
 
@@ -108,16 +100,6 @@ export class GitHubConfig extends GitHub {
           { name: 'Install semgrep', run: 'python3 -m pip install semgrep' },
           { name: 'Run Semgrep', run: 'semgrep scan' },
         ],
-      });
-    }
-
-    // Dependabot version updates for @wbce/* dependencies
-    const dependabotOpt = options?.dependabot ?? true;
-    if (dependabotOpt) {
-      const dependabotOptions: DependabotOptions = typeof dependabotOpt === 'object' ? dependabotOpt : {};
-      this.addDependabot({
-        allow: [{ dependencyName: '@wbce/*' }],
-        ...dependabotOptions,
       });
     }
 
