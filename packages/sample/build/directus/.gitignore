@@ -37,6 +37,12 @@ junit.xml
 /extensions/
 !/docker-compose.yml
 !/Dockerfile
+!/.github/copilot-instructions.md
+!/.cursor/rules/project.md
+!/CLAUDE.md
+!/.amazonq/rules/project.md
+!/.kiro/steering/project.md
+!/AGENTS.md
 !/.github/workflows/pull-request-lint.yml
 !/.github/pull_request_template.md
 !/.github/workflows/sast-analysis.yml

@@ -20,5 +20,8 @@ RUN rm -rf node_modules/tedious/benchmarks
 # Copy the rest of the application code (step-id: copy-source)
 COPY . .
 
+# build extensions (step-id: build-extension)
+RUN npx projen build-extensions
+
 # Start Directus server (step-id: start)
 CMD ["npx","directus","start"]

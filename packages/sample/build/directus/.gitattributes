@@ -2,7 +2,10 @@
 
 * text=auto eol=lf
 *.snap linguist-generated
+/.amazonq/rules/project.md linguist-generated
+/.cursor/rules/project.md linguist-generated
 /.gitattributes linguist-generated
+/.github/copilot-instructions.md linguist-generated
 /.github/dependabot.yml linguist-generated
 /.github/DISCUSSION_TEMPLATE/docs-suggestions.yml linguist-generated
 /.github/DISCUSSION_TEMPLATE/feature-requests.yml linguist-generated
@@ -13,11 +16,14 @@
 /.github/workflows/pull-request-lint.yml linguist-generated
 /.github/workflows/sast-analysis.yml linguist-generated
 /.gitignore linguist-generated
+/.kiro/steering/project.md linguist-generated
 /.npmignore linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
 /.projen/tasks.json linguist-generated
+/AGENTS.md linguist-generated
+/CLAUDE.md linguist-generated
 /docker-compose.yml linguist-generated
 /Dockerfile linguist-generated
 /LICENSE linguist-generated

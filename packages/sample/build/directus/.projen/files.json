@@ -1,6 +1,9 @@
 {
   "files": [
+    ".amazonq/rules/project.md",
+    ".cursor/rules/project.md",
     ".gitattributes",
+    ".github/copilot-instructions.md",
     ".github/dependabot.yml",
     ".github/DISCUSSION_TEMPLATE/docs-suggestions.yml",
     ".github/DISCUSSION_TEMPLATE/feature-requests.yml",
@@ -11,10 +14,13 @@
     ".github/workflows/pull-request-lint.yml",
     ".github/workflows/sast-analysis.yml",
     ".gitignore",
+    ".kiro/steering/project.md",
     ".npmignore",
     ".projen/deps.json",
     ".projen/files.json",
     ".projen/tasks.json",
+    "AGENTS.md",
+    "CLAUDE.md",
     "docker-compose.yml",
     "Dockerfile",
     "LICENSE"

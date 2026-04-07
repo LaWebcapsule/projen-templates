@@ -136,10 +136,10 @@
           "spawn": "apply-schema"
         },
         {
-          "exec": "ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc \"SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1\") && docker compose run --rm directus npx d9 users create --email admin+64@example.com --password totototo --role \"$ADMIN_ROLE_ID\""
+          "exec": "ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc \"SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1\") && docker compose run --rm directus npx d9 users create --email admin+53@example.com --password totototo --role \"$ADMIN_ROLE_ID\""
         },
         {
-          "say": "User admin+64@example.com has been created with password totototo"
+          "say": "User admin+53@example.com has been created with password totototo"
         },
         {
           "exec": "docker compose up directus"

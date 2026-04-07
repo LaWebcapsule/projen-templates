@@ -1,6 +1,11 @@
 import { AddExtensionOptions, DirectusExtensionType, ExtensionFolder } from '@wbce/projen-directus-extension';
 import { GitHubConfig, GitHubConfigOptions, Dockerfile } from '@wbce/projen-shared';
-import { DockerCompose, javascript, Task, typescript } from 'projen';
+import { AiAgent, AiInstructions, DockerCompose, javascript, Task, typescript } from 'projen';
+
+export interface PackageVersions {
+  readonly d9?: string;
+}
+
 
 export interface DirectusProjectOptions extends typescript.TypeScriptProjectOptions {
   /**
@@ -15,6 +20,7 @@ export interface DirectusProjectOptions extends typescript.TypeScriptProjectOpti
    * @default "extension-packages"
    */
   readonly extensionsFolderName?: string;
+  readonly packageVersions?: PackageVersions;
 }
 
 export class DirectusProject extends javascript.NodeProject {
@@ -27,6 +33,7 @@ export class DirectusProject extends javascript.NodeProject {
   public dockerfile!: Dockerfile;
 
   constructor(protected options: DirectusProjectOptions) {
+    const d9Version = options.packageVersions?.d9 || '12.0.1';
     super({
       ...options,
       packageManager: options.packageManager ?? javascript.NodePackageManager.NPM,
@@ -36,7 +43,7 @@ export class DirectusProject extends javascript.NodeProject {
         '@wbce/projen-directus-extension',
         ...(options.devDeps ?? []),
       ],
-      deps: ['@wbce-d9/directus9@12.0.1'],
+      deps: [`@wbce-d9/directus9@${d9Version}`],
     });
 
     // No tsconfig means no tsc --build in compile
@@ -56,6 +63,10 @@ export class DirectusProject extends javascript.NodeProject {
     this.addBuildExtensionTask();
     this.addRunTask();
     this.addDockerfile();
+
+    new AiInstructions(this, {
+      agents: [AiAgent.CLAUDE],
+    });
 
     if (options.githubConfig !== false) {
       this.githubConfig = new GitHubConfig(this, options.githubConfig);
@@ -222,7 +233,7 @@ export class DirectusProject extends javascript.NodeProject {
       .run('rm -rf node_modules/tedious/benchmarks')
       .step('copy-source', 'Copy the rest of the application code')
       .copy('.', '.')
-      .step('build-extension','build extensions')
+      .step('build-extension', 'build extensions')
       .run('npx projen build-extensions')
       .step('start', 'Start Directus server')
       .cmdExec(['npx', 'directus', 'start']);

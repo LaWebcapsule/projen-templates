@@ -1674,6 +1674,7 @@ const directusProjectOptions: DirectusProjectOptions = { ... }
 | <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
 | <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.extensionsFolderName">extensionsFolderName</a></code> | <code>string</code> | The name of the extensions folder. |
 | <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.githubConfig">githubConfig</a></code> | <code>boolean \| @wbce/projen-shared.GitHubConfigOptions</code> | Options for the GitHub configuration. |
+| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.packageVersions">packageVersions</a></code> | <code><a href="#@wbce/projen-directus.PackageVersions">PackageVersions</a></code> | *No description.* |
 
 ---
 
@@ -3951,6 +3952,44 @@ public readonly githubConfig: boolean | GitHubConfigOptions;
 Options for the GitHub configuration.
 
 Set to false to disable GitHub config entirely.
+
+---
+
+##### `packageVersions`<sup>Optional</sup> <a name="packageVersions" id="@wbce/projen-directus.DirectusProjectOptions.property.packageVersions"></a>
+
+```typescript
+public readonly packageVersions: PackageVersions;
+```
+
+- *Type:* <a href="#@wbce/projen-directus.PackageVersions">PackageVersions</a>
+
+---
+
+### PackageVersions <a name="PackageVersions" id="@wbce/projen-directus.PackageVersions"></a>
+
+#### Initializer <a name="Initializer" id="@wbce/projen-directus.PackageVersions.Initializer"></a>
+
+```typescript
+import { PackageVersions } from '@wbce/projen-directus'
+
+const packageVersions: PackageVersions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@wbce/projen-directus.PackageVersions.property.d9">d9</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `d9`<sup>Optional</sup> <a name="d9" id="@wbce/projen-directus.PackageVersions.property.d9"></a>
+
+```typescript
+public readonly d9: string;
+```
+
+- *Type:* string
 
 ---
 
