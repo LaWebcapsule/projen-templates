@@ -5,8 +5,11 @@ FROM node:22-bookworm-slim
 # Update npm to fix dependencies (step-id: update-npm)
 RUN npm install -g npm@11.8.0
 
-# Copy package.json and package-lock.json first to leverage Docker layer caching (step-id: copy-package)
-COPY package*.json /app/
+# install pnpm (step-id: install-pnpm)
+RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" PNPM_VERSION="10.33.0" bash -
+
+# Copy package.json first to leverage Docker layer caching (step-id: copy-package)
+COPY package.json /app/
 
 # Set working directory (step-id: workdir)
 WORKDIR /app

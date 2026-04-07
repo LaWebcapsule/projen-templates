@@ -1,4 +1,5 @@
 const { DirectusProject } = require("@wbce/projen-directus");
+const { DirectusExtensionType } = require("../../../directus-extension/lib/directus-extension-project");
 const project = new DirectusProject({
   defaultReleaseBranch: "main",
   eslintOptions: {"dirs":["src","test"],"prettier":true,"aliasMap":{"@src":"./src","@components":"./src/components"}},
@@ -10,4 +11,5 @@ const project = new DirectusProject({
   // devDeps: [],             /* Build dependencies for this module. */
   // packageName: undefined,  /* The "name" in package.json. */
 });
+project.addExtension("test", [DirectusExtensionType.HOOK]);
 project.synth();
