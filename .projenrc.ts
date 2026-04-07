@@ -84,6 +84,14 @@ root.addTask('ci:publish', {
   exec: "pnpm publish -r --filter '!@wbce/sample' --filter '!@wbce/root'",
 });
 
+// Changesets version task (runs both steps; used by release workflow to avoid shell operator issues)
+root.addTask('changeset:version', {
+  steps: [
+    { exec: 'pnpm exec changeset version' },
+    { exec: 'pnpm install --no-frozen-lockfile' },
+  ],
+});
+
 // ─── Packages ────────────────────────────────────────────────────────────────
 
 // --- shared ---

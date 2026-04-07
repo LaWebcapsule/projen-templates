@@ -24,6 +24,17 @@
         }
       ]
     },
+    "changeset:version": {
+      "name": "changeset:version",
+      "steps": [
+        {
+          "exec": "pnpm exec changeset version"
+        },
+        {
+          "exec": "pnpm install --no-frozen-lockfile"
+        }
+      ]
+    },
     "ci:publish": {
       "name": "ci:publish",
       "steps": [

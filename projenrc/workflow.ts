@@ -99,7 +99,7 @@ export class Workflow extends Component {
           with: {
             commit: 'chore: update versions',
             title: 'chore: update versions',
-            version: 'bash -c "pnpm changeset version && pnpm install"',
+            version: 'pnpm run changeset:version',
             publish: 'pnpm changeset publish'
           },
           env: {
