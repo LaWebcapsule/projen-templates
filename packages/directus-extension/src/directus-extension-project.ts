@@ -193,12 +193,6 @@ export class DirectusExtensionProject extends typescript.TypeScriptProject {
       });
     }
 
-    // Task to install @wbce/projen-directus-extension from a locally linked package
-    this.addTask('install:local', {
-      description: 'Install @wbce/projen-directus-extension from local (requires npm link in the source package first)',
-      exec: 'npm link @wbce/projen-directus-extension',
-    });
-
     if (extensionTypes.length) {
 
       const extensionSubDir = extensionTypes.length === 1 ? extensionTargetDir(extensionTypes[0], this.extensionName):undefined;

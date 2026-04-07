@@ -222,6 +222,8 @@ export class DirectusProject extends javascript.NodeProject {
       .run('rm -rf node_modules/tedious/benchmarks')
       .step('copy-source', 'Copy the rest of the application code')
       .copy('.', '.')
+      .step('build-extension','build extensions')
+      .run('npx projen build-extensions')
       .step('start', 'Start Directus server')
       .cmdExec(['npx', 'directus', 'start']);
     return this.dockerfile;
