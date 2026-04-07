@@ -1582,30 +1582,16 @@ project.extensions.addExtension('my-hook', DirectusExtensionType.HOOK);
 ```typescript
 import { ExtensionFolder } from '@wbce/projen-directus-extension'
 
-new ExtensionFolder(parentProject: Project, folderName: string, options?: ExtensionFolderOptions)
+new ExtensionFolder(options: ExtensionFolderOptions)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@wbce/projen-directus-extension.ExtensionFolder.Initializer.parameter.parentProject">parentProject</a></code> | <code>projen.Project</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus-extension.ExtensionFolder.Initializer.parameter.folderName">folderName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@wbce/projen-directus-extension.ExtensionFolder.Initializer.parameter.options">options</a></code> | <code><a href="#@wbce/projen-directus-extension.ExtensionFolderOptions">ExtensionFolderOptions</a></code> | *No description.* |
 
 ---
 
-##### `parentProject`<sup>Required</sup> <a name="parentProject" id="@wbce/projen-directus-extension.ExtensionFolder.Initializer.parameter.parentProject"></a>
-
-- *Type:* projen.Project
-
----
-
-##### `folderName`<sup>Required</sup> <a name="folderName" id="@wbce/projen-directus-extension.ExtensionFolder.Initializer.parameter.folderName"></a>
-
-- *Type:* string
-
----
-
-##### `options`<sup>Optional</sup> <a name="options" id="@wbce/projen-directus-extension.ExtensionFolder.Initializer.parameter.options"></a>
+##### `options`<sup>Required</sup> <a name="options" id="@wbce/projen-directus-extension.ExtensionFolder.Initializer.parameter.options"></a>
 
 - *Type:* <a href="#@wbce/projen-directus-extension.ExtensionFolderOptions">ExtensionFolderOptions</a>
 
