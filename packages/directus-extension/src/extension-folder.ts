@@ -37,12 +37,10 @@ export class ExtensionFolder extends Project {
 
   workspace: PnpmWorkspace;
 
-  constructor(parentProject: Project, folderName: string, options?: ExtensionFolderOptions) {
+  constructor(options: ExtensionFolderOptions) {
     super({
       ...options,
-      name: options?.name ?? folderName,
-      parent: parentProject,
-      outdir: folderName,
+      outdir: options.outdir ?? options.name,
     });
 
 
