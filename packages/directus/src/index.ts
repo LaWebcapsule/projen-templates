@@ -1,6 +1,7 @@
 import { AddExtensionOptions, DirectusExtensionType, ExtensionFolder } from '@wbce/projen-directus-extension';
 import { GitHubConfig, GitHubConfigOptions, Dockerfile } from '@wbce/projen-shared';
 import { AiAgent, AiInstructions, DockerCompose, javascript, Task, typescript } from 'projen';
+import { JobPermission } from 'projen/lib/github/workflows-model';
 import { UpgradeDependenciesSchedule } from 'projen/lib/javascript';
 
 export interface PackageVersions {
@@ -77,6 +78,7 @@ export class DirectusProject extends javascript.NodeProject {
 
     if (options.githubConfig !== false) {
       this.githubConfig = new GitHubConfig(this, options.githubConfig);
+      this.addSaveBranchWorkflow();
     }
   }
 
@@ -223,6 +225,27 @@ export class DirectusProject extends javascript.NodeProject {
     });
 
     return dc;
+  }
+
+  private addSaveBranchWorkflow() {
+    const workflow = this.githubConfig!.addWorkflow('save-branch');
+    workflow.on({ push: { branches: ['*-save'] } });
+    workflow.addJob('create-pr', {
+      name: 'Create Pull Request',
+      runsOn: ['ubuntu-latest'],
+      permissions: {
+        contents: JobPermission.READ,
+        pullRequests: JobPermission.WRITE,
+      },
+      steps: [
+        { name: 'Checkout', uses: 'actions/checkout@v4' },
+        {
+          name: 'Create Pull Request',
+          run: 'gh pr create --title "Save: ${GITHUB_REF_NAME%-save}" --body "Auto-generated PR from branch \\`${GITHUB_REF_NAME%-save}\\`" --base "${GITHUB_REF_NAME%-save}" || echo "PR already exists"',
+          env: { GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}' },
+        },
+      ],
+    });
   }
 
   private addDockerfile() {
