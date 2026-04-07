@@ -1,5 +1,11 @@
 # @wbce/projen-directus
 
+## 0.0.8
+
+### Patch Changes
+
+- 8931b87: Change install of pnpm in dockerfile
+
 ## 0.0.7
 
 ### Patch Changes
