@@ -1,5 +1,11 @@
 # @wbce/projen-directus-extension
 
+## 0.0.3
+
+### Patch Changes
+
+- b34fb4c: some updates
+
 ## 0.0.2
 
 ### Patch Changes
