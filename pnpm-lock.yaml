@@ -48,7 +48,7 @@ importers:
         specifier: ^8
         version: 8.57.2(eslint@9.39.4)(typescript@5.9.3)
       '@wbce/projen-shared':
-        specifier: 0.0.1
+        specifier: 0.0.2
         version: link:../shared
       constructs:
         specifier: ^10.0.0
@@ -127,10 +127,10 @@ importers:
         specifier: ^8
         version: 8.57.2(eslint@9.39.4)(typescript@5.9.3)
       '@wbce/projen-directus-extension':
-        specifier: 0.0.3
+        specifier: 0.0.4
         version: link:../directus-extension
       '@wbce/projen-shared':
-        specifier: 0.0.1
+        specifier: 0.0.2
         version: link:../shared
       constructs:
         specifier: ^10.0.0
@@ -197,7 +197,7 @@ importers:
         specifier: ^8
         version: 8.57.2(eslint@9.39.4)(typescript@5.9.3)
       '@wbce/projen-shared':
-        specifier: 0.0.1
+        specifier: 0.0.2
         version: link:../shared
       constructs:
         specifier: 10.6.0

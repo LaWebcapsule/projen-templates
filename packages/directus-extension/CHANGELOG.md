@@ -1,5 +1,12 @@
 # @wbce/projen-directus-extension
 
+## 0.0.4
+
+### Patch Changes
+
+- Updated dependencies [503bee2]
+  - @wbce/projen-shared@0.0.2
+
 ## 0.0.3
 
 ### Patch Changes
