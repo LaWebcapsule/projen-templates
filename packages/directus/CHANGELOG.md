@@ -1,5 +1,11 @@
 # @wbce/projen-directus
 
+## 0.0.11
+
+### Patch Changes
+
+- modify the cli command
+
 ## 0.0.10
 
 ### Patch Changes
