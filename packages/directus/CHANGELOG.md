@@ -1,5 +1,11 @@
 # @wbce/projen-directus
 
+## 0.0.10
+
+### Patch Changes
+
+- d067f04: add cli bin
+
 ## 0.0.9
 
 ### Patch Changes
