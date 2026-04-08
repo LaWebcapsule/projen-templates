@@ -1,5 +1,11 @@
 # @wbce/projen-directus
 
+## 0.0.12
+
+### Patch Changes
+
+- change the cli parser
+
 ## 0.0.11
 
 ### Patch Changes
