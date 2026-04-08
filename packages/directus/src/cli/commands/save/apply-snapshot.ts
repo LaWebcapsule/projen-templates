@@ -285,6 +285,7 @@ export async function applySQLSnapshot(dbConfig: {
     throw e;
   } finally {
     await pgClient.end();
+    await pgTmpClient.end();
     console.log('end of the query');
   }
 }
