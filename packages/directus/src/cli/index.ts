@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { Command } from 'commander';
 import { init } from './commands/init';
 import { applySQLSnapshot } from './commands/save/apply-snapshot';
