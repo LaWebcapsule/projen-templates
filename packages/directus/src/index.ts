@@ -94,7 +94,7 @@ export class DirectusProject extends javascript.NodeProject {
     const randomAdmin = Math.floor(Math.random()*100);
     task.exec('docker compose up -d database cache');
     task.spawn(this.applySchemaTask);
-    task.exec(`ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc "SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1") && docker compose run --rm directus npx d9 users create --email admin+${randomAdmin}@example.com --password totototo --role "$ADMIN_ROLE_ID"`);
+    task.exec(`ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc "SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1") && docker compose run --rm directus npx directus users create --email admin+${randomAdmin}@example.com --password totototo --role "$ADMIN_ROLE_ID"`);
     task.say(`User admin+${randomAdmin}@example.com has been created with password totototo`);
     task.exec('docker compose up directus');
   }
@@ -113,7 +113,7 @@ export class DirectusProject extends javascript.NodeProject {
     this.applySchemaTask.exec('npx wbce-directus apply-snapshot --host localhost --user directus --password directus --database directus', {
       condition: 'test -d ./sql',
     });
-    this.applySchemaTask.exec('docker compose run --rm directus npx d9 bootstrap', {
+    this.applySchemaTask.exec('docker compose run --rm directus npx directus bootstrap', {
       condition: 'test ! -d ./sql',
     });
   }
