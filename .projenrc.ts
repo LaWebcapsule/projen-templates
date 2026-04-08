@@ -132,6 +132,7 @@ directus.addBundledDeps("pg");
 directus.addBundledDeps("pg-copy-streams");
 directus.addBundledDeps("@types/pg");
 directus.addBundledDeps("@types/pg-copy-streams");
+directus.addBins({"wbce-directus": "node lib/cli/index.js"})
 
 
 // --- directus extension ---

@@ -4,6 +4,9 @@
     "type": "git",
     "url": "git@github.com:LaWebcapsule/projen-templates.git"
   },
+  "bin": {
+    "wbce-directus": "node lib/cli/index.js"
+  },
   "scripts": {
     "build": "npx projen build",
     "compat": "npx projen compat",
