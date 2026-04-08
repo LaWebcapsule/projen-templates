@@ -1,5 +1,11 @@
 # @wbce/projen-directus-extension
 
+## 0.0.6
+
+### Patch Changes
+
+- 1f46a4d: remove install override
+
 ## 0.0.5
 
 ### Patch Changes
