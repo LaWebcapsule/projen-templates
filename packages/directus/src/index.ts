@@ -58,13 +58,6 @@ export class DirectusProject extends javascript.NodeProject {
     // No tsconfig means no tsc --build in compile
     this.compileTask.reset();
 
-    // Override install task to first link local @wbce/* packages (for dev),
-    // then run npm install. In production the links silently fail and npm install resolves from registry.
-    const installTask = this.tasks.tryFind('install')!;
-    (installTask as any)._locked = false;
-    installTask.reset('npm link @wbce/projen-directus @wbce/projen-directus-extension 2>/dev/null || true');
-    installTask.exec('npm install');
-
     this.addExtensionFolder();
     this.addDockerCompose();
     this.addApplySchemaTask();

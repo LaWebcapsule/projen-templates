@@ -126,13 +126,6 @@ export class DirectusExtensionProject extends typescript.TypeScriptProject {
     this.extensionTypes = extensionTypes;
     this.extensionName = options.name;
 
-    // Override the install task to first link @wbce/projen-directus-extension locally (for dev),
-    // then run npm install. In production the link silently fails and npm install resolves from registry.
-    const installTask = this.tasks.tryFind('install')!;
-    (installTask as any)._locked = false;
-    installTask.reset('npm link @wbce/projen-directus-extension 2>/dev/null || true');
-    installTask.exec('npm install');
-
     // Add directus:extension field to package.json
     if (extensionTypes.length > 1) {
       //BUNDLE.
