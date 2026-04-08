@@ -1,5 +1,11 @@
 # @wbce/projen-directus
 
+## 0.0.13
+
+### Patch Changes
+
+- fix termination
+
 ## 0.0.12
 
 ### Patch Changes
