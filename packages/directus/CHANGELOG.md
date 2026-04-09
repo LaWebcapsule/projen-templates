@@ -1,5 +1,14 @@
 # @wbce/projen-directus
 
+## 0.0.15
+
+### Patch Changes
+
+- Modify install in pnpm workspace
+- Updated dependencies
+  - @wbce/projen-directus-extension@0.0.7
+  - @wbce/projen-shared@0.0.3
+
 ## 0.0.14
 
 ### Patch Changes

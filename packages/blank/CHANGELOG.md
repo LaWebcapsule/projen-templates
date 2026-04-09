@@ -1,5 +1,12 @@
 # @wbce/projen-blank
 
+## 0.0.5
+
+### Patch Changes
+
+- Updated dependencies
+  - @wbce/projen-shared@0.0.3
+
 ## 0.0.4
 
 ### Patch Changes

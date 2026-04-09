@@ -1,5 +1,11 @@
 # @wbce/projen-shared
 
+## 0.0.3
+
+### Patch Changes
+
+- Modify install in pnpm workspace
+
 ## 0.0.2
 
 ### Patch Changes
