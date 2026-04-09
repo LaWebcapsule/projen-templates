@@ -761,6 +761,10 @@ When given a project, this it the project itself.
 | <code><a href="#@wbce/projen-directus.DirectusProject.property.githubConfig">githubConfig</a></code> | <code>@wbce/projen-shared.GitHubConfig</code> | *No description.* |
 | <code><a href="#@wbce/projen-directus.DirectusProject.property.applySchemaTask">applySchemaTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@wbce/projen-directus.DirectusProject.property.buildExtensionTask">buildExtensionTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-directus.DirectusProject.property.cacheService">cacheService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
+| <code><a href="#@wbce/projen-directus.DirectusProject.property.databaseService">databaseService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
+| <code><a href="#@wbce/projen-directus.DirectusProject.property.directusService">directusService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
+| <code><a href="#@wbce/projen-directus.DirectusProject.property.dockerComposeFile">dockerComposeFile</a></code> | <code>projen.DockerCompose</code> | *No description.* |
 | <code><a href="#@wbce/projen-directus.DirectusProject.property.dockerfile">dockerfile</a></code> | <code>@wbce/projen-shared.Dockerfile</code> | *No description.* |
 | <code><a href="#@wbce/projen-directus.DirectusProject.property.extensionFolder">extensionFolder</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@wbce/projen-directus.DirectusProject.property.extensions">extensions</a></code> | <code>@wbce/projen-directus-extension.ExtensionFolder</code> | *No description.* |
@@ -1444,6 +1448,46 @@ public readonly buildExtensionTask: Task;
 ```
 
 - *Type:* projen.Task
+
+---
+
+##### `cacheService`<sup>Required</sup> <a name="cacheService" id="@wbce/projen-directus.DirectusProject.property.cacheService"></a>
+
+```typescript
+public readonly cacheService: DockerComposeService;
+```
+
+- *Type:* projen.DockerComposeService
+
+---
+
+##### `databaseService`<sup>Required</sup> <a name="databaseService" id="@wbce/projen-directus.DirectusProject.property.databaseService"></a>
+
+```typescript
+public readonly databaseService: DockerComposeService;
+```
+
+- *Type:* projen.DockerComposeService
+
+---
+
+##### `directusService`<sup>Required</sup> <a name="directusService" id="@wbce/projen-directus.DirectusProject.property.directusService"></a>
+
+```typescript
+public readonly directusService: DockerComposeService;
+```
+
+- *Type:* projen.DockerComposeService
+
+---
+
+##### `dockerComposeFile`<sup>Required</sup> <a name="dockerComposeFile" id="@wbce/projen-directus.DirectusProject.property.dockerComposeFile"></a>
+
+```typescript
+public readonly dockerComposeFile: DockerCompose;
+```
+
+- *Type:* projen.DockerCompose
 
 ---
 

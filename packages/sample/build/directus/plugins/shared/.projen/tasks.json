@@ -5,16 +5,19 @@
       "description": "Full release build",
       "steps": [
         {
-          "exec": "directus-extension build"
+          "spawn": "pre-compile"
         },
         {
-          "exec": "npx tsc"
+          "spawn": "compile"
         },
         {
-          "exec": "mkdir -p ../../extensions/hooks/test"
+          "spawn": "post-compile"
         },
         {
-          "exec": "cp -r dist/* ../../extensions/hooks/test"
+          "spawn": "test"
+        },
+        {
+          "spawn": "package"
         }
       ]
     },

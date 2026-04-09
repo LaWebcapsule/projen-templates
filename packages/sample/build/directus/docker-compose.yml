@@ -53,10 +53,11 @@ services:
     command:
       - sh
       - -c
-      - npx directus bootstrap && npx directus start
+      - npx directus start
     environment:
       KEY: some-random-key
       SECRET: another-random-key
+      CONFIG_PATH: .env.local
       DB_CLIENT: pg
       DB_HOST: database
       DB_PORT: "5432"

@@ -1,11 +1,18 @@
 {
   "dependencies": [
     {
-      "name": "@wbce/projen-directus",
+      "name": "@wbce/projen-directus-extension",
+      "version": "file:../../../directus-extension",
       "type": "build"
     },
     {
-      "name": "@wbce/projen-directus-extension",
+      "name": "@wbce/projen-directus",
+      "version": "file:../../../directus",
+      "type": "build"
+    },
+    {
+      "name": "@wbce/projen-shared",
+      "version": "file:../../../shared",
       "type": "build"
     },
     {

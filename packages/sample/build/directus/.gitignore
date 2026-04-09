@@ -33,7 +33,7 @@ junit.xml
 /coverage/
 /dist/changelog.md
 /dist/version.txt
-/extensions/
+extensions
 !/docker-compose.yml
 !/Dockerfile
 !/CLAUDE.md
@@ -46,4 +46,5 @@ junit.xml
 !/.github/DISCUSSION_TEMPLATE/docs-suggestions.yml
 !/.github/DISCUSSION_TEMPLATE/feature-requests.yml
 !/.github/workflows/save-branch.yml
+uploads
 !/.projenrc.js

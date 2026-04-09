@@ -9,7 +9,7 @@
           "condition": "test -d ./sql"
         },
         {
-          "exec": "docker compose run --rm directus npx d9 bootstrap",
+          "exec": "docker compose run --rm directus npx directus bootstrap",
           "condition": "test ! -d ./sql"
         }
       ]
@@ -104,6 +104,21 @@
       "name": "compile",
       "description": "Only compile"
     },
+    "create-an-admin": {
+      "name": "create-an-admin",
+      "description": "Create an adminuser",
+      "steps": [
+        {
+          "exec": "docker compose up -d database cache"
+        },
+        {
+          "exec": "ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc \"SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1\") && docker compose run --rm directus npx directus users create --email admin+83@example.com --password totototo --role \"$ADMIN_ROLE_ID\""
+        },
+        {
+          "say": "User admin+83@example.com has been created with password totototo"
+        }
+      ]
+    },
     "default": {
       "name": "default",
       "description": "Synthesize project files",
@@ -136,10 +151,10 @@
           "spawn": "apply-schema"
         },
         {
-          "exec": "ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc \"SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1\") && docker compose run --rm directus npx d9 users create --email admin+70@example.com --password totototo --role \"$ADMIN_ROLE_ID\""
+          "exec": "ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc \"SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1\") && docker compose run --rm directus npx directus users create --email admin+20@example.com --password totototo --role \"$ADMIN_ROLE_ID\""
         },
         {
-          "say": "User admin+70@example.com has been created with password totototo"
+          "say": "User admin+20@example.com has been created with password totototo"
         },
         {
           "exec": "docker compose up directus"
@@ -150,9 +165,6 @@
       "name": "install",
       "description": "Install project dependencies and update lockfile (non-frozen)",
       "steps": [
-        {
-          "exec": "npm link @wbce/projen-directus @wbce/projen-directus-extension 2>/dev/null || true"
-        },
         {
           "exec": "npm install"
         }
@@ -268,13 +280,13 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev,peer,prod,optional --filter=@wbce/projen-directus,@wbce/projen-directus-extension,jest,projen"
+          "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev,peer,prod,optional --filter=jest,projen"
         },
         {
           "exec": "npm install"
         },
         {
-          "exec": "npm update @wbce/projen-directus @wbce/projen-directus-extension commit-and-tag-version constructs jest jest-junit projen @wbce-d9/directus9"
+          "exec": "npm update @wbce/projen-directus-extension @wbce/projen-directus @wbce/projen-shared commit-and-tag-version constructs jest jest-junit projen @wbce-d9/directus9"
         },
         {
           "exec": "npx projen"

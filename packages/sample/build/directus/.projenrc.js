@@ -11,5 +11,10 @@ const project = new DirectusProject({
   // devDeps: [],             /* Build dependencies for this module. */
   // packageName: undefined,  /* The "name" in package.json. */
 });
-project.addExtension("test", [DirectusExtensionType.HOOK]);
+project.addDevDeps('@wbce/projen-directus@file:../../../directus');
+project.addDevDeps('@wbce/projen-directus-extension@file:../../../directus-extension');
+project.addDevDeps('@wbce/projen-shared@file:../../../shared');
+project.addExtension("shared", []);
+const test = project.addExtension("test", [DirectusExtensionType.HOOK]);
+test.addDeps("shared@workspace:")
 project.synth();

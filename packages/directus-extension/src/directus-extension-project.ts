@@ -89,7 +89,7 @@ export class DirectusExtensionProject extends typescript.TypeScriptProject {
 
     super({
       ...options,
-      packageManager: options.packageManager ?? javascript.NodePackageManager.NPM,
+      packageManager: options.packageManager ?? javascript.NodePackageManager.PNPM,
       github: false,
       projenrcTs: false,
       projenrcJs: false,
@@ -195,6 +195,7 @@ export class DirectusExtensionProject extends typescript.TypeScriptProject {
       let targetDir = path.join(relativeToRoot, 'extensions', extensionSubDir ?? 'dist');
       (this.buildTask as any)._locked = false;
       this.buildTask.reset('directus-extension build');
+      this.buildTask.exec('npx tsc');
       this.buildTask.exec(`mkdir -p ${targetDir}`);
       this.buildTask.exec(`cp -r dist/* ${targetDir}`);
       if (extensionTypes.length >1) {

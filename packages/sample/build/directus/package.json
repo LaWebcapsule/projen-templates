@@ -7,6 +7,7 @@
     "bump": "npx projen bump",
     "clobber": "npx projen clobber",
     "compile": "npx projen compile",
+    "create-an-admin": "npx projen create-an-admin",
     "default": "npx projen default",
     "eject": "npx projen eject",
     "first-run": "npx projen first-run",
@@ -23,8 +24,9 @@
     "projen": "npx projen"
   },
   "devDependencies": {
-    "@wbce/projen-directus": "^0.0.5",
-    "@wbce/projen-directus-extension": "^0.0.4",
+    "@wbce/projen-directus": "file:../../../directus",
+    "@wbce/projen-directus-extension": "file:../../../directus-extension",
+    "@wbce/projen-shared": "file:../../../shared",
     "commit-and-tag-version": "^12",
     "constructs": "^10.0.0",
     "jest": "^30.3.0",

@@ -1,5 +1,6 @@
+import { execSync } from 'child_process';
 import * as path from 'path';
-import { Component, Project, YamlFile } from 'projen';
+import { Component, Project, YamlFile, javascript } from 'projen';
 
 /**
  * Auto-generates pnpm-workspace.yaml from subprojects,
@@ -34,6 +35,20 @@ export class PnpmWorkspace extends Component {
         return obj;
       },
     });
+  }
+
+  preSynthesize(): void {
+    for (const sub of this.project.subprojects) {
+      if (sub instanceof javascript.NodeProject) {
+        // NodePackage.postSynthesize() calls installDependencies() directly,
+        // bypassing the task system. Suppress it so the workspace root handles install.
+        sub.package.postSynthesize = () => {};
+      }
+    }
+  }
+
+  postSynthesize(): void {
+    execSync('pnpm install', { cwd: this.project.outdir, stdio: 'inherit' });
   }
 
   /**
