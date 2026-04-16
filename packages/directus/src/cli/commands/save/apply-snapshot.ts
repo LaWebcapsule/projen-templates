@@ -83,7 +83,6 @@ export async function applySQLSnapshot(dbConfig: {
       console.info('Target database is empty ; populating it and exiting.');
       //note that finally block will be executed, even if we return
       await endDbClient.query(sqlSchemaWithExtension);
-      return;
     }
 
     await pgClient.query(sqlSchemaWithExtension);
@@ -173,8 +172,11 @@ export async function applySQLSnapshot(dbConfig: {
     console.log(csvFiles);
     for (const file of csvFiles) {
       if (file.endsWith('.csv')) {
-        const tableName = file.slice(0, -4);
-        if (['directus_files', 'directus_folders'].includes(tableName)) {
+        const nonParsedTableName = file.slice(0, -4);
+        const originalTableName = pg.escapeIdentifier(nonParsedTableName);
+        let copyTableName = originalTableName;
+        let existingRowsCanCauseConflict = false;
+        if (['directus_files', 'directus_folders'].includes(nonParsedTableName)) {
           //delete all files and folders that are inside the "common" folder
           const commonFolderName = 'common';
           const folderKey: Record<string, string> = {
@@ -193,11 +195,21 @@ export async function applySQLSnapshot(dbConfig: {
                             FROM directus_folders f
                             JOIN folder_tree ft ON f.parent = ft.id
                         )
-                        DELETE FROM public."${tableName}" AS t
-                        WHERE t.${folderKey[tableName]} IN (SELECT id FROM folder_tree);
+                        DELETE FROM public.${copyTableName} AS t
+                        WHERE t.${folderKey[nonParsedTableName]} IN (SELECT id FROM folder_tree);
                         `);
+          if (nonParsedTableName === 'directus_folders') {
+            existingRowsCanCauseConflict = true;
+          }
         } else {
-          await pgClient.query(`DELETE FROM public."${tableName}"`);
+          await pgClient.query(`DELETE FROM public.${copyTableName}`);
+        }
+        if (existingRowsCanCauseConflict) {
+          //we will import data in a temporary table, then do the insert
+          copyTableName = pg.escapeIdentifier(`${nonParsedTableName}_wbce_tmp`);
+          await pgClient.query(
+            `CREATE TEMP TABLE ${copyTableName} ON COMMIT DROP AS SELECT * FROM public.${originalTableName} WITH NO DATA`,
+          );
         }
         //read first line
         let firstLine = await readFirstLineOfFile(`./sql/data/${file}`);
@@ -207,7 +219,7 @@ export async function applySQLSnapshot(dbConfig: {
           .join(',');
         const ingestStream = pgClient.query(
           copyFrom(
-            `COPY public."${tableName}" (${firstLine})  FROM STDIN  DELIMITER ',' CSV HEADER`,
+            `COPY ${copyTableName} (${firstLine})  FROM STDIN  DELIMITER ',' CSV HEADER`,
           ),
         );
         const sourceStream = fs.createReadStream(`./sql/data/${file}`);
@@ -217,6 +229,16 @@ export async function applySQLSnapshot(dbConfig: {
         console.info(`ingesting ${file}`);
 
         await pipeline(sourceStream, ingestStream);
+        if (existingRowsCanCauseConflict) {
+          await pgClient.query(`
+							DELETE FROM public.${originalTableName}
+							WHERE id IN (SELECT id FROM ${copyTableName});
+						`);
+          await pgClient.query(`
+							INSERT INTO public.${originalTableName}
+							SELECT * FROM ${copyTableName};
+						`);
+        }
       }
     }
 
