@@ -1,6 +1,11 @@
 {
   "dependencies": [
     {
+      "name": "@ariga/atlas",
+      "version": "0.32.0",
+      "type": "build"
+    },
+    {
       "name": "@wbce/projen-directus-extension",
       "version": "file:../../../directus-extension",
       "type": "build"

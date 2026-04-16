@@ -109,13 +109,13 @@
       "description": "Create an adminuser",
       "steps": [
         {
-          "exec": "docker compose up -d database cache"
+          "exec": "docker compose up -d --wait database cache"
         },
         {
-          "exec": "ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc \"SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1\") && docker compose run --rm directus npx directus users create --email admin+83@example.com --password totototo --role \"$ADMIN_ROLE_ID\""
+          "exec": "ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc \"SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1\") && docker compose run --rm directus npx directus users create --email admin+50@example.com --password totototo --role \"$ADMIN_ROLE_ID\""
         },
         {
-          "say": "User admin+83@example.com has been created with password totototo"
+          "say": "User admin+50@example.com has been created with password totototo"
         }
       ]
     },
@@ -145,16 +145,16 @@
       "description": "Initialize and start a fresh Directus instance",
       "steps": [
         {
-          "exec": "docker compose up -d database cache"
+          "exec": "docker compose up -d --wait database cache"
         },
         {
           "spawn": "apply-schema"
         },
         {
-          "exec": "ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc \"SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1\") && docker compose run --rm directus npx directus users create --email admin+20@example.com --password totototo --role \"$ADMIN_ROLE_ID\""
+          "exec": "ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc \"SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1\") && docker compose run --rm directus npx directus users create --email admin+48@example.com --password totototo --role \"$ADMIN_ROLE_ID\""
         },
         {
-          "say": "User admin+20@example.com has been created with password totototo"
+          "say": "User admin+48@example.com has been created with password totototo"
         },
         {
           "exec": "docker compose up directus"
@@ -286,7 +286,7 @@
           "exec": "npm install"
         },
         {
-          "exec": "npm update @wbce/projen-directus-extension @wbce/projen-directus @wbce/projen-shared commit-and-tag-version constructs jest jest-junit projen @wbce-d9/directus9"
+          "exec": "npm update @ariga/atlas @wbce/projen-directus-extension @wbce/projen-directus @wbce/projen-shared commit-and-tag-version constructs jest jest-junit projen @wbce-d9/directus9"
         },
         {
           "exec": "npx projen"

@@ -1,0 +1,3 @@
+admin_access,app_access,description,enforce_tfa,icon,id,ip_access,name
+t,t,Users coming as admin from the Webcapsule login.,f,engineering,089f2b46-afb6-48f4-ba7d-fa8b2fd834ae,,WebcapsuleAdminUsers
+t,t,$t:admin_description,f,verified,13f656d9-76fb-4d3b-99d2-21617f9238b8,,Administrator

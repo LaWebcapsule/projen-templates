@@ -6,6 +6,11 @@ import { UpgradeDependenciesSchedule } from 'projen/lib/javascript';
 
 export interface PackageVersions {
   readonly d9?: string;
+  /**
+   * The version of @ariga/atlas to use.
+   * @default "0.32.0"
+   */
+  readonly atlas?: string;
 }
 
 
@@ -40,6 +45,7 @@ export class DirectusProject extends javascript.NodeProject {
 
   constructor(protected options: DirectusProjectOptions) {
     const d9Version = options.packageVersions?.d9 || '12.0.1';
+    const atlasVersion = options.packageVersions?.atlas || '0.32.0';
     super({
       ...options,
       packageManager: options.packageManager ?? javascript.NodePackageManager.NPM,
@@ -54,6 +60,7 @@ export class DirectusProject extends javascript.NodeProject {
       devDeps: [
         '@wbce/projen-directus',
         '@wbce/projen-directus-extension',
+        `@ariga/atlas@${atlasVersion}`,
         ...(options.devDeps ?? []),
       ],
       deps: [`@wbce-d9/directus9@${d9Version}`],
@@ -98,7 +105,7 @@ export class DirectusProject extends javascript.NodeProject {
       description: 'Initialize and start a fresh Directus instance',
     });
     const randomAdmin = Math.floor(Math.random()*100);
-    task.exec('docker compose up -d database cache');
+    task.exec('docker compose up -d --wait database cache');
     task.spawn(this.applySchemaTask);
     task.exec(`ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc "SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1") && docker compose run --rm directus npx directus users create --email admin+${randomAdmin}@example.com --password totototo --role "$ADMIN_ROLE_ID"`);
     task.say(`User admin+${randomAdmin}@example.com has been created with password totototo`);
@@ -110,7 +117,7 @@ export class DirectusProject extends javascript.NodeProject {
       description: 'Create an adminuser',
     });
     const randomAdmin = Math.floor(Math.random()*100);
-    task.exec('docker compose up -d database cache');
+    task.exec('docker compose up -d --wait database cache');
     task.exec(`ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc "SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1") && docker compose run --rm directus npx directus users create --email admin+${randomAdmin}@example.com --password totototo --role "$ADMIN_ROLE_ID"`);
     task.say(`User admin+${randomAdmin}@example.com has been created with password totototo`);
   }
@@ -180,10 +187,7 @@ export class DirectusProject extends javascript.NodeProject {
         DockerCompose.bindVolume('./uploads', '/app/uploads'),
         DockerCompose.bindVolume('./extensions', '/app/extensions'),
       ],
-      dependsOn: [
-        DockerCompose.serviceName('cache'),
-        DockerCompose.serviceName('database'),
-      ],
+      // dependsOn is set via addOverride below with condition: service_healthy
       environment: {
         KEY: 'some-random-key',
         SECRET: 'another-random-key',

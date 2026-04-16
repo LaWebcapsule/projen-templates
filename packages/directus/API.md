@@ -4023,7 +4023,21 @@ const packageVersions: PackageVersions = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@wbce/projen-directus.PackageVersions.property.atlas">atlas</a></code> | <code>string</code> | The version of. |
 | <code><a href="#@wbce/projen-directus.PackageVersions.property.d9">d9</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `atlas`<sup>Optional</sup> <a name="atlas" id="@wbce/projen-directus.PackageVersions.property.atlas"></a>
+
+```typescript
+public readonly atlas: string;
+```
+
+- *Type:* string
+- *Default:* "0.32.0"
+
+The version of.
 
 ---
 
