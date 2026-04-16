@@ -1,5 +1,11 @@
 # @wbce/projen-directus
 
+## 0.0.16
+
+### Patch Changes
+
+- f07c9e2: fix launch of run and first-run task
+
 ## 0.0.15
 
 ### Patch Changes
