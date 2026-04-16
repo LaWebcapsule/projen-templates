@@ -59,6 +59,8 @@ const root = new typescript.TypeScriptProject({
   packageManager: javascript.NodePackageManager.PNPM,
   defaultReleaseBranch,
   projenrcTs: true,
+  license,
+  licensed: true,
   eslint: false,
   jest: false,
   sampleCode: false,

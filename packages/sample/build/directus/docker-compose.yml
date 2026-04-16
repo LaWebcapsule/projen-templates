@@ -80,9 +80,6 @@ services:
         published: 8055
         protocol: tcp
         mode: host
-    depends_on:
-      - cache
-      - database
     volumes:
       - type: bind
         source: ./uploads
@@ -90,6 +87,14 @@ services:
       - type: bind
         source: ./extensions
         target: /app/extensions
+      - type: bind
+        source: ./.env.local
+        target: /app/.env.local
+    depends_on:
+      cache:
+        condition: service_healthy
+      database:
+        condition: service_healthy
 volumes:
   pgdata: {}
   redis_storage: {}

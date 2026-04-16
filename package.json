@@ -28,7 +28,7 @@
   },
   "pnpm": {},
   "main": "lib/index.js",
-  "license": "Apache-2.0",
+  "license": "GPL-3.0-or-later",
   "version": "0.0.0",
   "types": "lib/index.d.ts",
   "packageManager": "pnpm@10.30.3",
