@@ -1,5 +1,11 @@
 # @wbce/projen-directus-extension
 
+## 0.0.10
+
+### Patch Changes
+
+- Correct config for directus extension when empty
+
 ## 0.0.9
 
 ### Patch Changes
