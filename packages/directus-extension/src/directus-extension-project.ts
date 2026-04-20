@@ -117,11 +117,13 @@ export class DirectusExtensionProject extends typescript.TypeScriptProject {
           resolveJsonModule: true,
           isolatedModules: true,
           noEmit: true,
+          noImplicitAny: false
         },
         include: ['src'],
         exclude: ['dist/', 'node_modules'],
       },
     });
+    this.tsconfig.
 
     this.extensionTypes = extensionTypes;
     this.extensionName = options.name;
