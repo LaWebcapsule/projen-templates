@@ -1,5 +1,11 @@
 # @wbce/projen-directus
 
+## 0.0.18
+
+### Patch Changes
+
+- add DS_store to gitignore
+
 ## 0.0.17
 
 ### Patch Changes
