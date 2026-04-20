@@ -105,22 +105,38 @@ export class DirectusProject extends javascript.NodeProject {
     const task = this.addTask('first-run', {
       description: 'Initialize and start a fresh Directus instance',
     });
-    const randomAdmin = Math.floor(Math.random()*100);
+    const adminEmail = 'admin@example.com';
+    const userNotExistsCondition = `docker compose exec database psql -U directus -d directus -tAc "SELECT count(*) FROM directus_users WHERE email = '${adminEmail}'" | grep -q '^0$'`;
     task.exec('docker compose up -d --wait database cache');
     task.spawn(this.applySchemaTask);
-    task.exec(`ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc "SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1") && docker compose run --rm directus npx directus users create --email admin+${randomAdmin}@example.com --password totototo --role "$ADMIN_ROLE_ID"`);
-    task.say(`User admin+${randomAdmin}@example.com has been created with password totototo`);
+    task.exec(`ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc "SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1") && docker compose run --rm directus npx directus users create --email ${adminEmail} --password totototo --role "$ADMIN_ROLE_ID"`, {
+      condition: userNotExistsCondition,
+    });
+    task.say(`User ${adminEmail} has been created with password totototo`, {
+      condition: userNotExistsCondition,
+    });
+    task.say(`User ${adminEmail} already exists, skipping creation`, {
+      condition: `! ${userNotExistsCondition}`,
+    });
     task.exec('docker compose up directus');
   }
 
   private addCreateAdminUserTask() {
     const task = this.addTask('create-an-admin', {
-      description: 'Create an adminuser',
+      description: 'Create an admin user',
     });
-    const randomAdmin = Math.floor(Math.random()*100);
+    const adminEmail = 'admin@example.com';
+    const userNotExistsCondition = `docker compose exec database psql -U directus -d directus -tAc "SELECT count(*) FROM directus_users WHERE email = '${adminEmail}'" | grep -q '^0$'`;
     task.exec('docker compose up -d --wait database cache');
-    task.exec(`ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc "SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1") && docker compose run --rm directus npx directus users create --email admin+${randomAdmin}@example.com --password totototo --role "$ADMIN_ROLE_ID"`);
-    task.say(`User admin+${randomAdmin}@example.com has been created with password totototo`);
+    task.exec(`ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc "SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1") && docker compose run --rm directus npx directus users create --email ${adminEmail} --password totototo --role "$ADMIN_ROLE_ID"`, {
+      condition: userNotExistsCondition,
+    });
+    task.say(`User ${adminEmail} has been created with password totototo`, {
+      condition: userNotExistsCondition,
+    });
+    task.say(`User ${adminEmail} already exists, skipping creation`, {
+      condition: `! ${userNotExistsCondition}`,
+    });
   }
 
   private addRunTask() {
