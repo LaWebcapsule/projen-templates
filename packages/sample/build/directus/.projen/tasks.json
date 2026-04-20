@@ -106,16 +106,22 @@
     },
     "create-an-admin": {
       "name": "create-an-admin",
-      "description": "Create an adminuser",
+      "description": "Create an admin user",
       "steps": [
         {
           "exec": "docker compose up -d --wait database cache"
         },
         {
-          "exec": "ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc \"SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1\") && docker compose run --rm directus npx directus users create --email admin+50@example.com --password totototo --role \"$ADMIN_ROLE_ID\""
+          "exec": "ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc \"SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1\") && docker compose run --rm directus npx directus users create --email admin@example.com --password totototo --role \"$ADMIN_ROLE_ID\"",
+          "condition": "docker compose exec database psql -U directus -d directus -tAc \"SELECT count(*) FROM directus_users WHERE email = 'admin@example.com'\" | grep -q '^0$'"
         },
         {
-          "say": "User admin+50@example.com has been created with password totototo"
+          "say": "User admin@example.com has been created with password totototo",
+          "condition": "docker compose exec database psql -U directus -d directus -tAc \"SELECT count(*) FROM directus_users WHERE email = 'admin@example.com'\" | grep -q '^0$'"
+        },
+        {
+          "say": "User admin@example.com already exists, skipping creation",
+          "condition": "! docker compose exec database psql -U directus -d directus -tAc \"SELECT count(*) FROM directus_users WHERE email = 'admin@example.com'\" | grep -q '^0$'"
         }
       ]
     },
@@ -151,10 +157,16 @@
           "spawn": "apply-schema"
         },
         {
-          "exec": "ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc \"SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1\") && docker compose run --rm directus npx directus users create --email admin+48@example.com --password totototo --role \"$ADMIN_ROLE_ID\""
+          "exec": "ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc \"SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1\") && docker compose run --rm directus npx directus users create --email admin@example.com --password totototo --role \"$ADMIN_ROLE_ID\"",
+          "condition": "docker compose exec database psql -U directus -d directus -tAc \"SELECT count(*) FROM directus_users WHERE email = 'admin@example.com'\" | grep -q '^0$'"
         },
         {
-          "say": "User admin+48@example.com has been created with password totototo"
+          "say": "User admin@example.com has been created with password totototo",
+          "condition": "docker compose exec database psql -U directus -d directus -tAc \"SELECT count(*) FROM directus_users WHERE email = 'admin@example.com'\" | grep -q '^0$'"
+        },
+        {
+          "say": "User admin@example.com already exists, skipping creation",
+          "condition": "! docker compose exec database psql -U directus -d directus -tAc \"SELECT count(*) FROM directus_users WHERE email = 'admin@example.com'\" | grep -q '^0$'"
         },
         {
           "exec": "docker compose up directus"

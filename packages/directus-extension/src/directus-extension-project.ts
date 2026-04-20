@@ -87,6 +87,8 @@ export class DirectusExtensionProject extends typescript.TypeScriptProject {
     const extensionTypes = options.extensionTypes;
     const ui = includeUiExtension(extensionTypes);
 
+    const isEmpty = !options.extensionTypes.length;
+
     super({
       ...options,
       packageManager: options.packageManager ?? javascript.NodePackageManager.PNPM,
@@ -102,7 +104,8 @@ export class DirectusExtensionProject extends typescript.TypeScriptProject {
         ...(ui ? ['vue'] : []),
         ...(options.devDeps ?? []),
       ],
-      sampleCode: !options.extensionTypes.length,
+      sampleCode: isEmpty,
+      jest: options.jest ?? !isEmpty,
       tsconfig: {
         compilerOptions: {
           target: 'ES2022',
@@ -116,8 +119,11 @@ export class DirectusExtensionProject extends typescript.TypeScriptProject {
           allowSyntheticDefaultImports: true,
           resolveJsonModule: true,
           isolatedModules: true,
-          noEmit: true,
           noImplicitAny: false,
+          // Extension plugins are bundled by the Directus SDK (tsc is only used for type-checking),
+          // so we suppress emit. Library plugins (no extensionTypes) must emit lib/ with
+          // declarations so consumers can resolve their types.
+          ...(isEmpty ? {} : { noEmit: true, declaration: false }),
         },
         include: ['src'],
         exclude: ['dist/', 'node_modules'],

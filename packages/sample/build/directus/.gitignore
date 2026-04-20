@@ -47,4 +47,6 @@ extensions
 !/.github/DISCUSSION_TEMPLATE/feature-requests.yml
 !/.github/workflows/save-branch.yml
 uploads
+**/.DS_Store
+.env.local
 !/.projenrc.js
