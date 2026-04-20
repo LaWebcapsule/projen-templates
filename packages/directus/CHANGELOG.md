@@ -1,5 +1,11 @@
 # @wbce/projen-directus
 
+## 0.0.20
+
+### Patch Changes
+
+- Add .env.local by default for docker compose mount
+
 ## 0.0.19
 
 ### Patch Changes
