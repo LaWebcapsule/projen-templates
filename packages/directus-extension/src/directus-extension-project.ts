@@ -129,42 +129,25 @@ export class DirectusExtensionProject extends typescript.TypeScriptProject {
     // Add directus:extension field to package.json
     if (extensionTypes.length > 1) {
       //BUNDLE.
-      const bundleConfig = {
+      const bundleConfig: any = {
         host: '^9.27.2',
         type: 'bundle',
-        path: {
-        },
-        entries: [
-          {
-            type: 'hook',
-            name: 'sensitive-fields-hook',
-            source: 'src/sensitive-fields-hook/index.ts',
-          },
-          {
-            type: 'endpoint',
-            name: 'sensitive-fields-decrypt',
-            source: 'src/sensitive-fields-decrypt/index.ts',
-          },
-          {
-            type: 'interface',
-            name: 'sensitive-fields-interface',
-            source: 'src/sensitive-fields-interface/index.ts',
-          },
-        ],
+        path: {},
+        entries: [] as any[],
       };
       for (const type of options.extensionTypes) {
         if (isUiExtension(type)) {
-          (bundleConfig.path as any).app = 'dist/app.js';
+          bundleConfig.path.app = 'dist/app.js';
         } else {
-          (bundleConfig.path as any).api = 'dist/api.js';
+          bundleConfig.path.api = 'dist/api.js';
         }
         bundleConfig.entries.push({
           type,
           name: `${this.extensionName}-${type}`,
-          source: `src/${this.extensionName}-${type}/index.ts`,
+          source: `src/${type}/index.ts`,
         });
         // Sample src/index.ts from template
-        new SampleFile(this, `src/${this.extensionName}-${type}/index.ts`, {
+        new SampleFile(this, `src/${type}/index.ts`, {
           contents: readTemplate(type),
         });
       }
