@@ -87,6 +87,7 @@ export class DirectusProject extends javascript.NodeProject {
       this.addSaveBranchWorkflow();
     }
     this.gitignore.addPatterns('uploads');
+    this.gitignore.addPatterns('**/.DS_Store');
   }
 
   private addExtensionFolder() {
