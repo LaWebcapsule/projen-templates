@@ -1,6 +1,6 @@
 import { AddExtensionOptions, DirectusExtensionType, ExtensionFolder } from '@wbce/projen-directus-extension';
 import { GitHubConfig, GitHubConfigOptions, Dockerfile } from '@wbce/projen-shared';
-import { AiAgent, AiInstructions, DockerCompose, DockerComposeService, javascript, Task, typescript } from 'projen';
+import { AiAgent, AiInstructions, DockerCompose, DockerComposeService, javascript, SampleFile, Task, typescript } from 'projen';
 import { JobPermission } from 'projen/lib/github/workflows-model';
 import { UpgradeDependenciesSchedule } from 'projen/lib/javascript';
 
@@ -88,6 +88,10 @@ export class DirectusProject extends javascript.NodeProject {
     }
     this.gitignore.addPatterns('uploads');
     this.gitignore.addPatterns('**/.DS_Store');
+    this.gitignore.addPatterns('.env.local');
+
+    // Create an empty .env.local if it doesn't exist, so Docker doesn't mount a directory
+    new SampleFile(this, '.env.local', { contents: '# Local environment overrides for Directus' });
   }
 
   private addExtensionFolder() {
