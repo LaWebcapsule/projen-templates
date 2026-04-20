@@ -1,5 +1,11 @@
 # @wbce/projen-directus
 
+## 0.0.19
+
+### Patch Changes
+
+- Use a single admin email, not a random one
+
 ## 0.0.18
 
 ### Patch Changes
