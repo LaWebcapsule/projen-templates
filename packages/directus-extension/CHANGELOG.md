@@ -1,5 +1,11 @@
 # @wbce/projen-directus-extension
 
+## 0.0.9
+
+### Patch Changes
+
+- NoImplicitAny to false
+
 ## 0.0.8
 
 ### Patch Changes
