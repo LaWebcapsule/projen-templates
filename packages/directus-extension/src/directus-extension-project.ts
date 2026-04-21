@@ -140,8 +140,8 @@ export class DirectusExtensionProject extends typescript.TypeScriptProject {
         host: '^9.27.2',
         type: 'bundle',
         path: {
-          app: 'app.js',
-          api: 'api.js',
+          app: 'dist/app.js',
+          api: 'dist/api.js',
         },
         entries: [] as any[],
       };
@@ -184,10 +184,13 @@ export class DirectusExtensionProject extends typescript.TypeScriptProject {
       (this.buildTask as any)._locked = false;
       this.buildTask.reset('npx tsc');
       this.buildTask.exec('directus-extension build');
-      this.buildTask.exec(`mkdir -p ${targetDir}`);
-      this.buildTask.exec(`cp -r dist/* ${targetDir}`);
       if (extensionTypes.length >1) {
+        this.buildTask.exec(`mkdir -p ${targetDir}/dist`);
+        this.buildTask.exec(`cp -r dist/* ${targetDir}/dist`);
         this.buildTask.exec(`cp package.json ${targetDir}`);
+      } else {
+        this.buildTask.exec(`mkdir -p ${targetDir}`);
+        this.buildTask.exec(`cp -r dist/* ${targetDir}`);
       }
     }
 
