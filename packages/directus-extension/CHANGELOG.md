@@ -1,5 +1,11 @@
 # @wbce/projen-directus-extension
 
+## 0.0.11
+
+### Patch Changes
+
+- Modify bundle extensions default
+
 ## 0.0.10
 
 ### Patch Changes

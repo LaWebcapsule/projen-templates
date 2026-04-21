@@ -35,7 +35,7 @@
     "@types/node": "^12.20.55",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
-    "@wbce/projen-directus-extension": "0.0.10",
+    "@wbce/projen-directus-extension": "0.0.11",
     "@wbce/projen-shared": "0.0.3",
     "constructs": "^10.0.0",
     "eslint": "^9",
@@ -53,7 +53,7 @@
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
-    "@wbce/projen-directus-extension": "^0.0.10",
+    "@wbce/projen-directus-extension": "^0.0.11",
     "@wbce/projen-shared": "0.0.3",
     "constructs": "^10.6.0",
     "projen": "^0.99.24"
@@ -77,7 +77,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.0.23",
+  "version": "0.0.24",
   "jest": {
     "coverageProvider": "v8",
     "testMatch": [

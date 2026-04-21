@@ -127,7 +127,7 @@ importers:
         specifier: ^8
         version: 8.57.2(eslint@9.39.4)(typescript@5.9.3)
       '@wbce/projen-directus-extension':
-        specifier: 0.0.10
+        specifier: 0.0.11
         version: link:../directus-extension
       '@wbce/projen-shared':
         specifier: 0.0.3
