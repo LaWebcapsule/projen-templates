@@ -1,5 +1,11 @@
 # @wbce/projen-blank
 
+## 0.0.6
+
+### Patch Changes
+
+- Test a publication
+
 ## 0.0.5
 
 ### Patch Changes
