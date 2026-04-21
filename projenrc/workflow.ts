@@ -86,6 +86,8 @@ export class Workflow extends Component {
       permissions: {
         contents: workflows.JobPermission.WRITE,
         pullRequests: workflows.JobPermission.WRITE,
+        // Required for npm trusted publishing (OIDC) and provenance attestations.
+        idToken: workflows.JobPermission.WRITE,
       },
       steps: [
         ...bootstrapSteps,
@@ -100,11 +102,11 @@ export class Workflow extends Component {
             commit: 'chore: update versions',
             title: 'chore: update versions',
             version: 'pnpm run changeset:version',
-            publish: 'pnpm changeset publish'
+            publish: 'pnpm changeset publish',
           },
           env: {
             GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}',
-            NPM_TOKEN: '${{ secrets.NPM_TOKEN }}',
+            NPM_CONFIG_PROVENANCE: 'true',
           },
         },
       ],
