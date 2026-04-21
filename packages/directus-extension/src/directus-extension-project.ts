@@ -139,15 +139,13 @@ export class DirectusExtensionProject extends typescript.TypeScriptProject {
       const bundleConfig: any = {
         host: '^9.27.2',
         type: 'bundle',
-        path: {},
+        path: {
+          app: 'app.js',
+          api: 'api.js',
+        },
         entries: [] as any[],
       };
       for (const type of options.extensionTypes) {
-        if (isUiExtension(type)) {
-          bundleConfig.path.app = 'dist/app.js';
-        } else {
-          bundleConfig.path.api = 'dist/api.js';
-        }
         bundleConfig.entries.push({
           type,
           name: `${this.extensionName}-${type}`,
@@ -178,14 +176,14 @@ export class DirectusExtensionProject extends typescript.TypeScriptProject {
 
     if (extensionTypes.length) {
 
-      const extensionSubDir = extensionTypes.length === 1 ? extensionTargetDir(extensionTypes[0], this.extensionName):undefined;
+      const extensionSubDir = extensionTypes.length === 1 ? extensionTargetDir(extensionTypes[0], this.extensionName):this.extensionName;
       // Compute relative path from this extension project to the DirectusProject root (grandparent)
       const grandParentOutdir = options.parent?.parent?.outdir ?? '../..';
       const relativeToRoot = path.relative(this.outdir, grandParentOutdir);
-      let targetDir = path.join(relativeToRoot, 'extensions', extensionSubDir ?? 'dist');
+      let targetDir = path.join(relativeToRoot, 'extensions', extensionSubDir);
       (this.buildTask as any)._locked = false;
-      this.buildTask.reset('directus-extension build');
-      this.buildTask.exec('npx tsc');
+      this.buildTask.reset('npx tsc');
+      this.buildTask.exec('directus-extension build');
       this.buildTask.exec(`mkdir -p ${targetDir}`);
       this.buildTask.exec(`cp -r dist/* ${targetDir}`);
       if (extensionTypes.length >1) {
