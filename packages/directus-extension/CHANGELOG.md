@@ -1,5 +1,11 @@
 # @wbce/projen-directus-extension
 
+## 0.0.12
+
+### Patch Changes
+
+- Fix bundle copy
+
 ## 0.0.11
 
 ### Patch Changes
