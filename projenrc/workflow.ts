@@ -2,7 +2,7 @@ import { Component } from 'projen';
 import { typescript } from 'projen';
 import { workflows } from 'projen/lib/github';
 
-const NODE_VERSION = '20';
+const NODE_VERSION = '22';
 
 export interface WorkflowOptions {
   /**
