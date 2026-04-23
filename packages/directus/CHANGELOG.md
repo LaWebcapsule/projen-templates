@@ -1,5 +1,11 @@
 # @wbce/projen-directus
 
+## 0.0.26
+
+### Patch Changes
+
+- da43e90: Modify gitignore to include email templates
+
 ## 0.0.25
 
 ### Patch Changes
