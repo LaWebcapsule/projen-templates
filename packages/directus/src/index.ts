@@ -98,7 +98,8 @@ export class DirectusProject extends javascript.NodeProject {
     const folderName = this.options.extensionsFolderName ?? 'plugins';
     this.extensions = new ExtensionFolder({ parent: this, name: folderName });
     this.extensionFolder = folderName;
-    this.gitignore.addPatterns('extensions');
+    this.gitignore.exclude('extensions/*');
+    this.gitignore.include('extensions/templates/');
   }
 
   public addExtension(name: string, extensionTypes: DirectusExtensionType[], options?: AddExtensionOptions ) {
