@@ -1,5 +1,14 @@
 # @wbce/projen-directus
 
+## 0.0.26
+
+### Patch Changes
+
+- 90807f3: add readmes
+- da43e90: Modify gitignore to include email templates
+- Updated dependencies [90807f3]
+  - @wbce/projen-directus-extension@0.0.13
+
 ## 0.0.25
 
 ### Patch Changes

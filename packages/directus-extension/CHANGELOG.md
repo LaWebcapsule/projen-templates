@@ -1,5 +1,11 @@
 # @wbce/projen-directus-extension
 
+## 0.0.13
+
+### Patch Changes
+
+- 90807f3: add readmes
+
 ## 0.0.12
 
 ### Patch Changes
