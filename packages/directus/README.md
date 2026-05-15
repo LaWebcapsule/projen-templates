@@ -70,7 +70,6 @@ Extensions live under `./plugins/` (configurable via `extensionsFolderName`) and
 - `Dockerfile` — Node 22 + pnpm, builds extensions
 - `.env.local` — sample for local environment overrides
 - GitHub workflows via [`@wbce/projen-shared`](../shared) (set `githubConfig: false` to disable)
-- A `*-save` branch workflow that auto-opens a PR back to the base branch
 
 ## Options
 
