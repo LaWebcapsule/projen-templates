@@ -96,6 +96,31 @@ export class DirectusExtensionProject extends typescript.TypeScriptProject {
       projenrcTs: false,
       projenrcJs: false,
       projenrcJson: false,
+      readme: options.readme ?? {
+        contents: isEmpty
+          ? [
+            `# ${options.name}`,
+            '',
+            `Shared library used by sibling [d9](https://github.com/LaWebcapsule/d9) extensions in this workspace.`,
+            '',
+            'Built via `tsc`; consumers depend on it with `<name>@workspace:`.',
+          ].join('\n')
+          : [
+            `# ${options.name}`,
+            '',
+            `[d9](https://github.com/LaWebcapsule/d9) extension (${extensionTypes.join(', ')}).`,
+            '',
+            '## Develop',
+            '',
+            'Edit files under `src/`. The build step runs `directus-extension build` and copies the output into the parent project\'s `extensions/` folder so d9 picks it up (with `EXTENSIONS_AUTO_RELOAD=true`, no restart needed).',
+            '',
+            '```sh',
+            'pnpm build      # build this extension only',
+            '```',
+            '',
+            'Or from the parent project root: `npx projen build-extensions` to build every extension.',
+          ].join('\n'),
+      },
       devDeps: [
         '@wbce/projen-directus-extension',
         '@wbce-d9/extensions-sdk',
