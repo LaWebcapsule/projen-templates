@@ -5,16 +5,16 @@
       "description": "Full release build",
       "steps": [
         {
-          "exec": "directus-extension build"
-        },
-        {
           "exec": "npx tsc"
         },
         {
-          "exec": "mkdir -p ../../extensions/hooks/test"
+          "exec": "directus-extension build"
         },
         {
-          "exec": "cp -r dist/* ../../extensions/hooks/test"
+          "exec": "mkdir -p ../../extensions/hooks/my-hook"
+        },
+        {
+          "exec": "cp -r dist/* ../../extensions/hooks/my-hook"
         }
       ]
     },

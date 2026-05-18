@@ -2,25 +2,25 @@
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
 
-### DirectusProject <a name="DirectusProject" id="@wbce/projen-directus.DirectusProject"></a>
+### D9Project <a name="D9Project" id="@wbce/projen-d9.D9Project"></a>
 
-#### Initializers <a name="Initializers" id="@wbce/projen-directus.DirectusProject.Initializer"></a>
+#### Initializers <a name="Initializers" id="@wbce/projen-d9.D9Project.Initializer"></a>
 
 ```typescript
-import { DirectusProject } from '@wbce/projen-directus'
+import { D9Project } from '@wbce/projen-d9'
 
-new DirectusProject(options: DirectusProjectOptions)
+new D9Project(options: D9ProjectOptions)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@wbce/projen-directus.DirectusProject.Initializer.parameter.options">options</a></code> | <code><a href="#@wbce/projen-directus.DirectusProjectOptions">DirectusProjectOptions</a></code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.Initializer.parameter.options">options</a></code> | <code><a href="#@wbce/projen-d9.D9ProjectOptions">D9ProjectOptions</a></code> | *No description.* |
 
 ---
 
-##### `options`<sup>Required</sup> <a name="options" id="@wbce/projen-directus.DirectusProject.Initializer.parameter.options"></a>
+##### `options`<sup>Required</sup> <a name="options" id="@wbce/projen-d9.D9Project.Initializer.parameter.options"></a>
 
-- *Type:* <a href="#@wbce/projen-directus.DirectusProjectOptions">DirectusProjectOptions</a>
+- *Type:* <a href="#@wbce/projen-d9.D9ProjectOptions">D9ProjectOptions</a>
 
 ---
 
@@ -28,42 +28,42 @@ new DirectusProject(options: DirectusProjectOptions)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@wbce/projen-directus.DirectusProject.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.with">with</a></code> | Applies one or more mixins to this construct. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.addExcludeFromCleanup">addExcludeFromCleanup</a></code> | Exclude the matching files from pre-synth cleanup. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.addGitIgnore">addGitIgnore</a></code> | Adds a .gitignore pattern. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.addPackageIgnore">addPackageIgnore</a></code> | Adds patterns to be ignored by npm. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.addTask">addTask</a></code> | Adds a new task to this project. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.addTip">addTip</a></code> | Prints a "tip" message during synthesis. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.annotateGenerated">annotateGenerated</a></code> | Marks the provided file(s) as being generated. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.postSynthesize">postSynthesize</a></code> | Called after all components are synthesized. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.preSynthesize">preSynthesize</a></code> | Called before all components are synthesized. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.removeTask">removeTask</a></code> | Removes a task from a project. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.runTaskCommand">runTaskCommand</a></code> | Returns the shell command to execute in order to run a task. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.synth">synth</a></code> | Synthesize all project files into `outdir`. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.tryFindFile">tryFindFile</a></code> | Finds a file at the specified relative path within this project and all its subprojects. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.tryFindJsonFile">tryFindJsonFile</a></code> | Finds a json file by name. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.tryFindObjectFile">tryFindObjectFile</a></code> | Finds an object file (like JsonFile, YamlFile, etc.) by name. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.tryRemoveFile">tryRemoveFile</a></code> | Finds a file at the specified relative path within this project and removes it. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.addBins">addBins</a></code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.addBundledDeps">addBundledDeps</a></code> | Defines bundled dependencies. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.addCompileCommand">addCompileCommand</a></code> | DEPRECATED. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.addDeps">addDeps</a></code> | Defines normal dependencies. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.addDevDeps">addDevDeps</a></code> | Defines development/test dependencies. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.addFields">addFields</a></code> | Directly set fields in `package.json`. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.addKeywords">addKeywords</a></code> | Adds keywords to package.json (deduplicated). |
-| <code><a href="#@wbce/projen-directus.DirectusProject.addPeerDeps">addPeerDeps</a></code> | Defines peer dependencies. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.addScripts">addScripts</a></code> | Replaces the contents of multiple npm package.json scripts. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.addTestCommand">addTestCommand</a></code> | DEPRECATED. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.hasScript">hasScript</a></code> | Indicates if a script by the name name is defined. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.removeScript">removeScript</a></code> | Removes the npm script (always successful). |
-| <code><a href="#@wbce/projen-directus.DirectusProject.renderWorkflowSetup">renderWorkflowSetup</a></code> | Returns the set of workflow steps which should be executed to bootstrap a workflow. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.setScript">setScript</a></code> | Replaces the contents of an npm package.json script. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.addExtension">addExtension</a></code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@wbce/projen-d9.D9Project.with">with</a></code> | Applies one or more mixins to this construct. |
+| <code><a href="#@wbce/projen-d9.D9Project.addExcludeFromCleanup">addExcludeFromCleanup</a></code> | Exclude the matching files from pre-synth cleanup. |
+| <code><a href="#@wbce/projen-d9.D9Project.addGitIgnore">addGitIgnore</a></code> | Adds a .gitignore pattern. |
+| <code><a href="#@wbce/projen-d9.D9Project.addPackageIgnore">addPackageIgnore</a></code> | Adds patterns to be ignored by npm. |
+| <code><a href="#@wbce/projen-d9.D9Project.addTask">addTask</a></code> | Adds a new task to this project. |
+| <code><a href="#@wbce/projen-d9.D9Project.addTip">addTip</a></code> | Prints a "tip" message during synthesis. |
+| <code><a href="#@wbce/projen-d9.D9Project.annotateGenerated">annotateGenerated</a></code> | Marks the provided file(s) as being generated. |
+| <code><a href="#@wbce/projen-d9.D9Project.postSynthesize">postSynthesize</a></code> | Called after all components are synthesized. |
+| <code><a href="#@wbce/projen-d9.D9Project.preSynthesize">preSynthesize</a></code> | Called before all components are synthesized. |
+| <code><a href="#@wbce/projen-d9.D9Project.removeTask">removeTask</a></code> | Removes a task from a project. |
+| <code><a href="#@wbce/projen-d9.D9Project.runTaskCommand">runTaskCommand</a></code> | Returns the shell command to execute in order to run a task. |
+| <code><a href="#@wbce/projen-d9.D9Project.synth">synth</a></code> | Synthesize all project files into `outdir`. |
+| <code><a href="#@wbce/projen-d9.D9Project.tryFindFile">tryFindFile</a></code> | Finds a file at the specified relative path within this project and all its subprojects. |
+| <code><a href="#@wbce/projen-d9.D9Project.tryFindJsonFile">tryFindJsonFile</a></code> | Finds a json file by name. |
+| <code><a href="#@wbce/projen-d9.D9Project.tryFindObjectFile">tryFindObjectFile</a></code> | Finds an object file (like JsonFile, YamlFile, etc.) by name. |
+| <code><a href="#@wbce/projen-d9.D9Project.tryRemoveFile">tryRemoveFile</a></code> | Finds a file at the specified relative path within this project and removes it. |
+| <code><a href="#@wbce/projen-d9.D9Project.addBins">addBins</a></code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.addBundledDeps">addBundledDeps</a></code> | Defines bundled dependencies. |
+| <code><a href="#@wbce/projen-d9.D9Project.addCompileCommand">addCompileCommand</a></code> | DEPRECATED. |
+| <code><a href="#@wbce/projen-d9.D9Project.addDeps">addDeps</a></code> | Defines normal dependencies. |
+| <code><a href="#@wbce/projen-d9.D9Project.addDevDeps">addDevDeps</a></code> | Defines development/test dependencies. |
+| <code><a href="#@wbce/projen-d9.D9Project.addFields">addFields</a></code> | Directly set fields in `package.json`. |
+| <code><a href="#@wbce/projen-d9.D9Project.addKeywords">addKeywords</a></code> | Adds keywords to package.json (deduplicated). |
+| <code><a href="#@wbce/projen-d9.D9Project.addPeerDeps">addPeerDeps</a></code> | Defines peer dependencies. |
+| <code><a href="#@wbce/projen-d9.D9Project.addScripts">addScripts</a></code> | Replaces the contents of multiple npm package.json scripts. |
+| <code><a href="#@wbce/projen-d9.D9Project.addTestCommand">addTestCommand</a></code> | DEPRECATED. |
+| <code><a href="#@wbce/projen-d9.D9Project.hasScript">hasScript</a></code> | Indicates if a script by the name name is defined. |
+| <code><a href="#@wbce/projen-d9.D9Project.removeScript">removeScript</a></code> | Removes the npm script (always successful). |
+| <code><a href="#@wbce/projen-d9.D9Project.renderWorkflowSetup">renderWorkflowSetup</a></code> | Returns the set of workflow steps which should be executed to bootstrap a workflow. |
+| <code><a href="#@wbce/projen-d9.D9Project.setScript">setScript</a></code> | Replaces the contents of an npm package.json script. |
+| <code><a href="#@wbce/projen-d9.D9Project.addExtension">addExtension</a></code> | *No description.* |
 
 ---
 
-##### `toString` <a name="toString" id="@wbce/projen-directus.DirectusProject.toString"></a>
+##### `toString` <a name="toString" id="@wbce/projen-d9.D9Project.toString"></a>
 
 ```typescript
 public toString(): string
@@ -71,7 +71,7 @@ public toString(): string
 
 Returns a string representation of this construct.
 
-##### `with` <a name="with" id="@wbce/projen-directus.DirectusProject.with"></a>
+##### `with` <a name="with" id="@wbce/projen-d9.D9Project.with"></a>
 
 ```typescript
 public with(mixins: ...IMixin[]): IConstruct
@@ -84,7 +84,7 @@ start of the call, so constructs added by a mixin will not be visited.
 Use multiple `with()` calls if subsequent mixins should apply to added
 constructs.
 
-###### `mixins`<sup>Required</sup> <a name="mixins" id="@wbce/projen-directus.DirectusProject.with.parameter.mixins"></a>
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@wbce/projen-d9.D9Project.with.parameter.mixins"></a>
 
 - *Type:* ...constructs.IMixin[]
 
@@ -92,7 +92,7 @@ The mixins to apply.
 
 ---
 
-##### `addExcludeFromCleanup` <a name="addExcludeFromCleanup" id="@wbce/projen-directus.DirectusProject.addExcludeFromCleanup"></a>
+##### `addExcludeFromCleanup` <a name="addExcludeFromCleanup" id="@wbce/projen-d9.D9Project.addExcludeFromCleanup"></a>
 
 ```typescript
 public addExcludeFromCleanup(globs: ...string[]): void
@@ -103,7 +103,7 @@ Exclude the matching files from pre-synth cleanup.
 Can be used when, for example, some
 source files include the projen marker and we don't want them to be erased during synth.
 
-###### `globs`<sup>Required</sup> <a name="globs" id="@wbce/projen-directus.DirectusProject.addExcludeFromCleanup.parameter.globs"></a>
+###### `globs`<sup>Required</sup> <a name="globs" id="@wbce/projen-d9.D9Project.addExcludeFromCleanup.parameter.globs"></a>
 
 - *Type:* ...string[]
 
@@ -111,7 +111,7 @@ The glob patterns to match.
 
 ---
 
-##### `addGitIgnore` <a name="addGitIgnore" id="@wbce/projen-directus.DirectusProject.addGitIgnore"></a>
+##### `addGitIgnore` <a name="addGitIgnore" id="@wbce/projen-d9.D9Project.addGitIgnore"></a>
 
 ```typescript
 public addGitIgnore(pattern: string): void
@@ -119,7 +119,7 @@ public addGitIgnore(pattern: string): void
 
 Adds a .gitignore pattern.
 
-###### `pattern`<sup>Required</sup> <a name="pattern" id="@wbce/projen-directus.DirectusProject.addGitIgnore.parameter.pattern"></a>
+###### `pattern`<sup>Required</sup> <a name="pattern" id="@wbce/projen-d9.D9Project.addGitIgnore.parameter.pattern"></a>
 
 - *Type:* string
 
@@ -127,7 +127,7 @@ The glob pattern to ignore.
 
 ---
 
-##### `addPackageIgnore` <a name="addPackageIgnore" id="@wbce/projen-directus.DirectusProject.addPackageIgnore"></a>
+##### `addPackageIgnore` <a name="addPackageIgnore" id="@wbce/projen-d9.D9Project.addPackageIgnore"></a>
 
 ```typescript
 public addPackageIgnore(pattern: string): void
@@ -135,7 +135,7 @@ public addPackageIgnore(pattern: string): void
 
 Adds patterns to be ignored by npm.
 
-###### `pattern`<sup>Required</sup> <a name="pattern" id="@wbce/projen-directus.DirectusProject.addPackageIgnore.parameter.pattern"></a>
+###### `pattern`<sup>Required</sup> <a name="pattern" id="@wbce/projen-d9.D9Project.addPackageIgnore.parameter.pattern"></a>
 
 - *Type:* string
 
@@ -143,7 +143,7 @@ The pattern to ignore.
 
 ---
 
-##### `addTask` <a name="addTask" id="@wbce/projen-directus.DirectusProject.addTask"></a>
+##### `addTask` <a name="addTask" id="@wbce/projen-d9.D9Project.addTask"></a>
 
 ```typescript
 public addTask(name: string, props?: TaskOptions): Task
@@ -154,7 +154,7 @@ Adds a new task to this project.
 This will fail if the project already has
 a task with this name.
 
-###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-directus.DirectusProject.addTask.parameter.name"></a>
+###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-d9.D9Project.addTask.parameter.name"></a>
 
 - *Type:* string
 
@@ -162,7 +162,7 @@ The task name to add.
 
 ---
 
-###### `props`<sup>Optional</sup> <a name="props" id="@wbce/projen-directus.DirectusProject.addTask.parameter.props"></a>
+###### `props`<sup>Optional</sup> <a name="props" id="@wbce/projen-d9.D9Project.addTask.parameter.props"></a>
 
 - *Type:* projen.TaskOptions
 
@@ -170,7 +170,7 @@ Task properties.
 
 ---
 
-##### ~~`addTip`~~ <a name="addTip" id="@wbce/projen-directus.DirectusProject.addTip"></a>
+##### ~~`addTip`~~ <a name="addTip" id="@wbce/projen-d9.D9Project.addTip"></a>
 
 ```typescript
 public addTip(message: string): void
@@ -178,7 +178,7 @@ public addTip(message: string): void
 
 Prints a "tip" message during synthesis.
 
-###### `message`<sup>Required</sup> <a name="message" id="@wbce/projen-directus.DirectusProject.addTip.parameter.message"></a>
+###### `message`<sup>Required</sup> <a name="message" id="@wbce/projen-d9.D9Project.addTip.parameter.message"></a>
 
 - *Type:* string
 
@@ -186,7 +186,7 @@ The message.
 
 ---
 
-##### `annotateGenerated` <a name="annotateGenerated" id="@wbce/projen-directus.DirectusProject.annotateGenerated"></a>
+##### `annotateGenerated` <a name="annotateGenerated" id="@wbce/projen-d9.D9Project.annotateGenerated"></a>
 
 ```typescript
 public annotateGenerated(glob: string): void
@@ -200,7 +200,7 @@ repository statistics and language breakdown.
 
 > [https://github.com/github/linguist/blob/master/docs/overrides.md](https://github.com/github/linguist/blob/master/docs/overrides.md)
 
-###### `glob`<sup>Required</sup> <a name="glob" id="@wbce/projen-directus.DirectusProject.annotateGenerated.parameter.glob"></a>
+###### `glob`<sup>Required</sup> <a name="glob" id="@wbce/projen-d9.D9Project.annotateGenerated.parameter.glob"></a>
 
 - *Type:* string
 
@@ -208,7 +208,7 @@ the glob pattern to match (could be a file path).
 
 ---
 
-##### `postSynthesize` <a name="postSynthesize" id="@wbce/projen-directus.DirectusProject.postSynthesize"></a>
+##### `postSynthesize` <a name="postSynthesize" id="@wbce/projen-d9.D9Project.postSynthesize"></a>
 
 ```typescript
 public postSynthesize(): void
@@ -218,7 +218,7 @@ Called after all components are synthesized.
 
 Order is *not* guaranteed.
 
-##### `preSynthesize` <a name="preSynthesize" id="@wbce/projen-directus.DirectusProject.preSynthesize"></a>
+##### `preSynthesize` <a name="preSynthesize" id="@wbce/projen-d9.D9Project.preSynthesize"></a>
 
 ```typescript
 public preSynthesize(): void
@@ -226,7 +226,7 @@ public preSynthesize(): void
 
 Called before all components are synthesized.
 
-##### `removeTask` <a name="removeTask" id="@wbce/projen-directus.DirectusProject.removeTask"></a>
+##### `removeTask` <a name="removeTask" id="@wbce/projen-d9.D9Project.removeTask"></a>
 
 ```typescript
 public removeTask(name: string): Task
@@ -234,7 +234,7 @@ public removeTask(name: string): Task
 
 Removes a task from a project.
 
-###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-directus.DirectusProject.removeTask.parameter.name"></a>
+###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-d9.D9Project.removeTask.parameter.name"></a>
 
 - *Type:* string
 
@@ -242,7 +242,7 @@ The name of the task to remove.
 
 ---
 
-##### `runTaskCommand` <a name="runTaskCommand" id="@wbce/projen-directus.DirectusProject.runTaskCommand"></a>
+##### `runTaskCommand` <a name="runTaskCommand" id="@wbce/projen-d9.D9Project.runTaskCommand"></a>
 
 ```typescript
 public runTaskCommand(task: Task): string
@@ -253,7 +253,7 @@ Returns the shell command to execute in order to run a task.
 This will
 typically be `npx projen TASK`.
 
-###### `task`<sup>Required</sup> <a name="task" id="@wbce/projen-directus.DirectusProject.runTaskCommand.parameter.task"></a>
+###### `task`<sup>Required</sup> <a name="task" id="@wbce/projen-d9.D9Project.runTaskCommand.parameter.task"></a>
 
 - *Type:* projen.Task
 
@@ -261,7 +261,7 @@ The task for which the command is required.
 
 ---
 
-##### `synth` <a name="synth" id="@wbce/projen-directus.DirectusProject.synth"></a>
+##### `synth` <a name="synth" id="@wbce/projen-d9.D9Project.synth"></a>
 
 ```typescript
 public synth(): void
@@ -276,7 +276,7 @@ Synthesize all project files into `outdir`.
 5. Call "postSynthesize()" for all components of this project
 6. Call "this.postSynthesize()"
 
-##### `tryFindFile` <a name="tryFindFile" id="@wbce/projen-directus.DirectusProject.tryFindFile"></a>
+##### `tryFindFile` <a name="tryFindFile" id="@wbce/projen-d9.D9Project.tryFindFile"></a>
 
 ```typescript
 public tryFindFile(filePath: string): FileBase
@@ -284,7 +284,7 @@ public tryFindFile(filePath: string): FileBase
 
 Finds a file at the specified relative path within this project and all its subprojects.
 
-###### `filePath`<sup>Required</sup> <a name="filePath" id="@wbce/projen-directus.DirectusProject.tryFindFile.parameter.filePath"></a>
+###### `filePath`<sup>Required</sup> <a name="filePath" id="@wbce/projen-d9.D9Project.tryFindFile.parameter.filePath"></a>
 
 - *Type:* string
 
@@ -295,7 +295,7 @@ from the root of _this_ project.
 
 ---
 
-##### ~~`tryFindJsonFile`~~ <a name="tryFindJsonFile" id="@wbce/projen-directus.DirectusProject.tryFindJsonFile"></a>
+##### ~~`tryFindJsonFile`~~ <a name="tryFindJsonFile" id="@wbce/projen-d9.D9Project.tryFindJsonFile"></a>
 
 ```typescript
 public tryFindJsonFile(filePath: string): JsonFile
@@ -303,7 +303,7 @@ public tryFindJsonFile(filePath: string): JsonFile
 
 Finds a json file by name.
 
-###### `filePath`<sup>Required</sup> <a name="filePath" id="@wbce/projen-directus.DirectusProject.tryFindJsonFile.parameter.filePath"></a>
+###### `filePath`<sup>Required</sup> <a name="filePath" id="@wbce/projen-d9.D9Project.tryFindJsonFile.parameter.filePath"></a>
 
 - *Type:* string
 
@@ -311,7 +311,7 @@ The file path.
 
 ---
 
-##### `tryFindObjectFile` <a name="tryFindObjectFile" id="@wbce/projen-directus.DirectusProject.tryFindObjectFile"></a>
+##### `tryFindObjectFile` <a name="tryFindObjectFile" id="@wbce/projen-d9.D9Project.tryFindObjectFile"></a>
 
 ```typescript
 public tryFindObjectFile(filePath: string): ObjectFile
@@ -319,7 +319,7 @@ public tryFindObjectFile(filePath: string): ObjectFile
 
 Finds an object file (like JsonFile, YamlFile, etc.) by name.
 
-###### `filePath`<sup>Required</sup> <a name="filePath" id="@wbce/projen-directus.DirectusProject.tryFindObjectFile.parameter.filePath"></a>
+###### `filePath`<sup>Required</sup> <a name="filePath" id="@wbce/projen-d9.D9Project.tryFindObjectFile.parameter.filePath"></a>
 
 - *Type:* string
 
@@ -327,7 +327,7 @@ The file path.
 
 ---
 
-##### `tryRemoveFile` <a name="tryRemoveFile" id="@wbce/projen-directus.DirectusProject.tryRemoveFile"></a>
+##### `tryRemoveFile` <a name="tryRemoveFile" id="@wbce/projen-d9.D9Project.tryRemoveFile"></a>
 
 ```typescript
 public tryRemoveFile(filePath: string): FileBase
@@ -335,7 +335,7 @@ public tryRemoveFile(filePath: string): FileBase
 
 Finds a file at the specified relative path within this project and removes it.
 
-###### `filePath`<sup>Required</sup> <a name="filePath" id="@wbce/projen-directus.DirectusProject.tryRemoveFile.parameter.filePath"></a>
+###### `filePath`<sup>Required</sup> <a name="filePath" id="@wbce/projen-d9.D9Project.tryRemoveFile.parameter.filePath"></a>
 
 - *Type:* string
 
@@ -346,19 +346,19 @@ resolved from the root of _this_ project.
 
 ---
 
-##### `addBins` <a name="addBins" id="@wbce/projen-directus.DirectusProject.addBins"></a>
+##### `addBins` <a name="addBins" id="@wbce/projen-d9.D9Project.addBins"></a>
 
 ```typescript
 public addBins(bins: {[ key: string ]: string}): void
 ```
 
-###### `bins`<sup>Required</sup> <a name="bins" id="@wbce/projen-directus.DirectusProject.addBins.parameter.bins"></a>
+###### `bins`<sup>Required</sup> <a name="bins" id="@wbce/projen-d9.D9Project.addBins.parameter.bins"></a>
 
 - *Type:* {[ key: string ]: string}
 
 ---
 
-##### `addBundledDeps` <a name="addBundledDeps" id="@wbce/projen-directus.DirectusProject.addBundledDeps"></a>
+##### `addBundledDeps` <a name="addBundledDeps" id="@wbce/projen-d9.D9Project.addBundledDeps"></a>
 
 ```typescript
 public addBundledDeps(deps: ...string[]): void
@@ -369,7 +369,7 @@ Defines bundled dependencies.
 Bundled dependencies will be added as normal dependencies as well as to the
 `bundledDependencies` section of your `package.json`.
 
-###### `deps`<sup>Required</sup> <a name="deps" id="@wbce/projen-directus.DirectusProject.addBundledDeps.parameter.deps"></a>
+###### `deps`<sup>Required</sup> <a name="deps" id="@wbce/projen-d9.D9Project.addBundledDeps.parameter.deps"></a>
 
 - *Type:* ...string[]
 
@@ -383,7 +383,7 @@ add/upgrade`. If you wish to specify a version range use this syntax:
 
 ---
 
-##### ~~`addCompileCommand`~~ <a name="addCompileCommand" id="@wbce/projen-directus.DirectusProject.addCompileCommand"></a>
+##### ~~`addCompileCommand`~~ <a name="addCompileCommand" id="@wbce/projen-d9.D9Project.addCompileCommand"></a>
 
 ```typescript
 public addCompileCommand(commands: ...string[]): void
@@ -391,13 +391,13 @@ public addCompileCommand(commands: ...string[]): void
 
 DEPRECATED.
 
-###### `commands`<sup>Required</sup> <a name="commands" id="@wbce/projen-directus.DirectusProject.addCompileCommand.parameter.commands"></a>
+###### `commands`<sup>Required</sup> <a name="commands" id="@wbce/projen-d9.D9Project.addCompileCommand.parameter.commands"></a>
 
 - *Type:* ...string[]
 
 ---
 
-##### `addDeps` <a name="addDeps" id="@wbce/projen-directus.DirectusProject.addDeps"></a>
+##### `addDeps` <a name="addDeps" id="@wbce/projen-d9.D9Project.addDeps"></a>
 
 ```typescript
 public addDeps(deps: ...string[]): void
@@ -405,7 +405,7 @@ public addDeps(deps: ...string[]): void
 
 Defines normal dependencies.
 
-###### `deps`<sup>Required</sup> <a name="deps" id="@wbce/projen-directus.DirectusProject.addDeps.parameter.deps"></a>
+###### `deps`<sup>Required</sup> <a name="deps" id="@wbce/projen-d9.D9Project.addDeps.parameter.deps"></a>
 
 - *Type:* ...string[]
 
@@ -419,7 +419,7 @@ add/upgrade`. If you wish to specify a version range use this syntax:
 
 ---
 
-##### `addDevDeps` <a name="addDevDeps" id="@wbce/projen-directus.DirectusProject.addDevDeps"></a>
+##### `addDevDeps` <a name="addDevDeps" id="@wbce/projen-d9.D9Project.addDevDeps"></a>
 
 ```typescript
 public addDevDeps(deps: ...string[]): void
@@ -427,7 +427,7 @@ public addDevDeps(deps: ...string[]): void
 
 Defines development/test dependencies.
 
-###### `deps`<sup>Required</sup> <a name="deps" id="@wbce/projen-directus.DirectusProject.addDevDeps.parameter.deps"></a>
+###### `deps`<sup>Required</sup> <a name="deps" id="@wbce/projen-d9.D9Project.addDevDeps.parameter.deps"></a>
 
 - *Type:* ...string[]
 
@@ -441,7 +441,7 @@ add/upgrade`. If you wish to specify a version range use this syntax:
 
 ---
 
-##### `addFields` <a name="addFields" id="@wbce/projen-directus.DirectusProject.addFields"></a>
+##### `addFields` <a name="addFields" id="@wbce/projen-d9.D9Project.addFields"></a>
 
 ```typescript
 public addFields(fields: {[ key: string ]: any}): void
@@ -449,7 +449,7 @@ public addFields(fields: {[ key: string ]: any}): void
 
 Directly set fields in `package.json`.
 
-###### `fields`<sup>Required</sup> <a name="fields" id="@wbce/projen-directus.DirectusProject.addFields.parameter.fields"></a>
+###### `fields`<sup>Required</sup> <a name="fields" id="@wbce/projen-d9.D9Project.addFields.parameter.fields"></a>
 
 - *Type:* {[ key: string ]: any}
 
@@ -457,7 +457,7 @@ The fields to set.
 
 ---
 
-##### `addKeywords` <a name="addKeywords" id="@wbce/projen-directus.DirectusProject.addKeywords"></a>
+##### `addKeywords` <a name="addKeywords" id="@wbce/projen-d9.D9Project.addKeywords"></a>
 
 ```typescript
 public addKeywords(keywords: ...string[]): void
@@ -465,7 +465,7 @@ public addKeywords(keywords: ...string[]): void
 
 Adds keywords to package.json (deduplicated).
 
-###### `keywords`<sup>Required</sup> <a name="keywords" id="@wbce/projen-directus.DirectusProject.addKeywords.parameter.keywords"></a>
+###### `keywords`<sup>Required</sup> <a name="keywords" id="@wbce/projen-d9.D9Project.addKeywords.parameter.keywords"></a>
 
 - *Type:* ...string[]
 
@@ -473,7 +473,7 @@ The keywords to add.
 
 ---
 
-##### `addPeerDeps` <a name="addPeerDeps" id="@wbce/projen-directus.DirectusProject.addPeerDeps"></a>
+##### `addPeerDeps` <a name="addPeerDeps" id="@wbce/projen-d9.D9Project.addPeerDeps"></a>
 
 ```typescript
 public addPeerDeps(deps: ...string[]): void
@@ -485,7 +485,7 @@ When adding peer dependencies, a devDependency will also be added on the
 pinned version of the declared peer. This will ensure that you are testing
 your code against the minimum version required from your consumers.
 
-###### `deps`<sup>Required</sup> <a name="deps" id="@wbce/projen-directus.DirectusProject.addPeerDeps.parameter.deps"></a>
+###### `deps`<sup>Required</sup> <a name="deps" id="@wbce/projen-d9.D9Project.addPeerDeps.parameter.deps"></a>
 
 - *Type:* ...string[]
 
@@ -499,7 +499,7 @@ add/upgrade`. If you wish to specify a version range use this syntax:
 
 ---
 
-##### `addScripts` <a name="addScripts" id="@wbce/projen-directus.DirectusProject.addScripts"></a>
+##### `addScripts` <a name="addScripts" id="@wbce/projen-d9.D9Project.addScripts"></a>
 
 ```typescript
 public addScripts(scripts: {[ key: string ]: string}): void
@@ -507,7 +507,7 @@ public addScripts(scripts: {[ key: string ]: string}): void
 
 Replaces the contents of multiple npm package.json scripts.
 
-###### `scripts`<sup>Required</sup> <a name="scripts" id="@wbce/projen-directus.DirectusProject.addScripts.parameter.scripts"></a>
+###### `scripts`<sup>Required</sup> <a name="scripts" id="@wbce/projen-d9.D9Project.addScripts.parameter.scripts"></a>
 
 - *Type:* {[ key: string ]: string}
 
@@ -515,7 +515,7 @@ The scripts to set.
 
 ---
 
-##### ~~`addTestCommand`~~ <a name="addTestCommand" id="@wbce/projen-directus.DirectusProject.addTestCommand"></a>
+##### ~~`addTestCommand`~~ <a name="addTestCommand" id="@wbce/projen-d9.D9Project.addTestCommand"></a>
 
 ```typescript
 public addTestCommand(commands: ...string[]): void
@@ -523,13 +523,13 @@ public addTestCommand(commands: ...string[]): void
 
 DEPRECATED.
 
-###### `commands`<sup>Required</sup> <a name="commands" id="@wbce/projen-directus.DirectusProject.addTestCommand.parameter.commands"></a>
+###### `commands`<sup>Required</sup> <a name="commands" id="@wbce/projen-d9.D9Project.addTestCommand.parameter.commands"></a>
 
 - *Type:* ...string[]
 
 ---
 
-##### ~~`hasScript`~~ <a name="hasScript" id="@wbce/projen-directus.DirectusProject.hasScript"></a>
+##### ~~`hasScript`~~ <a name="hasScript" id="@wbce/projen-d9.D9Project.hasScript"></a>
 
 ```typescript
 public hasScript(name: string): boolean
@@ -537,7 +537,7 @@ public hasScript(name: string): boolean
 
 Indicates if a script by the name name is defined.
 
-###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-directus.DirectusProject.hasScript.parameter.name"></a>
+###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-d9.D9Project.hasScript.parameter.name"></a>
 
 - *Type:* string
 
@@ -545,7 +545,7 @@ The name of the script.
 
 ---
 
-##### `removeScript` <a name="removeScript" id="@wbce/projen-directus.DirectusProject.removeScript"></a>
+##### `removeScript` <a name="removeScript" id="@wbce/projen-d9.D9Project.removeScript"></a>
 
 ```typescript
 public removeScript(name: string): void
@@ -553,7 +553,7 @@ public removeScript(name: string): void
 
 Removes the npm script (always successful).
 
-###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-directus.DirectusProject.removeScript.parameter.name"></a>
+###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-d9.D9Project.removeScript.parameter.name"></a>
 
 - *Type:* string
 
@@ -561,7 +561,7 @@ The name of the script.
 
 ---
 
-##### `renderWorkflowSetup` <a name="renderWorkflowSetup" id="@wbce/projen-directus.DirectusProject.renderWorkflowSetup"></a>
+##### `renderWorkflowSetup` <a name="renderWorkflowSetup" id="@wbce/projen-d9.D9Project.renderWorkflowSetup"></a>
 
 ```typescript
 public renderWorkflowSetup(options?: RenderWorkflowSetupOptions): JobStep[]
@@ -569,7 +569,7 @@ public renderWorkflowSetup(options?: RenderWorkflowSetupOptions): JobStep[]
 
 Returns the set of workflow steps which should be executed to bootstrap a workflow.
 
-###### `options`<sup>Optional</sup> <a name="options" id="@wbce/projen-directus.DirectusProject.renderWorkflowSetup.parameter.options"></a>
+###### `options`<sup>Optional</sup> <a name="options" id="@wbce/projen-d9.D9Project.renderWorkflowSetup.parameter.options"></a>
 
 - *Type:* projen.javascript.RenderWorkflowSetupOptions
 
@@ -577,7 +577,7 @@ Options.
 
 ---
 
-##### `setScript` <a name="setScript" id="@wbce/projen-directus.DirectusProject.setScript"></a>
+##### `setScript` <a name="setScript" id="@wbce/projen-d9.D9Project.setScript"></a>
 
 ```typescript
 public setScript(name: string, command: string): void
@@ -585,7 +585,7 @@ public setScript(name: string, command: string): void
 
 Replaces the contents of an npm package.json script.
 
-###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-directus.DirectusProject.setScript.parameter.name"></a>
+###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-d9.D9Project.setScript.parameter.name"></a>
 
 - *Type:* string
 
@@ -593,7 +593,7 @@ The script name.
 
 ---
 
-###### `command`<sup>Required</sup> <a name="command" id="@wbce/projen-directus.DirectusProject.setScript.parameter.command"></a>
+###### `command`<sup>Required</sup> <a name="command" id="@wbce/projen-d9.D9Project.setScript.parameter.command"></a>
 
 - *Type:* string
 
@@ -601,27 +601,27 @@ The command to execute.
 
 ---
 
-##### `addExtension` <a name="addExtension" id="@wbce/projen-directus.DirectusProject.addExtension"></a>
+##### `addExtension` <a name="addExtension" id="@wbce/projen-d9.D9Project.addExtension"></a>
 
 ```typescript
-public addExtension(name: string, extensionTypes: DirectusExtensionType[], options?: AddExtensionOptions): DirectusExtensionProject
+public addExtension(name: string, extensionTypes: D9ExtensionType[], options?: AddExtensionOptions): D9ExtensionProject
 ```
 
-###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-directus.DirectusProject.addExtension.parameter.name"></a>
+###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-d9.D9Project.addExtension.parameter.name"></a>
 
 - *Type:* string
 
 ---
 
-###### `extensionTypes`<sup>Required</sup> <a name="extensionTypes" id="@wbce/projen-directus.DirectusProject.addExtension.parameter.extensionTypes"></a>
+###### `extensionTypes`<sup>Required</sup> <a name="extensionTypes" id="@wbce/projen-d9.D9Project.addExtension.parameter.extensionTypes"></a>
 
-- *Type:* @wbce/projen-directus-extension.DirectusExtensionType[]
+- *Type:* @wbce/projen-d9-extension.D9ExtensionType[]
 
 ---
 
-###### `options`<sup>Optional</sup> <a name="options" id="@wbce/projen-directus.DirectusProject.addExtension.parameter.options"></a>
+###### `options`<sup>Optional</sup> <a name="options" id="@wbce/projen-d9.D9Project.addExtension.parameter.options"></a>
 
-- *Type:* @wbce/projen-directus-extension.AddExtensionOptions
+- *Type:* @wbce/projen-d9-extension.AddExtensionOptions
 
 ---
 
@@ -629,16 +629,1558 @@ public addExtension(name: string, extensionTypes: DirectusExtensionType[], optio
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@wbce/projen-directus.DirectusProject.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.isProject">isProject</a></code> | Test whether the given construct is a project. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.of">of</a></code> | Find the closest ancestor project for given construct. |
+| <code><a href="#@wbce/projen-d9.D9Project.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@wbce/projen-d9.D9Project.isProject">isProject</a></code> | Test whether the given construct is a project. |
+| <code><a href="#@wbce/projen-d9.D9Project.of">of</a></code> | Find the closest ancestor project for given construct. |
 
 ---
 
-##### `isConstruct` <a name="isConstruct" id="@wbce/projen-directus.DirectusProject.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@wbce/projen-d9.D9Project.isConstruct"></a>
 
 ```typescript
-import { DirectusProject } from '@wbce/projen-directus'
+import { D9Project } from '@wbce/projen-d9'
+
+D9Project.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@wbce/projen-d9.D9Project.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+##### `isProject` <a name="isProject" id="@wbce/projen-d9.D9Project.isProject"></a>
+
+```typescript
+import { D9Project } from '@wbce/projen-d9'
+
+D9Project.isProject(x: any)
+```
+
+Test whether the given construct is a project.
+
+###### `x`<sup>Required</sup> <a name="x" id="@wbce/projen-d9.D9Project.isProject.parameter.x"></a>
+
+- *Type:* any
+
+---
+
+##### `of` <a name="of" id="@wbce/projen-d9.D9Project.of"></a>
+
+```typescript
+import { D9Project } from '@wbce/projen-d9'
+
+D9Project.of(construct: IConstruct)
+```
+
+Find the closest ancestor project for given construct.
+
+When given a project, this it the project itself.
+
+###### `construct`<sup>Required</sup> <a name="construct" id="@wbce/projen-d9.D9Project.of.parameter.construct"></a>
+
+- *Type:* constructs.IConstruct
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@wbce/projen-d9.D9Project.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.buildTask">buildTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.compileTask">compileTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.components">components</a></code> | <code>projen.Component[]</code> | Returns all the components within this project. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.deps">deps</a></code> | <code>projen.Dependencies</code> | Project dependencies. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.ejected">ejected</a></code> | <code>boolean</code> | Whether or not the project is being ejected. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.files">files</a></code> | <code>projen.FileBase[]</code> | All files in this project. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.gitattributes">gitattributes</a></code> | <code>projen.GitAttributesFile</code> | The .gitattributes file for this repository. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.gitignore">gitignore</a></code> | <code>projen.IgnoreFile</code> | .gitignore. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.logger">logger</a></code> | <code>projen.Logger</code> | Logging utilities. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.name">name</a></code> | <code>string</code> | Project name. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.outdir">outdir</a></code> | <code>string</code> | Absolute output directory of this project. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.packageTask">packageTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.postCompileTask">postCompileTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.preCompileTask">preCompileTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.projectBuild">projectBuild</a></code> | <code>projen.ProjectBuild</code> | Manages the build process of the project. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.projenCommand">projenCommand</a></code> | <code>string</code> | The command to use in order to run the projen CLI. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.root">root</a></code> | <code>projen.Project</code> | The root project. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.subprojects">subprojects</a></code> | <code>projen.Project[]</code> | Returns all the subprojects within this project. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.tasks">tasks</a></code> | <code>projen.Tasks</code> | Project tasks. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.testTask">testTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | This is the "default" task, the one that executes "projen". |
+| <code><a href="#@wbce/projen-d9.D9Project.property.initProject">initProject</a></code> | <code>projen.InitProject</code> | The options used when this project is bootstrapped via `projen new`. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.parent">parent</a></code> | <code>projen.Project</code> | A parent project. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.projectType">projectType</a></code> | <code>projen.ProjectType</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.autoApprove">autoApprove</a></code> | <code>projen.github.AutoApprove</code> | Auto approve set up for this project. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.devContainer">devContainer</a></code> | <code>projen.vscode.DevContainer</code> | Access for .devcontainer.json (used for GitHub Codespaces). |
+| <code><a href="#@wbce/projen-d9.D9Project.property.github">github</a></code> | <code>projen.github.GitHub</code> | Access all github components. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.gitpod">gitpod</a></code> | <code>projen.Gitpod</code> | Access for Gitpod. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.vscode">vscode</a></code> | <code>projen.vscode.VsCode</code> | Access all VSCode components. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | The build output directory. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.artifactsJavascriptDirectory">artifactsJavascriptDirectory</a></code> | <code>string</code> | The location of the npm tarball after build (`${artifactsDirectory}/js`). |
+| <code><a href="#@wbce/projen-d9.D9Project.property.bundler">bundler</a></code> | <code>projen.javascript.Bundler</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.entrypoint">entrypoint</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.manifest">manifest</a></code> | <code>any</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.npmrc">npmrc</a></code> | <code>projen.javascript.NpmConfig</code> | The .npmrc file. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.package">package</a></code> | <code>projen.javascript.NodePackage</code> | API for managing the node package. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The package manager to use. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.runScriptCommand">runScriptCommand</a></code> | <code>string</code> | The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager). |
+| <code><a href="#@wbce/projen-d9.D9Project.property.autoMerge">autoMerge</a></code> | <code>projen.github.AutoMerge</code> | Component that sets up mergify for merging approved pull requests. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.biome">biome</a></code> | <code>projen.javascript.Biome</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.buildWorkflow">buildWorkflow</a></code> | <code>projen.build.BuildWorkflow</code> | The PR build GitHub workflow. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.buildWorkflowJobId">buildWorkflowJobId</a></code> | <code>string</code> | The job ID of the build workflow. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.jest">jest</a></code> | <code>projen.javascript.Jest</code> | The Jest configuration (if enabled). |
+| <code><a href="#@wbce/projen-d9.D9Project.property.maxNodeVersion">maxNodeVersion</a></code> | <code>string</code> | Maximum node version supported by this package. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.minNodeVersion">minNodeVersion</a></code> | <code>string</code> | The minimum node version required by this package to function. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.npmignore">npmignore</a></code> | <code>projen.IgnoreFile</code> | The .npmignore file. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.prettier">prettier</a></code> | <code>projen.javascript.Prettier</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.publisher">publisher</a></code> | <code>projen.release.Publisher</code> | Package publisher. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.release">release</a></code> | <code>projen.release.Release</code> | Release management. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.upgradeWorkflow">upgradeWorkflow</a></code> | <code>projen.javascript.UpgradeDependencies</code> | The upgrade workflow. |
+| <code><a href="#@wbce/projen-d9.D9Project.property.githubConfig">githubConfig</a></code> | <code>@wbce/projen-shared.GitHubConfig</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.applySchemaTask">applySchemaTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.buildExtensionTask">buildExtensionTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.cacheService">cacheService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.databaseService">databaseService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.directusService">directusService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.dockerComposeFile">dockerComposeFile</a></code> | <code>projen.DockerCompose</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.dockerfile">dockerfile</a></code> | <code>@wbce/projen-shared.Dockerfile</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.extensionFolder">extensionFolder</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.extensions">extensions</a></code> | <code>@wbce/projen-d9-extension.ExtensionFolder</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@wbce/projen-d9.D9Project.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `buildTask`<sup>Required</sup> <a name="buildTask" id="@wbce/projen-d9.D9Project.property.buildTask"></a>
+
+```typescript
+public readonly buildTask: Task;
+```
+
+- *Type:* projen.Task
+
+---
+
+##### `commitGenerated`<sup>Required</sup> <a name="commitGenerated" id="@wbce/projen-d9.D9Project.property.commitGenerated"></a>
+
+```typescript
+public readonly commitGenerated: boolean;
+```
+
+- *Type:* boolean
+
+Whether to commit the managed files by default.
+
+---
+
+##### `compileTask`<sup>Required</sup> <a name="compileTask" id="@wbce/projen-d9.D9Project.property.compileTask"></a>
+
+```typescript
+public readonly compileTask: Task;
+```
+
+- *Type:* projen.Task
+
+---
+
+##### `components`<sup>Required</sup> <a name="components" id="@wbce/projen-d9.D9Project.property.components"></a>
+
+```typescript
+public readonly components: Component[];
+```
+
+- *Type:* projen.Component[]
+
+Returns all the components within this project.
+
+---
+
+##### `deps`<sup>Required</sup> <a name="deps" id="@wbce/projen-d9.D9Project.property.deps"></a>
+
+```typescript
+public readonly deps: Dependencies;
+```
+
+- *Type:* projen.Dependencies
+
+Project dependencies.
+
+---
+
+##### `ejected`<sup>Required</sup> <a name="ejected" id="@wbce/projen-d9.D9Project.property.ejected"></a>
+
+```typescript
+public readonly ejected: boolean;
+```
+
+- *Type:* boolean
+
+Whether or not the project is being ejected.
+
+---
+
+##### `files`<sup>Required</sup> <a name="files" id="@wbce/projen-d9.D9Project.property.files"></a>
+
+```typescript
+public readonly files: FileBase[];
+```
+
+- *Type:* projen.FileBase[]
+
+All files in this project.
+
+---
+
+##### `gitattributes`<sup>Required</sup> <a name="gitattributes" id="@wbce/projen-d9.D9Project.property.gitattributes"></a>
+
+```typescript
+public readonly gitattributes: GitAttributesFile;
+```
+
+- *Type:* projen.GitAttributesFile
+
+The .gitattributes file for this repository.
+
+---
+
+##### `gitignore`<sup>Required</sup> <a name="gitignore" id="@wbce/projen-d9.D9Project.property.gitignore"></a>
+
+```typescript
+public readonly gitignore: IgnoreFile;
+```
+
+- *Type:* projen.IgnoreFile
+
+.gitignore.
+
+---
+
+##### `logger`<sup>Required</sup> <a name="logger" id="@wbce/projen-d9.D9Project.property.logger"></a>
+
+```typescript
+public readonly logger: Logger;
+```
+
+- *Type:* projen.Logger
+
+Logging utilities.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-d9.D9Project.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+Project name.
+
+---
+
+##### `outdir`<sup>Required</sup> <a name="outdir" id="@wbce/projen-d9.D9Project.property.outdir"></a>
+
+```typescript
+public readonly outdir: string;
+```
+
+- *Type:* string
+
+Absolute output directory of this project.
+
+---
+
+##### `packageTask`<sup>Required</sup> <a name="packageTask" id="@wbce/projen-d9.D9Project.property.packageTask"></a>
+
+```typescript
+public readonly packageTask: Task;
+```
+
+- *Type:* projen.Task
+
+---
+
+##### `postCompileTask`<sup>Required</sup> <a name="postCompileTask" id="@wbce/projen-d9.D9Project.property.postCompileTask"></a>
+
+```typescript
+public readonly postCompileTask: Task;
+```
+
+- *Type:* projen.Task
+
+---
+
+##### `preCompileTask`<sup>Required</sup> <a name="preCompileTask" id="@wbce/projen-d9.D9Project.property.preCompileTask"></a>
+
+```typescript
+public readonly preCompileTask: Task;
+```
+
+- *Type:* projen.Task
+
+---
+
+##### `projectBuild`<sup>Required</sup> <a name="projectBuild" id="@wbce/projen-d9.D9Project.property.projectBuild"></a>
+
+```typescript
+public readonly projectBuild: ProjectBuild;
+```
+
+- *Type:* projen.ProjectBuild
+
+Manages the build process of the project.
+
+---
+
+##### `projenCommand`<sup>Required</sup> <a name="projenCommand" id="@wbce/projen-d9.D9Project.property.projenCommand"></a>
+
+```typescript
+public readonly projenCommand: string;
+```
+
+- *Type:* string
+
+The command to use in order to run the projen CLI.
+
+---
+
+##### `root`<sup>Required</sup> <a name="root" id="@wbce/projen-d9.D9Project.property.root"></a>
+
+```typescript
+public readonly root: Project;
+```
+
+- *Type:* projen.Project
+
+The root project.
+
+---
+
+##### `subprojects`<sup>Required</sup> <a name="subprojects" id="@wbce/projen-d9.D9Project.property.subprojects"></a>
+
+```typescript
+public readonly subprojects: Project[];
+```
+
+- *Type:* projen.Project[]
+
+Returns all the subprojects within this project.
+
+---
+
+##### `tasks`<sup>Required</sup> <a name="tasks" id="@wbce/projen-d9.D9Project.property.tasks"></a>
+
+```typescript
+public readonly tasks: Tasks;
+```
+
+- *Type:* projen.Tasks
+
+Project tasks.
+
+---
+
+##### `testTask`<sup>Required</sup> <a name="testTask" id="@wbce/projen-d9.D9Project.property.testTask"></a>
+
+```typescript
+public readonly testTask: Task;
+```
+
+- *Type:* projen.Task
+
+---
+
+##### `defaultTask`<sup>Optional</sup> <a name="defaultTask" id="@wbce/projen-d9.D9Project.property.defaultTask"></a>
+
+```typescript
+public readonly defaultTask: Task;
+```
+
+- *Type:* projen.Task
+
+This is the "default" task, the one that executes "projen".
+
+Undefined if
+the project is being ejected.
+
+---
+
+##### `initProject`<sup>Optional</sup> <a name="initProject" id="@wbce/projen-d9.D9Project.property.initProject"></a>
+
+```typescript
+public readonly initProject: InitProject;
+```
+
+- *Type:* projen.InitProject
+
+The options used when this project is bootstrapped via `projen new`.
+
+It
+includes the original set of options passed to the CLI and also the JSII
+FQN of the project type.
+
+---
+
+##### `parent`<sup>Optional</sup> <a name="parent" id="@wbce/projen-d9.D9Project.property.parent"></a>
+
+```typescript
+public readonly parent: Project;
+```
+
+- *Type:* projen.Project
+
+A parent project.
+
+If undefined, this is the root project.
+
+---
+
+##### `projectType`<sup>Required</sup> <a name="projectType" id="@wbce/projen-d9.D9Project.property.projectType"></a>
+
+```typescript
+public readonly projectType: ProjectType;
+```
+
+- *Type:* projen.ProjectType
+
+---
+
+##### `autoApprove`<sup>Optional</sup> <a name="autoApprove" id="@wbce/projen-d9.D9Project.property.autoApprove"></a>
+
+```typescript
+public readonly autoApprove: AutoApprove;
+```
+
+- *Type:* projen.github.AutoApprove
+
+Auto approve set up for this project.
+
+---
+
+##### `devContainer`<sup>Optional</sup> <a name="devContainer" id="@wbce/projen-d9.D9Project.property.devContainer"></a>
+
+```typescript
+public readonly devContainer: DevContainer;
+```
+
+- *Type:* projen.vscode.DevContainer
+
+Access for .devcontainer.json (used for GitHub Codespaces).
+
+This will be `undefined` if devContainer boolean is false
+
+---
+
+##### `github`<sup>Optional</sup> <a name="github" id="@wbce/projen-d9.D9Project.property.github"></a>
+
+```typescript
+public readonly github: GitHub;
+```
+
+- *Type:* projen.github.GitHub
+
+Access all github components.
+
+This will be `undefined` for subprojects.
+
+---
+
+##### `gitpod`<sup>Optional</sup> <a name="gitpod" id="@wbce/projen-d9.D9Project.property.gitpod"></a>
+
+```typescript
+public readonly gitpod: Gitpod;
+```
+
+- *Type:* projen.Gitpod
+
+Access for Gitpod.
+
+This will be `undefined` if gitpod boolean is false
+
+---
+
+##### `vscode`<sup>Optional</sup> <a name="vscode" id="@wbce/projen-d9.D9Project.property.vscode"></a>
+
+```typescript
+public readonly vscode: VsCode;
+```
+
+- *Type:* projen.vscode.VsCode
+
+Access all VSCode components.
+
+This will be `undefined` for subprojects.
+
+---
+
+##### ~~`allowLibraryDependencies`~~<sup>Required</sup> <a name="allowLibraryDependencies" id="@wbce/projen-d9.D9Project.property.allowLibraryDependencies"></a>
+
+- *Deprecated:* use `package.allowLibraryDependencies`
+
+```typescript
+public readonly allowLibraryDependencies: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `artifactsDirectory`<sup>Required</sup> <a name="artifactsDirectory" id="@wbce/projen-d9.D9Project.property.artifactsDirectory"></a>
+
+```typescript
+public readonly artifactsDirectory: string;
+```
+
+- *Type:* string
+
+The build output directory.
+
+An npm tarball will be created under the `js`
+subdirectory. For example, if this is set to `dist` (the default), the npm
+tarball will be placed under `dist/js/boom-boom-1.2.3.tg`.
+
+---
+
+##### `artifactsJavascriptDirectory`<sup>Required</sup> <a name="artifactsJavascriptDirectory" id="@wbce/projen-d9.D9Project.property.artifactsJavascriptDirectory"></a>
+
+```typescript
+public readonly artifactsJavascriptDirectory: string;
+```
+
+- *Type:* string
+
+The location of the npm tarball after build (`${artifactsDirectory}/js`).
+
+---
+
+##### `bundler`<sup>Required</sup> <a name="bundler" id="@wbce/projen-d9.D9Project.property.bundler"></a>
+
+```typescript
+public readonly bundler: Bundler;
+```
+
+- *Type:* projen.javascript.Bundler
+
+---
+
+##### ~~`entrypoint`~~<sup>Required</sup> <a name="entrypoint" id="@wbce/projen-d9.D9Project.property.entrypoint"></a>
+
+- *Deprecated:* use `package.entrypoint`
+
+```typescript
+public readonly entrypoint: string;
+```
+
+- *Type:* string
+
+---
+
+##### ~~`manifest`~~<sup>Required</sup> <a name="manifest" id="@wbce/projen-d9.D9Project.property.manifest"></a>
+
+- *Deprecated:* use `package.addField(x, y)`
+
+```typescript
+public readonly manifest: any;
+```
+
+- *Type:* any
+
+---
+
+##### `npmrc`<sup>Required</sup> <a name="npmrc" id="@wbce/projen-d9.D9Project.property.npmrc"></a>
+
+```typescript
+public readonly npmrc: NpmConfig;
+```
+
+- *Type:* projen.javascript.NpmConfig
+
+The .npmrc file.
+
+---
+
+##### `package`<sup>Required</sup> <a name="package" id="@wbce/projen-d9.D9Project.property.package"></a>
+
+```typescript
+public readonly package: NodePackage;
+```
+
+- *Type:* projen.javascript.NodePackage
+
+API for managing the node package.
+
+---
+
+##### ~~`packageManager`~~<sup>Required</sup> <a name="packageManager" id="@wbce/projen-d9.D9Project.property.packageManager"></a>
+
+- *Deprecated:* use `package.packageManager`
+
+```typescript
+public readonly packageManager: NodePackageManager;
+```
+
+- *Type:* projen.javascript.NodePackageManager
+
+The package manager to use.
+
+---
+
+##### `runScriptCommand`<sup>Required</sup> <a name="runScriptCommand" id="@wbce/projen-d9.D9Project.property.runScriptCommand"></a>
+
+```typescript
+public readonly runScriptCommand: string;
+```
+
+- *Type:* string
+
+The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager).
+
+---
+
+##### `autoMerge`<sup>Optional</sup> <a name="autoMerge" id="@wbce/projen-d9.D9Project.property.autoMerge"></a>
+
+```typescript
+public readonly autoMerge: AutoMerge;
+```
+
+- *Type:* projen.github.AutoMerge
+
+Component that sets up mergify for merging approved pull requests.
+
+---
+
+##### `biome`<sup>Optional</sup> <a name="biome" id="@wbce/projen-d9.D9Project.property.biome"></a>
+
+```typescript
+public readonly biome: Biome;
+```
+
+- *Type:* projen.javascript.Biome
+
+---
+
+##### `buildWorkflow`<sup>Optional</sup> <a name="buildWorkflow" id="@wbce/projen-d9.D9Project.property.buildWorkflow"></a>
+
+```typescript
+public readonly buildWorkflow: BuildWorkflow;
+```
+
+- *Type:* projen.build.BuildWorkflow
+
+The PR build GitHub workflow.
+
+`undefined` if `buildWorkflow` is disabled.
+
+---
+
+##### `buildWorkflowJobId`<sup>Optional</sup> <a name="buildWorkflowJobId" id="@wbce/projen-d9.D9Project.property.buildWorkflowJobId"></a>
+
+```typescript
+public readonly buildWorkflowJobId: string;
+```
+
+- *Type:* string
+
+The job ID of the build workflow.
+
+---
+
+##### `jest`<sup>Optional</sup> <a name="jest" id="@wbce/projen-d9.D9Project.property.jest"></a>
+
+```typescript
+public readonly jest: Jest;
+```
+
+- *Type:* projen.javascript.Jest
+
+The Jest configuration (if enabled).
+
+---
+
+##### `maxNodeVersion`<sup>Optional</sup> <a name="maxNodeVersion" id="@wbce/projen-d9.D9Project.property.maxNodeVersion"></a>
+
+```typescript
+public readonly maxNodeVersion: string;
+```
+
+- *Type:* string
+
+Maximum node version supported by this package.
+
+The value indicates the package is incompatible with newer versions.
+
+---
+
+##### `minNodeVersion`<sup>Optional</sup> <a name="minNodeVersion" id="@wbce/projen-d9.D9Project.property.minNodeVersion"></a>
+
+```typescript
+public readonly minNodeVersion: string;
+```
+
+- *Type:* string
+
+The minimum node version required by this package to function.
+
+This value indicates the package is incompatible with older versions.
+
+---
+
+##### `npmignore`<sup>Optional</sup> <a name="npmignore" id="@wbce/projen-d9.D9Project.property.npmignore"></a>
+
+```typescript
+public readonly npmignore: IgnoreFile;
+```
+
+- *Type:* projen.IgnoreFile
+
+The .npmignore file.
+
+---
+
+##### `prettier`<sup>Optional</sup> <a name="prettier" id="@wbce/projen-d9.D9Project.property.prettier"></a>
+
+```typescript
+public readonly prettier: Prettier;
+```
+
+- *Type:* projen.javascript.Prettier
+
+---
+
+##### ~~`publisher`~~<sup>Optional</sup> <a name="publisher" id="@wbce/projen-d9.D9Project.property.publisher"></a>
+
+- *Deprecated:* use `release.publisher`.
+
+```typescript
+public readonly publisher: Publisher;
+```
+
+- *Type:* projen.release.Publisher
+
+Package publisher.
+
+This will be `undefined` if the project does not have a
+release workflow.
+
+---
+
+##### `release`<sup>Optional</sup> <a name="release" id="@wbce/projen-d9.D9Project.property.release"></a>
+
+```typescript
+public readonly release: Release;
+```
+
+- *Type:* projen.release.Release
+
+Release management.
+
+---
+
+##### `upgradeWorkflow`<sup>Optional</sup> <a name="upgradeWorkflow" id="@wbce/projen-d9.D9Project.property.upgradeWorkflow"></a>
+
+```typescript
+public readonly upgradeWorkflow: UpgradeDependencies;
+```
+
+- *Type:* projen.javascript.UpgradeDependencies
+
+The upgrade workflow.
+
+---
+
+##### `githubConfig`<sup>Optional</sup> <a name="githubConfig" id="@wbce/projen-d9.D9Project.property.githubConfig"></a>
+
+```typescript
+public readonly githubConfig: GitHubConfig;
+```
+
+- *Type:* @wbce/projen-shared.GitHubConfig
+
+---
+
+##### `applySchemaTask`<sup>Required</sup> <a name="applySchemaTask" id="@wbce/projen-d9.D9Project.property.applySchemaTask"></a>
+
+```typescript
+public readonly applySchemaTask: Task;
+```
+
+- *Type:* projen.Task
+
+---
+
+##### `buildExtensionTask`<sup>Required</sup> <a name="buildExtensionTask" id="@wbce/projen-d9.D9Project.property.buildExtensionTask"></a>
+
+```typescript
+public readonly buildExtensionTask: Task;
+```
+
+- *Type:* projen.Task
+
+---
+
+##### `cacheService`<sup>Required</sup> <a name="cacheService" id="@wbce/projen-d9.D9Project.property.cacheService"></a>
+
+```typescript
+public readonly cacheService: DockerComposeService;
+```
+
+- *Type:* projen.DockerComposeService
+
+---
+
+##### `databaseService`<sup>Required</sup> <a name="databaseService" id="@wbce/projen-d9.D9Project.property.databaseService"></a>
+
+```typescript
+public readonly databaseService: DockerComposeService;
+```
+
+- *Type:* projen.DockerComposeService
+
+---
+
+##### `directusService`<sup>Required</sup> <a name="directusService" id="@wbce/projen-d9.D9Project.property.directusService"></a>
+
+```typescript
+public readonly directusService: DockerComposeService;
+```
+
+- *Type:* projen.DockerComposeService
+
+---
+
+##### `dockerComposeFile`<sup>Required</sup> <a name="dockerComposeFile" id="@wbce/projen-d9.D9Project.property.dockerComposeFile"></a>
+
+```typescript
+public readonly dockerComposeFile: DockerCompose;
+```
+
+- *Type:* projen.DockerCompose
+
+---
+
+##### `dockerfile`<sup>Required</sup> <a name="dockerfile" id="@wbce/projen-d9.D9Project.property.dockerfile"></a>
+
+```typescript
+public readonly dockerfile: Dockerfile;
+```
+
+- *Type:* @wbce/projen-shared.Dockerfile
+
+---
+
+##### `extensionFolder`<sup>Required</sup> <a name="extensionFolder" id="@wbce/projen-d9.D9Project.property.extensionFolder"></a>
+
+```typescript
+public readonly extensionFolder: string;
+```
+
+- *Type:* string
+
+---
+
+##### `extensions`<sup>Required</sup> <a name="extensions" id="@wbce/projen-d9.D9Project.property.extensions"></a>
+
+```typescript
+public readonly extensions: ExtensionFolder;
+```
+
+- *Type:* @wbce/projen-d9-extension.ExtensionFolder
+
+---
+
+#### Constants <a name="Constants" id="Constants"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@wbce/projen-d9.D9Project.property.DEFAULT_TASK">DEFAULT_TASK</a></code> | <code>string</code> | The name of the default task (the task executed when `projen` is run without arguments). |
+
+---
+
+##### `DEFAULT_TASK`<sup>Required</sup> <a name="DEFAULT_TASK" id="@wbce/projen-d9.D9Project.property.DEFAULT_TASK"></a>
+
+```typescript
+public readonly DEFAULT_TASK: string;
+```
+
+- *Type:* string
+
+The name of the default task (the task executed when `projen` is run without arguments).
+
+Normally
+this task should synthesize the project files.
+
+---
+
+### DirectusProject <a name="DirectusProject" id="@wbce/projen-d9.DirectusProject"></a>
+
+#### Initializers <a name="Initializers" id="@wbce/projen-d9.DirectusProject.Initializer"></a>
+
+```typescript
+import { DirectusProject } from '@wbce/projen-d9'
+
+new DirectusProject(options: D9ProjectOptions)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@wbce/projen-d9.DirectusProject.Initializer.parameter.options">options</a></code> | <code><a href="#@wbce/projen-d9.D9ProjectOptions">D9ProjectOptions</a></code> | *No description.* |
+
+---
+
+##### `options`<sup>Required</sup> <a name="options" id="@wbce/projen-d9.DirectusProject.Initializer.parameter.options"></a>
+
+- *Type:* <a href="#@wbce/projen-d9.D9ProjectOptions">D9ProjectOptions</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@wbce/projen-d9.DirectusProject.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.with">with</a></code> | Applies one or more mixins to this construct. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.addExcludeFromCleanup">addExcludeFromCleanup</a></code> | Exclude the matching files from pre-synth cleanup. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.addGitIgnore">addGitIgnore</a></code> | Adds a .gitignore pattern. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.addPackageIgnore">addPackageIgnore</a></code> | Adds patterns to be ignored by npm. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.addTask">addTask</a></code> | Adds a new task to this project. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.addTip">addTip</a></code> | Prints a "tip" message during synthesis. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.annotateGenerated">annotateGenerated</a></code> | Marks the provided file(s) as being generated. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.postSynthesize">postSynthesize</a></code> | Called after all components are synthesized. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.preSynthesize">preSynthesize</a></code> | Called before all components are synthesized. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.removeTask">removeTask</a></code> | Removes a task from a project. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.runTaskCommand">runTaskCommand</a></code> | Returns the shell command to execute in order to run a task. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.synth">synth</a></code> | Synthesize all project files into `outdir`. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.tryFindFile">tryFindFile</a></code> | Finds a file at the specified relative path within this project and all its subprojects. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.tryFindJsonFile">tryFindJsonFile</a></code> | Finds a json file by name. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.tryFindObjectFile">tryFindObjectFile</a></code> | Finds an object file (like JsonFile, YamlFile, etc.) by name. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.tryRemoveFile">tryRemoveFile</a></code> | Finds a file at the specified relative path within this project and removes it. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.addBins">addBins</a></code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.addBundledDeps">addBundledDeps</a></code> | Defines bundled dependencies. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.addCompileCommand">addCompileCommand</a></code> | DEPRECATED. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.addDeps">addDeps</a></code> | Defines normal dependencies. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.addDevDeps">addDevDeps</a></code> | Defines development/test dependencies. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.addFields">addFields</a></code> | Directly set fields in `package.json`. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.addKeywords">addKeywords</a></code> | Adds keywords to package.json (deduplicated). |
+| <code><a href="#@wbce/projen-d9.DirectusProject.addPeerDeps">addPeerDeps</a></code> | Defines peer dependencies. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.addScripts">addScripts</a></code> | Replaces the contents of multiple npm package.json scripts. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.addTestCommand">addTestCommand</a></code> | DEPRECATED. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.hasScript">hasScript</a></code> | Indicates if a script by the name name is defined. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.removeScript">removeScript</a></code> | Removes the npm script (always successful). |
+| <code><a href="#@wbce/projen-d9.DirectusProject.renderWorkflowSetup">renderWorkflowSetup</a></code> | Returns the set of workflow steps which should be executed to bootstrap a workflow. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.setScript">setScript</a></code> | Replaces the contents of an npm package.json script. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.addExtension">addExtension</a></code> | *No description.* |
+
+---
+
+##### ~~`toString`~~ <a name="toString" id="@wbce/projen-d9.DirectusProject.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### ~~`with`~~ <a name="with" id="@wbce/projen-d9.DirectusProject.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@wbce/projen-d9.DirectusProject.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
+
+##### ~~`addExcludeFromCleanup`~~ <a name="addExcludeFromCleanup" id="@wbce/projen-d9.DirectusProject.addExcludeFromCleanup"></a>
+
+```typescript
+public addExcludeFromCleanup(globs: ...string[]): void
+```
+
+Exclude the matching files from pre-synth cleanup.
+
+Can be used when, for example, some
+source files include the projen marker and we don't want them to be erased during synth.
+
+###### `globs`<sup>Required</sup> <a name="globs" id="@wbce/projen-d9.DirectusProject.addExcludeFromCleanup.parameter.globs"></a>
+
+- *Type:* ...string[]
+
+The glob patterns to match.
+
+---
+
+##### ~~`addGitIgnore`~~ <a name="addGitIgnore" id="@wbce/projen-d9.DirectusProject.addGitIgnore"></a>
+
+```typescript
+public addGitIgnore(pattern: string): void
+```
+
+Adds a .gitignore pattern.
+
+###### `pattern`<sup>Required</sup> <a name="pattern" id="@wbce/projen-d9.DirectusProject.addGitIgnore.parameter.pattern"></a>
+
+- *Type:* string
+
+The glob pattern to ignore.
+
+---
+
+##### ~~`addPackageIgnore`~~ <a name="addPackageIgnore" id="@wbce/projen-d9.DirectusProject.addPackageIgnore"></a>
+
+```typescript
+public addPackageIgnore(pattern: string): void
+```
+
+Adds patterns to be ignored by npm.
+
+###### `pattern`<sup>Required</sup> <a name="pattern" id="@wbce/projen-d9.DirectusProject.addPackageIgnore.parameter.pattern"></a>
+
+- *Type:* string
+
+The pattern to ignore.
+
+---
+
+##### ~~`addTask`~~ <a name="addTask" id="@wbce/projen-d9.DirectusProject.addTask"></a>
+
+```typescript
+public addTask(name: string, props?: TaskOptions): Task
+```
+
+Adds a new task to this project.
+
+This will fail if the project already has
+a task with this name.
+
+###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-d9.DirectusProject.addTask.parameter.name"></a>
+
+- *Type:* string
+
+The task name to add.
+
+---
+
+###### `props`<sup>Optional</sup> <a name="props" id="@wbce/projen-d9.DirectusProject.addTask.parameter.props"></a>
+
+- *Type:* projen.TaskOptions
+
+Task properties.
+
+---
+
+##### ~~`addTip`~~ <a name="addTip" id="@wbce/projen-d9.DirectusProject.addTip"></a>
+
+```typescript
+public addTip(message: string): void
+```
+
+Prints a "tip" message during synthesis.
+
+###### `message`<sup>Required</sup> <a name="message" id="@wbce/projen-d9.DirectusProject.addTip.parameter.message"></a>
+
+- *Type:* string
+
+The message.
+
+---
+
+##### ~~`annotateGenerated`~~ <a name="annotateGenerated" id="@wbce/projen-d9.DirectusProject.annotateGenerated"></a>
+
+```typescript
+public annotateGenerated(glob: string): void
+```
+
+Marks the provided file(s) as being generated.
+
+This is achieved using the
+github-linguist attributes. Generated files do not count against the
+repository statistics and language breakdown.
+
+> [https://github.com/github/linguist/blob/master/docs/overrides.md](https://github.com/github/linguist/blob/master/docs/overrides.md)
+
+###### `glob`<sup>Required</sup> <a name="glob" id="@wbce/projen-d9.DirectusProject.annotateGenerated.parameter.glob"></a>
+
+- *Type:* string
+
+the glob pattern to match (could be a file path).
+
+---
+
+##### ~~`postSynthesize`~~ <a name="postSynthesize" id="@wbce/projen-d9.DirectusProject.postSynthesize"></a>
+
+```typescript
+public postSynthesize(): void
+```
+
+Called after all components are synthesized.
+
+Order is *not* guaranteed.
+
+##### ~~`preSynthesize`~~ <a name="preSynthesize" id="@wbce/projen-d9.DirectusProject.preSynthesize"></a>
+
+```typescript
+public preSynthesize(): void
+```
+
+Called before all components are synthesized.
+
+##### ~~`removeTask`~~ <a name="removeTask" id="@wbce/projen-d9.DirectusProject.removeTask"></a>
+
+```typescript
+public removeTask(name: string): Task
+```
+
+Removes a task from a project.
+
+###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-d9.DirectusProject.removeTask.parameter.name"></a>
+
+- *Type:* string
+
+The name of the task to remove.
+
+---
+
+##### ~~`runTaskCommand`~~ <a name="runTaskCommand" id="@wbce/projen-d9.DirectusProject.runTaskCommand"></a>
+
+```typescript
+public runTaskCommand(task: Task): string
+```
+
+Returns the shell command to execute in order to run a task.
+
+This will
+typically be `npx projen TASK`.
+
+###### `task`<sup>Required</sup> <a name="task" id="@wbce/projen-d9.DirectusProject.runTaskCommand.parameter.task"></a>
+
+- *Type:* projen.Task
+
+The task for which the command is required.
+
+---
+
+##### ~~`synth`~~ <a name="synth" id="@wbce/projen-d9.DirectusProject.synth"></a>
+
+```typescript
+public synth(): void
+```
+
+Synthesize all project files into `outdir`.
+
+1. Call "this.preSynthesize()"
+2. Delete all generated files
+3. Synthesize all subprojects
+4. Synthesize all components of this project
+5. Call "postSynthesize()" for all components of this project
+6. Call "this.postSynthesize()"
+
+##### ~~`tryFindFile`~~ <a name="tryFindFile" id="@wbce/projen-d9.DirectusProject.tryFindFile"></a>
+
+```typescript
+public tryFindFile(filePath: string): FileBase
+```
+
+Finds a file at the specified relative path within this project and all its subprojects.
+
+###### `filePath`<sup>Required</sup> <a name="filePath" id="@wbce/projen-d9.DirectusProject.tryFindFile.parameter.filePath"></a>
+
+- *Type:* string
+
+The file path.
+
+If this path is relative, it will be resolved
+from the root of _this_ project.
+
+---
+
+##### ~~`tryFindJsonFile`~~ <a name="tryFindJsonFile" id="@wbce/projen-d9.DirectusProject.tryFindJsonFile"></a>
+
+```typescript
+public tryFindJsonFile(filePath: string): JsonFile
+```
+
+Finds a json file by name.
+
+###### `filePath`<sup>Required</sup> <a name="filePath" id="@wbce/projen-d9.DirectusProject.tryFindJsonFile.parameter.filePath"></a>
+
+- *Type:* string
+
+The file path.
+
+---
+
+##### ~~`tryFindObjectFile`~~ <a name="tryFindObjectFile" id="@wbce/projen-d9.DirectusProject.tryFindObjectFile"></a>
+
+```typescript
+public tryFindObjectFile(filePath: string): ObjectFile
+```
+
+Finds an object file (like JsonFile, YamlFile, etc.) by name.
+
+###### `filePath`<sup>Required</sup> <a name="filePath" id="@wbce/projen-d9.DirectusProject.tryFindObjectFile.parameter.filePath"></a>
+
+- *Type:* string
+
+The file path.
+
+---
+
+##### ~~`tryRemoveFile`~~ <a name="tryRemoveFile" id="@wbce/projen-d9.DirectusProject.tryRemoveFile"></a>
+
+```typescript
+public tryRemoveFile(filePath: string): FileBase
+```
+
+Finds a file at the specified relative path within this project and removes it.
+
+###### `filePath`<sup>Required</sup> <a name="filePath" id="@wbce/projen-d9.DirectusProject.tryRemoveFile.parameter.filePath"></a>
+
+- *Type:* string
+
+The file path.
+
+If this path is relative, it will be
+resolved from the root of _this_ project.
+
+---
+
+##### ~~`addBins`~~ <a name="addBins" id="@wbce/projen-d9.DirectusProject.addBins"></a>
+
+```typescript
+public addBins(bins: {[ key: string ]: string}): void
+```
+
+###### `bins`<sup>Required</sup> <a name="bins" id="@wbce/projen-d9.DirectusProject.addBins.parameter.bins"></a>
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### ~~`addBundledDeps`~~ <a name="addBundledDeps" id="@wbce/projen-d9.DirectusProject.addBundledDeps"></a>
+
+```typescript
+public addBundledDeps(deps: ...string[]): void
+```
+
+Defines bundled dependencies.
+
+Bundled dependencies will be added as normal dependencies as well as to the
+`bundledDependencies` section of your `package.json`.
+
+###### `deps`<sup>Required</sup> <a name="deps" id="@wbce/projen-d9.DirectusProject.addBundledDeps.parameter.deps"></a>
+
+- *Type:* ...string[]
+
+Names modules to install.
+
+By default, the the dependency will
+be installed in the next `npx projen` run and the version will be recorded
+in your `package.json` file. You can upgrade manually or using `yarn
+add/upgrade`. If you wish to specify a version range use this syntax:
+`module@^7`.
+
+---
+
+##### ~~`addCompileCommand`~~ <a name="addCompileCommand" id="@wbce/projen-d9.DirectusProject.addCompileCommand"></a>
+
+```typescript
+public addCompileCommand(commands: ...string[]): void
+```
+
+DEPRECATED.
+
+###### `commands`<sup>Required</sup> <a name="commands" id="@wbce/projen-d9.DirectusProject.addCompileCommand.parameter.commands"></a>
+
+- *Type:* ...string[]
+
+---
+
+##### ~~`addDeps`~~ <a name="addDeps" id="@wbce/projen-d9.DirectusProject.addDeps"></a>
+
+```typescript
+public addDeps(deps: ...string[]): void
+```
+
+Defines normal dependencies.
+
+###### `deps`<sup>Required</sup> <a name="deps" id="@wbce/projen-d9.DirectusProject.addDeps.parameter.deps"></a>
+
+- *Type:* ...string[]
+
+Names modules to install.
+
+By default, the the dependency will
+be installed in the next `npx projen` run and the version will be recorded
+in your `package.json` file. You can upgrade manually or using `yarn
+add/upgrade`. If you wish to specify a version range use this syntax:
+`module@^7`.
+
+---
+
+##### ~~`addDevDeps`~~ <a name="addDevDeps" id="@wbce/projen-d9.DirectusProject.addDevDeps"></a>
+
+```typescript
+public addDevDeps(deps: ...string[]): void
+```
+
+Defines development/test dependencies.
+
+###### `deps`<sup>Required</sup> <a name="deps" id="@wbce/projen-d9.DirectusProject.addDevDeps.parameter.deps"></a>
+
+- *Type:* ...string[]
+
+Names modules to install.
+
+By default, the the dependency will
+be installed in the next `npx projen` run and the version will be recorded
+in your `package.json` file. You can upgrade manually or using `yarn
+add/upgrade`. If you wish to specify a version range use this syntax:
+`module@^7`.
+
+---
+
+##### ~~`addFields`~~ <a name="addFields" id="@wbce/projen-d9.DirectusProject.addFields"></a>
+
+```typescript
+public addFields(fields: {[ key: string ]: any}): void
+```
+
+Directly set fields in `package.json`.
+
+###### `fields`<sup>Required</sup> <a name="fields" id="@wbce/projen-d9.DirectusProject.addFields.parameter.fields"></a>
+
+- *Type:* {[ key: string ]: any}
+
+The fields to set.
+
+---
+
+##### ~~`addKeywords`~~ <a name="addKeywords" id="@wbce/projen-d9.DirectusProject.addKeywords"></a>
+
+```typescript
+public addKeywords(keywords: ...string[]): void
+```
+
+Adds keywords to package.json (deduplicated).
+
+###### `keywords`<sup>Required</sup> <a name="keywords" id="@wbce/projen-d9.DirectusProject.addKeywords.parameter.keywords"></a>
+
+- *Type:* ...string[]
+
+The keywords to add.
+
+---
+
+##### ~~`addPeerDeps`~~ <a name="addPeerDeps" id="@wbce/projen-d9.DirectusProject.addPeerDeps"></a>
+
+```typescript
+public addPeerDeps(deps: ...string[]): void
+```
+
+Defines peer dependencies.
+
+When adding peer dependencies, a devDependency will also be added on the
+pinned version of the declared peer. This will ensure that you are testing
+your code against the minimum version required from your consumers.
+
+###### `deps`<sup>Required</sup> <a name="deps" id="@wbce/projen-d9.DirectusProject.addPeerDeps.parameter.deps"></a>
+
+- *Type:* ...string[]
+
+Names modules to install.
+
+By default, the the dependency will
+be installed in the next `npx projen` run and the version will be recorded
+in your `package.json` file. You can upgrade manually or using `yarn
+add/upgrade`. If you wish to specify a version range use this syntax:
+`module@^7`.
+
+---
+
+##### ~~`addScripts`~~ <a name="addScripts" id="@wbce/projen-d9.DirectusProject.addScripts"></a>
+
+```typescript
+public addScripts(scripts: {[ key: string ]: string}): void
+```
+
+Replaces the contents of multiple npm package.json scripts.
+
+###### `scripts`<sup>Required</sup> <a name="scripts" id="@wbce/projen-d9.DirectusProject.addScripts.parameter.scripts"></a>
+
+- *Type:* {[ key: string ]: string}
+
+The scripts to set.
+
+---
+
+##### ~~`addTestCommand`~~ <a name="addTestCommand" id="@wbce/projen-d9.DirectusProject.addTestCommand"></a>
+
+```typescript
+public addTestCommand(commands: ...string[]): void
+```
+
+DEPRECATED.
+
+###### `commands`<sup>Required</sup> <a name="commands" id="@wbce/projen-d9.DirectusProject.addTestCommand.parameter.commands"></a>
+
+- *Type:* ...string[]
+
+---
+
+##### ~~`hasScript`~~ <a name="hasScript" id="@wbce/projen-d9.DirectusProject.hasScript"></a>
+
+```typescript
+public hasScript(name: string): boolean
+```
+
+Indicates if a script by the name name is defined.
+
+###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-d9.DirectusProject.hasScript.parameter.name"></a>
+
+- *Type:* string
+
+The name of the script.
+
+---
+
+##### ~~`removeScript`~~ <a name="removeScript" id="@wbce/projen-d9.DirectusProject.removeScript"></a>
+
+```typescript
+public removeScript(name: string): void
+```
+
+Removes the npm script (always successful).
+
+###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-d9.DirectusProject.removeScript.parameter.name"></a>
+
+- *Type:* string
+
+The name of the script.
+
+---
+
+##### ~~`renderWorkflowSetup`~~ <a name="renderWorkflowSetup" id="@wbce/projen-d9.DirectusProject.renderWorkflowSetup"></a>
+
+```typescript
+public renderWorkflowSetup(options?: RenderWorkflowSetupOptions): JobStep[]
+```
+
+Returns the set of workflow steps which should be executed to bootstrap a workflow.
+
+###### `options`<sup>Optional</sup> <a name="options" id="@wbce/projen-d9.DirectusProject.renderWorkflowSetup.parameter.options"></a>
+
+- *Type:* projen.javascript.RenderWorkflowSetupOptions
+
+Options.
+
+---
+
+##### ~~`setScript`~~ <a name="setScript" id="@wbce/projen-d9.DirectusProject.setScript"></a>
+
+```typescript
+public setScript(name: string, command: string): void
+```
+
+Replaces the contents of an npm package.json script.
+
+###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-d9.DirectusProject.setScript.parameter.name"></a>
+
+- *Type:* string
+
+The script name.
+
+---
+
+###### `command`<sup>Required</sup> <a name="command" id="@wbce/projen-d9.DirectusProject.setScript.parameter.command"></a>
+
+- *Type:* string
+
+The command to execute.
+
+---
+
+##### ~~`addExtension`~~ <a name="addExtension" id="@wbce/projen-d9.DirectusProject.addExtension"></a>
+
+```typescript
+public addExtension(name: string, extensionTypes: D9ExtensionType[], options?: AddExtensionOptions): D9ExtensionProject
+```
+
+###### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-d9.DirectusProject.addExtension.parameter.name"></a>
+
+- *Type:* string
+
+---
+
+###### `extensionTypes`<sup>Required</sup> <a name="extensionTypes" id="@wbce/projen-d9.DirectusProject.addExtension.parameter.extensionTypes"></a>
+
+- *Type:* @wbce/projen-d9-extension.D9ExtensionType[]
+
+---
+
+###### `options`<sup>Optional</sup> <a name="options" id="@wbce/projen-d9.DirectusProject.addExtension.parameter.options"></a>
+
+- *Type:* @wbce/projen-d9-extension.AddExtensionOptions
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@wbce/projen-d9.DirectusProject.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.isProject">isProject</a></code> | Test whether the given construct is a project. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.of">of</a></code> | Find the closest ancestor project for given construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@wbce/projen-d9.DirectusProject.isConstruct"></a>
+
+```typescript
+import { DirectusProject } from '@wbce/projen-d9'
 
 DirectusProject.isConstruct(x: any)
 ```
@@ -659,7 +2201,7 @@ library can be accidentally installed, and `instanceof` will behave
 unpredictably. It is safest to avoid using `instanceof`, and using
 this type-testing method instead.
 
-###### `x`<sup>Required</sup> <a name="x" id="@wbce/projen-directus.DirectusProject.isConstruct.parameter.x"></a>
+###### `x`<sup>Required</sup> <a name="x" id="@wbce/projen-d9.DirectusProject.isConstruct.parameter.x"></a>
 
 - *Type:* any
 
@@ -667,26 +2209,26 @@ Any object.
 
 ---
 
-##### `isProject` <a name="isProject" id="@wbce/projen-directus.DirectusProject.isProject"></a>
+##### ~~`isProject`~~ <a name="isProject" id="@wbce/projen-d9.DirectusProject.isProject"></a>
 
 ```typescript
-import { DirectusProject } from '@wbce/projen-directus'
+import { DirectusProject } from '@wbce/projen-d9'
 
 DirectusProject.isProject(x: any)
 ```
 
 Test whether the given construct is a project.
 
-###### `x`<sup>Required</sup> <a name="x" id="@wbce/projen-directus.DirectusProject.isProject.parameter.x"></a>
+###### `x`<sup>Required</sup> <a name="x" id="@wbce/projen-d9.DirectusProject.isProject.parameter.x"></a>
 
 - *Type:* any
 
 ---
 
-##### `of` <a name="of" id="@wbce/projen-directus.DirectusProject.of"></a>
+##### ~~`of`~~ <a name="of" id="@wbce/projen-d9.DirectusProject.of"></a>
 
 ```typescript
-import { DirectusProject } from '@wbce/projen-directus'
+import { DirectusProject } from '@wbce/projen-d9'
 
 DirectusProject.of(construct: IConstruct)
 ```
@@ -695,7 +2237,7 @@ Find the closest ancestor project for given construct.
 
 When given a project, this it the project itself.
 
-###### `construct`<sup>Required</sup> <a name="construct" id="@wbce/projen-directus.DirectusProject.of.parameter.construct"></a>
+###### `construct`<sup>Required</sup> <a name="construct" id="@wbce/projen-d9.DirectusProject.of.parameter.construct"></a>
 
 - *Type:* constructs.IConstruct
 
@@ -705,73 +2247,75 @@ When given a project, this it the project itself.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.buildTask">buildTask</a></code> | <code>projen.Task</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.compileTask">compileTask</a></code> | <code>projen.Task</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.components">components</a></code> | <code>projen.Component[]</code> | Returns all the components within this project. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.deps">deps</a></code> | <code>projen.Dependencies</code> | Project dependencies. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.ejected">ejected</a></code> | <code>boolean</code> | Whether or not the project is being ejected. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.files">files</a></code> | <code>projen.FileBase[]</code> | All files in this project. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.gitattributes">gitattributes</a></code> | <code>projen.GitAttributesFile</code> | The .gitattributes file for this repository. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.gitignore">gitignore</a></code> | <code>projen.IgnoreFile</code> | .gitignore. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.logger">logger</a></code> | <code>projen.Logger</code> | Logging utilities. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.name">name</a></code> | <code>string</code> | Project name. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.outdir">outdir</a></code> | <code>string</code> | Absolute output directory of this project. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.packageTask">packageTask</a></code> | <code>projen.Task</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.postCompileTask">postCompileTask</a></code> | <code>projen.Task</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.preCompileTask">preCompileTask</a></code> | <code>projen.Task</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.projectBuild">projectBuild</a></code> | <code>projen.ProjectBuild</code> | Manages the build process of the project. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.projenCommand">projenCommand</a></code> | <code>string</code> | The command to use in order to run the projen CLI. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.root">root</a></code> | <code>projen.Project</code> | The root project. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.subprojects">subprojects</a></code> | <code>projen.Project[]</code> | Returns all the subprojects within this project. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.tasks">tasks</a></code> | <code>projen.Tasks</code> | Project tasks. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.testTask">testTask</a></code> | <code>projen.Task</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | This is the "default" task, the one that executes "projen". |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.initProject">initProject</a></code> | <code>projen.InitProject</code> | The options used when this project is bootstrapped via `projen new`. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.parent">parent</a></code> | <code>projen.Project</code> | A parent project. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.projectType">projectType</a></code> | <code>projen.ProjectType</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.autoApprove">autoApprove</a></code> | <code>projen.github.AutoApprove</code> | Auto approve set up for this project. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.devContainer">devContainer</a></code> | <code>projen.vscode.DevContainer</code> | Access for .devcontainer.json (used for GitHub Codespaces). |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.github">github</a></code> | <code>projen.github.GitHub</code> | Access all github components. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.gitpod">gitpod</a></code> | <code>projen.Gitpod</code> | Access for Gitpod. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.vscode">vscode</a></code> | <code>projen.vscode.VsCode</code> | Access all VSCode components. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | The build output directory. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.artifactsJavascriptDirectory">artifactsJavascriptDirectory</a></code> | <code>string</code> | The location of the npm tarball after build (`${artifactsDirectory}/js`). |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.bundler">bundler</a></code> | <code>projen.javascript.Bundler</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.entrypoint">entrypoint</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.manifest">manifest</a></code> | <code>any</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.npmrc">npmrc</a></code> | <code>projen.javascript.NpmConfig</code> | The .npmrc file. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.package">package</a></code> | <code>projen.javascript.NodePackage</code> | API for managing the node package. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The package manager to use. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.runScriptCommand">runScriptCommand</a></code> | <code>string</code> | The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager). |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.autoMerge">autoMerge</a></code> | <code>projen.github.AutoMerge</code> | Component that sets up mergify for merging approved pull requests. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.biome">biome</a></code> | <code>projen.javascript.Biome</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.buildWorkflow">buildWorkflow</a></code> | <code>projen.build.BuildWorkflow</code> | The PR build GitHub workflow. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.buildWorkflowJobId">buildWorkflowJobId</a></code> | <code>string</code> | The job ID of the build workflow. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.jest">jest</a></code> | <code>projen.javascript.Jest</code> | The Jest configuration (if enabled). |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.maxNodeVersion">maxNodeVersion</a></code> | <code>string</code> | Maximum node version supported by this package. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.minNodeVersion">minNodeVersion</a></code> | <code>string</code> | The minimum node version required by this package to function. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.npmignore">npmignore</a></code> | <code>projen.IgnoreFile</code> | The .npmignore file. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.prettier">prettier</a></code> | <code>projen.javascript.Prettier</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.publisher">publisher</a></code> | <code>projen.release.Publisher</code> | Package publisher. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.release">release</a></code> | <code>projen.release.Release</code> | Release management. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.upgradeWorkflow">upgradeWorkflow</a></code> | <code>projen.javascript.UpgradeDependencies</code> | The upgrade workflow. |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.githubConfig">githubConfig</a></code> | <code>@wbce/projen-shared.GitHubConfig</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.applySchemaTask">applySchemaTask</a></code> | <code>projen.Task</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.buildExtensionTask">buildExtensionTask</a></code> | <code>projen.Task</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.cacheService">cacheService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.databaseService">databaseService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.directusService">directusService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.dockerComposeFile">dockerComposeFile</a></code> | <code>projen.DockerCompose</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.dockerfile">dockerfile</a></code> | <code>@wbce/projen-shared.Dockerfile</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.extensionFolder">extensionFolder</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.extensions">extensions</a></code> | <code>@wbce/projen-directus-extension.ExtensionFolder</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.buildTask">buildTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.compileTask">compileTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.components">components</a></code> | <code>projen.Component[]</code> | Returns all the components within this project. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.deps">deps</a></code> | <code>projen.Dependencies</code> | Project dependencies. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.ejected">ejected</a></code> | <code>boolean</code> | Whether or not the project is being ejected. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.files">files</a></code> | <code>projen.FileBase[]</code> | All files in this project. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.gitattributes">gitattributes</a></code> | <code>projen.GitAttributesFile</code> | The .gitattributes file for this repository. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.gitignore">gitignore</a></code> | <code>projen.IgnoreFile</code> | .gitignore. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.logger">logger</a></code> | <code>projen.Logger</code> | Logging utilities. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.name">name</a></code> | <code>string</code> | Project name. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.outdir">outdir</a></code> | <code>string</code> | Absolute output directory of this project. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.packageTask">packageTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.postCompileTask">postCompileTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.preCompileTask">preCompileTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.projectBuild">projectBuild</a></code> | <code>projen.ProjectBuild</code> | Manages the build process of the project. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.projenCommand">projenCommand</a></code> | <code>string</code> | The command to use in order to run the projen CLI. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.root">root</a></code> | <code>projen.Project</code> | The root project. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.subprojects">subprojects</a></code> | <code>projen.Project[]</code> | Returns all the subprojects within this project. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.tasks">tasks</a></code> | <code>projen.Tasks</code> | Project tasks. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.testTask">testTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | This is the "default" task, the one that executes "projen". |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.initProject">initProject</a></code> | <code>projen.InitProject</code> | The options used when this project is bootstrapped via `projen new`. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.parent">parent</a></code> | <code>projen.Project</code> | A parent project. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.projectType">projectType</a></code> | <code>projen.ProjectType</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.autoApprove">autoApprove</a></code> | <code>projen.github.AutoApprove</code> | Auto approve set up for this project. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.devContainer">devContainer</a></code> | <code>projen.vscode.DevContainer</code> | Access for .devcontainer.json (used for GitHub Codespaces). |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.github">github</a></code> | <code>projen.github.GitHub</code> | Access all github components. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.gitpod">gitpod</a></code> | <code>projen.Gitpod</code> | Access for Gitpod. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.vscode">vscode</a></code> | <code>projen.vscode.VsCode</code> | Access all VSCode components. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | The build output directory. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.artifactsJavascriptDirectory">artifactsJavascriptDirectory</a></code> | <code>string</code> | The location of the npm tarball after build (`${artifactsDirectory}/js`). |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.bundler">bundler</a></code> | <code>projen.javascript.Bundler</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.entrypoint">entrypoint</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.manifest">manifest</a></code> | <code>any</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.npmrc">npmrc</a></code> | <code>projen.javascript.NpmConfig</code> | The .npmrc file. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.package">package</a></code> | <code>projen.javascript.NodePackage</code> | API for managing the node package. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The package manager to use. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.runScriptCommand">runScriptCommand</a></code> | <code>string</code> | The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager). |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.autoMerge">autoMerge</a></code> | <code>projen.github.AutoMerge</code> | Component that sets up mergify for merging approved pull requests. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.biome">biome</a></code> | <code>projen.javascript.Biome</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.buildWorkflow">buildWorkflow</a></code> | <code>projen.build.BuildWorkflow</code> | The PR build GitHub workflow. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.buildWorkflowJobId">buildWorkflowJobId</a></code> | <code>string</code> | The job ID of the build workflow. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.jest">jest</a></code> | <code>projen.javascript.Jest</code> | The Jest configuration (if enabled). |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.maxNodeVersion">maxNodeVersion</a></code> | <code>string</code> | Maximum node version supported by this package. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.minNodeVersion">minNodeVersion</a></code> | <code>string</code> | The minimum node version required by this package to function. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.npmignore">npmignore</a></code> | <code>projen.IgnoreFile</code> | The .npmignore file. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.prettier">prettier</a></code> | <code>projen.javascript.Prettier</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.publisher">publisher</a></code> | <code>projen.release.Publisher</code> | Package publisher. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.release">release</a></code> | <code>projen.release.Release</code> | Release management. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.upgradeWorkflow">upgradeWorkflow</a></code> | <code>projen.javascript.UpgradeDependencies</code> | The upgrade workflow. |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.githubConfig">githubConfig</a></code> | <code>@wbce/projen-shared.GitHubConfig</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.applySchemaTask">applySchemaTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.buildExtensionTask">buildExtensionTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.cacheService">cacheService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.databaseService">databaseService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.directusService">directusService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.dockerComposeFile">dockerComposeFile</a></code> | <code>projen.DockerCompose</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.dockerfile">dockerfile</a></code> | <code>@wbce/projen-shared.Dockerfile</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.extensionFolder">extensionFolder</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.extensions">extensions</a></code> | <code>@wbce/projen-d9-extension.ExtensionFolder</code> | *No description.* |
 
 ---
 
-##### `node`<sup>Required</sup> <a name="node" id="@wbce/projen-directus.DirectusProject.property.node"></a>
+##### ~~`node`~~<sup>Required</sup> <a name="node" id="@wbce/projen-d9.DirectusProject.property.node"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly node: Node;
@@ -783,7 +2327,9 @@ The tree node.
 
 ---
 
-##### `buildTask`<sup>Required</sup> <a name="buildTask" id="@wbce/projen-directus.DirectusProject.property.buildTask"></a>
+##### ~~`buildTask`~~<sup>Required</sup> <a name="buildTask" id="@wbce/projen-d9.DirectusProject.property.buildTask"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly buildTask: Task;
@@ -793,7 +2339,9 @@ public readonly buildTask: Task;
 
 ---
 
-##### `commitGenerated`<sup>Required</sup> <a name="commitGenerated" id="@wbce/projen-directus.DirectusProject.property.commitGenerated"></a>
+##### ~~`commitGenerated`~~<sup>Required</sup> <a name="commitGenerated" id="@wbce/projen-d9.DirectusProject.property.commitGenerated"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly commitGenerated: boolean;
@@ -805,7 +2353,9 @@ Whether to commit the managed files by default.
 
 ---
 
-##### `compileTask`<sup>Required</sup> <a name="compileTask" id="@wbce/projen-directus.DirectusProject.property.compileTask"></a>
+##### ~~`compileTask`~~<sup>Required</sup> <a name="compileTask" id="@wbce/projen-d9.DirectusProject.property.compileTask"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly compileTask: Task;
@@ -815,7 +2365,9 @@ public readonly compileTask: Task;
 
 ---
 
-##### `components`<sup>Required</sup> <a name="components" id="@wbce/projen-directus.DirectusProject.property.components"></a>
+##### ~~`components`~~<sup>Required</sup> <a name="components" id="@wbce/projen-d9.DirectusProject.property.components"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly components: Component[];
@@ -827,7 +2379,9 @@ Returns all the components within this project.
 
 ---
 
-##### `deps`<sup>Required</sup> <a name="deps" id="@wbce/projen-directus.DirectusProject.property.deps"></a>
+##### ~~`deps`~~<sup>Required</sup> <a name="deps" id="@wbce/projen-d9.DirectusProject.property.deps"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly deps: Dependencies;
@@ -839,7 +2393,9 @@ Project dependencies.
 
 ---
 
-##### `ejected`<sup>Required</sup> <a name="ejected" id="@wbce/projen-directus.DirectusProject.property.ejected"></a>
+##### ~~`ejected`~~<sup>Required</sup> <a name="ejected" id="@wbce/projen-d9.DirectusProject.property.ejected"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly ejected: boolean;
@@ -851,7 +2407,9 @@ Whether or not the project is being ejected.
 
 ---
 
-##### `files`<sup>Required</sup> <a name="files" id="@wbce/projen-directus.DirectusProject.property.files"></a>
+##### ~~`files`~~<sup>Required</sup> <a name="files" id="@wbce/projen-d9.DirectusProject.property.files"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly files: FileBase[];
@@ -863,7 +2421,9 @@ All files in this project.
 
 ---
 
-##### `gitattributes`<sup>Required</sup> <a name="gitattributes" id="@wbce/projen-directus.DirectusProject.property.gitattributes"></a>
+##### ~~`gitattributes`~~<sup>Required</sup> <a name="gitattributes" id="@wbce/projen-d9.DirectusProject.property.gitattributes"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly gitattributes: GitAttributesFile;
@@ -875,7 +2435,9 @@ The .gitattributes file for this repository.
 
 ---
 
-##### `gitignore`<sup>Required</sup> <a name="gitignore" id="@wbce/projen-directus.DirectusProject.property.gitignore"></a>
+##### ~~`gitignore`~~<sup>Required</sup> <a name="gitignore" id="@wbce/projen-d9.DirectusProject.property.gitignore"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly gitignore: IgnoreFile;
@@ -887,7 +2449,9 @@ public readonly gitignore: IgnoreFile;
 
 ---
 
-##### `logger`<sup>Required</sup> <a name="logger" id="@wbce/projen-directus.DirectusProject.property.logger"></a>
+##### ~~`logger`~~<sup>Required</sup> <a name="logger" id="@wbce/projen-d9.DirectusProject.property.logger"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly logger: Logger;
@@ -899,7 +2463,9 @@ Logging utilities.
 
 ---
 
-##### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-directus.DirectusProject.property.name"></a>
+##### ~~`name`~~<sup>Required</sup> <a name="name" id="@wbce/projen-d9.DirectusProject.property.name"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly name: string;
@@ -911,7 +2477,9 @@ Project name.
 
 ---
 
-##### `outdir`<sup>Required</sup> <a name="outdir" id="@wbce/projen-directus.DirectusProject.property.outdir"></a>
+##### ~~`outdir`~~<sup>Required</sup> <a name="outdir" id="@wbce/projen-d9.DirectusProject.property.outdir"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly outdir: string;
@@ -923,7 +2491,9 @@ Absolute output directory of this project.
 
 ---
 
-##### `packageTask`<sup>Required</sup> <a name="packageTask" id="@wbce/projen-directus.DirectusProject.property.packageTask"></a>
+##### ~~`packageTask`~~<sup>Required</sup> <a name="packageTask" id="@wbce/projen-d9.DirectusProject.property.packageTask"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly packageTask: Task;
@@ -933,7 +2503,9 @@ public readonly packageTask: Task;
 
 ---
 
-##### `postCompileTask`<sup>Required</sup> <a name="postCompileTask" id="@wbce/projen-directus.DirectusProject.property.postCompileTask"></a>
+##### ~~`postCompileTask`~~<sup>Required</sup> <a name="postCompileTask" id="@wbce/projen-d9.DirectusProject.property.postCompileTask"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly postCompileTask: Task;
@@ -943,7 +2515,9 @@ public readonly postCompileTask: Task;
 
 ---
 
-##### `preCompileTask`<sup>Required</sup> <a name="preCompileTask" id="@wbce/projen-directus.DirectusProject.property.preCompileTask"></a>
+##### ~~`preCompileTask`~~<sup>Required</sup> <a name="preCompileTask" id="@wbce/projen-d9.DirectusProject.property.preCompileTask"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly preCompileTask: Task;
@@ -953,7 +2527,9 @@ public readonly preCompileTask: Task;
 
 ---
 
-##### `projectBuild`<sup>Required</sup> <a name="projectBuild" id="@wbce/projen-directus.DirectusProject.property.projectBuild"></a>
+##### ~~`projectBuild`~~<sup>Required</sup> <a name="projectBuild" id="@wbce/projen-d9.DirectusProject.property.projectBuild"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly projectBuild: ProjectBuild;
@@ -965,7 +2541,9 @@ Manages the build process of the project.
 
 ---
 
-##### `projenCommand`<sup>Required</sup> <a name="projenCommand" id="@wbce/projen-directus.DirectusProject.property.projenCommand"></a>
+##### ~~`projenCommand`~~<sup>Required</sup> <a name="projenCommand" id="@wbce/projen-d9.DirectusProject.property.projenCommand"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly projenCommand: string;
@@ -977,7 +2555,9 @@ The command to use in order to run the projen CLI.
 
 ---
 
-##### `root`<sup>Required</sup> <a name="root" id="@wbce/projen-directus.DirectusProject.property.root"></a>
+##### ~~`root`~~<sup>Required</sup> <a name="root" id="@wbce/projen-d9.DirectusProject.property.root"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly root: Project;
@@ -989,7 +2569,9 @@ The root project.
 
 ---
 
-##### `subprojects`<sup>Required</sup> <a name="subprojects" id="@wbce/projen-directus.DirectusProject.property.subprojects"></a>
+##### ~~`subprojects`~~<sup>Required</sup> <a name="subprojects" id="@wbce/projen-d9.DirectusProject.property.subprojects"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly subprojects: Project[];
@@ -1001,7 +2583,9 @@ Returns all the subprojects within this project.
 
 ---
 
-##### `tasks`<sup>Required</sup> <a name="tasks" id="@wbce/projen-directus.DirectusProject.property.tasks"></a>
+##### ~~`tasks`~~<sup>Required</sup> <a name="tasks" id="@wbce/projen-d9.DirectusProject.property.tasks"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly tasks: Tasks;
@@ -1013,7 +2597,9 @@ Project tasks.
 
 ---
 
-##### `testTask`<sup>Required</sup> <a name="testTask" id="@wbce/projen-directus.DirectusProject.property.testTask"></a>
+##### ~~`testTask`~~<sup>Required</sup> <a name="testTask" id="@wbce/projen-d9.DirectusProject.property.testTask"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly testTask: Task;
@@ -1023,7 +2609,9 @@ public readonly testTask: Task;
 
 ---
 
-##### `defaultTask`<sup>Optional</sup> <a name="defaultTask" id="@wbce/projen-directus.DirectusProject.property.defaultTask"></a>
+##### ~~`defaultTask`~~<sup>Optional</sup> <a name="defaultTask" id="@wbce/projen-d9.DirectusProject.property.defaultTask"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly defaultTask: Task;
@@ -1038,7 +2626,9 @@ the project is being ejected.
 
 ---
 
-##### `initProject`<sup>Optional</sup> <a name="initProject" id="@wbce/projen-directus.DirectusProject.property.initProject"></a>
+##### ~~`initProject`~~<sup>Optional</sup> <a name="initProject" id="@wbce/projen-d9.DirectusProject.property.initProject"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly initProject: InitProject;
@@ -1054,7 +2644,9 @@ FQN of the project type.
 
 ---
 
-##### `parent`<sup>Optional</sup> <a name="parent" id="@wbce/projen-directus.DirectusProject.property.parent"></a>
+##### ~~`parent`~~<sup>Optional</sup> <a name="parent" id="@wbce/projen-d9.DirectusProject.property.parent"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly parent: Project;
@@ -1068,7 +2660,9 @@ If undefined, this is the root project.
 
 ---
 
-##### `projectType`<sup>Required</sup> <a name="projectType" id="@wbce/projen-directus.DirectusProject.property.projectType"></a>
+##### ~~`projectType`~~<sup>Required</sup> <a name="projectType" id="@wbce/projen-d9.DirectusProject.property.projectType"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly projectType: ProjectType;
@@ -1078,7 +2672,9 @@ public readonly projectType: ProjectType;
 
 ---
 
-##### `autoApprove`<sup>Optional</sup> <a name="autoApprove" id="@wbce/projen-directus.DirectusProject.property.autoApprove"></a>
+##### ~~`autoApprove`~~<sup>Optional</sup> <a name="autoApprove" id="@wbce/projen-d9.DirectusProject.property.autoApprove"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly autoApprove: AutoApprove;
@@ -1090,7 +2686,9 @@ Auto approve set up for this project.
 
 ---
 
-##### `devContainer`<sup>Optional</sup> <a name="devContainer" id="@wbce/projen-directus.DirectusProject.property.devContainer"></a>
+##### ~~`devContainer`~~<sup>Optional</sup> <a name="devContainer" id="@wbce/projen-d9.DirectusProject.property.devContainer"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly devContainer: DevContainer;
@@ -1104,7 +2702,9 @@ This will be `undefined` if devContainer boolean is false
 
 ---
 
-##### `github`<sup>Optional</sup> <a name="github" id="@wbce/projen-directus.DirectusProject.property.github"></a>
+##### ~~`github`~~<sup>Optional</sup> <a name="github" id="@wbce/projen-d9.DirectusProject.property.github"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly github: GitHub;
@@ -1118,7 +2718,9 @@ This will be `undefined` for subprojects.
 
 ---
 
-##### `gitpod`<sup>Optional</sup> <a name="gitpod" id="@wbce/projen-directus.DirectusProject.property.gitpod"></a>
+##### ~~`gitpod`~~<sup>Optional</sup> <a name="gitpod" id="@wbce/projen-d9.DirectusProject.property.gitpod"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly gitpod: Gitpod;
@@ -1132,7 +2734,9 @@ This will be `undefined` if gitpod boolean is false
 
 ---
 
-##### `vscode`<sup>Optional</sup> <a name="vscode" id="@wbce/projen-directus.DirectusProject.property.vscode"></a>
+##### ~~`vscode`~~<sup>Optional</sup> <a name="vscode" id="@wbce/projen-d9.DirectusProject.property.vscode"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly vscode: VsCode;
@@ -1146,7 +2750,7 @@ This will be `undefined` for subprojects.
 
 ---
 
-##### ~~`allowLibraryDependencies`~~<sup>Required</sup> <a name="allowLibraryDependencies" id="@wbce/projen-directus.DirectusProject.property.allowLibraryDependencies"></a>
+##### ~~`allowLibraryDependencies`~~<sup>Required</sup> <a name="allowLibraryDependencies" id="@wbce/projen-d9.DirectusProject.property.allowLibraryDependencies"></a>
 
 - *Deprecated:* use `package.allowLibraryDependencies`
 
@@ -1158,7 +2762,9 @@ public readonly allowLibraryDependencies: boolean;
 
 ---
 
-##### `artifactsDirectory`<sup>Required</sup> <a name="artifactsDirectory" id="@wbce/projen-directus.DirectusProject.property.artifactsDirectory"></a>
+##### ~~`artifactsDirectory`~~<sup>Required</sup> <a name="artifactsDirectory" id="@wbce/projen-d9.DirectusProject.property.artifactsDirectory"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly artifactsDirectory: string;
@@ -1174,7 +2780,9 @@ tarball will be placed under `dist/js/boom-boom-1.2.3.tg`.
 
 ---
 
-##### `artifactsJavascriptDirectory`<sup>Required</sup> <a name="artifactsJavascriptDirectory" id="@wbce/projen-directus.DirectusProject.property.artifactsJavascriptDirectory"></a>
+##### ~~`artifactsJavascriptDirectory`~~<sup>Required</sup> <a name="artifactsJavascriptDirectory" id="@wbce/projen-d9.DirectusProject.property.artifactsJavascriptDirectory"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly artifactsJavascriptDirectory: string;
@@ -1186,7 +2794,9 @@ The location of the npm tarball after build (`${artifactsDirectory}/js`).
 
 ---
 
-##### `bundler`<sup>Required</sup> <a name="bundler" id="@wbce/projen-directus.DirectusProject.property.bundler"></a>
+##### ~~`bundler`~~<sup>Required</sup> <a name="bundler" id="@wbce/projen-d9.DirectusProject.property.bundler"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly bundler: Bundler;
@@ -1196,7 +2806,7 @@ public readonly bundler: Bundler;
 
 ---
 
-##### ~~`entrypoint`~~<sup>Required</sup> <a name="entrypoint" id="@wbce/projen-directus.DirectusProject.property.entrypoint"></a>
+##### ~~`entrypoint`~~<sup>Required</sup> <a name="entrypoint" id="@wbce/projen-d9.DirectusProject.property.entrypoint"></a>
 
 - *Deprecated:* use `package.entrypoint`
 
@@ -1208,7 +2818,7 @@ public readonly entrypoint: string;
 
 ---
 
-##### ~~`manifest`~~<sup>Required</sup> <a name="manifest" id="@wbce/projen-directus.DirectusProject.property.manifest"></a>
+##### ~~`manifest`~~<sup>Required</sup> <a name="manifest" id="@wbce/projen-d9.DirectusProject.property.manifest"></a>
 
 - *Deprecated:* use `package.addField(x, y)`
 
@@ -1220,7 +2830,9 @@ public readonly manifest: any;
 
 ---
 
-##### `npmrc`<sup>Required</sup> <a name="npmrc" id="@wbce/projen-directus.DirectusProject.property.npmrc"></a>
+##### ~~`npmrc`~~<sup>Required</sup> <a name="npmrc" id="@wbce/projen-d9.DirectusProject.property.npmrc"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly npmrc: NpmConfig;
@@ -1232,7 +2844,9 @@ The .npmrc file.
 
 ---
 
-##### `package`<sup>Required</sup> <a name="package" id="@wbce/projen-directus.DirectusProject.property.package"></a>
+##### ~~`package`~~<sup>Required</sup> <a name="package" id="@wbce/projen-d9.DirectusProject.property.package"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly package: NodePackage;
@@ -1244,7 +2858,7 @@ API for managing the node package.
 
 ---
 
-##### ~~`packageManager`~~<sup>Required</sup> <a name="packageManager" id="@wbce/projen-directus.DirectusProject.property.packageManager"></a>
+##### ~~`packageManager`~~<sup>Required</sup> <a name="packageManager" id="@wbce/projen-d9.DirectusProject.property.packageManager"></a>
 
 - *Deprecated:* use `package.packageManager`
 
@@ -1258,7 +2872,9 @@ The package manager to use.
 
 ---
 
-##### `runScriptCommand`<sup>Required</sup> <a name="runScriptCommand" id="@wbce/projen-directus.DirectusProject.property.runScriptCommand"></a>
+##### ~~`runScriptCommand`~~<sup>Required</sup> <a name="runScriptCommand" id="@wbce/projen-d9.DirectusProject.property.runScriptCommand"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly runScriptCommand: string;
@@ -1270,7 +2886,9 @@ The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the p
 
 ---
 
-##### `autoMerge`<sup>Optional</sup> <a name="autoMerge" id="@wbce/projen-directus.DirectusProject.property.autoMerge"></a>
+##### ~~`autoMerge`~~<sup>Optional</sup> <a name="autoMerge" id="@wbce/projen-d9.DirectusProject.property.autoMerge"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly autoMerge: AutoMerge;
@@ -1282,7 +2900,9 @@ Component that sets up mergify for merging approved pull requests.
 
 ---
 
-##### `biome`<sup>Optional</sup> <a name="biome" id="@wbce/projen-directus.DirectusProject.property.biome"></a>
+##### ~~`biome`~~<sup>Optional</sup> <a name="biome" id="@wbce/projen-d9.DirectusProject.property.biome"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly biome: Biome;
@@ -1292,7 +2912,9 @@ public readonly biome: Biome;
 
 ---
 
-##### `buildWorkflow`<sup>Optional</sup> <a name="buildWorkflow" id="@wbce/projen-directus.DirectusProject.property.buildWorkflow"></a>
+##### ~~`buildWorkflow`~~<sup>Optional</sup> <a name="buildWorkflow" id="@wbce/projen-d9.DirectusProject.property.buildWorkflow"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly buildWorkflow: BuildWorkflow;
@@ -1306,7 +2928,9 @@ The PR build GitHub workflow.
 
 ---
 
-##### `buildWorkflowJobId`<sup>Optional</sup> <a name="buildWorkflowJobId" id="@wbce/projen-directus.DirectusProject.property.buildWorkflowJobId"></a>
+##### ~~`buildWorkflowJobId`~~<sup>Optional</sup> <a name="buildWorkflowJobId" id="@wbce/projen-d9.DirectusProject.property.buildWorkflowJobId"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly buildWorkflowJobId: string;
@@ -1318,7 +2942,9 @@ The job ID of the build workflow.
 
 ---
 
-##### `jest`<sup>Optional</sup> <a name="jest" id="@wbce/projen-directus.DirectusProject.property.jest"></a>
+##### ~~`jest`~~<sup>Optional</sup> <a name="jest" id="@wbce/projen-d9.DirectusProject.property.jest"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly jest: Jest;
@@ -1330,7 +2956,9 @@ The Jest configuration (if enabled).
 
 ---
 
-##### `maxNodeVersion`<sup>Optional</sup> <a name="maxNodeVersion" id="@wbce/projen-directus.DirectusProject.property.maxNodeVersion"></a>
+##### ~~`maxNodeVersion`~~<sup>Optional</sup> <a name="maxNodeVersion" id="@wbce/projen-d9.DirectusProject.property.maxNodeVersion"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly maxNodeVersion: string;
@@ -1344,7 +2972,9 @@ The value indicates the package is incompatible with newer versions.
 
 ---
 
-##### `minNodeVersion`<sup>Optional</sup> <a name="minNodeVersion" id="@wbce/projen-directus.DirectusProject.property.minNodeVersion"></a>
+##### ~~`minNodeVersion`~~<sup>Optional</sup> <a name="minNodeVersion" id="@wbce/projen-d9.DirectusProject.property.minNodeVersion"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly minNodeVersion: string;
@@ -1358,7 +2988,9 @@ This value indicates the package is incompatible with older versions.
 
 ---
 
-##### `npmignore`<sup>Optional</sup> <a name="npmignore" id="@wbce/projen-directus.DirectusProject.property.npmignore"></a>
+##### ~~`npmignore`~~<sup>Optional</sup> <a name="npmignore" id="@wbce/projen-d9.DirectusProject.property.npmignore"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly npmignore: IgnoreFile;
@@ -1370,7 +3002,9 @@ The .npmignore file.
 
 ---
 
-##### `prettier`<sup>Optional</sup> <a name="prettier" id="@wbce/projen-directus.DirectusProject.property.prettier"></a>
+##### ~~`prettier`~~<sup>Optional</sup> <a name="prettier" id="@wbce/projen-d9.DirectusProject.property.prettier"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly prettier: Prettier;
@@ -1380,7 +3014,7 @@ public readonly prettier: Prettier;
 
 ---
 
-##### ~~`publisher`~~<sup>Optional</sup> <a name="publisher" id="@wbce/projen-directus.DirectusProject.property.publisher"></a>
+##### ~~`publisher`~~<sup>Optional</sup> <a name="publisher" id="@wbce/projen-d9.DirectusProject.property.publisher"></a>
 
 - *Deprecated:* use `release.publisher`.
 
@@ -1397,7 +3031,9 @@ release workflow.
 
 ---
 
-##### `release`<sup>Optional</sup> <a name="release" id="@wbce/projen-directus.DirectusProject.property.release"></a>
+##### ~~`release`~~<sup>Optional</sup> <a name="release" id="@wbce/projen-d9.DirectusProject.property.release"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly release: Release;
@@ -1409,7 +3045,9 @@ Release management.
 
 ---
 
-##### `upgradeWorkflow`<sup>Optional</sup> <a name="upgradeWorkflow" id="@wbce/projen-directus.DirectusProject.property.upgradeWorkflow"></a>
+##### ~~`upgradeWorkflow`~~<sup>Optional</sup> <a name="upgradeWorkflow" id="@wbce/projen-d9.DirectusProject.property.upgradeWorkflow"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly upgradeWorkflow: UpgradeDependencies;
@@ -1421,7 +3059,9 @@ The upgrade workflow.
 
 ---
 
-##### `githubConfig`<sup>Optional</sup> <a name="githubConfig" id="@wbce/projen-directus.DirectusProject.property.githubConfig"></a>
+##### ~~`githubConfig`~~<sup>Optional</sup> <a name="githubConfig" id="@wbce/projen-d9.DirectusProject.property.githubConfig"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly githubConfig: GitHubConfig;
@@ -1431,7 +3071,9 @@ public readonly githubConfig: GitHubConfig;
 
 ---
 
-##### `applySchemaTask`<sup>Required</sup> <a name="applySchemaTask" id="@wbce/projen-directus.DirectusProject.property.applySchemaTask"></a>
+##### ~~`applySchemaTask`~~<sup>Required</sup> <a name="applySchemaTask" id="@wbce/projen-d9.DirectusProject.property.applySchemaTask"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly applySchemaTask: Task;
@@ -1441,7 +3083,9 @@ public readonly applySchemaTask: Task;
 
 ---
 
-##### `buildExtensionTask`<sup>Required</sup> <a name="buildExtensionTask" id="@wbce/projen-directus.DirectusProject.property.buildExtensionTask"></a>
+##### ~~`buildExtensionTask`~~<sup>Required</sup> <a name="buildExtensionTask" id="@wbce/projen-d9.DirectusProject.property.buildExtensionTask"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly buildExtensionTask: Task;
@@ -1451,7 +3095,9 @@ public readonly buildExtensionTask: Task;
 
 ---
 
-##### `cacheService`<sup>Required</sup> <a name="cacheService" id="@wbce/projen-directus.DirectusProject.property.cacheService"></a>
+##### ~~`cacheService`~~<sup>Required</sup> <a name="cacheService" id="@wbce/projen-d9.DirectusProject.property.cacheService"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly cacheService: DockerComposeService;
@@ -1461,7 +3107,9 @@ public readonly cacheService: DockerComposeService;
 
 ---
 
-##### `databaseService`<sup>Required</sup> <a name="databaseService" id="@wbce/projen-directus.DirectusProject.property.databaseService"></a>
+##### ~~`databaseService`~~<sup>Required</sup> <a name="databaseService" id="@wbce/projen-d9.DirectusProject.property.databaseService"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly databaseService: DockerComposeService;
@@ -1471,7 +3119,9 @@ public readonly databaseService: DockerComposeService;
 
 ---
 
-##### `directusService`<sup>Required</sup> <a name="directusService" id="@wbce/projen-directus.DirectusProject.property.directusService"></a>
+##### ~~`directusService`~~<sup>Required</sup> <a name="directusService" id="@wbce/projen-d9.DirectusProject.property.directusService"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly directusService: DockerComposeService;
@@ -1481,7 +3131,9 @@ public readonly directusService: DockerComposeService;
 
 ---
 
-##### `dockerComposeFile`<sup>Required</sup> <a name="dockerComposeFile" id="@wbce/projen-directus.DirectusProject.property.dockerComposeFile"></a>
+##### ~~`dockerComposeFile`~~<sup>Required</sup> <a name="dockerComposeFile" id="@wbce/projen-d9.DirectusProject.property.dockerComposeFile"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly dockerComposeFile: DockerCompose;
@@ -1491,7 +3143,9 @@ public readonly dockerComposeFile: DockerCompose;
 
 ---
 
-##### `dockerfile`<sup>Required</sup> <a name="dockerfile" id="@wbce/projen-directus.DirectusProject.property.dockerfile"></a>
+##### ~~`dockerfile`~~<sup>Required</sup> <a name="dockerfile" id="@wbce/projen-d9.DirectusProject.property.dockerfile"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly dockerfile: Dockerfile;
@@ -1501,7 +3155,9 @@ public readonly dockerfile: Dockerfile;
 
 ---
 
-##### `extensionFolder`<sup>Required</sup> <a name="extensionFolder" id="@wbce/projen-directus.DirectusProject.property.extensionFolder"></a>
+##### ~~`extensionFolder`~~<sup>Required</sup> <a name="extensionFolder" id="@wbce/projen-d9.DirectusProject.property.extensionFolder"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly extensionFolder: string;
@@ -1511,13 +3167,15 @@ public readonly extensionFolder: string;
 
 ---
 
-##### `extensions`<sup>Required</sup> <a name="extensions" id="@wbce/projen-directus.DirectusProject.property.extensions"></a>
+##### ~~`extensions`~~<sup>Required</sup> <a name="extensions" id="@wbce/projen-d9.DirectusProject.property.extensions"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly extensions: ExtensionFolder;
 ```
 
-- *Type:* @wbce/projen-directus-extension.ExtensionFolder
+- *Type:* @wbce/projen-d9-extension.ExtensionFolder
 
 ---
 
@@ -1525,11 +3183,13 @@ public readonly extensions: ExtensionFolder;
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@wbce/projen-directus.DirectusProject.property.DEFAULT_TASK">DEFAULT_TASK</a></code> | <code>string</code> | The name of the default task (the task executed when `projen` is run without arguments). |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.DEFAULT_TASK">DEFAULT_TASK</a></code> | <code>string</code> | The name of the default task (the task executed when `projen` is run without arguments). |
 
 ---
 
-##### `DEFAULT_TASK`<sup>Required</sup> <a name="DEFAULT_TASK" id="@wbce/projen-directus.DirectusProject.property.DEFAULT_TASK"></a>
+##### ~~`DEFAULT_TASK`~~<sup>Required</sup> <a name="DEFAULT_TASK" id="@wbce/projen-d9.DirectusProject.property.DEFAULT_TASK"></a>
+
+- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
 public readonly DEFAULT_TASK: string;
@@ -1546,183 +3206,183 @@ this task should synthesize the project files.
 
 ## Structs <a name="Structs" id="Structs"></a>
 
-### DirectusProjectOptions <a name="DirectusProjectOptions" id="@wbce/projen-directus.DirectusProjectOptions"></a>
+### D9ProjectOptions <a name="D9ProjectOptions" id="@wbce/projen-d9.D9ProjectOptions"></a>
 
-#### Initializer <a name="Initializer" id="@wbce/projen-directus.DirectusProjectOptions.Initializer"></a>
+#### Initializer <a name="Initializer" id="@wbce/projen-d9.D9ProjectOptions.Initializer"></a>
 
 ```typescript
-import { DirectusProjectOptions } from '@wbce/projen-directus'
+import { D9ProjectOptions } from '@wbce/projen-d9'
 
-const directusProjectOptions: DirectusProjectOptions = { ... }
+const d9ProjectOptions: D9ProjectOptions = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.name">name</a></code> | <code>string</code> | This is the name of your project. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.gitIgnoreOptions">gitIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .gitignore file. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.gitOptions">gitOptions</a></code> | <code>projen.GitOptions</code> | Configuration options for git. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.logging">logging</a></code> | <code>projen.LoggerOptions</code> | Configure logging options such as verbosity. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.outdir">outdir</a></code> | <code>string</code> | The root directory of the project. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.parent">parent</a></code> | <code>projen.Project</code> | The parent project, if this project is part of a bigger project. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.projectTree">projectTree</a></code> | <code>boolean</code> | Generate a project tree file (`.projen/tree.json`) that shows all components and their relationships. Useful for understanding your project structure and debugging. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.projenCommand">projenCommand</a></code> | <code>string</code> | The shell command to use in order to run the projen CLI. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.projenrcJson">projenrcJson</a></code> | <code>boolean</code> | Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.projenrcJsonOptions">projenrcJsonOptions</a></code> | <code>projen.ProjenrcJsonOptions</code> | Options for .projenrc.json. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.renovatebot">renovatebot</a></code> | <code>boolean</code> | Use renovatebot to handle dependency upgrades. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.autoApproveOptions">autoApproveOptions</a></code> | <code>projen.github.AutoApproveOptions</code> | Enable and configure the 'auto approve' workflow. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.autoMerge">autoMerge</a></code> | <code>boolean</code> | Enable automatic merging on GitHub. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.autoMergeOptions">autoMergeOptions</a></code> | <code>projen.github.AutoMergeOptions</code> | Configure options for automatic merging on GitHub. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.clobber">clobber</a></code> | <code>boolean</code> | Add a `clobber` task which resets the repo to origin. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.devContainer">devContainer</a></code> | <code>boolean</code> | Add a VSCode development environment (used for GitHub Codespaces). |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.github">github</a></code> | <code>boolean</code> | Enable GitHub integration. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.githubOptions">githubOptions</a></code> | <code>projen.github.GitHubOptions</code> | Options for GitHub integration. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.gitpod">gitpod</a></code> | <code>boolean</code> | Add a Gitpod development environment. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.mergify">mergify</a></code> | <code>boolean</code> | Whether mergify should be enabled on this repository or not. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.mergifyOptions">mergifyOptions</a></code> | <code>projen.github.MergifyOptions</code> | Options for mergify. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.projectType">projectType</a></code> | <code>projen.ProjectType</code> | Which type of project this is (library/app). |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.projenCredentials">projenCredentials</a></code> | <code>projen.github.GithubCredentials</code> | Choose a method of providing GitHub API access for projen workflows. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.projenTokenSecret">projenTokenSecret</a></code> | <code>string</code> | The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.readme">readme</a></code> | <code>projen.SampleReadmeProps</code> | The README setup. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.stale">stale</a></code> | <code>boolean</code> | Auto-close of stale issues and pull request. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.staleOptions">staleOptions</a></code> | <code>projen.github.StaleOptions</code> | Auto-close stale issues and pull requests. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.vscode">vscode</a></code> | <code>boolean</code> | Enable VSCode integration. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | Allow the project to include `peerDependencies` and `bundledDependencies`. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.authorEmail">authorEmail</a></code> | <code>string</code> | Author's e-mail. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.authorName">authorName</a></code> | <code>string</code> | Author's name. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.authorOrganization">authorOrganization</a></code> | <code>boolean</code> | Is the author an organization. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.authorUrl">authorUrl</a></code> | <code>string</code> | Author's URL / Website. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.autoDetectBin">autoDetectBin</a></code> | <code>boolean</code> | Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.bin">bin</a></code> | <code>{[ key: string ]: string}</code> | Binary programs vended with your module. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.bugsEmail">bugsEmail</a></code> | <code>string</code> | The email address to which issues should be reported. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.bugsUrl">bugsUrl</a></code> | <code>string</code> | The url to your project's issue tracker. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.bundledDeps">bundledDeps</a></code> | <code>string[]</code> | List of dependencies to bundle into this module. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.bunVersion">bunVersion</a></code> | <code>string</code> | The version of Bun to use if using Bun as a package manager. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.codeArtifactOptions">codeArtifactOptions</a></code> | <code>projen.javascript.CodeArtifactOptions</code> | Options for npm packages using AWS CodeArtifact. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | Runtime dependencies of this module. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.description">description</a></code> | <code>string</code> | The description is just a string that helps people understand the purpose of the package. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | Build dependencies for this module. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.entrypoint">entrypoint</a></code> | <code>string</code> | Module entrypoint (`main` in `package.json`). |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.homepage">homepage</a></code> | <code>string</code> | Package's Homepage / Website. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.keywords">keywords</a></code> | <code>string[]</code> | Keywords to include in `package.json`. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.license">license</a></code> | <code>string</code> | License's SPDX identifier. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.licensed">licensed</a></code> | <code>boolean</code> | Indicates if a license should be added. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.maxNodeVersion">maxNodeVersion</a></code> | <code>string</code> | The maximum node version supported by this package. Most projects should not use this option. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.minNodeVersion">minNodeVersion</a></code> | <code>string</code> | The minimum node version required by this package to function. Most projects should not use this option. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.npmAccess">npmAccess</a></code> | <code>projen.javascript.NpmAccess</code> | Access level of the npm package. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.npmProvenance">npmProvenance</a></code> | <code>boolean</code> | Should provenance statements be generated when the package is published. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.npmRegistry">npmRegistry</a></code> | <code>string</code> | The host name of the npm registry to publish to. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.npmRegistryUrl">npmRegistryUrl</a></code> | <code>string</code> | The base URL of the npm package registry. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.npmTokenSecret">npmTokenSecret</a></code> | <code>string</code> | GitHub secret which contains the NPM token to use when publishing packages. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.npmTrustedPublishing">npmTrustedPublishing</a></code> | <code>boolean</code> | Use trusted publishing for publishing to npmjs.com Needs to be pre-configured on npm.js to work. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The Node Package Manager used to execute scripts. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.packageName">packageName</a></code> | <code>string</code> | The "name" in package.json. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.peerDependencyOptions">peerDependencyOptions</a></code> | <code>projen.javascript.PeerDependencyOptions</code> | Options for `peerDeps`. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.peerDeps">peerDeps</a></code> | <code>string[]</code> | Peer dependencies for this module. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.pnpmVersion">pnpmVersion</a></code> | <code>string</code> | The version of PNPM to use if using PNPM as a package manager. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.repository">repository</a></code> | <code>string</code> | The repository is the location where the actual code for your package lives. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.repositoryDirectory">repositoryDirectory</a></code> | <code>string</code> | If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.scopedPackagesOptions">scopedPackagesOptions</a></code> | <code>projen.javascript.ScopedPackagesOptions[]</code> | Options for privately hosted scoped packages. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.scripts">scripts</a></code> | <code>{[ key: string ]: string}</code> | npm scripts to include. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.stability">stability</a></code> | <code>string</code> | Package's Stability. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.yarnBerryOptions">yarnBerryOptions</a></code> | <code>projen.javascript.YarnBerryOptions</code> | Options for Yarn Berry. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.bumpPackage">bumpPackage</a></code> | <code>string</code> | The `commit-and-tag-version` compatible package used to bump the package version, as a dependency string. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.jsiiReleaseVersion">jsiiReleaseVersion</a></code> | <code>string</code> | Version requirement of `publib` which is used to publish modules to npm. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.majorVersion">majorVersion</a></code> | <code>number</code> | Major version to release from the default branch. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.minMajorVersion">minMajorVersion</a></code> | <code>number</code> | Minimal Major version to release. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.nextVersionCommand">nextVersionCommand</a></code> | <code>string</code> | A shell command to control the next version to release. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.npmDistTag">npmDistTag</a></code> | <code>string</code> | The npmDistTag to use when publishing from the default branch. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.postBuildSteps">postBuildSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Steps to execute after build as part of the release workflow. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.prerelease">prerelease</a></code> | <code>string</code> | Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre"). |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.publishDryRun">publishDryRun</a></code> | <code>boolean</code> | Instead of actually publishing to package managers, just print the publishing command. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.publishTasks">publishTasks</a></code> | <code>boolean</code> | Define publishing tasks that can be executed manually as well as workflows. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.releasableCommits">releasableCommits</a></code> | <code>projen.ReleasableCommits</code> | Find commits that should be considered releasable Used to decide if a release is required. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.releaseBranches">releaseBranches</a></code> | <code>{[ key: string ]: projen.release.BranchOptions}</code> | Defines additional release branches. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.releaseEnvironment">releaseEnvironment</a></code> | <code>string</code> | The GitHub Actions environment used for the release. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.releaseEveryCommit">releaseEveryCommit</a></code> | <code>boolean</code> | Automatically release new versions every commit to one of branches in `releaseBranches`. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.releaseFailureIssue">releaseFailureIssue</a></code> | <code>boolean</code> | Create a github issue on every failed publishing task. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.releaseFailureIssueLabel">releaseFailureIssueLabel</a></code> | <code>string</code> | The label to apply to issues indicating publish failures. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.releaseSchedule">releaseSchedule</a></code> | <code>string</code> | CRON schedule to trigger new releases. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.releaseTagPrefix">releaseTagPrefix</a></code> | <code>string</code> | Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.releaseTrigger">releaseTrigger</a></code> | <code>projen.release.ReleaseTrigger</code> | The release trigger to use. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.releaseWorkflowEnv">releaseWorkflowEnv</a></code> | <code>{[ key: string ]: string}</code> | Build environment variables for release workflows. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.releaseWorkflowName">releaseWorkflowName</a></code> | <code>string</code> | The name of the default release workflow. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.releaseWorkflowSetupSteps">releaseWorkflowSetupSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | A set of workflow steps to execute in order to setup the workflow container. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.versionrcOptions">versionrcOptions</a></code> | <code>{[ key: string ]: any}</code> | Custom configuration used when creating changelog with commit-and-tag-version package. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.workflowContainerImage">workflowContainerImage</a></code> | <code>string</code> | Container image to use for GitHub workflows. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.workflowRunsOn">workflowRunsOn</a></code> | <code>string[]</code> | Github Runner selection labels. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.workflowRunsOnGroup">workflowRunsOnGroup</a></code> | <code>projen.GroupRunnerOptions</code> | Github Runner Group selection options. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.defaultReleaseBranch">defaultReleaseBranch</a></code> | <code>string</code> | The name of the main release branch. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | A directory which will contain build artifacts. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.auditDeps">auditDeps</a></code> | <code>boolean</code> | Run security audit on dependencies. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.auditDepsOptions">auditDepsOptions</a></code> | <code>projen.javascript.AuditOptions</code> | Security audit options. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.autoApproveUpgrades">autoApproveUpgrades</a></code> | <code>boolean</code> | Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configured). |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.biome">biome</a></code> | <code>boolean</code> | Setup Biome. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.biomeOptions">biomeOptions</a></code> | <code>projen.javascript.BiomeOptions</code> | Biome options. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.buildWorkflow">buildWorkflow</a></code> | <code>boolean</code> | Define a GitHub workflow for building PRs. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.buildWorkflowOptions">buildWorkflowOptions</a></code> | <code>projen.javascript.BuildWorkflowOptions</code> | Options for PR build workflow. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.buildWorkflowTriggers">buildWorkflowTriggers</a></code> | <code>projen.github.workflows.Triggers</code> | Build workflow triggers. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.bundlerOptions">bundlerOptions</a></code> | <code>projen.javascript.BundlerOptions</code> | Options for `Bundler`. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.checkLicenses">checkLicenses</a></code> | <code>projen.javascript.LicenseCheckerOptions</code> | Configure which licenses should be deemed acceptable for use by dependencies. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.codeCov">codeCov</a></code> | <code>boolean</code> | Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v5 By default, OIDC auth is used. Alternatively a token can be provided via `codeCovTokenSecret`. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.codeCovTokenSecret">codeCovTokenSecret</a></code> | <code>string</code> | Define the secret name for a specified https://codecov.io/ token. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.copyrightOwner">copyrightOwner</a></code> | <code>string</code> | License copyright owner. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.copyrightPeriod">copyrightPeriod</a></code> | <code>string</code> | The copyright years to put in the LICENSE file. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.dependabot">dependabot</a></code> | <code>boolean</code> | Use dependabot to handle dependency upgrades. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.dependabotOptions">dependabotOptions</a></code> | <code>projen.github.DependabotOptions</code> | Options for dependabot. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.depsUpgrade">depsUpgrade</a></code> | <code>boolean</code> | Use tasks and github workflows to handle dependency upgrades. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.depsUpgradeOptions">depsUpgradeOptions</a></code> | <code>projen.javascript.UpgradeDependenciesOptions</code> | Options for `UpgradeDependencies`. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.gitignore">gitignore</a></code> | <code>string[]</code> | Additional entries to .gitignore. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.jest">jest</a></code> | <code>boolean</code> | Setup jest unit tests. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.jestOptions">jestOptions</a></code> | <code>projen.javascript.JestOptions</code> | Jest options. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.mutableBuild">mutableBuild</a></code> | <code>boolean</code> | Automatically update files modified during builds to pull-request branches. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.npmignore">npmignore</a></code> | <code>string[]</code> | Additional entries to .npmignore. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.npmignoreEnabled">npmignoreEnabled</a></code> | <code>boolean</code> | Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.npmIgnoreOptions">npmIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .npmignore file. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.package">package</a></code> | <code>boolean</code> | Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`). |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.prettier">prettier</a></code> | <code>boolean</code> | Setup prettier. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.prettierOptions">prettierOptions</a></code> | <code>projen.javascript.PrettierOptions</code> | Prettier options. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.projenDevDependency">projenDevDependency</a></code> | <code>boolean</code> | Indicates of "projen" should be installed as a devDependency. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.projenrcJs">projenrcJs</a></code> | <code>boolean</code> | Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.projenrcJsOptions">projenrcJsOptions</a></code> | <code>projen.javascript.ProjenrcOptions</code> | Options for .projenrc.js. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.projenVersion">projenVersion</a></code> | <code>string</code> | Version of projen to install. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.pullRequestTemplate">pullRequestTemplate</a></code> | <code>boolean</code> | Include a GitHub pull request template. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.pullRequestTemplateContents">pullRequestTemplateContents</a></code> | <code>string[]</code> | The contents of the pull request template. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.release">release</a></code> | <code>boolean</code> | Add release management to this project. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.releaseToNpm">releaseToNpm</a></code> | <code>boolean</code> | Automatically release to npm when new versions are introduced. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.releaseWorkflow">releaseWorkflow</a></code> | <code>boolean</code> | DEPRECATED: renamed to `release`. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.workflowBootstrapSteps">workflowBootstrapSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Workflow steps to use in order to bootstrap this repo. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.workflowGitIdentity">workflowGitIdentity</a></code> | <code>projen.github.GitIdentity</code> | The git identity to use in workflows. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.workflowNodeVersion">workflowNodeVersion</a></code> | <code>string</code> | The node version used in GitHub Actions workflows. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.workflowPackageCache">workflowPackageCache</a></code> | <code>boolean</code> | Enable Node.js package cache in GitHub workflows. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.disableTsconfig">disableTsconfig</a></code> | <code>boolean</code> | Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler). |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.disableTsconfigDev">disableTsconfigDev</a></code> | <code>boolean</code> | Do not generate a `tsconfig.dev.json` file. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.docgen">docgen</a></code> | <code>boolean</code> | Docgen by Typedoc. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.docsDirectory">docsDirectory</a></code> | <code>string</code> | Docs directory. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.entrypointTypes">entrypointTypes</a></code> | <code>string</code> | The .d.ts file that includes the type declarations for this module. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.eslint">eslint</a></code> | <code>boolean</code> | Setup eslint. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.eslintOptions">eslintOptions</a></code> | <code>projen.javascript.EslintOptions</code> | Eslint options. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.libdir">libdir</a></code> | <code>string</code> | Typescript  artifacts output directory. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.projenrcTs">projenrcTs</a></code> | <code>boolean</code> | Use TypeScript for your projenrc file (`.projenrc.ts`). |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.projenrcTsOptions">projenrcTsOptions</a></code> | <code>projen.typescript.ProjenrcOptions</code> | Options for .projenrc.ts. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.sampleCode">sampleCode</a></code> | <code>boolean</code> | Generate one-time sample in `src/` and `test/` if there are no files there. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.srcdir">srcdir</a></code> | <code>string</code> | Typescript sources directory. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.testdir">testdir</a></code> | <code>string</code> | Jest tests directory. Tests files should be named `xxx.test.ts`. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.tsconfig">tsconfig</a></code> | <code>projen.javascript.TypescriptConfigOptions</code> | Custom TSConfig. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.tsconfigDev">tsconfigDev</a></code> | <code>projen.javascript.TypescriptConfigOptions</code> | Custom tsconfig options for the development tsconfig.json file (used for testing). |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.tsconfigDevFile">tsconfigDevFile</a></code> | <code>string</code> | The name of the development tsconfig.json file. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.tsJestOptions">tsJestOptions</a></code> | <code>projen.typescript.TsJestOptions</code> | Options for ts-jest. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.extensionsFolderName">extensionsFolderName</a></code> | <code>string</code> | The name of the extensions folder. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.githubConfig">githubConfig</a></code> | <code>boolean \| @wbce/projen-shared.GitHubConfigOptions</code> | Options for the GitHub configuration. |
-| <code><a href="#@wbce/projen-directus.DirectusProjectOptions.property.packageVersions">packageVersions</a></code> | <code><a href="#@wbce/projen-directus.PackageVersions">PackageVersions</a></code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.name">name</a></code> | <code>string</code> | This is the name of your project. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.gitIgnoreOptions">gitIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .gitignore file. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.gitOptions">gitOptions</a></code> | <code>projen.GitOptions</code> | Configuration options for git. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.logging">logging</a></code> | <code>projen.LoggerOptions</code> | Configure logging options such as verbosity. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.outdir">outdir</a></code> | <code>string</code> | The root directory of the project. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.parent">parent</a></code> | <code>projen.Project</code> | The parent project, if this project is part of a bigger project. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.projectTree">projectTree</a></code> | <code>boolean</code> | Generate a project tree file (`.projen/tree.json`) that shows all components and their relationships. Useful for understanding your project structure and debugging. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.projenCommand">projenCommand</a></code> | <code>string</code> | The shell command to use in order to run the projen CLI. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.projenrcJson">projenrcJson</a></code> | <code>boolean</code> | Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.projenrcJsonOptions">projenrcJsonOptions</a></code> | <code>projen.ProjenrcJsonOptions</code> | Options for .projenrc.json. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.renovatebot">renovatebot</a></code> | <code>boolean</code> | Use renovatebot to handle dependency upgrades. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.autoApproveOptions">autoApproveOptions</a></code> | <code>projen.github.AutoApproveOptions</code> | Enable and configure the 'auto approve' workflow. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.autoMerge">autoMerge</a></code> | <code>boolean</code> | Enable automatic merging on GitHub. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.autoMergeOptions">autoMergeOptions</a></code> | <code>projen.github.AutoMergeOptions</code> | Configure options for automatic merging on GitHub. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.clobber">clobber</a></code> | <code>boolean</code> | Add a `clobber` task which resets the repo to origin. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.devContainer">devContainer</a></code> | <code>boolean</code> | Add a VSCode development environment (used for GitHub Codespaces). |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.github">github</a></code> | <code>boolean</code> | Enable GitHub integration. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.githubOptions">githubOptions</a></code> | <code>projen.github.GitHubOptions</code> | Options for GitHub integration. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.gitpod">gitpod</a></code> | <code>boolean</code> | Add a Gitpod development environment. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.mergify">mergify</a></code> | <code>boolean</code> | Whether mergify should be enabled on this repository or not. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.mergifyOptions">mergifyOptions</a></code> | <code>projen.github.MergifyOptions</code> | Options for mergify. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.projectType">projectType</a></code> | <code>projen.ProjectType</code> | Which type of project this is (library/app). |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.projenCredentials">projenCredentials</a></code> | <code>projen.github.GithubCredentials</code> | Choose a method of providing GitHub API access for projen workflows. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.projenTokenSecret">projenTokenSecret</a></code> | <code>string</code> | The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.readme">readme</a></code> | <code>projen.SampleReadmeProps</code> | The README setup. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.stale">stale</a></code> | <code>boolean</code> | Auto-close of stale issues and pull request. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.staleOptions">staleOptions</a></code> | <code>projen.github.StaleOptions</code> | Auto-close stale issues and pull requests. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.vscode">vscode</a></code> | <code>boolean</code> | Enable VSCode integration. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | Allow the project to include `peerDependencies` and `bundledDependencies`. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.authorEmail">authorEmail</a></code> | <code>string</code> | Author's e-mail. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.authorName">authorName</a></code> | <code>string</code> | Author's name. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.authorOrganization">authorOrganization</a></code> | <code>boolean</code> | Is the author an organization. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.authorUrl">authorUrl</a></code> | <code>string</code> | Author's URL / Website. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.autoDetectBin">autoDetectBin</a></code> | <code>boolean</code> | Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.bin">bin</a></code> | <code>{[ key: string ]: string}</code> | Binary programs vended with your module. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.bugsEmail">bugsEmail</a></code> | <code>string</code> | The email address to which issues should be reported. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.bugsUrl">bugsUrl</a></code> | <code>string</code> | The url to your project's issue tracker. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.bundledDeps">bundledDeps</a></code> | <code>string[]</code> | List of dependencies to bundle into this module. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.bunVersion">bunVersion</a></code> | <code>string</code> | The version of Bun to use if using Bun as a package manager. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.codeArtifactOptions">codeArtifactOptions</a></code> | <code>projen.javascript.CodeArtifactOptions</code> | Options for npm packages using AWS CodeArtifact. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | Runtime dependencies of this module. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.description">description</a></code> | <code>string</code> | The description is just a string that helps people understand the purpose of the package. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | Build dependencies for this module. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.entrypoint">entrypoint</a></code> | <code>string</code> | Module entrypoint (`main` in `package.json`). |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.homepage">homepage</a></code> | <code>string</code> | Package's Homepage / Website. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.keywords">keywords</a></code> | <code>string[]</code> | Keywords to include in `package.json`. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.license">license</a></code> | <code>string</code> | License's SPDX identifier. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.licensed">licensed</a></code> | <code>boolean</code> | Indicates if a license should be added. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.maxNodeVersion">maxNodeVersion</a></code> | <code>string</code> | The maximum node version supported by this package. Most projects should not use this option. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.minNodeVersion">minNodeVersion</a></code> | <code>string</code> | The minimum node version required by this package to function. Most projects should not use this option. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.npmAccess">npmAccess</a></code> | <code>projen.javascript.NpmAccess</code> | Access level of the npm package. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.npmProvenance">npmProvenance</a></code> | <code>boolean</code> | Should provenance statements be generated when the package is published. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.npmRegistry">npmRegistry</a></code> | <code>string</code> | The host name of the npm registry to publish to. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.npmRegistryUrl">npmRegistryUrl</a></code> | <code>string</code> | The base URL of the npm package registry. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.npmTokenSecret">npmTokenSecret</a></code> | <code>string</code> | GitHub secret which contains the NPM token to use when publishing packages. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.npmTrustedPublishing">npmTrustedPublishing</a></code> | <code>boolean</code> | Use trusted publishing for publishing to npmjs.com Needs to be pre-configured on npm.js to work. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The Node Package Manager used to execute scripts. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.packageName">packageName</a></code> | <code>string</code> | The "name" in package.json. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.peerDependencyOptions">peerDependencyOptions</a></code> | <code>projen.javascript.PeerDependencyOptions</code> | Options for `peerDeps`. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.peerDeps">peerDeps</a></code> | <code>string[]</code> | Peer dependencies for this module. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.pnpmVersion">pnpmVersion</a></code> | <code>string</code> | The version of PNPM to use if using PNPM as a package manager. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.repository">repository</a></code> | <code>string</code> | The repository is the location where the actual code for your package lives. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.repositoryDirectory">repositoryDirectory</a></code> | <code>string</code> | If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.scopedPackagesOptions">scopedPackagesOptions</a></code> | <code>projen.javascript.ScopedPackagesOptions[]</code> | Options for privately hosted scoped packages. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.scripts">scripts</a></code> | <code>{[ key: string ]: string}</code> | npm scripts to include. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.stability">stability</a></code> | <code>string</code> | Package's Stability. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.yarnBerryOptions">yarnBerryOptions</a></code> | <code>projen.javascript.YarnBerryOptions</code> | Options for Yarn Berry. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.bumpPackage">bumpPackage</a></code> | <code>string</code> | The `commit-and-tag-version` compatible package used to bump the package version, as a dependency string. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.jsiiReleaseVersion">jsiiReleaseVersion</a></code> | <code>string</code> | Version requirement of `publib` which is used to publish modules to npm. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.majorVersion">majorVersion</a></code> | <code>number</code> | Major version to release from the default branch. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.minMajorVersion">minMajorVersion</a></code> | <code>number</code> | Minimal Major version to release. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.nextVersionCommand">nextVersionCommand</a></code> | <code>string</code> | A shell command to control the next version to release. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.npmDistTag">npmDistTag</a></code> | <code>string</code> | The npmDistTag to use when publishing from the default branch. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.postBuildSteps">postBuildSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Steps to execute after build as part of the release workflow. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.prerelease">prerelease</a></code> | <code>string</code> | Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre"). |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.publishDryRun">publishDryRun</a></code> | <code>boolean</code> | Instead of actually publishing to package managers, just print the publishing command. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.publishTasks">publishTasks</a></code> | <code>boolean</code> | Define publishing tasks that can be executed manually as well as workflows. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.releasableCommits">releasableCommits</a></code> | <code>projen.ReleasableCommits</code> | Find commits that should be considered releasable Used to decide if a release is required. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.releaseBranches">releaseBranches</a></code> | <code>{[ key: string ]: projen.release.BranchOptions}</code> | Defines additional release branches. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.releaseEnvironment">releaseEnvironment</a></code> | <code>string</code> | The GitHub Actions environment used for the release. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.releaseEveryCommit">releaseEveryCommit</a></code> | <code>boolean</code> | Automatically release new versions every commit to one of branches in `releaseBranches`. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.releaseFailureIssue">releaseFailureIssue</a></code> | <code>boolean</code> | Create a github issue on every failed publishing task. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.releaseFailureIssueLabel">releaseFailureIssueLabel</a></code> | <code>string</code> | The label to apply to issues indicating publish failures. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.releaseSchedule">releaseSchedule</a></code> | <code>string</code> | CRON schedule to trigger new releases. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.releaseTagPrefix">releaseTagPrefix</a></code> | <code>string</code> | Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.releaseTrigger">releaseTrigger</a></code> | <code>projen.release.ReleaseTrigger</code> | The release trigger to use. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.releaseWorkflowEnv">releaseWorkflowEnv</a></code> | <code>{[ key: string ]: string}</code> | Build environment variables for release workflows. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.releaseWorkflowName">releaseWorkflowName</a></code> | <code>string</code> | The name of the default release workflow. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.releaseWorkflowSetupSteps">releaseWorkflowSetupSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | A set of workflow steps to execute in order to setup the workflow container. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.versionrcOptions">versionrcOptions</a></code> | <code>{[ key: string ]: any}</code> | Custom configuration used when creating changelog with commit-and-tag-version package. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.workflowContainerImage">workflowContainerImage</a></code> | <code>string</code> | Container image to use for GitHub workflows. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.workflowRunsOn">workflowRunsOn</a></code> | <code>string[]</code> | Github Runner selection labels. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.workflowRunsOnGroup">workflowRunsOnGroup</a></code> | <code>projen.GroupRunnerOptions</code> | Github Runner Group selection options. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.defaultReleaseBranch">defaultReleaseBranch</a></code> | <code>string</code> | The name of the main release branch. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | A directory which will contain build artifacts. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.auditDeps">auditDeps</a></code> | <code>boolean</code> | Run security audit on dependencies. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.auditDepsOptions">auditDepsOptions</a></code> | <code>projen.javascript.AuditOptions</code> | Security audit options. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.autoApproveUpgrades">autoApproveUpgrades</a></code> | <code>boolean</code> | Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configured). |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.biome">biome</a></code> | <code>boolean</code> | Setup Biome. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.biomeOptions">biomeOptions</a></code> | <code>projen.javascript.BiomeOptions</code> | Biome options. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.buildWorkflow">buildWorkflow</a></code> | <code>boolean</code> | Define a GitHub workflow for building PRs. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.buildWorkflowOptions">buildWorkflowOptions</a></code> | <code>projen.javascript.BuildWorkflowOptions</code> | Options for PR build workflow. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.buildWorkflowTriggers">buildWorkflowTriggers</a></code> | <code>projen.github.workflows.Triggers</code> | Build workflow triggers. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.bundlerOptions">bundlerOptions</a></code> | <code>projen.javascript.BundlerOptions</code> | Options for `Bundler`. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.checkLicenses">checkLicenses</a></code> | <code>projen.javascript.LicenseCheckerOptions</code> | Configure which licenses should be deemed acceptable for use by dependencies. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.codeCov">codeCov</a></code> | <code>boolean</code> | Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v5 By default, OIDC auth is used. Alternatively a token can be provided via `codeCovTokenSecret`. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.codeCovTokenSecret">codeCovTokenSecret</a></code> | <code>string</code> | Define the secret name for a specified https://codecov.io/ token. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.copyrightOwner">copyrightOwner</a></code> | <code>string</code> | License copyright owner. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.copyrightPeriod">copyrightPeriod</a></code> | <code>string</code> | The copyright years to put in the LICENSE file. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.dependabot">dependabot</a></code> | <code>boolean</code> | Use dependabot to handle dependency upgrades. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.dependabotOptions">dependabotOptions</a></code> | <code>projen.github.DependabotOptions</code> | Options for dependabot. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.depsUpgrade">depsUpgrade</a></code> | <code>boolean</code> | Use tasks and github workflows to handle dependency upgrades. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.depsUpgradeOptions">depsUpgradeOptions</a></code> | <code>projen.javascript.UpgradeDependenciesOptions</code> | Options for `UpgradeDependencies`. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.gitignore">gitignore</a></code> | <code>string[]</code> | Additional entries to .gitignore. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.jest">jest</a></code> | <code>boolean</code> | Setup jest unit tests. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.jestOptions">jestOptions</a></code> | <code>projen.javascript.JestOptions</code> | Jest options. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.mutableBuild">mutableBuild</a></code> | <code>boolean</code> | Automatically update files modified during builds to pull-request branches. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.npmignore">npmignore</a></code> | <code>string[]</code> | Additional entries to .npmignore. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.npmignoreEnabled">npmignoreEnabled</a></code> | <code>boolean</code> | Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.npmIgnoreOptions">npmIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .npmignore file. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.package">package</a></code> | <code>boolean</code> | Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`). |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.prettier">prettier</a></code> | <code>boolean</code> | Setup prettier. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.prettierOptions">prettierOptions</a></code> | <code>projen.javascript.PrettierOptions</code> | Prettier options. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.projenDevDependency">projenDevDependency</a></code> | <code>boolean</code> | Indicates of "projen" should be installed as a devDependency. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.projenrcJs">projenrcJs</a></code> | <code>boolean</code> | Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.projenrcJsOptions">projenrcJsOptions</a></code> | <code>projen.javascript.ProjenrcOptions</code> | Options for .projenrc.js. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.projenVersion">projenVersion</a></code> | <code>string</code> | Version of projen to install. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.pullRequestTemplate">pullRequestTemplate</a></code> | <code>boolean</code> | Include a GitHub pull request template. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.pullRequestTemplateContents">pullRequestTemplateContents</a></code> | <code>string[]</code> | The contents of the pull request template. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.release">release</a></code> | <code>boolean</code> | Add release management to this project. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.releaseToNpm">releaseToNpm</a></code> | <code>boolean</code> | Automatically release to npm when new versions are introduced. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.releaseWorkflow">releaseWorkflow</a></code> | <code>boolean</code> | DEPRECATED: renamed to `release`. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.workflowBootstrapSteps">workflowBootstrapSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Workflow steps to use in order to bootstrap this repo. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.workflowGitIdentity">workflowGitIdentity</a></code> | <code>projen.github.GitIdentity</code> | The git identity to use in workflows. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.workflowNodeVersion">workflowNodeVersion</a></code> | <code>string</code> | The node version used in GitHub Actions workflows. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.workflowPackageCache">workflowPackageCache</a></code> | <code>boolean</code> | Enable Node.js package cache in GitHub workflows. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.disableTsconfig">disableTsconfig</a></code> | <code>boolean</code> | Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler). |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.disableTsconfigDev">disableTsconfigDev</a></code> | <code>boolean</code> | Do not generate a `tsconfig.dev.json` file. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.docgen">docgen</a></code> | <code>boolean</code> | Docgen by Typedoc. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.docsDirectory">docsDirectory</a></code> | <code>string</code> | Docs directory. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.entrypointTypes">entrypointTypes</a></code> | <code>string</code> | The .d.ts file that includes the type declarations for this module. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.eslint">eslint</a></code> | <code>boolean</code> | Setup eslint. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.eslintOptions">eslintOptions</a></code> | <code>projen.javascript.EslintOptions</code> | Eslint options. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.libdir">libdir</a></code> | <code>string</code> | Typescript  artifacts output directory. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.projenrcTs">projenrcTs</a></code> | <code>boolean</code> | Use TypeScript for your projenrc file (`.projenrc.ts`). |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.projenrcTsOptions">projenrcTsOptions</a></code> | <code>projen.typescript.ProjenrcOptions</code> | Options for .projenrc.ts. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.sampleCode">sampleCode</a></code> | <code>boolean</code> | Generate one-time sample in `src/` and `test/` if there are no files there. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.srcdir">srcdir</a></code> | <code>string</code> | Typescript sources directory. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.testdir">testdir</a></code> | <code>string</code> | Jest tests directory. Tests files should be named `xxx.test.ts`. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.tsconfig">tsconfig</a></code> | <code>projen.javascript.TypescriptConfigOptions</code> | Custom TSConfig. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.tsconfigDev">tsconfigDev</a></code> | <code>projen.javascript.TypescriptConfigOptions</code> | Custom tsconfig options for the development tsconfig.json file (used for testing). |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.tsconfigDevFile">tsconfigDevFile</a></code> | <code>string</code> | The name of the development tsconfig.json file. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.tsJestOptions">tsJestOptions</a></code> | <code>projen.typescript.TsJestOptions</code> | Options for ts-jest. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.extensionsFolderName">extensionsFolderName</a></code> | <code>string</code> | The name of the extensions folder. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.githubConfig">githubConfig</a></code> | <code>boolean \| @wbce/projen-shared.GitHubConfigOptions</code> | Options for the GitHub configuration. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.packageVersions">packageVersions</a></code> | <code><a href="#@wbce/projen-d9.PackageVersions">PackageVersions</a></code> | *No description.* |
 
 ---
 
-##### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-directus.DirectusProjectOptions.property.name"></a>
+##### `name`<sup>Required</sup> <a name="name" id="@wbce/projen-d9.D9ProjectOptions.property.name"></a>
 
 ```typescript
 public readonly name: string;
@@ -1735,7 +3395,7 @@ This is the name of your project.
 
 ---
 
-##### `commitGenerated`<sup>Optional</sup> <a name="commitGenerated" id="@wbce/projen-directus.DirectusProjectOptions.property.commitGenerated"></a>
+##### `commitGenerated`<sup>Optional</sup> <a name="commitGenerated" id="@wbce/projen-d9.D9ProjectOptions.property.commitGenerated"></a>
 
 ```typescript
 public readonly commitGenerated: boolean;
@@ -1748,7 +3408,7 @@ Whether to commit the managed files by default.
 
 ---
 
-##### `gitIgnoreOptions`<sup>Optional</sup> <a name="gitIgnoreOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.gitIgnoreOptions"></a>
+##### `gitIgnoreOptions`<sup>Optional</sup> <a name="gitIgnoreOptions" id="@wbce/projen-d9.D9ProjectOptions.property.gitIgnoreOptions"></a>
 
 ```typescript
 public readonly gitIgnoreOptions: IgnoreFileOptions;
@@ -1760,7 +3420,7 @@ Configuration options for .gitignore file.
 
 ---
 
-##### `gitOptions`<sup>Optional</sup> <a name="gitOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.gitOptions"></a>
+##### `gitOptions`<sup>Optional</sup> <a name="gitOptions" id="@wbce/projen-d9.D9ProjectOptions.property.gitOptions"></a>
 
 ```typescript
 public readonly gitOptions: GitOptions;
@@ -1772,7 +3432,7 @@ Configuration options for git.
 
 ---
 
-##### `logging`<sup>Optional</sup> <a name="logging" id="@wbce/projen-directus.DirectusProjectOptions.property.logging"></a>
+##### `logging`<sup>Optional</sup> <a name="logging" id="@wbce/projen-d9.D9ProjectOptions.property.logging"></a>
 
 ```typescript
 public readonly logging: LoggerOptions;
@@ -1785,7 +3445,7 @@ Configure logging options such as verbosity.
 
 ---
 
-##### `outdir`<sup>Optional</sup> <a name="outdir" id="@wbce/projen-directus.DirectusProjectOptions.property.outdir"></a>
+##### `outdir`<sup>Optional</sup> <a name="outdir" id="@wbce/projen-d9.D9ProjectOptions.property.outdir"></a>
 
 ```typescript
 public readonly outdir: string;
@@ -1804,7 +3464,7 @@ subprojects.
 
 ---
 
-##### `parent`<sup>Optional</sup> <a name="parent" id="@wbce/projen-directus.DirectusProjectOptions.property.parent"></a>
+##### `parent`<sup>Optional</sup> <a name="parent" id="@wbce/projen-d9.D9ProjectOptions.property.parent"></a>
 
 ```typescript
 public readonly parent: Project;
@@ -1816,7 +3476,7 @@ The parent project, if this project is part of a bigger project.
 
 ---
 
-##### `projectTree`<sup>Optional</sup> <a name="projectTree" id="@wbce/projen-directus.DirectusProjectOptions.property.projectTree"></a>
+##### `projectTree`<sup>Optional</sup> <a name="projectTree" id="@wbce/projen-d9.D9ProjectOptions.property.projectTree"></a>
 
 ```typescript
 public readonly projectTree: boolean;
@@ -1829,7 +3489,7 @@ Generate a project tree file (`.projen/tree.json`) that shows all components and
 
 ---
 
-##### `projenCommand`<sup>Optional</sup> <a name="projenCommand" id="@wbce/projen-directus.DirectusProjectOptions.property.projenCommand"></a>
+##### `projenCommand`<sup>Optional</sup> <a name="projenCommand" id="@wbce/projen-d9.D9ProjectOptions.property.projenCommand"></a>
 
 ```typescript
 public readonly projenCommand: string;
@@ -1844,7 +3504,7 @@ Can be used to customize in special environments.
 
 ---
 
-##### `projenrcJson`<sup>Optional</sup> <a name="projenrcJson" id="@wbce/projen-directus.DirectusProjectOptions.property.projenrcJson"></a>
+##### `projenrcJson`<sup>Optional</sup> <a name="projenrcJson" id="@wbce/projen-d9.D9ProjectOptions.property.projenrcJson"></a>
 
 ```typescript
 public readonly projenrcJson: boolean;
@@ -1857,7 +3517,7 @@ Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .pr
 
 ---
 
-##### `projenrcJsonOptions`<sup>Optional</sup> <a name="projenrcJsonOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.projenrcJsonOptions"></a>
+##### `projenrcJsonOptions`<sup>Optional</sup> <a name="projenrcJsonOptions" id="@wbce/projen-d9.D9ProjectOptions.property.projenrcJsonOptions"></a>
 
 ```typescript
 public readonly projenrcJsonOptions: ProjenrcJsonOptions;
@@ -1870,7 +3530,7 @@ Options for .projenrc.json.
 
 ---
 
-##### `renovatebot`<sup>Optional</sup> <a name="renovatebot" id="@wbce/projen-directus.DirectusProjectOptions.property.renovatebot"></a>
+##### `renovatebot`<sup>Optional</sup> <a name="renovatebot" id="@wbce/projen-d9.D9ProjectOptions.property.renovatebot"></a>
 
 ```typescript
 public readonly renovatebot: boolean;
@@ -1883,7 +3543,7 @@ Use renovatebot to handle dependency upgrades.
 
 ---
 
-##### `renovatebotOptions`<sup>Optional</sup> <a name="renovatebotOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.renovatebotOptions"></a>
+##### `renovatebotOptions`<sup>Optional</sup> <a name="renovatebotOptions" id="@wbce/projen-d9.D9ProjectOptions.property.renovatebotOptions"></a>
 
 ```typescript
 public readonly renovatebotOptions: RenovatebotOptions;
@@ -1896,7 +3556,7 @@ Options for renovatebot.
 
 ---
 
-##### `autoApproveOptions`<sup>Optional</sup> <a name="autoApproveOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.autoApproveOptions"></a>
+##### `autoApproveOptions`<sup>Optional</sup> <a name="autoApproveOptions" id="@wbce/projen-d9.D9ProjectOptions.property.autoApproveOptions"></a>
 
 ```typescript
 public readonly autoApproveOptions: AutoApproveOptions;
@@ -1909,7 +3569,7 @@ Enable and configure the 'auto approve' workflow.
 
 ---
 
-##### `autoMerge`<sup>Optional</sup> <a name="autoMerge" id="@wbce/projen-directus.DirectusProjectOptions.property.autoMerge"></a>
+##### `autoMerge`<sup>Optional</sup> <a name="autoMerge" id="@wbce/projen-d9.D9ProjectOptions.property.autoMerge"></a>
 
 ```typescript
 public readonly autoMerge: boolean;
@@ -1925,7 +3585,7 @@ is set to false.
 
 ---
 
-##### `autoMergeOptions`<sup>Optional</sup> <a name="autoMergeOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.autoMergeOptions"></a>
+##### `autoMergeOptions`<sup>Optional</sup> <a name="autoMergeOptions" id="@wbce/projen-d9.D9ProjectOptions.property.autoMergeOptions"></a>
 
 ```typescript
 public readonly autoMergeOptions: AutoMergeOptions;
@@ -1941,7 +3601,7 @@ Has no effect if
 
 ---
 
-##### `clobber`<sup>Optional</sup> <a name="clobber" id="@wbce/projen-directus.DirectusProjectOptions.property.clobber"></a>
+##### `clobber`<sup>Optional</sup> <a name="clobber" id="@wbce/projen-d9.D9ProjectOptions.property.clobber"></a>
 
 ```typescript
 public readonly clobber: boolean;
@@ -1954,7 +3614,7 @@ Add a `clobber` task which resets the repo to origin.
 
 ---
 
-##### `devContainer`<sup>Optional</sup> <a name="devContainer" id="@wbce/projen-directus.DirectusProjectOptions.property.devContainer"></a>
+##### `devContainer`<sup>Optional</sup> <a name="devContainer" id="@wbce/projen-d9.D9ProjectOptions.property.devContainer"></a>
 
 ```typescript
 public readonly devContainer: boolean;
@@ -1967,7 +3627,7 @@ Add a VSCode development environment (used for GitHub Codespaces).
 
 ---
 
-##### `github`<sup>Optional</sup> <a name="github" id="@wbce/projen-directus.DirectusProjectOptions.property.github"></a>
+##### `github`<sup>Optional</sup> <a name="github" id="@wbce/projen-d9.D9ProjectOptions.property.github"></a>
 
 ```typescript
 public readonly github: boolean;
@@ -1982,7 +3642,7 @@ Enabled by default for root projects. Disabled for non-root projects.
 
 ---
 
-##### `githubOptions`<sup>Optional</sup> <a name="githubOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.githubOptions"></a>
+##### `githubOptions`<sup>Optional</sup> <a name="githubOptions" id="@wbce/projen-d9.D9ProjectOptions.property.githubOptions"></a>
 
 ```typescript
 public readonly githubOptions: GitHubOptions;
@@ -1995,7 +3655,7 @@ Options for GitHub integration.
 
 ---
 
-##### `gitpod`<sup>Optional</sup> <a name="gitpod" id="@wbce/projen-directus.DirectusProjectOptions.property.gitpod"></a>
+##### `gitpod`<sup>Optional</sup> <a name="gitpod" id="@wbce/projen-d9.D9ProjectOptions.property.gitpod"></a>
 
 ```typescript
 public readonly gitpod: boolean;
@@ -2008,7 +3668,7 @@ Add a Gitpod development environment.
 
 ---
 
-##### ~~`mergify`~~<sup>Optional</sup> <a name="mergify" id="@wbce/projen-directus.DirectusProjectOptions.property.mergify"></a>
+##### ~~`mergify`~~<sup>Optional</sup> <a name="mergify" id="@wbce/projen-d9.D9ProjectOptions.property.mergify"></a>
 
 - *Deprecated:* use `githubOptions.mergify` instead
 
@@ -2023,7 +3683,7 @@ Whether mergify should be enabled on this repository or not.
 
 ---
 
-##### ~~`mergifyOptions`~~<sup>Optional</sup> <a name="mergifyOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.mergifyOptions"></a>
+##### ~~`mergifyOptions`~~<sup>Optional</sup> <a name="mergifyOptions" id="@wbce/projen-d9.D9ProjectOptions.property.mergifyOptions"></a>
 
 - *Deprecated:* use `githubOptions.mergifyOptions` instead
 
@@ -2038,7 +3698,7 @@ Options for mergify.
 
 ---
 
-##### ~~`projectType`~~<sup>Optional</sup> <a name="projectType" id="@wbce/projen-directus.DirectusProjectOptions.property.projectType"></a>
+##### ~~`projectType`~~<sup>Optional</sup> <a name="projectType" id="@wbce/projen-d9.D9ProjectOptions.property.projectType"></a>
 
 - *Deprecated:* no longer supported at the base project level
 
@@ -2053,7 +3713,7 @@ Which type of project this is (library/app).
 
 ---
 
-##### `projenCredentials`<sup>Optional</sup> <a name="projenCredentials" id="@wbce/projen-directus.DirectusProjectOptions.property.projenCredentials"></a>
+##### `projenCredentials`<sup>Optional</sup> <a name="projenCredentials" id="@wbce/projen-d9.D9ProjectOptions.property.projenCredentials"></a>
 
 ```typescript
 public readonly projenCredentials: GithubCredentials;
@@ -2066,7 +3726,7 @@ Choose a method of providing GitHub API access for projen workflows.
 
 ---
 
-##### ~~`projenTokenSecret`~~<sup>Optional</sup> <a name="projenTokenSecret" id="@wbce/projen-directus.DirectusProjectOptions.property.projenTokenSecret"></a>
+##### ~~`projenTokenSecret`~~<sup>Optional</sup> <a name="projenTokenSecret" id="@wbce/projen-d9.D9ProjectOptions.property.projenTokenSecret"></a>
 
 - *Deprecated:* use `projenCredentials`
 
@@ -2084,7 +3744,7 @@ and `packages` scope.
 
 ---
 
-##### `readme`<sup>Optional</sup> <a name="readme" id="@wbce/projen-directus.DirectusProjectOptions.property.readme"></a>
+##### `readme`<sup>Optional</sup> <a name="readme" id="@wbce/projen-d9.D9ProjectOptions.property.readme"></a>
 
 ```typescript
 public readonly readme: SampleReadmeProps;
@@ -2104,7 +3764,7 @@ The README setup.
 ```
 
 
-##### `stale`<sup>Optional</sup> <a name="stale" id="@wbce/projen-directus.DirectusProjectOptions.property.stale"></a>
+##### `stale`<sup>Optional</sup> <a name="stale" id="@wbce/projen-d9.D9ProjectOptions.property.stale"></a>
 
 ```typescript
 public readonly stale: boolean;
@@ -2119,7 +3779,7 @@ See `staleOptions` for options.
 
 ---
 
-##### `staleOptions`<sup>Optional</sup> <a name="staleOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.staleOptions"></a>
+##### `staleOptions`<sup>Optional</sup> <a name="staleOptions" id="@wbce/projen-d9.D9ProjectOptions.property.staleOptions"></a>
 
 ```typescript
 public readonly staleOptions: StaleOptions;
@@ -2134,7 +3794,7 @@ To disable set `stale` to `false`.
 
 ---
 
-##### `vscode`<sup>Optional</sup> <a name="vscode" id="@wbce/projen-directus.DirectusProjectOptions.property.vscode"></a>
+##### `vscode`<sup>Optional</sup> <a name="vscode" id="@wbce/projen-d9.D9ProjectOptions.property.vscode"></a>
 
 ```typescript
 public readonly vscode: boolean;
@@ -2149,7 +3809,7 @@ Enabled by default for root projects. Disabled for non-root projects.
 
 ---
 
-##### `allowLibraryDependencies`<sup>Optional</sup> <a name="allowLibraryDependencies" id="@wbce/projen-directus.DirectusProjectOptions.property.allowLibraryDependencies"></a>
+##### `allowLibraryDependencies`<sup>Optional</sup> <a name="allowLibraryDependencies" id="@wbce/projen-d9.D9ProjectOptions.property.allowLibraryDependencies"></a>
 
 ```typescript
 public readonly allowLibraryDependencies: boolean;
@@ -2165,7 +3825,7 @@ for specifying these.
 
 ---
 
-##### `authorEmail`<sup>Optional</sup> <a name="authorEmail" id="@wbce/projen-directus.DirectusProjectOptions.property.authorEmail"></a>
+##### `authorEmail`<sup>Optional</sup> <a name="authorEmail" id="@wbce/projen-d9.D9ProjectOptions.property.authorEmail"></a>
 
 ```typescript
 public readonly authorEmail: string;
@@ -2177,7 +3837,7 @@ Author's e-mail.
 
 ---
 
-##### `authorName`<sup>Optional</sup> <a name="authorName" id="@wbce/projen-directus.DirectusProjectOptions.property.authorName"></a>
+##### `authorName`<sup>Optional</sup> <a name="authorName" id="@wbce/projen-d9.D9ProjectOptions.property.authorName"></a>
 
 ```typescript
 public readonly authorName: string;
@@ -2189,7 +3849,7 @@ Author's name.
 
 ---
 
-##### `authorOrganization`<sup>Optional</sup> <a name="authorOrganization" id="@wbce/projen-directus.DirectusProjectOptions.property.authorOrganization"></a>
+##### `authorOrganization`<sup>Optional</sup> <a name="authorOrganization" id="@wbce/projen-d9.D9ProjectOptions.property.authorOrganization"></a>
 
 ```typescript
 public readonly authorOrganization: boolean;
@@ -2201,7 +3861,7 @@ Is the author an organization.
 
 ---
 
-##### `authorUrl`<sup>Optional</sup> <a name="authorUrl" id="@wbce/projen-directus.DirectusProjectOptions.property.authorUrl"></a>
+##### `authorUrl`<sup>Optional</sup> <a name="authorUrl" id="@wbce/projen-d9.D9ProjectOptions.property.authorUrl"></a>
 
 ```typescript
 public readonly authorUrl: string;
@@ -2213,7 +3873,7 @@ Author's URL / Website.
 
 ---
 
-##### `autoDetectBin`<sup>Optional</sup> <a name="autoDetectBin" id="@wbce/projen-directus.DirectusProjectOptions.property.autoDetectBin"></a>
+##### `autoDetectBin`<sup>Optional</sup> <a name="autoDetectBin" id="@wbce/projen-d9.D9ProjectOptions.property.autoDetectBin"></a>
 
 ```typescript
 public readonly autoDetectBin: boolean;
@@ -2226,7 +3886,7 @@ Automatically add all executables under the `bin` directory to your `package.jso
 
 ---
 
-##### `bin`<sup>Optional</sup> <a name="bin" id="@wbce/projen-directus.DirectusProjectOptions.property.bin"></a>
+##### `bin`<sup>Optional</sup> <a name="bin" id="@wbce/projen-d9.D9ProjectOptions.property.bin"></a>
 
 ```typescript
 public readonly bin: {[ key: string ]: string};
@@ -2242,7 +3902,7 @@ executable file under `bin` will automatically be added to this section.
 
 ---
 
-##### `bugsEmail`<sup>Optional</sup> <a name="bugsEmail" id="@wbce/projen-directus.DirectusProjectOptions.property.bugsEmail"></a>
+##### `bugsEmail`<sup>Optional</sup> <a name="bugsEmail" id="@wbce/projen-d9.D9ProjectOptions.property.bugsEmail"></a>
 
 ```typescript
 public readonly bugsEmail: string;
@@ -2254,7 +3914,7 @@ The email address to which issues should be reported.
 
 ---
 
-##### `bugsUrl`<sup>Optional</sup> <a name="bugsUrl" id="@wbce/projen-directus.DirectusProjectOptions.property.bugsUrl"></a>
+##### `bugsUrl`<sup>Optional</sup> <a name="bugsUrl" id="@wbce/projen-d9.D9ProjectOptions.property.bugsUrl"></a>
 
 ```typescript
 public readonly bugsUrl: string;
@@ -2266,7 +3926,7 @@ The url to your project's issue tracker.
 
 ---
 
-##### `bundledDeps`<sup>Optional</sup> <a name="bundledDeps" id="@wbce/projen-directus.DirectusProjectOptions.property.bundledDeps"></a>
+##### `bundledDeps`<sup>Optional</sup> <a name="bundledDeps" id="@wbce/projen-d9.D9ProjectOptions.property.bundledDeps"></a>
 
 ```typescript
 public readonly bundledDeps: string[];
@@ -2289,7 +3949,7 @@ this will be what you `package.json` will eventually include.
 
 ---
 
-##### `bunVersion`<sup>Optional</sup> <a name="bunVersion" id="@wbce/projen-directus.DirectusProjectOptions.property.bunVersion"></a>
+##### `bunVersion`<sup>Optional</sup> <a name="bunVersion" id="@wbce/projen-d9.D9ProjectOptions.property.bunVersion"></a>
 
 ```typescript
 public readonly bunVersion: string;
@@ -2302,7 +3962,7 @@ The version of Bun to use if using Bun as a package manager.
 
 ---
 
-##### `codeArtifactOptions`<sup>Optional</sup> <a name="codeArtifactOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.codeArtifactOptions"></a>
+##### `codeArtifactOptions`<sup>Optional</sup> <a name="codeArtifactOptions" id="@wbce/projen-d9.D9ProjectOptions.property.codeArtifactOptions"></a>
 
 ```typescript
 public readonly codeArtifactOptions: CodeArtifactOptions;
@@ -2317,7 +3977,7 @@ This is required if publishing packages to, or installing scoped packages from A
 
 ---
 
-##### `deps`<sup>Optional</sup> <a name="deps" id="@wbce/projen-directus.DirectusProjectOptions.property.deps"></a>
+##### `deps`<sup>Optional</sup> <a name="deps" id="@wbce/projen-d9.D9ProjectOptions.property.deps"></a>
 
 ```typescript
 public readonly deps: string[];
@@ -2344,7 +4004,7 @@ this will be what you `package.json` will eventually include.
 ```
 
 
-##### `description`<sup>Optional</sup> <a name="description" id="@wbce/projen-directus.DirectusProjectOptions.property.description"></a>
+##### `description`<sup>Optional</sup> <a name="description" id="@wbce/projen-d9.D9ProjectOptions.property.description"></a>
 
 ```typescript
 public readonly description: string;
@@ -2359,7 +4019,7 @@ See https://classic.yarnpkg.com/en/docs/package-json/#toc-description
 
 ---
 
-##### `devDeps`<sup>Optional</sup> <a name="devDeps" id="@wbce/projen-directus.DirectusProjectOptions.property.devDeps"></a>
+##### `devDeps`<sup>Optional</sup> <a name="devDeps" id="@wbce/projen-d9.D9ProjectOptions.property.devDeps"></a>
 
 ```typescript
 public readonly devDeps: string[];
@@ -2390,7 +4050,7 @@ this will be what you `package.json` will eventually include.
 ```
 
 
-##### `entrypoint`<sup>Optional</sup> <a name="entrypoint" id="@wbce/projen-directus.DirectusProjectOptions.property.entrypoint"></a>
+##### `entrypoint`<sup>Optional</sup> <a name="entrypoint" id="@wbce/projen-d9.D9ProjectOptions.property.entrypoint"></a>
 
 ```typescript
 public readonly entrypoint: string;
@@ -2405,7 +4065,7 @@ Set to an empty string to not include `main` in your package.json
 
 ---
 
-##### `homepage`<sup>Optional</sup> <a name="homepage" id="@wbce/projen-directus.DirectusProjectOptions.property.homepage"></a>
+##### `homepage`<sup>Optional</sup> <a name="homepage" id="@wbce/projen-d9.D9ProjectOptions.property.homepage"></a>
 
 ```typescript
 public readonly homepage: string;
@@ -2417,7 +4077,7 @@ Package's Homepage / Website.
 
 ---
 
-##### `keywords`<sup>Optional</sup> <a name="keywords" id="@wbce/projen-directus.DirectusProjectOptions.property.keywords"></a>
+##### `keywords`<sup>Optional</sup> <a name="keywords" id="@wbce/projen-d9.D9ProjectOptions.property.keywords"></a>
 
 ```typescript
 public readonly keywords: string[];
@@ -2429,7 +4089,7 @@ Keywords to include in `package.json`.
 
 ---
 
-##### `license`<sup>Optional</sup> <a name="license" id="@wbce/projen-directus.DirectusProjectOptions.property.license"></a>
+##### `license`<sup>Optional</sup> <a name="license" id="@wbce/projen-d9.D9ProjectOptions.property.license"></a>
 
 ```typescript
 public readonly license: string;
@@ -2445,7 +4105,7 @@ Use the `licensed` option if you want to no license to be specified.
 
 ---
 
-##### `licensed`<sup>Optional</sup> <a name="licensed" id="@wbce/projen-directus.DirectusProjectOptions.property.licensed"></a>
+##### `licensed`<sup>Optional</sup> <a name="licensed" id="@wbce/projen-d9.D9ProjectOptions.property.licensed"></a>
 
 ```typescript
 public readonly licensed: boolean;
@@ -2458,7 +4118,7 @@ Indicates if a license should be added.
 
 ---
 
-##### `maxNodeVersion`<sup>Optional</sup> <a name="maxNodeVersion" id="@wbce/projen-directus.DirectusProjectOptions.property.maxNodeVersion"></a>
+##### `maxNodeVersion`<sup>Optional</sup> <a name="maxNodeVersion" id="@wbce/projen-d9.D9ProjectOptions.property.maxNodeVersion"></a>
 
 ```typescript
 public readonly maxNodeVersion: string;
@@ -2477,7 +4137,7 @@ Consider this option only if your package is known to not function with newer ve
 
 ---
 
-##### `minNodeVersion`<sup>Optional</sup> <a name="minNodeVersion" id="@wbce/projen-directus.DirectusProjectOptions.property.minNodeVersion"></a>
+##### `minNodeVersion`<sup>Optional</sup> <a name="minNodeVersion" id="@wbce/projen-d9.D9ProjectOptions.property.minNodeVersion"></a>
 
 ```typescript
 public readonly minNodeVersion: string;
@@ -2500,7 +4160,7 @@ To change the node version of your CI/CD workflows, use `workflowNodeVersion`.
 
 ---
 
-##### `npmAccess`<sup>Optional</sup> <a name="npmAccess" id="@wbce/projen-directus.DirectusProjectOptions.property.npmAccess"></a>
+##### `npmAccess`<sup>Optional</sup> <a name="npmAccess" id="@wbce/projen-d9.D9ProjectOptions.property.npmAccess"></a>
 
 ```typescript
 public readonly npmAccess: NpmAccess;
@@ -2513,7 +4173,7 @@ Access level of the npm package.
 
 ---
 
-##### `npmProvenance`<sup>Optional</sup> <a name="npmProvenance" id="@wbce/projen-directus.DirectusProjectOptions.property.npmProvenance"></a>
+##### `npmProvenance`<sup>Optional</sup> <a name="npmProvenance" id="@wbce/projen-d9.D9ProjectOptions.property.npmProvenance"></a>
 
 ```typescript
 public readonly npmProvenance: boolean;
@@ -2534,7 +4194,7 @@ which is using npm internally and supports provenance statements independently o
 
 ---
 
-##### ~~`npmRegistry`~~<sup>Optional</sup> <a name="npmRegistry" id="@wbce/projen-directus.DirectusProjectOptions.property.npmRegistry"></a>
+##### ~~`npmRegistry`~~<sup>Optional</sup> <a name="npmRegistry" id="@wbce/projen-d9.D9ProjectOptions.property.npmRegistry"></a>
 
 - *Deprecated:* use `npmRegistryUrl` instead
 
@@ -2550,7 +4210,7 @@ Cannot be set together with `npmRegistryUrl`.
 
 ---
 
-##### `npmRegistryUrl`<sup>Optional</sup> <a name="npmRegistryUrl" id="@wbce/projen-directus.DirectusProjectOptions.property.npmRegistryUrl"></a>
+##### `npmRegistryUrl`<sup>Optional</sup> <a name="npmRegistryUrl" id="@wbce/projen-d9.D9ProjectOptions.property.npmRegistryUrl"></a>
 
 ```typescript
 public readonly npmRegistryUrl: string;
@@ -2565,7 +4225,7 @@ Must be a URL (e.g. start with "https://" or "http://")
 
 ---
 
-##### `npmTokenSecret`<sup>Optional</sup> <a name="npmTokenSecret" id="@wbce/projen-directus.DirectusProjectOptions.property.npmTokenSecret"></a>
+##### `npmTokenSecret`<sup>Optional</sup> <a name="npmTokenSecret" id="@wbce/projen-d9.D9ProjectOptions.property.npmTokenSecret"></a>
 
 ```typescript
 public readonly npmTokenSecret: string;
@@ -2578,7 +4238,7 @@ GitHub secret which contains the NPM token to use when publishing packages.
 
 ---
 
-##### `npmTrustedPublishing`<sup>Optional</sup> <a name="npmTrustedPublishing" id="@wbce/projen-directus.DirectusProjectOptions.property.npmTrustedPublishing"></a>
+##### `npmTrustedPublishing`<sup>Optional</sup> <a name="npmTrustedPublishing" id="@wbce/projen-d9.D9ProjectOptions.property.npmTrustedPublishing"></a>
 
 ```typescript
 public readonly npmTrustedPublishing: boolean;
@@ -2591,7 +4251,7 @@ Use trusted publishing for publishing to npmjs.com Needs to be pre-configured on
 
 ---
 
-##### `packageManager`<sup>Optional</sup> <a name="packageManager" id="@wbce/projen-directus.DirectusProjectOptions.property.packageManager"></a>
+##### `packageManager`<sup>Optional</sup> <a name="packageManager" id="@wbce/projen-d9.D9ProjectOptions.property.packageManager"></a>
 
 ```typescript
 public readonly packageManager: NodePackageManager;
@@ -2604,7 +4264,7 @@ The Node Package Manager used to execute scripts.
 
 ---
 
-##### `packageName`<sup>Optional</sup> <a name="packageName" id="@wbce/projen-directus.DirectusProjectOptions.property.packageName"></a>
+##### `packageName`<sup>Optional</sup> <a name="packageName" id="@wbce/projen-d9.D9ProjectOptions.property.packageName"></a>
 
 ```typescript
 public readonly packageName: string;
@@ -2617,7 +4277,7 @@ The "name" in package.json.
 
 ---
 
-##### `peerDependencyOptions`<sup>Optional</sup> <a name="peerDependencyOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.peerDependencyOptions"></a>
+##### `peerDependencyOptions`<sup>Optional</sup> <a name="peerDependencyOptions" id="@wbce/projen-d9.D9ProjectOptions.property.peerDependencyOptions"></a>
 
 ```typescript
 public readonly peerDependencyOptions: PeerDependencyOptions;
@@ -2629,7 +4289,7 @@ Options for `peerDeps`.
 
 ---
 
-##### `peerDeps`<sup>Optional</sup> <a name="peerDeps" id="@wbce/projen-directus.DirectusProjectOptions.property.peerDeps"></a>
+##### `peerDeps`<sup>Optional</sup> <a name="peerDeps" id="@wbce/projen-d9.D9ProjectOptions.property.peerDeps"></a>
 
 ```typescript
 public readonly peerDeps: string[];
@@ -2656,7 +4316,7 @@ test your module against the lowest peer version required.
 
 ---
 
-##### `pnpmVersion`<sup>Optional</sup> <a name="pnpmVersion" id="@wbce/projen-directus.DirectusProjectOptions.property.pnpmVersion"></a>
+##### `pnpmVersion`<sup>Optional</sup> <a name="pnpmVersion" id="@wbce/projen-d9.D9ProjectOptions.property.pnpmVersion"></a>
 
 ```typescript
 public readonly pnpmVersion: string;
@@ -2669,7 +4329,7 @@ The version of PNPM to use if using PNPM as a package manager.
 
 ---
 
-##### `repository`<sup>Optional</sup> <a name="repository" id="@wbce/projen-directus.DirectusProjectOptions.property.repository"></a>
+##### `repository`<sup>Optional</sup> <a name="repository" id="@wbce/projen-d9.D9ProjectOptions.property.repository"></a>
 
 ```typescript
 public readonly repository: string;
@@ -2683,7 +4343,7 @@ See https://classic.yarnpkg.com/en/docs/package-json/#toc-repository
 
 ---
 
-##### `repositoryDirectory`<sup>Optional</sup> <a name="repositoryDirectory" id="@wbce/projen-directus.DirectusProjectOptions.property.repositoryDirectory"></a>
+##### `repositoryDirectory`<sup>Optional</sup> <a name="repositoryDirectory" id="@wbce/projen-d9.D9ProjectOptions.property.repositoryDirectory"></a>
 
 ```typescript
 public readonly repositoryDirectory: string;
@@ -2695,7 +4355,7 @@ If the package.json for your package is not in the root directory (for example i
 
 ---
 
-##### `scopedPackagesOptions`<sup>Optional</sup> <a name="scopedPackagesOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.scopedPackagesOptions"></a>
+##### `scopedPackagesOptions`<sup>Optional</sup> <a name="scopedPackagesOptions" id="@wbce/projen-d9.D9ProjectOptions.property.scopedPackagesOptions"></a>
 
 ```typescript
 public readonly scopedPackagesOptions: ScopedPackagesOptions[];
@@ -2708,7 +4368,7 @@ Options for privately hosted scoped packages.
 
 ---
 
-##### ~~`scripts`~~<sup>Optional</sup> <a name="scripts" id="@wbce/projen-directus.DirectusProjectOptions.property.scripts"></a>
+##### ~~`scripts`~~<sup>Optional</sup> <a name="scripts" id="@wbce/projen-d9.D9ProjectOptions.property.scripts"></a>
 
 - *Deprecated:* use `project.addTask()` or `package.setScript()`
 
@@ -2727,7 +4387,7 @@ Also adds the script as a task.
 
 ---
 
-##### `stability`<sup>Optional</sup> <a name="stability" id="@wbce/projen-directus.DirectusProjectOptions.property.stability"></a>
+##### `stability`<sup>Optional</sup> <a name="stability" id="@wbce/projen-d9.D9ProjectOptions.property.stability"></a>
 
 ```typescript
 public readonly stability: string;
@@ -2739,7 +4399,7 @@ Package's Stability.
 
 ---
 
-##### `yarnBerryOptions`<sup>Optional</sup> <a name="yarnBerryOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.yarnBerryOptions"></a>
+##### `yarnBerryOptions`<sup>Optional</sup> <a name="yarnBerryOptions" id="@wbce/projen-d9.D9ProjectOptions.property.yarnBerryOptions"></a>
 
 ```typescript
 public readonly yarnBerryOptions: YarnBerryOptions;
@@ -2752,7 +4412,7 @@ Options for Yarn Berry.
 
 ---
 
-##### `bumpPackage`<sup>Optional</sup> <a name="bumpPackage" id="@wbce/projen-directus.DirectusProjectOptions.property.bumpPackage"></a>
+##### `bumpPackage`<sup>Optional</sup> <a name="bumpPackage" id="@wbce/projen-d9.D9ProjectOptions.property.bumpPackage"></a>
 
 ```typescript
 public readonly bumpPackage: string;
@@ -2767,7 +4427,7 @@ This can be any compatible package version, including the deprecated `standard-v
 
 ---
 
-##### `jsiiReleaseVersion`<sup>Optional</sup> <a name="jsiiReleaseVersion" id="@wbce/projen-directus.DirectusProjectOptions.property.jsiiReleaseVersion"></a>
+##### `jsiiReleaseVersion`<sup>Optional</sup> <a name="jsiiReleaseVersion" id="@wbce/projen-d9.D9ProjectOptions.property.jsiiReleaseVersion"></a>
 
 ```typescript
 public readonly jsiiReleaseVersion: string;
@@ -2780,7 +4440,7 @@ Version requirement of `publib` which is used to publish modules to npm.
 
 ---
 
-##### `majorVersion`<sup>Optional</sup> <a name="majorVersion" id="@wbce/projen-directus.DirectusProjectOptions.property.majorVersion"></a>
+##### `majorVersion`<sup>Optional</sup> <a name="majorVersion" id="@wbce/projen-d9.D9ProjectOptions.property.majorVersion"></a>
 
 ```typescript
 public readonly majorVersion: number;
@@ -2796,7 +4456,7 @@ If not specified, we bump the global latest version.
 
 ---
 
-##### `minMajorVersion`<sup>Optional</sup> <a name="minMajorVersion" id="@wbce/projen-directus.DirectusProjectOptions.property.minMajorVersion"></a>
+##### `minMajorVersion`<sup>Optional</sup> <a name="minMajorVersion" id="@wbce/projen-d9.D9ProjectOptions.property.minMajorVersion"></a>
 
 ```typescript
 public readonly minMajorVersion: number;
@@ -2814,7 +4474,7 @@ Can not be set together with `majorVersion`.
 
 ---
 
-##### `nextVersionCommand`<sup>Optional</sup> <a name="nextVersionCommand" id="@wbce/projen-directus.DirectusProjectOptions.property.nextVersionCommand"></a>
+##### `nextVersionCommand`<sup>Optional</sup> <a name="nextVersionCommand" id="@wbce/projen-d9.D9ProjectOptions.property.nextVersionCommand"></a>
 
 ```typescript
 public readonly nextVersionCommand: string;
@@ -2846,7 +4506,7 @@ script can be used to achieve the effects of `minMajorVersion`.
 
 ---
 
-##### `npmDistTag`<sup>Optional</sup> <a name="npmDistTag" id="@wbce/projen-directus.DirectusProjectOptions.property.npmDistTag"></a>
+##### `npmDistTag`<sup>Optional</sup> <a name="npmDistTag" id="@wbce/projen-d9.D9ProjectOptions.property.npmDistTag"></a>
 
 ```typescript
 public readonly npmDistTag: string;
@@ -2862,7 +4522,7 @@ for each branch.
 
 ---
 
-##### `postBuildSteps`<sup>Optional</sup> <a name="postBuildSteps" id="@wbce/projen-directus.DirectusProjectOptions.property.postBuildSteps"></a>
+##### `postBuildSteps`<sup>Optional</sup> <a name="postBuildSteps" id="@wbce/projen-d9.D9ProjectOptions.property.postBuildSteps"></a>
 
 ```typescript
 public readonly postBuildSteps: JobStep[];
@@ -2875,7 +4535,7 @@ Steps to execute after build as part of the release workflow.
 
 ---
 
-##### `prerelease`<sup>Optional</sup> <a name="prerelease" id="@wbce/projen-directus.DirectusProjectOptions.property.prerelease"></a>
+##### `prerelease`<sup>Optional</sup> <a name="prerelease" id="@wbce/projen-d9.D9ProjectOptions.property.prerelease"></a>
 
 ```typescript
 public readonly prerelease: string;
@@ -2888,7 +4548,7 @@ Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pr
 
 ---
 
-##### `publishDryRun`<sup>Optional</sup> <a name="publishDryRun" id="@wbce/projen-directus.DirectusProjectOptions.property.publishDryRun"></a>
+##### `publishDryRun`<sup>Optional</sup> <a name="publishDryRun" id="@wbce/projen-d9.D9ProjectOptions.property.publishDryRun"></a>
 
 ```typescript
 public readonly publishDryRun: boolean;
@@ -2901,7 +4561,7 @@ Instead of actually publishing to package managers, just print the publishing co
 
 ---
 
-##### `publishTasks`<sup>Optional</sup> <a name="publishTasks" id="@wbce/projen-directus.DirectusProjectOptions.property.publishTasks"></a>
+##### `publishTasks`<sup>Optional</sup> <a name="publishTasks" id="@wbce/projen-d9.D9ProjectOptions.property.publishTasks"></a>
 
 ```typescript
 public readonly publishTasks: boolean;
@@ -2917,7 +4577,7 @@ in order to create a publishing task for each publishing activity.
 
 ---
 
-##### `releasableCommits`<sup>Optional</sup> <a name="releasableCommits" id="@wbce/projen-directus.DirectusProjectOptions.property.releasableCommits"></a>
+##### `releasableCommits`<sup>Optional</sup> <a name="releasableCommits" id="@wbce/projen-d9.D9ProjectOptions.property.releasableCommits"></a>
 
 ```typescript
 public readonly releasableCommits: ReleasableCommits;
@@ -2930,7 +4590,7 @@ Find commits that should be considered releasable Used to decide if a release is
 
 ---
 
-##### `releaseBranches`<sup>Optional</sup> <a name="releaseBranches" id="@wbce/projen-directus.DirectusProjectOptions.property.releaseBranches"></a>
+##### `releaseBranches`<sup>Optional</sup> <a name="releaseBranches" id="@wbce/projen-d9.D9ProjectOptions.property.releaseBranches"></a>
 
 ```typescript
 public readonly releaseBranches: {[ key: string ]: BranchOptions};
@@ -2950,7 +4610,7 @@ be provided for the default branch.
 
 ---
 
-##### `releaseEnvironment`<sup>Optional</sup> <a name="releaseEnvironment" id="@wbce/projen-directus.DirectusProjectOptions.property.releaseEnvironment"></a>
+##### `releaseEnvironment`<sup>Optional</sup> <a name="releaseEnvironment" id="@wbce/projen-d9.D9ProjectOptions.property.releaseEnvironment"></a>
 
 ```typescript
 public readonly releaseEnvironment: string;
@@ -2969,7 +4629,7 @@ on a per artifact basis.
 
 ---
 
-##### ~~`releaseEveryCommit`~~<sup>Optional</sup> <a name="releaseEveryCommit" id="@wbce/projen-directus.DirectusProjectOptions.property.releaseEveryCommit"></a>
+##### ~~`releaseEveryCommit`~~<sup>Optional</sup> <a name="releaseEveryCommit" id="@wbce/projen-d9.D9ProjectOptions.property.releaseEveryCommit"></a>
 
 - *Deprecated:* Use `releaseTrigger: ReleaseTrigger.continuous()` instead
 
@@ -2984,7 +4644,7 @@ Automatically release new versions every commit to one of branches in `releaseBr
 
 ---
 
-##### `releaseFailureIssue`<sup>Optional</sup> <a name="releaseFailureIssue" id="@wbce/projen-directus.DirectusProjectOptions.property.releaseFailureIssue"></a>
+##### `releaseFailureIssue`<sup>Optional</sup> <a name="releaseFailureIssue" id="@wbce/projen-d9.D9ProjectOptions.property.releaseFailureIssue"></a>
 
 ```typescript
 public readonly releaseFailureIssue: boolean;
@@ -2997,7 +4657,7 @@ Create a github issue on every failed publishing task.
 
 ---
 
-##### `releaseFailureIssueLabel`<sup>Optional</sup> <a name="releaseFailureIssueLabel" id="@wbce/projen-directus.DirectusProjectOptions.property.releaseFailureIssueLabel"></a>
+##### `releaseFailureIssueLabel`<sup>Optional</sup> <a name="releaseFailureIssueLabel" id="@wbce/projen-d9.D9ProjectOptions.property.releaseFailureIssueLabel"></a>
 
 ```typescript
 public readonly releaseFailureIssueLabel: string;
@@ -3012,7 +4672,7 @@ Only applies if `releaseFailureIssue` is true.
 
 ---
 
-##### ~~`releaseSchedule`~~<sup>Optional</sup> <a name="releaseSchedule" id="@wbce/projen-directus.DirectusProjectOptions.property.releaseSchedule"></a>
+##### ~~`releaseSchedule`~~<sup>Optional</sup> <a name="releaseSchedule" id="@wbce/projen-d9.D9ProjectOptions.property.releaseSchedule"></a>
 
 - *Deprecated:* Use `releaseTrigger: ReleaseTrigger.scheduled()` instead
 
@@ -3027,7 +4687,7 @@ CRON schedule to trigger new releases.
 
 ---
 
-##### `releaseTagPrefix`<sup>Optional</sup> <a name="releaseTagPrefix" id="@wbce/projen-directus.DirectusProjectOptions.property.releaseTagPrefix"></a>
+##### `releaseTagPrefix`<sup>Optional</sup> <a name="releaseTagPrefix" id="@wbce/projen-d9.D9ProjectOptions.property.releaseTagPrefix"></a>
 
 ```typescript
 public readonly releaseTagPrefix: string;
@@ -3045,7 +4705,7 @@ with the new prefix.
 
 ---
 
-##### `releaseTrigger`<sup>Optional</sup> <a name="releaseTrigger" id="@wbce/projen-directus.DirectusProjectOptions.property.releaseTrigger"></a>
+##### `releaseTrigger`<sup>Optional</sup> <a name="releaseTrigger" id="@wbce/projen-d9.D9ProjectOptions.property.releaseTrigger"></a>
 
 ```typescript
 public readonly releaseTrigger: ReleaseTrigger;
@@ -3058,7 +4718,7 @@ The release trigger to use.
 
 ---
 
-##### `releaseWorkflowEnv`<sup>Optional</sup> <a name="releaseWorkflowEnv" id="@wbce/projen-directus.DirectusProjectOptions.property.releaseWorkflowEnv"></a>
+##### `releaseWorkflowEnv`<sup>Optional</sup> <a name="releaseWorkflowEnv" id="@wbce/projen-d9.D9ProjectOptions.property.releaseWorkflowEnv"></a>
 
 ```typescript
 public readonly releaseWorkflowEnv: {[ key: string ]: string};
@@ -3071,7 +4731,7 @@ Build environment variables for release workflows.
 
 ---
 
-##### `releaseWorkflowName`<sup>Optional</sup> <a name="releaseWorkflowName" id="@wbce/projen-directus.DirectusProjectOptions.property.releaseWorkflowName"></a>
+##### `releaseWorkflowName`<sup>Optional</sup> <a name="releaseWorkflowName" id="@wbce/projen-d9.D9ProjectOptions.property.releaseWorkflowName"></a>
 
 ```typescript
 public readonly releaseWorkflowName: string;
@@ -3084,7 +4744,7 @@ The name of the default release workflow.
 
 ---
 
-##### `releaseWorkflowSetupSteps`<sup>Optional</sup> <a name="releaseWorkflowSetupSteps" id="@wbce/projen-directus.DirectusProjectOptions.property.releaseWorkflowSetupSteps"></a>
+##### `releaseWorkflowSetupSteps`<sup>Optional</sup> <a name="releaseWorkflowSetupSteps" id="@wbce/projen-d9.D9ProjectOptions.property.releaseWorkflowSetupSteps"></a>
 
 ```typescript
 public readonly releaseWorkflowSetupSteps: JobStep[];
@@ -3096,7 +4756,7 @@ A set of workflow steps to execute in order to setup the workflow container.
 
 ---
 
-##### `versionrcOptions`<sup>Optional</sup> <a name="versionrcOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.versionrcOptions"></a>
+##### `versionrcOptions`<sup>Optional</sup> <a name="versionrcOptions" id="@wbce/projen-d9.D9ProjectOptions.property.versionrcOptions"></a>
 
 ```typescript
 public readonly versionrcOptions: {[ key: string ]: any};
@@ -3111,7 +4771,7 @@ Given values either append to default configuration or overwrite values in it.
 
 ---
 
-##### `workflowContainerImage`<sup>Optional</sup> <a name="workflowContainerImage" id="@wbce/projen-directus.DirectusProjectOptions.property.workflowContainerImage"></a>
+##### `workflowContainerImage`<sup>Optional</sup> <a name="workflowContainerImage" id="@wbce/projen-d9.D9ProjectOptions.property.workflowContainerImage"></a>
 
 ```typescript
 public readonly workflowContainerImage: string;
@@ -3124,7 +4784,7 @@ Container image to use for GitHub workflows.
 
 ---
 
-##### `workflowRunsOn`<sup>Optional</sup> <a name="workflowRunsOn" id="@wbce/projen-directus.DirectusProjectOptions.property.workflowRunsOn"></a>
+##### `workflowRunsOn`<sup>Optional</sup> <a name="workflowRunsOn" id="@wbce/projen-d9.D9ProjectOptions.property.workflowRunsOn"></a>
 
 ```typescript
 public readonly workflowRunsOn: string[];
@@ -3137,7 +4797,7 @@ Github Runner selection labels.
 
 ---
 
-##### `workflowRunsOnGroup`<sup>Optional</sup> <a name="workflowRunsOnGroup" id="@wbce/projen-directus.DirectusProjectOptions.property.workflowRunsOnGroup"></a>
+##### `workflowRunsOnGroup`<sup>Optional</sup> <a name="workflowRunsOnGroup" id="@wbce/projen-d9.D9ProjectOptions.property.workflowRunsOnGroup"></a>
 
 ```typescript
 public readonly workflowRunsOnGroup: GroupRunnerOptions;
@@ -3149,7 +4809,7 @@ Github Runner Group selection options.
 
 ---
 
-##### `defaultReleaseBranch`<sup>Required</sup> <a name="defaultReleaseBranch" id="@wbce/projen-directus.DirectusProjectOptions.property.defaultReleaseBranch"></a>
+##### `defaultReleaseBranch`<sup>Required</sup> <a name="defaultReleaseBranch" id="@wbce/projen-d9.D9ProjectOptions.property.defaultReleaseBranch"></a>
 
 ```typescript
 public readonly defaultReleaseBranch: string;
@@ -3162,7 +4822,7 @@ The name of the main release branch.
 
 ---
 
-##### `artifactsDirectory`<sup>Optional</sup> <a name="artifactsDirectory" id="@wbce/projen-directus.DirectusProjectOptions.property.artifactsDirectory"></a>
+##### `artifactsDirectory`<sup>Optional</sup> <a name="artifactsDirectory" id="@wbce/projen-d9.D9ProjectOptions.property.artifactsDirectory"></a>
 
 ```typescript
 public readonly artifactsDirectory: string;
@@ -3175,7 +4835,7 @@ A directory which will contain build artifacts.
 
 ---
 
-##### `auditDeps`<sup>Optional</sup> <a name="auditDeps" id="@wbce/projen-directus.DirectusProjectOptions.property.auditDeps"></a>
+##### `auditDeps`<sup>Optional</sup> <a name="auditDeps" id="@wbce/projen-d9.D9ProjectOptions.property.auditDeps"></a>
 
 ```typescript
 public readonly auditDeps: boolean;
@@ -3192,7 +4852,7 @@ vulnerabilities or above in all dependencies (including dev dependencies).
 
 ---
 
-##### `auditDepsOptions`<sup>Optional</sup> <a name="auditDepsOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.auditDepsOptions"></a>
+##### `auditDepsOptions`<sup>Optional</sup> <a name="auditDepsOptions" id="@wbce/projen-d9.D9ProjectOptions.property.auditDepsOptions"></a>
 
 ```typescript
 public readonly auditDepsOptions: AuditOptions;
@@ -3205,7 +4865,7 @@ Security audit options.
 
 ---
 
-##### `autoApproveUpgrades`<sup>Optional</sup> <a name="autoApproveUpgrades" id="@wbce/projen-directus.DirectusProjectOptions.property.autoApproveUpgrades"></a>
+##### `autoApproveUpgrades`<sup>Optional</sup> <a name="autoApproveUpgrades" id="@wbce/projen-d9.D9ProjectOptions.property.autoApproveUpgrades"></a>
 
 ```typescript
 public readonly autoApproveUpgrades: boolean;
@@ -3220,7 +4880,7 @@ Throw if set to true but `autoApproveOptions` are not defined.
 
 ---
 
-##### `biome`<sup>Optional</sup> <a name="biome" id="@wbce/projen-directus.DirectusProjectOptions.property.biome"></a>
+##### `biome`<sup>Optional</sup> <a name="biome" id="@wbce/projen-d9.D9ProjectOptions.property.biome"></a>
 
 ```typescript
 public readonly biome: boolean;
@@ -3233,7 +4893,7 @@ Setup Biome.
 
 ---
 
-##### `biomeOptions`<sup>Optional</sup> <a name="biomeOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.biomeOptions"></a>
+##### `biomeOptions`<sup>Optional</sup> <a name="biomeOptions" id="@wbce/projen-d9.D9ProjectOptions.property.biomeOptions"></a>
 
 ```typescript
 public readonly biomeOptions: BiomeOptions;
@@ -3246,7 +4906,7 @@ Biome options.
 
 ---
 
-##### `buildWorkflow`<sup>Optional</sup> <a name="buildWorkflow" id="@wbce/projen-directus.DirectusProjectOptions.property.buildWorkflow"></a>
+##### `buildWorkflow`<sup>Optional</sup> <a name="buildWorkflow" id="@wbce/projen-d9.D9ProjectOptions.property.buildWorkflow"></a>
 
 ```typescript
 public readonly buildWorkflow: boolean;
@@ -3259,7 +4919,7 @@ Define a GitHub workflow for building PRs.
 
 ---
 
-##### `buildWorkflowOptions`<sup>Optional</sup> <a name="buildWorkflowOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.buildWorkflowOptions"></a>
+##### `buildWorkflowOptions`<sup>Optional</sup> <a name="buildWorkflowOptions" id="@wbce/projen-d9.D9ProjectOptions.property.buildWorkflowOptions"></a>
 
 ```typescript
 public readonly buildWorkflowOptions: BuildWorkflowOptions;
@@ -3271,7 +4931,7 @@ Options for PR build workflow.
 
 ---
 
-##### ~~`buildWorkflowTriggers`~~<sup>Optional</sup> <a name="buildWorkflowTriggers" id="@wbce/projen-directus.DirectusProjectOptions.property.buildWorkflowTriggers"></a>
+##### ~~`buildWorkflowTriggers`~~<sup>Optional</sup> <a name="buildWorkflowTriggers" id="@wbce/projen-d9.D9ProjectOptions.property.buildWorkflowTriggers"></a>
 
 - *Deprecated:* - Use `buildWorkflowOptions.workflowTriggers`
 
@@ -3286,7 +4946,7 @@ Build workflow triggers.
 
 ---
 
-##### `bundlerOptions`<sup>Optional</sup> <a name="bundlerOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.bundlerOptions"></a>
+##### `bundlerOptions`<sup>Optional</sup> <a name="bundlerOptions" id="@wbce/projen-d9.D9ProjectOptions.property.bundlerOptions"></a>
 
 ```typescript
 public readonly bundlerOptions: BundlerOptions;
@@ -3298,7 +4958,7 @@ Options for `Bundler`.
 
 ---
 
-##### `checkLicenses`<sup>Optional</sup> <a name="checkLicenses" id="@wbce/projen-directus.DirectusProjectOptions.property.checkLicenses"></a>
+##### `checkLicenses`<sup>Optional</sup> <a name="checkLicenses" id="@wbce/projen-d9.D9ProjectOptions.property.checkLicenses"></a>
 
 ```typescript
 public readonly checkLicenses: LicenseCheckerOptions;
@@ -3313,7 +4973,7 @@ This setting will cause the build to fail, if any prohibited or not allowed lice
 
 ---
 
-##### `codeCov`<sup>Optional</sup> <a name="codeCov" id="@wbce/projen-directus.DirectusProjectOptions.property.codeCov"></a>
+##### `codeCov`<sup>Optional</sup> <a name="codeCov" id="@wbce/projen-d9.D9ProjectOptions.property.codeCov"></a>
 
 ```typescript
 public readonly codeCov: boolean;
@@ -3326,7 +4986,7 @@ Define a GitHub workflow step for sending code coverage metrics to https://codec
 
 ---
 
-##### `codeCovTokenSecret`<sup>Optional</sup> <a name="codeCovTokenSecret" id="@wbce/projen-directus.DirectusProjectOptions.property.codeCovTokenSecret"></a>
+##### `codeCovTokenSecret`<sup>Optional</sup> <a name="codeCovTokenSecret" id="@wbce/projen-d9.D9ProjectOptions.property.codeCovTokenSecret"></a>
 
 ```typescript
 public readonly codeCovTokenSecret: string;
@@ -3339,7 +4999,7 @@ Define the secret name for a specified https://codecov.io/ token.
 
 ---
 
-##### `copyrightOwner`<sup>Optional</sup> <a name="copyrightOwner" id="@wbce/projen-directus.DirectusProjectOptions.property.copyrightOwner"></a>
+##### `copyrightOwner`<sup>Optional</sup> <a name="copyrightOwner" id="@wbce/projen-d9.D9ProjectOptions.property.copyrightOwner"></a>
 
 ```typescript
 public readonly copyrightOwner: string;
@@ -3352,7 +5012,7 @@ License copyright owner.
 
 ---
 
-##### `copyrightPeriod`<sup>Optional</sup> <a name="copyrightPeriod" id="@wbce/projen-directus.DirectusProjectOptions.property.copyrightPeriod"></a>
+##### `copyrightPeriod`<sup>Optional</sup> <a name="copyrightPeriod" id="@wbce/projen-d9.D9ProjectOptions.property.copyrightPeriod"></a>
 
 ```typescript
 public readonly copyrightPeriod: string;
@@ -3365,7 +5025,7 @@ The copyright years to put in the LICENSE file.
 
 ---
 
-##### `dependabot`<sup>Optional</sup> <a name="dependabot" id="@wbce/projen-directus.DirectusProjectOptions.property.dependabot"></a>
+##### `dependabot`<sup>Optional</sup> <a name="dependabot" id="@wbce/projen-d9.D9ProjectOptions.property.dependabot"></a>
 
 ```typescript
 public readonly dependabot: boolean;
@@ -3380,7 +5040,7 @@ Cannot be used in conjunction with `depsUpgrade`.
 
 ---
 
-##### `dependabotOptions`<sup>Optional</sup> <a name="dependabotOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.dependabotOptions"></a>
+##### `dependabotOptions`<sup>Optional</sup> <a name="dependabotOptions" id="@wbce/projen-d9.D9ProjectOptions.property.dependabotOptions"></a>
 
 ```typescript
 public readonly dependabotOptions: DependabotOptions;
@@ -3393,7 +5053,7 @@ Options for dependabot.
 
 ---
 
-##### `depsUpgrade`<sup>Optional</sup> <a name="depsUpgrade" id="@wbce/projen-directus.DirectusProjectOptions.property.depsUpgrade"></a>
+##### `depsUpgrade`<sup>Optional</sup> <a name="depsUpgrade" id="@wbce/projen-d9.D9ProjectOptions.property.depsUpgrade"></a>
 
 ```typescript
 public readonly depsUpgrade: boolean;
@@ -3408,7 +5068,7 @@ Cannot be used in conjunction with `dependabot`.
 
 ---
 
-##### `depsUpgradeOptions`<sup>Optional</sup> <a name="depsUpgradeOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.depsUpgradeOptions"></a>
+##### `depsUpgradeOptions`<sup>Optional</sup> <a name="depsUpgradeOptions" id="@wbce/projen-d9.D9ProjectOptions.property.depsUpgradeOptions"></a>
 
 ```typescript
 public readonly depsUpgradeOptions: UpgradeDependenciesOptions;
@@ -3421,7 +5081,7 @@ Options for `UpgradeDependencies`.
 
 ---
 
-##### `gitignore`<sup>Optional</sup> <a name="gitignore" id="@wbce/projen-directus.DirectusProjectOptions.property.gitignore"></a>
+##### `gitignore`<sup>Optional</sup> <a name="gitignore" id="@wbce/projen-d9.D9ProjectOptions.property.gitignore"></a>
 
 ```typescript
 public readonly gitignore: string[];
@@ -3433,7 +5093,7 @@ Additional entries to .gitignore.
 
 ---
 
-##### `jest`<sup>Optional</sup> <a name="jest" id="@wbce/projen-directus.DirectusProjectOptions.property.jest"></a>
+##### `jest`<sup>Optional</sup> <a name="jest" id="@wbce/projen-d9.D9ProjectOptions.property.jest"></a>
 
 ```typescript
 public readonly jest: boolean;
@@ -3446,7 +5106,7 @@ Setup jest unit tests.
 
 ---
 
-##### `jestOptions`<sup>Optional</sup> <a name="jestOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.jestOptions"></a>
+##### `jestOptions`<sup>Optional</sup> <a name="jestOptions" id="@wbce/projen-d9.D9ProjectOptions.property.jestOptions"></a>
 
 ```typescript
 public readonly jestOptions: JestOptions;
@@ -3459,7 +5119,7 @@ Jest options.
 
 ---
 
-##### ~~`mutableBuild`~~<sup>Optional</sup> <a name="mutableBuild" id="@wbce/projen-directus.DirectusProjectOptions.property.mutableBuild"></a>
+##### ~~`mutableBuild`~~<sup>Optional</sup> <a name="mutableBuild" id="@wbce/projen-d9.D9ProjectOptions.property.mutableBuild"></a>
 
 - *Deprecated:* - Use `buildWorkflowOptions.mutableBuild`
 
@@ -3480,7 +5140,7 @@ Implies that PR builds do not have anti-tamper checks.
 
 ---
 
-##### ~~`npmignore`~~<sup>Optional</sup> <a name="npmignore" id="@wbce/projen-directus.DirectusProjectOptions.property.npmignore"></a>
+##### ~~`npmignore`~~<sup>Optional</sup> <a name="npmignore" id="@wbce/projen-d9.D9ProjectOptions.property.npmignore"></a>
 
 - *Deprecated:* - use `project.addPackageIgnore`
 
@@ -3494,7 +5154,7 @@ Additional entries to .npmignore.
 
 ---
 
-##### `npmignoreEnabled`<sup>Optional</sup> <a name="npmignoreEnabled" id="@wbce/projen-directus.DirectusProjectOptions.property.npmignoreEnabled"></a>
+##### `npmignoreEnabled`<sup>Optional</sup> <a name="npmignoreEnabled" id="@wbce/projen-d9.D9ProjectOptions.property.npmignoreEnabled"></a>
 
 ```typescript
 public readonly npmignoreEnabled: boolean;
@@ -3507,7 +5167,7 @@ Defines an .npmignore file. Normally this is only needed for libraries that are 
 
 ---
 
-##### `npmIgnoreOptions`<sup>Optional</sup> <a name="npmIgnoreOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.npmIgnoreOptions"></a>
+##### `npmIgnoreOptions`<sup>Optional</sup> <a name="npmIgnoreOptions" id="@wbce/projen-d9.D9ProjectOptions.property.npmIgnoreOptions"></a>
 
 ```typescript
 public readonly npmIgnoreOptions: IgnoreFileOptions;
@@ -3519,7 +5179,7 @@ Configuration options for .npmignore file.
 
 ---
 
-##### `package`<sup>Optional</sup> <a name="package" id="@wbce/projen-directus.DirectusProjectOptions.property.package"></a>
+##### `package`<sup>Optional</sup> <a name="package" id="@wbce/projen-d9.D9ProjectOptions.property.package"></a>
 
 ```typescript
 public readonly package: boolean;
@@ -3532,7 +5192,7 @@ Defines a `package` task that will produce an npm tarball under the artifacts di
 
 ---
 
-##### `prettier`<sup>Optional</sup> <a name="prettier" id="@wbce/projen-directus.DirectusProjectOptions.property.prettier"></a>
+##### `prettier`<sup>Optional</sup> <a name="prettier" id="@wbce/projen-d9.D9ProjectOptions.property.prettier"></a>
 
 ```typescript
 public readonly prettier: boolean;
@@ -3545,7 +5205,7 @@ Setup prettier.
 
 ---
 
-##### `prettierOptions`<sup>Optional</sup> <a name="prettierOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.prettierOptions"></a>
+##### `prettierOptions`<sup>Optional</sup> <a name="prettierOptions" id="@wbce/projen-d9.D9ProjectOptions.property.prettierOptions"></a>
 
 ```typescript
 public readonly prettierOptions: PrettierOptions;
@@ -3558,7 +5218,7 @@ Prettier options.
 
 ---
 
-##### `projenDevDependency`<sup>Optional</sup> <a name="projenDevDependency" id="@wbce/projen-directus.DirectusProjectOptions.property.projenDevDependency"></a>
+##### `projenDevDependency`<sup>Optional</sup> <a name="projenDevDependency" id="@wbce/projen-d9.D9ProjectOptions.property.projenDevDependency"></a>
 
 ```typescript
 public readonly projenDevDependency: boolean;
@@ -3571,7 +5231,7 @@ Indicates of "projen" should be installed as a devDependency.
 
 ---
 
-##### `projenrcJs`<sup>Optional</sup> <a name="projenrcJs" id="@wbce/projen-directus.DirectusProjectOptions.property.projenrcJs"></a>
+##### `projenrcJs`<sup>Optional</sup> <a name="projenrcJs" id="@wbce/projen-d9.D9ProjectOptions.property.projenrcJs"></a>
 
 ```typescript
 public readonly projenrcJs: boolean;
@@ -3584,7 +5244,7 @@ Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable
 
 ---
 
-##### `projenrcJsOptions`<sup>Optional</sup> <a name="projenrcJsOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.projenrcJsOptions"></a>
+##### `projenrcJsOptions`<sup>Optional</sup> <a name="projenrcJsOptions" id="@wbce/projen-d9.D9ProjectOptions.property.projenrcJsOptions"></a>
 
 ```typescript
 public readonly projenrcJsOptions: ProjenrcOptions;
@@ -3597,7 +5257,7 @@ Options for .projenrc.js.
 
 ---
 
-##### `projenVersion`<sup>Optional</sup> <a name="projenVersion" id="@wbce/projen-directus.DirectusProjectOptions.property.projenVersion"></a>
+##### `projenVersion`<sup>Optional</sup> <a name="projenVersion" id="@wbce/projen-d9.D9ProjectOptions.property.projenVersion"></a>
 
 ```typescript
 public readonly projenVersion: string;
@@ -3610,7 +5270,7 @@ Version of projen to install.
 
 ---
 
-##### `pullRequestTemplate`<sup>Optional</sup> <a name="pullRequestTemplate" id="@wbce/projen-directus.DirectusProjectOptions.property.pullRequestTemplate"></a>
+##### `pullRequestTemplate`<sup>Optional</sup> <a name="pullRequestTemplate" id="@wbce/projen-d9.D9ProjectOptions.property.pullRequestTemplate"></a>
 
 ```typescript
 public readonly pullRequestTemplate: boolean;
@@ -3623,7 +5283,7 @@ Include a GitHub pull request template.
 
 ---
 
-##### `pullRequestTemplateContents`<sup>Optional</sup> <a name="pullRequestTemplateContents" id="@wbce/projen-directus.DirectusProjectOptions.property.pullRequestTemplateContents"></a>
+##### `pullRequestTemplateContents`<sup>Optional</sup> <a name="pullRequestTemplateContents" id="@wbce/projen-d9.D9ProjectOptions.property.pullRequestTemplateContents"></a>
 
 ```typescript
 public readonly pullRequestTemplateContents: string[];
@@ -3636,7 +5296,7 @@ The contents of the pull request template.
 
 ---
 
-##### `release`<sup>Optional</sup> <a name="release" id="@wbce/projen-directus.DirectusProjectOptions.property.release"></a>
+##### `release`<sup>Optional</sup> <a name="release" id="@wbce/projen-d9.D9ProjectOptions.property.release"></a>
 
 ```typescript
 public readonly release: boolean;
@@ -3649,7 +5309,7 @@ Add release management to this project.
 
 ---
 
-##### `releaseToNpm`<sup>Optional</sup> <a name="releaseToNpm" id="@wbce/projen-directus.DirectusProjectOptions.property.releaseToNpm"></a>
+##### `releaseToNpm`<sup>Optional</sup> <a name="releaseToNpm" id="@wbce/projen-d9.D9ProjectOptions.property.releaseToNpm"></a>
 
 ```typescript
 public readonly releaseToNpm: boolean;
@@ -3662,7 +5322,7 @@ Automatically release to npm when new versions are introduced.
 
 ---
 
-##### ~~`releaseWorkflow`~~<sup>Optional</sup> <a name="releaseWorkflow" id="@wbce/projen-directus.DirectusProjectOptions.property.releaseWorkflow"></a>
+##### ~~`releaseWorkflow`~~<sup>Optional</sup> <a name="releaseWorkflow" id="@wbce/projen-d9.D9ProjectOptions.property.releaseWorkflow"></a>
 
 - *Deprecated:* see `release`.
 
@@ -3677,7 +5337,7 @@ DEPRECATED: renamed to `release`.
 
 ---
 
-##### `workflowBootstrapSteps`<sup>Optional</sup> <a name="workflowBootstrapSteps" id="@wbce/projen-directus.DirectusProjectOptions.property.workflowBootstrapSteps"></a>
+##### `workflowBootstrapSteps`<sup>Optional</sup> <a name="workflowBootstrapSteps" id="@wbce/projen-d9.D9ProjectOptions.property.workflowBootstrapSteps"></a>
 
 ```typescript
 public readonly workflowBootstrapSteps: JobStep[];
@@ -3690,7 +5350,7 @@ Workflow steps to use in order to bootstrap this repo.
 
 ---
 
-##### `workflowGitIdentity`<sup>Optional</sup> <a name="workflowGitIdentity" id="@wbce/projen-directus.DirectusProjectOptions.property.workflowGitIdentity"></a>
+##### `workflowGitIdentity`<sup>Optional</sup> <a name="workflowGitIdentity" id="@wbce/projen-d9.D9ProjectOptions.property.workflowGitIdentity"></a>
 
 ```typescript
 public readonly workflowGitIdentity: GitIdentity;
@@ -3703,7 +5363,7 @@ The git identity to use in workflows.
 
 ---
 
-##### `workflowNodeVersion`<sup>Optional</sup> <a name="workflowNodeVersion" id="@wbce/projen-directus.DirectusProjectOptions.property.workflowNodeVersion"></a>
+##### `workflowNodeVersion`<sup>Optional</sup> <a name="workflowNodeVersion" id="@wbce/projen-d9.D9ProjectOptions.property.workflowNodeVersion"></a>
 
 ```typescript
 public readonly workflowNodeVersion: string;
@@ -3718,7 +5378,7 @@ Always use this option if your GitHub Actions workflows require a specific to ru
 
 ---
 
-##### `workflowPackageCache`<sup>Optional</sup> <a name="workflowPackageCache" id="@wbce/projen-directus.DirectusProjectOptions.property.workflowPackageCache"></a>
+##### `workflowPackageCache`<sup>Optional</sup> <a name="workflowPackageCache" id="@wbce/projen-d9.D9ProjectOptions.property.workflowPackageCache"></a>
 
 ```typescript
 public readonly workflowPackageCache: boolean;
@@ -3731,7 +5391,7 @@ Enable Node.js package cache in GitHub workflows.
 
 ---
 
-##### `disableTsconfig`<sup>Optional</sup> <a name="disableTsconfig" id="@wbce/projen-directus.DirectusProjectOptions.property.disableTsconfig"></a>
+##### `disableTsconfig`<sup>Optional</sup> <a name="disableTsconfig" id="@wbce/projen-d9.D9ProjectOptions.property.disableTsconfig"></a>
 
 ```typescript
 public readonly disableTsconfig: boolean;
@@ -3744,7 +5404,7 @@ Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.jso
 
 ---
 
-##### `disableTsconfigDev`<sup>Optional</sup> <a name="disableTsconfigDev" id="@wbce/projen-directus.DirectusProjectOptions.property.disableTsconfigDev"></a>
+##### `disableTsconfigDev`<sup>Optional</sup> <a name="disableTsconfigDev" id="@wbce/projen-d9.D9ProjectOptions.property.disableTsconfigDev"></a>
 
 ```typescript
 public readonly disableTsconfigDev: boolean;
@@ -3757,7 +5417,7 @@ Do not generate a `tsconfig.dev.json` file.
 
 ---
 
-##### `docgen`<sup>Optional</sup> <a name="docgen" id="@wbce/projen-directus.DirectusProjectOptions.property.docgen"></a>
+##### `docgen`<sup>Optional</sup> <a name="docgen" id="@wbce/projen-d9.D9ProjectOptions.property.docgen"></a>
 
 ```typescript
 public readonly docgen: boolean;
@@ -3770,7 +5430,7 @@ Docgen by Typedoc.
 
 ---
 
-##### `docsDirectory`<sup>Optional</sup> <a name="docsDirectory" id="@wbce/projen-directus.DirectusProjectOptions.property.docsDirectory"></a>
+##### `docsDirectory`<sup>Optional</sup> <a name="docsDirectory" id="@wbce/projen-d9.D9ProjectOptions.property.docsDirectory"></a>
 
 ```typescript
 public readonly docsDirectory: string;
@@ -3783,7 +5443,7 @@ Docs directory.
 
 ---
 
-##### `entrypointTypes`<sup>Optional</sup> <a name="entrypointTypes" id="@wbce/projen-directus.DirectusProjectOptions.property.entrypointTypes"></a>
+##### `entrypointTypes`<sup>Optional</sup> <a name="entrypointTypes" id="@wbce/projen-d9.D9ProjectOptions.property.entrypointTypes"></a>
 
 ```typescript
 public readonly entrypointTypes: string;
@@ -3796,7 +5456,7 @@ The .d.ts file that includes the type declarations for this module.
 
 ---
 
-##### `eslint`<sup>Optional</sup> <a name="eslint" id="@wbce/projen-directus.DirectusProjectOptions.property.eslint"></a>
+##### `eslint`<sup>Optional</sup> <a name="eslint" id="@wbce/projen-d9.D9ProjectOptions.property.eslint"></a>
 
 ```typescript
 public readonly eslint: boolean;
@@ -3809,7 +5469,7 @@ Setup eslint.
 
 ---
 
-##### `eslintOptions`<sup>Optional</sup> <a name="eslintOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.eslintOptions"></a>
+##### `eslintOptions`<sup>Optional</sup> <a name="eslintOptions" id="@wbce/projen-d9.D9ProjectOptions.property.eslintOptions"></a>
 
 ```typescript
 public readonly eslintOptions: EslintOptions;
@@ -3822,7 +5482,7 @@ Eslint options.
 
 ---
 
-##### `libdir`<sup>Optional</sup> <a name="libdir" id="@wbce/projen-directus.DirectusProjectOptions.property.libdir"></a>
+##### `libdir`<sup>Optional</sup> <a name="libdir" id="@wbce/projen-d9.D9ProjectOptions.property.libdir"></a>
 
 ```typescript
 public readonly libdir: string;
@@ -3835,7 +5495,7 @@ Typescript  artifacts output directory.
 
 ---
 
-##### `projenrcTs`<sup>Optional</sup> <a name="projenrcTs" id="@wbce/projen-directus.DirectusProjectOptions.property.projenrcTs"></a>
+##### `projenrcTs`<sup>Optional</sup> <a name="projenrcTs" id="@wbce/projen-d9.D9ProjectOptions.property.projenrcTs"></a>
 
 ```typescript
 public readonly projenrcTs: boolean;
@@ -3848,7 +5508,7 @@ Use TypeScript for your projenrc file (`.projenrc.ts`).
 
 ---
 
-##### `projenrcTsOptions`<sup>Optional</sup> <a name="projenrcTsOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.projenrcTsOptions"></a>
+##### `projenrcTsOptions`<sup>Optional</sup> <a name="projenrcTsOptions" id="@wbce/projen-d9.D9ProjectOptions.property.projenrcTsOptions"></a>
 
 ```typescript
 public readonly projenrcTsOptions: ProjenrcOptions;
@@ -3860,7 +5520,7 @@ Options for .projenrc.ts.
 
 ---
 
-##### `sampleCode`<sup>Optional</sup> <a name="sampleCode" id="@wbce/projen-directus.DirectusProjectOptions.property.sampleCode"></a>
+##### `sampleCode`<sup>Optional</sup> <a name="sampleCode" id="@wbce/projen-d9.D9ProjectOptions.property.sampleCode"></a>
 
 ```typescript
 public readonly sampleCode: boolean;
@@ -3873,7 +5533,7 @@ Generate one-time sample in `src/` and `test/` if there are no files there.
 
 ---
 
-##### `srcdir`<sup>Optional</sup> <a name="srcdir" id="@wbce/projen-directus.DirectusProjectOptions.property.srcdir"></a>
+##### `srcdir`<sup>Optional</sup> <a name="srcdir" id="@wbce/projen-d9.D9ProjectOptions.property.srcdir"></a>
 
 ```typescript
 public readonly srcdir: string;
@@ -3886,7 +5546,7 @@ Typescript sources directory.
 
 ---
 
-##### `testdir`<sup>Optional</sup> <a name="testdir" id="@wbce/projen-directus.DirectusProjectOptions.property.testdir"></a>
+##### `testdir`<sup>Optional</sup> <a name="testdir" id="@wbce/projen-d9.D9ProjectOptions.property.testdir"></a>
 
 ```typescript
 public readonly testdir: string;
@@ -3904,7 +5564,7 @@ compile the code in-memory.
 
 ---
 
-##### `tsconfig`<sup>Optional</sup> <a name="tsconfig" id="@wbce/projen-directus.DirectusProjectOptions.property.tsconfig"></a>
+##### `tsconfig`<sup>Optional</sup> <a name="tsconfig" id="@wbce/projen-d9.D9ProjectOptions.property.tsconfig"></a>
 
 ```typescript
 public readonly tsconfig: TypescriptConfigOptions;
@@ -3917,7 +5577,7 @@ Custom TSConfig.
 
 ---
 
-##### `tsconfigDev`<sup>Optional</sup> <a name="tsconfigDev" id="@wbce/projen-directus.DirectusProjectOptions.property.tsconfigDev"></a>
+##### `tsconfigDev`<sup>Optional</sup> <a name="tsconfigDev" id="@wbce/projen-d9.D9ProjectOptions.property.tsconfigDev"></a>
 
 ```typescript
 public readonly tsconfigDev: TypescriptConfigOptions;
@@ -3930,7 +5590,7 @@ Custom tsconfig options for the development tsconfig.json file (used for testing
 
 ---
 
-##### `tsconfigDevFile`<sup>Optional</sup> <a name="tsconfigDevFile" id="@wbce/projen-directus.DirectusProjectOptions.property.tsconfigDevFile"></a>
+##### `tsconfigDevFile`<sup>Optional</sup> <a name="tsconfigDevFile" id="@wbce/projen-d9.D9ProjectOptions.property.tsconfigDevFile"></a>
 
 ```typescript
 public readonly tsconfigDevFile: string;
@@ -3943,7 +5603,7 @@ The name of the development tsconfig.json file.
 
 ---
 
-##### `tsJestOptions`<sup>Optional</sup> <a name="tsJestOptions" id="@wbce/projen-directus.DirectusProjectOptions.property.tsJestOptions"></a>
+##### `tsJestOptions`<sup>Optional</sup> <a name="tsJestOptions" id="@wbce/projen-d9.D9ProjectOptions.property.tsJestOptions"></a>
 
 ```typescript
 public readonly tsJestOptions: TsJestOptions;
@@ -3955,7 +5615,7 @@ Options for ts-jest.
 
 ---
 
-##### `typescriptVersion`<sup>Optional</sup> <a name="typescriptVersion" id="@wbce/projen-directus.DirectusProjectOptions.property.typescriptVersion"></a>
+##### `typescriptVersion`<sup>Optional</sup> <a name="typescriptVersion" id="@wbce/projen-d9.D9ProjectOptions.property.typescriptVersion"></a>
 
 ```typescript
 public readonly typescriptVersion: string;
@@ -3971,7 +5631,7 @@ same minor, so we recommend using a `~` dependency (e.g. `~1.2.3`).
 
 ---
 
-##### `extensionsFolderName`<sup>Optional</sup> <a name="extensionsFolderName" id="@wbce/projen-directus.DirectusProjectOptions.property.extensionsFolderName"></a>
+##### `extensionsFolderName`<sup>Optional</sup> <a name="extensionsFolderName" id="@wbce/projen-d9.D9ProjectOptions.property.extensionsFolderName"></a>
 
 ```typescript
 public readonly extensionsFolderName: string;
@@ -3984,7 +5644,7 @@ The name of the extensions folder.
 
 ---
 
-##### `githubConfig`<sup>Optional</sup> <a name="githubConfig" id="@wbce/projen-directus.DirectusProjectOptions.property.githubConfig"></a>
+##### `githubConfig`<sup>Optional</sup> <a name="githubConfig" id="@wbce/projen-d9.D9ProjectOptions.property.githubConfig"></a>
 
 ```typescript
 public readonly githubConfig: boolean | GitHubConfigOptions;
@@ -3999,22 +5659,2779 @@ Set to false to disable GitHub config entirely.
 
 ---
 
-##### `packageVersions`<sup>Optional</sup> <a name="packageVersions" id="@wbce/projen-directus.DirectusProjectOptions.property.packageVersions"></a>
+##### `packageVersions`<sup>Optional</sup> <a name="packageVersions" id="@wbce/projen-d9.D9ProjectOptions.property.packageVersions"></a>
 
 ```typescript
 public readonly packageVersions: PackageVersions;
 ```
 
-- *Type:* <a href="#@wbce/projen-directus.PackageVersions">PackageVersions</a>
+- *Type:* <a href="#@wbce/projen-d9.PackageVersions">PackageVersions</a>
 
 ---
 
-### PackageVersions <a name="PackageVersions" id="@wbce/projen-directus.PackageVersions"></a>
+### DirectusProjectOptions <a name="DirectusProjectOptions" id="@wbce/projen-d9.DirectusProjectOptions"></a>
 
-#### Initializer <a name="Initializer" id="@wbce/projen-directus.PackageVersions.Initializer"></a>
+#### Initializer <a name="Initializer" id="@wbce/projen-d9.DirectusProjectOptions.Initializer"></a>
 
 ```typescript
-import { PackageVersions } from '@wbce/projen-directus'
+import { DirectusProjectOptions } from '@wbce/projen-d9'
+
+const directusProjectOptions: DirectusProjectOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.name">name</a></code> | <code>string</code> | This is the name of your project. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.gitIgnoreOptions">gitIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .gitignore file. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.gitOptions">gitOptions</a></code> | <code>projen.GitOptions</code> | Configuration options for git. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.logging">logging</a></code> | <code>projen.LoggerOptions</code> | Configure logging options such as verbosity. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.outdir">outdir</a></code> | <code>string</code> | The root directory of the project. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.parent">parent</a></code> | <code>projen.Project</code> | The parent project, if this project is part of a bigger project. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.projectTree">projectTree</a></code> | <code>boolean</code> | Generate a project tree file (`.projen/tree.json`) that shows all components and their relationships. Useful for understanding your project structure and debugging. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.projenCommand">projenCommand</a></code> | <code>string</code> | The shell command to use in order to run the projen CLI. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.projenrcJson">projenrcJson</a></code> | <code>boolean</code> | Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.projenrcJsonOptions">projenrcJsonOptions</a></code> | <code>projen.ProjenrcJsonOptions</code> | Options for .projenrc.json. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.renovatebot">renovatebot</a></code> | <code>boolean</code> | Use renovatebot to handle dependency upgrades. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.autoApproveOptions">autoApproveOptions</a></code> | <code>projen.github.AutoApproveOptions</code> | Enable and configure the 'auto approve' workflow. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.autoMerge">autoMerge</a></code> | <code>boolean</code> | Enable automatic merging on GitHub. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.autoMergeOptions">autoMergeOptions</a></code> | <code>projen.github.AutoMergeOptions</code> | Configure options for automatic merging on GitHub. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.clobber">clobber</a></code> | <code>boolean</code> | Add a `clobber` task which resets the repo to origin. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.devContainer">devContainer</a></code> | <code>boolean</code> | Add a VSCode development environment (used for GitHub Codespaces). |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.github">github</a></code> | <code>boolean</code> | Enable GitHub integration. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.githubOptions">githubOptions</a></code> | <code>projen.github.GitHubOptions</code> | Options for GitHub integration. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.gitpod">gitpod</a></code> | <code>boolean</code> | Add a Gitpod development environment. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.mergify">mergify</a></code> | <code>boolean</code> | Whether mergify should be enabled on this repository or not. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.mergifyOptions">mergifyOptions</a></code> | <code>projen.github.MergifyOptions</code> | Options for mergify. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.projectType">projectType</a></code> | <code>projen.ProjectType</code> | Which type of project this is (library/app). |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.projenCredentials">projenCredentials</a></code> | <code>projen.github.GithubCredentials</code> | Choose a method of providing GitHub API access for projen workflows. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.projenTokenSecret">projenTokenSecret</a></code> | <code>string</code> | The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.readme">readme</a></code> | <code>projen.SampleReadmeProps</code> | The README setup. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.stale">stale</a></code> | <code>boolean</code> | Auto-close of stale issues and pull request. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.staleOptions">staleOptions</a></code> | <code>projen.github.StaleOptions</code> | Auto-close stale issues and pull requests. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.vscode">vscode</a></code> | <code>boolean</code> | Enable VSCode integration. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | Allow the project to include `peerDependencies` and `bundledDependencies`. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.authorEmail">authorEmail</a></code> | <code>string</code> | Author's e-mail. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.authorName">authorName</a></code> | <code>string</code> | Author's name. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.authorOrganization">authorOrganization</a></code> | <code>boolean</code> | Is the author an organization. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.authorUrl">authorUrl</a></code> | <code>string</code> | Author's URL / Website. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.autoDetectBin">autoDetectBin</a></code> | <code>boolean</code> | Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.bin">bin</a></code> | <code>{[ key: string ]: string}</code> | Binary programs vended with your module. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.bugsEmail">bugsEmail</a></code> | <code>string</code> | The email address to which issues should be reported. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.bugsUrl">bugsUrl</a></code> | <code>string</code> | The url to your project's issue tracker. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.bundledDeps">bundledDeps</a></code> | <code>string[]</code> | List of dependencies to bundle into this module. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.bunVersion">bunVersion</a></code> | <code>string</code> | The version of Bun to use if using Bun as a package manager. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.codeArtifactOptions">codeArtifactOptions</a></code> | <code>projen.javascript.CodeArtifactOptions</code> | Options for npm packages using AWS CodeArtifact. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | Runtime dependencies of this module. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.description">description</a></code> | <code>string</code> | The description is just a string that helps people understand the purpose of the package. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | Build dependencies for this module. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.entrypoint">entrypoint</a></code> | <code>string</code> | Module entrypoint (`main` in `package.json`). |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.homepage">homepage</a></code> | <code>string</code> | Package's Homepage / Website. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.keywords">keywords</a></code> | <code>string[]</code> | Keywords to include in `package.json`. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.license">license</a></code> | <code>string</code> | License's SPDX identifier. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.licensed">licensed</a></code> | <code>boolean</code> | Indicates if a license should be added. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.maxNodeVersion">maxNodeVersion</a></code> | <code>string</code> | The maximum node version supported by this package. Most projects should not use this option. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.minNodeVersion">minNodeVersion</a></code> | <code>string</code> | The minimum node version required by this package to function. Most projects should not use this option. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.npmAccess">npmAccess</a></code> | <code>projen.javascript.NpmAccess</code> | Access level of the npm package. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.npmProvenance">npmProvenance</a></code> | <code>boolean</code> | Should provenance statements be generated when the package is published. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.npmRegistry">npmRegistry</a></code> | <code>string</code> | The host name of the npm registry to publish to. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.npmRegistryUrl">npmRegistryUrl</a></code> | <code>string</code> | The base URL of the npm package registry. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.npmTokenSecret">npmTokenSecret</a></code> | <code>string</code> | GitHub secret which contains the NPM token to use when publishing packages. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.npmTrustedPublishing">npmTrustedPublishing</a></code> | <code>boolean</code> | Use trusted publishing for publishing to npmjs.com Needs to be pre-configured on npm.js to work. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The Node Package Manager used to execute scripts. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.packageName">packageName</a></code> | <code>string</code> | The "name" in package.json. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.peerDependencyOptions">peerDependencyOptions</a></code> | <code>projen.javascript.PeerDependencyOptions</code> | Options for `peerDeps`. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.peerDeps">peerDeps</a></code> | <code>string[]</code> | Peer dependencies for this module. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.pnpmVersion">pnpmVersion</a></code> | <code>string</code> | The version of PNPM to use if using PNPM as a package manager. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.repository">repository</a></code> | <code>string</code> | The repository is the location where the actual code for your package lives. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.repositoryDirectory">repositoryDirectory</a></code> | <code>string</code> | If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.scopedPackagesOptions">scopedPackagesOptions</a></code> | <code>projen.javascript.ScopedPackagesOptions[]</code> | Options for privately hosted scoped packages. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.scripts">scripts</a></code> | <code>{[ key: string ]: string}</code> | npm scripts to include. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.stability">stability</a></code> | <code>string</code> | Package's Stability. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.yarnBerryOptions">yarnBerryOptions</a></code> | <code>projen.javascript.YarnBerryOptions</code> | Options for Yarn Berry. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.bumpPackage">bumpPackage</a></code> | <code>string</code> | The `commit-and-tag-version` compatible package used to bump the package version, as a dependency string. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.jsiiReleaseVersion">jsiiReleaseVersion</a></code> | <code>string</code> | Version requirement of `publib` which is used to publish modules to npm. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.majorVersion">majorVersion</a></code> | <code>number</code> | Major version to release from the default branch. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.minMajorVersion">minMajorVersion</a></code> | <code>number</code> | Minimal Major version to release. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.nextVersionCommand">nextVersionCommand</a></code> | <code>string</code> | A shell command to control the next version to release. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.npmDistTag">npmDistTag</a></code> | <code>string</code> | The npmDistTag to use when publishing from the default branch. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.postBuildSteps">postBuildSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Steps to execute after build as part of the release workflow. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.prerelease">prerelease</a></code> | <code>string</code> | Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre"). |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.publishDryRun">publishDryRun</a></code> | <code>boolean</code> | Instead of actually publishing to package managers, just print the publishing command. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.publishTasks">publishTasks</a></code> | <code>boolean</code> | Define publishing tasks that can be executed manually as well as workflows. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.releasableCommits">releasableCommits</a></code> | <code>projen.ReleasableCommits</code> | Find commits that should be considered releasable Used to decide if a release is required. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.releaseBranches">releaseBranches</a></code> | <code>{[ key: string ]: projen.release.BranchOptions}</code> | Defines additional release branches. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.releaseEnvironment">releaseEnvironment</a></code> | <code>string</code> | The GitHub Actions environment used for the release. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.releaseEveryCommit">releaseEveryCommit</a></code> | <code>boolean</code> | Automatically release new versions every commit to one of branches in `releaseBranches`. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.releaseFailureIssue">releaseFailureIssue</a></code> | <code>boolean</code> | Create a github issue on every failed publishing task. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.releaseFailureIssueLabel">releaseFailureIssueLabel</a></code> | <code>string</code> | The label to apply to issues indicating publish failures. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.releaseSchedule">releaseSchedule</a></code> | <code>string</code> | CRON schedule to trigger new releases. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.releaseTagPrefix">releaseTagPrefix</a></code> | <code>string</code> | Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.releaseTrigger">releaseTrigger</a></code> | <code>projen.release.ReleaseTrigger</code> | The release trigger to use. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.releaseWorkflowEnv">releaseWorkflowEnv</a></code> | <code>{[ key: string ]: string}</code> | Build environment variables for release workflows. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.releaseWorkflowName">releaseWorkflowName</a></code> | <code>string</code> | The name of the default release workflow. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.releaseWorkflowSetupSteps">releaseWorkflowSetupSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | A set of workflow steps to execute in order to setup the workflow container. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.versionrcOptions">versionrcOptions</a></code> | <code>{[ key: string ]: any}</code> | Custom configuration used when creating changelog with commit-and-tag-version package. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.workflowContainerImage">workflowContainerImage</a></code> | <code>string</code> | Container image to use for GitHub workflows. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.workflowRunsOn">workflowRunsOn</a></code> | <code>string[]</code> | Github Runner selection labels. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.workflowRunsOnGroup">workflowRunsOnGroup</a></code> | <code>projen.GroupRunnerOptions</code> | Github Runner Group selection options. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.defaultReleaseBranch">defaultReleaseBranch</a></code> | <code>string</code> | The name of the main release branch. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | A directory which will contain build artifacts. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.auditDeps">auditDeps</a></code> | <code>boolean</code> | Run security audit on dependencies. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.auditDepsOptions">auditDepsOptions</a></code> | <code>projen.javascript.AuditOptions</code> | Security audit options. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.autoApproveUpgrades">autoApproveUpgrades</a></code> | <code>boolean</code> | Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configured). |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.biome">biome</a></code> | <code>boolean</code> | Setup Biome. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.biomeOptions">biomeOptions</a></code> | <code>projen.javascript.BiomeOptions</code> | Biome options. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.buildWorkflow">buildWorkflow</a></code> | <code>boolean</code> | Define a GitHub workflow for building PRs. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.buildWorkflowOptions">buildWorkflowOptions</a></code> | <code>projen.javascript.BuildWorkflowOptions</code> | Options for PR build workflow. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.buildWorkflowTriggers">buildWorkflowTriggers</a></code> | <code>projen.github.workflows.Triggers</code> | Build workflow triggers. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.bundlerOptions">bundlerOptions</a></code> | <code>projen.javascript.BundlerOptions</code> | Options for `Bundler`. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.checkLicenses">checkLicenses</a></code> | <code>projen.javascript.LicenseCheckerOptions</code> | Configure which licenses should be deemed acceptable for use by dependencies. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.codeCov">codeCov</a></code> | <code>boolean</code> | Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v5 By default, OIDC auth is used. Alternatively a token can be provided via `codeCovTokenSecret`. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.codeCovTokenSecret">codeCovTokenSecret</a></code> | <code>string</code> | Define the secret name for a specified https://codecov.io/ token. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.copyrightOwner">copyrightOwner</a></code> | <code>string</code> | License copyright owner. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.copyrightPeriod">copyrightPeriod</a></code> | <code>string</code> | The copyright years to put in the LICENSE file. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.dependabot">dependabot</a></code> | <code>boolean</code> | Use dependabot to handle dependency upgrades. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.dependabotOptions">dependabotOptions</a></code> | <code>projen.github.DependabotOptions</code> | Options for dependabot. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.depsUpgrade">depsUpgrade</a></code> | <code>boolean</code> | Use tasks and github workflows to handle dependency upgrades. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.depsUpgradeOptions">depsUpgradeOptions</a></code> | <code>projen.javascript.UpgradeDependenciesOptions</code> | Options for `UpgradeDependencies`. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.gitignore">gitignore</a></code> | <code>string[]</code> | Additional entries to .gitignore. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.jest">jest</a></code> | <code>boolean</code> | Setup jest unit tests. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.jestOptions">jestOptions</a></code> | <code>projen.javascript.JestOptions</code> | Jest options. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.mutableBuild">mutableBuild</a></code> | <code>boolean</code> | Automatically update files modified during builds to pull-request branches. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.npmignore">npmignore</a></code> | <code>string[]</code> | Additional entries to .npmignore. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.npmignoreEnabled">npmignoreEnabled</a></code> | <code>boolean</code> | Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.npmIgnoreOptions">npmIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .npmignore file. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.package">package</a></code> | <code>boolean</code> | Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`). |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.prettier">prettier</a></code> | <code>boolean</code> | Setup prettier. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.prettierOptions">prettierOptions</a></code> | <code>projen.javascript.PrettierOptions</code> | Prettier options. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.projenDevDependency">projenDevDependency</a></code> | <code>boolean</code> | Indicates of "projen" should be installed as a devDependency. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.projenrcJs">projenrcJs</a></code> | <code>boolean</code> | Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.projenrcJsOptions">projenrcJsOptions</a></code> | <code>projen.javascript.ProjenrcOptions</code> | Options for .projenrc.js. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.projenVersion">projenVersion</a></code> | <code>string</code> | Version of projen to install. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.pullRequestTemplate">pullRequestTemplate</a></code> | <code>boolean</code> | Include a GitHub pull request template. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.pullRequestTemplateContents">pullRequestTemplateContents</a></code> | <code>string[]</code> | The contents of the pull request template. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.release">release</a></code> | <code>boolean</code> | Add release management to this project. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.releaseToNpm">releaseToNpm</a></code> | <code>boolean</code> | Automatically release to npm when new versions are introduced. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.releaseWorkflow">releaseWorkflow</a></code> | <code>boolean</code> | DEPRECATED: renamed to `release`. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.workflowBootstrapSteps">workflowBootstrapSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Workflow steps to use in order to bootstrap this repo. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.workflowGitIdentity">workflowGitIdentity</a></code> | <code>projen.github.GitIdentity</code> | The git identity to use in workflows. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.workflowNodeVersion">workflowNodeVersion</a></code> | <code>string</code> | The node version used in GitHub Actions workflows. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.workflowPackageCache">workflowPackageCache</a></code> | <code>boolean</code> | Enable Node.js package cache in GitHub workflows. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.disableTsconfig">disableTsconfig</a></code> | <code>boolean</code> | Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler). |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.disableTsconfigDev">disableTsconfigDev</a></code> | <code>boolean</code> | Do not generate a `tsconfig.dev.json` file. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.docgen">docgen</a></code> | <code>boolean</code> | Docgen by Typedoc. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.docsDirectory">docsDirectory</a></code> | <code>string</code> | Docs directory. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.entrypointTypes">entrypointTypes</a></code> | <code>string</code> | The .d.ts file that includes the type declarations for this module. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.eslint">eslint</a></code> | <code>boolean</code> | Setup eslint. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.eslintOptions">eslintOptions</a></code> | <code>projen.javascript.EslintOptions</code> | Eslint options. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.libdir">libdir</a></code> | <code>string</code> | Typescript  artifacts output directory. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.projenrcTs">projenrcTs</a></code> | <code>boolean</code> | Use TypeScript for your projenrc file (`.projenrc.ts`). |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.projenrcTsOptions">projenrcTsOptions</a></code> | <code>projen.typescript.ProjenrcOptions</code> | Options for .projenrc.ts. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.sampleCode">sampleCode</a></code> | <code>boolean</code> | Generate one-time sample in `src/` and `test/` if there are no files there. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.srcdir">srcdir</a></code> | <code>string</code> | Typescript sources directory. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.testdir">testdir</a></code> | <code>string</code> | Jest tests directory. Tests files should be named `xxx.test.ts`. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.tsconfig">tsconfig</a></code> | <code>projen.javascript.TypescriptConfigOptions</code> | Custom TSConfig. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.tsconfigDev">tsconfigDev</a></code> | <code>projen.javascript.TypescriptConfigOptions</code> | Custom tsconfig options for the development tsconfig.json file (used for testing). |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.tsconfigDevFile">tsconfigDevFile</a></code> | <code>string</code> | The name of the development tsconfig.json file. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.tsJestOptions">tsJestOptions</a></code> | <code>projen.typescript.TsJestOptions</code> | Options for ts-jest. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.extensionsFolderName">extensionsFolderName</a></code> | <code>string</code> | The name of the extensions folder. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.githubConfig">githubConfig</a></code> | <code>boolean \| @wbce/projen-shared.GitHubConfigOptions</code> | Options for the GitHub configuration. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.packageVersions">packageVersions</a></code> | <code><a href="#@wbce/projen-d9.PackageVersions">PackageVersions</a></code> | *No description.* |
+
+---
+
+##### ~~`name`~~<sup>Required</sup> <a name="name" id="@wbce/projen-d9.DirectusProjectOptions.property.name"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+- *Default:* $BASEDIR
+
+This is the name of your project.
+
+---
+
+##### ~~`commitGenerated`~~<sup>Optional</sup> <a name="commitGenerated" id="@wbce/projen-d9.DirectusProjectOptions.property.commitGenerated"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly commitGenerated: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to commit the managed files by default.
+
+---
+
+##### ~~`gitIgnoreOptions`~~<sup>Optional</sup> <a name="gitIgnoreOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.gitIgnoreOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly gitIgnoreOptions: IgnoreFileOptions;
+```
+
+- *Type:* projen.IgnoreFileOptions
+
+Configuration options for .gitignore file.
+
+---
+
+##### ~~`gitOptions`~~<sup>Optional</sup> <a name="gitOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.gitOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly gitOptions: GitOptions;
+```
+
+- *Type:* projen.GitOptions
+
+Configuration options for git.
+
+---
+
+##### ~~`logging`~~<sup>Optional</sup> <a name="logging" id="@wbce/projen-d9.DirectusProjectOptions.property.logging"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly logging: LoggerOptions;
+```
+
+- *Type:* projen.LoggerOptions
+- *Default:* {}
+
+Configure logging options such as verbosity.
+
+---
+
+##### ~~`outdir`~~<sup>Optional</sup> <a name="outdir" id="@wbce/projen-d9.DirectusProjectOptions.property.outdir"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly outdir: string;
+```
+
+- *Type:* string
+- *Default:* "."
+
+The root directory of the project.
+
+Relative to this directory, all files are synthesized.
+
+If this project has a parent, this directory is relative to the parent
+directory and it cannot be the same as the parent or any of it's other
+subprojects.
+
+---
+
+##### ~~`parent`~~<sup>Optional</sup> <a name="parent" id="@wbce/projen-d9.DirectusProjectOptions.property.parent"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly parent: Project;
+```
+
+- *Type:* projen.Project
+
+The parent project, if this project is part of a bigger project.
+
+---
+
+##### ~~`projectTree`~~<sup>Optional</sup> <a name="projectTree" id="@wbce/projen-d9.DirectusProjectOptions.property.projectTree"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly projectTree: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Generate a project tree file (`.projen/tree.json`) that shows all components and their relationships. Useful for understanding your project structure and debugging.
+
+---
+
+##### ~~`projenCommand`~~<sup>Optional</sup> <a name="projenCommand" id="@wbce/projen-d9.DirectusProjectOptions.property.projenCommand"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly projenCommand: string;
+```
+
+- *Type:* string
+- *Default:* "npx projen"
+
+The shell command to use in order to run the projen CLI.
+
+Can be used to customize in special environments.
+
+---
+
+##### ~~`projenrcJson`~~<sup>Optional</sup> <a name="projenrcJson" id="@wbce/projen-d9.DirectusProjectOptions.property.projenrcJson"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly projenrcJson: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
+
+---
+
+##### ~~`projenrcJsonOptions`~~<sup>Optional</sup> <a name="projenrcJsonOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.projenrcJsonOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly projenrcJsonOptions: ProjenrcJsonOptions;
+```
+
+- *Type:* projen.ProjenrcJsonOptions
+- *Default:* default options
+
+Options for .projenrc.json.
+
+---
+
+##### ~~`renovatebot`~~<sup>Optional</sup> <a name="renovatebot" id="@wbce/projen-d9.DirectusProjectOptions.property.renovatebot"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly renovatebot: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Use renovatebot to handle dependency upgrades.
+
+---
+
+##### ~~`renovatebotOptions`~~<sup>Optional</sup> <a name="renovatebotOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.renovatebotOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly renovatebotOptions: RenovatebotOptions;
+```
+
+- *Type:* projen.RenovatebotOptions
+- *Default:* default options
+
+Options for renovatebot.
+
+---
+
+##### ~~`autoApproveOptions`~~<sup>Optional</sup> <a name="autoApproveOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.autoApproveOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly autoApproveOptions: AutoApproveOptions;
+```
+
+- *Type:* projen.github.AutoApproveOptions
+- *Default:* auto approve is disabled
+
+Enable and configure the 'auto approve' workflow.
+
+---
+
+##### ~~`autoMerge`~~<sup>Optional</sup> <a name="autoMerge" id="@wbce/projen-d9.DirectusProjectOptions.property.autoMerge"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly autoMerge: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable automatic merging on GitHub.
+
+Has no effect if `github.mergify`
+is set to false.
+
+---
+
+##### ~~`autoMergeOptions`~~<sup>Optional</sup> <a name="autoMergeOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.autoMergeOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly autoMergeOptions: AutoMergeOptions;
+```
+
+- *Type:* projen.github.AutoMergeOptions
+- *Default:* see defaults in `AutoMergeOptions`
+
+Configure options for automatic merging on GitHub.
+
+Has no effect if
+`github.mergify` or `autoMerge` is set to false.
+
+---
+
+##### ~~`clobber`~~<sup>Optional</sup> <a name="clobber" id="@wbce/projen-d9.DirectusProjectOptions.property.clobber"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly clobber: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true, but false for subprojects
+
+Add a `clobber` task which resets the repo to origin.
+
+---
+
+##### ~~`devContainer`~~<sup>Optional</sup> <a name="devContainer" id="@wbce/projen-d9.DirectusProjectOptions.property.devContainer"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly devContainer: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Add a VSCode development environment (used for GitHub Codespaces).
+
+---
+
+##### ~~`github`~~<sup>Optional</sup> <a name="github" id="@wbce/projen-d9.DirectusProjectOptions.property.github"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly github: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable GitHub integration.
+
+Enabled by default for root projects. Disabled for non-root projects.
+
+---
+
+##### ~~`githubOptions`~~<sup>Optional</sup> <a name="githubOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.githubOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly githubOptions: GitHubOptions;
+```
+
+- *Type:* projen.github.GitHubOptions
+- *Default:* see GitHubOptions
+
+Options for GitHub integration.
+
+---
+
+##### ~~`gitpod`~~<sup>Optional</sup> <a name="gitpod" id="@wbce/projen-d9.DirectusProjectOptions.property.gitpod"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly gitpod: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Add a Gitpod development environment.
+
+---
+
+##### ~~`mergify`~~<sup>Optional</sup> <a name="mergify" id="@wbce/projen-d9.DirectusProjectOptions.property.mergify"></a>
+
+- *Deprecated:* use `githubOptions.mergify` instead
+
+```typescript
+public readonly mergify: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether mergify should be enabled on this repository or not.
+
+---
+
+##### ~~`mergifyOptions`~~<sup>Optional</sup> <a name="mergifyOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.mergifyOptions"></a>
+
+- *Deprecated:* use `githubOptions.mergifyOptions` instead
+
+```typescript
+public readonly mergifyOptions: MergifyOptions;
+```
+
+- *Type:* projen.github.MergifyOptions
+- *Default:* default options
+
+Options for mergify.
+
+---
+
+##### ~~`projectType`~~<sup>Optional</sup> <a name="projectType" id="@wbce/projen-d9.DirectusProjectOptions.property.projectType"></a>
+
+- *Deprecated:* no longer supported at the base project level
+
+```typescript
+public readonly projectType: ProjectType;
+```
+
+- *Type:* projen.ProjectType
+- *Default:* ProjectType.UNKNOWN
+
+Which type of project this is (library/app).
+
+---
+
+##### ~~`projenCredentials`~~<sup>Optional</sup> <a name="projenCredentials" id="@wbce/projen-d9.DirectusProjectOptions.property.projenCredentials"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly projenCredentials: GithubCredentials;
+```
+
+- *Type:* projen.github.GithubCredentials
+- *Default:* use a personal access token named PROJEN_GITHUB_TOKEN
+
+Choose a method of providing GitHub API access for projen workflows.
+
+---
+
+##### ~~`projenTokenSecret`~~<sup>Optional</sup> <a name="projenTokenSecret" id="@wbce/projen-d9.DirectusProjectOptions.property.projenTokenSecret"></a>
+
+- *Deprecated:* use `projenCredentials`
+
+```typescript
+public readonly projenTokenSecret: string;
+```
+
+- *Type:* string
+- *Default:* "PROJEN_GITHUB_TOKEN"
+
+The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+
+This token needs to have the `repo`, `workflows`
+and `packages` scope.
+
+---
+
+##### ~~`readme`~~<sup>Optional</sup> <a name="readme" id="@wbce/projen-d9.DirectusProjectOptions.property.readme"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly readme: SampleReadmeProps;
+```
+
+- *Type:* projen.SampleReadmeProps
+- *Default:* { filename: 'README.md', contents: '# replace this' }
+
+The README setup.
+
+---
+
+*Example*
+
+```typescript
+"{ filename: 'readme.md', contents: '# title' }"
+```
+
+
+##### ~~`stale`~~<sup>Optional</sup> <a name="stale" id="@wbce/projen-d9.DirectusProjectOptions.property.stale"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly stale: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Auto-close of stale issues and pull request.
+
+See `staleOptions` for options.
+
+---
+
+##### ~~`staleOptions`~~<sup>Optional</sup> <a name="staleOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.staleOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly staleOptions: StaleOptions;
+```
+
+- *Type:* projen.github.StaleOptions
+- *Default:* see defaults in `StaleOptions`
+
+Auto-close stale issues and pull requests.
+
+To disable set `stale` to `false`.
+
+---
+
+##### ~~`vscode`~~<sup>Optional</sup> <a name="vscode" id="@wbce/projen-d9.DirectusProjectOptions.property.vscode"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly vscode: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable VSCode integration.
+
+Enabled by default for root projects. Disabled for non-root projects.
+
+---
+
+##### ~~`allowLibraryDependencies`~~<sup>Optional</sup> <a name="allowLibraryDependencies" id="@wbce/projen-d9.DirectusProjectOptions.property.allowLibraryDependencies"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly allowLibraryDependencies: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Allow the project to include `peerDependencies` and `bundledDependencies`.
+
+This is normally only allowed for libraries. For apps, there's no meaning
+for specifying these.
+
+---
+
+##### ~~`authorEmail`~~<sup>Optional</sup> <a name="authorEmail" id="@wbce/projen-d9.DirectusProjectOptions.property.authorEmail"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly authorEmail: string;
+```
+
+- *Type:* string
+
+Author's e-mail.
+
+---
+
+##### ~~`authorName`~~<sup>Optional</sup> <a name="authorName" id="@wbce/projen-d9.DirectusProjectOptions.property.authorName"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly authorName: string;
+```
+
+- *Type:* string
+
+Author's name.
+
+---
+
+##### ~~`authorOrganization`~~<sup>Optional</sup> <a name="authorOrganization" id="@wbce/projen-d9.DirectusProjectOptions.property.authorOrganization"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly authorOrganization: boolean;
+```
+
+- *Type:* boolean
+
+Is the author an organization.
+
+---
+
+##### ~~`authorUrl`~~<sup>Optional</sup> <a name="authorUrl" id="@wbce/projen-d9.DirectusProjectOptions.property.authorUrl"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly authorUrl: string;
+```
+
+- *Type:* string
+
+Author's URL / Website.
+
+---
+
+##### ~~`autoDetectBin`~~<sup>Optional</sup> <a name="autoDetectBin" id="@wbce/projen-d9.DirectusProjectOptions.property.autoDetectBin"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly autoDetectBin: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section.
+
+---
+
+##### ~~`bin`~~<sup>Optional</sup> <a name="bin" id="@wbce/projen-d9.DirectusProjectOptions.property.bin"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly bin: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Binary programs vended with your module.
+
+You can use this option to add/customize how binaries are represented in
+your `package.json`, but unless `autoDetectBin` is `false`, every
+executable file under `bin` will automatically be added to this section.
+
+---
+
+##### ~~`bugsEmail`~~<sup>Optional</sup> <a name="bugsEmail" id="@wbce/projen-d9.DirectusProjectOptions.property.bugsEmail"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly bugsEmail: string;
+```
+
+- *Type:* string
+
+The email address to which issues should be reported.
+
+---
+
+##### ~~`bugsUrl`~~<sup>Optional</sup> <a name="bugsUrl" id="@wbce/projen-d9.DirectusProjectOptions.property.bugsUrl"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly bugsUrl: string;
+```
+
+- *Type:* string
+
+The url to your project's issue tracker.
+
+---
+
+##### ~~`bundledDeps`~~<sup>Optional</sup> <a name="bundledDeps" id="@wbce/projen-d9.DirectusProjectOptions.property.bundledDeps"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly bundledDeps: string[];
+```
+
+- *Type:* string[]
+
+List of dependencies to bundle into this module.
+
+These modules will be
+added both to the `dependencies` section and `bundledDependencies` section of
+your `package.json`.
+
+The recommendation is to only specify the module name here (e.g.
+`express`). This will behave similar to `yarn add` or `npm install` in the
+sense that it will add the module as a dependency to your `package.json`
+file with the latest version (`^`). You can specify semver requirements in
+the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
+this will be what you `package.json` will eventually include.
+
+---
+
+##### ~~`bunVersion`~~<sup>Optional</sup> <a name="bunVersion" id="@wbce/projen-d9.DirectusProjectOptions.property.bunVersion"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly bunVersion: string;
+```
+
+- *Type:* string
+- *Default:* "latest"
+
+The version of Bun to use if using Bun as a package manager.
+
+---
+
+##### ~~`codeArtifactOptions`~~<sup>Optional</sup> <a name="codeArtifactOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.codeArtifactOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly codeArtifactOptions: CodeArtifactOptions;
+```
+
+- *Type:* projen.javascript.CodeArtifactOptions
+- *Default:* undefined
+
+Options for npm packages using AWS CodeArtifact.
+
+This is required if publishing packages to, or installing scoped packages from AWS CodeArtifact
+
+---
+
+##### ~~`deps`~~<sup>Optional</sup> <a name="deps" id="@wbce/projen-d9.DirectusProjectOptions.property.deps"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly deps: string[];
+```
+
+- *Type:* string[]
+- *Default:* []
+
+Runtime dependencies of this module.
+
+The recommendation is to only specify the module name here (e.g.
+`express`). This will behave similar to `yarn add` or `npm install` in the
+sense that it will add the module as a dependency to your `package.json`
+file with the latest version (`^`). You can specify semver requirements in
+the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
+this will be what you `package.json` will eventually include.
+
+---
+
+*Example*
+
+```typescript
+[ 'express', 'lodash', 'foo@^2' ]
+```
+
+
+##### ~~`description`~~<sup>Optional</sup> <a name="description" id="@wbce/projen-d9.DirectusProjectOptions.property.description"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+The description is just a string that helps people understand the purpose of the package.
+
+It can be used when searching for packages in a package manager as well.
+See https://classic.yarnpkg.com/en/docs/package-json/#toc-description
+
+---
+
+##### ~~`devDeps`~~<sup>Optional</sup> <a name="devDeps" id="@wbce/projen-d9.DirectusProjectOptions.property.devDeps"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly devDeps: string[];
+```
+
+- *Type:* string[]
+- *Default:* []
+
+Build dependencies for this module.
+
+These dependencies will only be
+available in your build environment but will not be fetched when this
+module is consumed.
+
+The recommendation is to only specify the module name here (e.g.
+`express`). This will behave similar to `yarn add` or `npm install` in the
+sense that it will add the module as a dependency to your `package.json`
+file with the latest version (`^`). You can specify semver requirements in
+the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
+this will be what you `package.json` will eventually include.
+
+---
+
+*Example*
+
+```typescript
+[ 'typescript', '@types/express' ]
+```
+
+
+##### ~~`entrypoint`~~<sup>Optional</sup> <a name="entrypoint" id="@wbce/projen-d9.DirectusProjectOptions.property.entrypoint"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly entrypoint: string;
+```
+
+- *Type:* string
+- *Default:* "lib/index.js"
+
+Module entrypoint (`main` in `package.json`).
+
+Set to an empty string to not include `main` in your package.json
+
+---
+
+##### ~~`homepage`~~<sup>Optional</sup> <a name="homepage" id="@wbce/projen-d9.DirectusProjectOptions.property.homepage"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly homepage: string;
+```
+
+- *Type:* string
+
+Package's Homepage / Website.
+
+---
+
+##### ~~`keywords`~~<sup>Optional</sup> <a name="keywords" id="@wbce/projen-d9.DirectusProjectOptions.property.keywords"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly keywords: string[];
+```
+
+- *Type:* string[]
+
+Keywords to include in `package.json`.
+
+---
+
+##### ~~`license`~~<sup>Optional</sup> <a name="license" id="@wbce/projen-d9.DirectusProjectOptions.property.license"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly license: string;
+```
+
+- *Type:* string
+- *Default:* "Apache-2.0"
+
+License's SPDX identifier.
+
+See https://github.com/projen/projen/tree/main/license-text for a list of supported licenses.
+Use the `licensed` option if you want to no license to be specified.
+
+---
+
+##### ~~`licensed`~~<sup>Optional</sup> <a name="licensed" id="@wbce/projen-d9.DirectusProjectOptions.property.licensed"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly licensed: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Indicates if a license should be added.
+
+---
+
+##### ~~`maxNodeVersion`~~<sup>Optional</sup> <a name="maxNodeVersion" id="@wbce/projen-d9.DirectusProjectOptions.property.maxNodeVersion"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly maxNodeVersion: string;
+```
+
+- *Type:* string
+- *Default:* no maximum version is enforced
+
+The maximum node version supported by this package. Most projects should not use this option.
+
+The value indicates that the package is incompatible with any newer versions of node.
+This requirement is enforced via the engines field.
+
+You will normally not need to set this option.
+Consider this option only if your package is known to not function with newer versions of node.
+
+---
+
+##### ~~`minNodeVersion`~~<sup>Optional</sup> <a name="minNodeVersion" id="@wbce/projen-d9.DirectusProjectOptions.property.minNodeVersion"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly minNodeVersion: string;
+```
+
+- *Type:* string
+- *Default:* no minimum version is enforced
+
+The minimum node version required by this package to function. Most projects should not use this option.
+
+The value indicates that the package is incompatible with any older versions of node.
+This requirement is enforced via the engines field.
+
+You will normally not need to set this option, even if your package is incompatible with EOL versions of node.
+Consider this option only if your package depends on a specific feature, that is not available in other LTS versions.
+Setting this option has very high impact on the consumers of your package,
+as package managers will actively prevent usage with node versions you have marked as incompatible.
+
+To change the node version of your CI/CD workflows, use `workflowNodeVersion`.
+
+---
+
+##### ~~`npmAccess`~~<sup>Optional</sup> <a name="npmAccess" id="@wbce/projen-d9.DirectusProjectOptions.property.npmAccess"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly npmAccess: NpmAccess;
+```
+
+- *Type:* projen.javascript.NpmAccess
+- *Default:* for scoped packages (e.g. `foo@bar`), the default is `NpmAccess.RESTRICTED`, for non-scoped packages, the default is `NpmAccess.PUBLIC`.
+
+Access level of the npm package.
+
+---
+
+##### ~~`npmProvenance`~~<sup>Optional</sup> <a name="npmProvenance" id="@wbce/projen-d9.DirectusProjectOptions.property.npmProvenance"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly npmProvenance: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true for public packages, false otherwise
+
+Should provenance statements be generated when the package is published.
+
+A supported package manager is required to publish a package with npm provenance statements and
+you will need to use a supported CI/CD provider.
+
+Note that the projen `Release` and `Publisher` components are using `publib` to publish packages,
+which is using npm internally and supports provenance statements independently of the package manager used.
+
+> [https://docs.npmjs.com/generating-provenance-statements](https://docs.npmjs.com/generating-provenance-statements)
+
+---
+
+##### ~~`npmRegistry`~~<sup>Optional</sup> <a name="npmRegistry" id="@wbce/projen-d9.DirectusProjectOptions.property.npmRegistry"></a>
+
+- *Deprecated:* use `npmRegistryUrl` instead
+
+```typescript
+public readonly npmRegistry: string;
+```
+
+- *Type:* string
+
+The host name of the npm registry to publish to.
+
+Cannot be set together with `npmRegistryUrl`.
+
+---
+
+##### ~~`npmRegistryUrl`~~<sup>Optional</sup> <a name="npmRegistryUrl" id="@wbce/projen-d9.DirectusProjectOptions.property.npmRegistryUrl"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly npmRegistryUrl: string;
+```
+
+- *Type:* string
+- *Default:* "https://registry.npmjs.org"
+
+The base URL of the npm package registry.
+
+Must be a URL (e.g. start with "https://" or "http://")
+
+---
+
+##### ~~`npmTokenSecret`~~<sup>Optional</sup> <a name="npmTokenSecret" id="@wbce/projen-d9.DirectusProjectOptions.property.npmTokenSecret"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly npmTokenSecret: string;
+```
+
+- *Type:* string
+- *Default:* "NPM_TOKEN"
+
+GitHub secret which contains the NPM token to use when publishing packages.
+
+---
+
+##### ~~`npmTrustedPublishing`~~<sup>Optional</sup> <a name="npmTrustedPublishing" id="@wbce/projen-d9.DirectusProjectOptions.property.npmTrustedPublishing"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly npmTrustedPublishing: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Use trusted publishing for publishing to npmjs.com Needs to be pre-configured on npm.js to work.
+
+---
+
+##### ~~`packageManager`~~<sup>Optional</sup> <a name="packageManager" id="@wbce/projen-d9.DirectusProjectOptions.property.packageManager"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly packageManager: NodePackageManager;
+```
+
+- *Type:* projen.javascript.NodePackageManager
+- *Default:* NodePackageManager.YARN_CLASSIC
+
+The Node Package Manager used to execute scripts.
+
+---
+
+##### ~~`packageName`~~<sup>Optional</sup> <a name="packageName" id="@wbce/projen-d9.DirectusProjectOptions.property.packageName"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly packageName: string;
+```
+
+- *Type:* string
+- *Default:* defaults to project name
+
+The "name" in package.json.
+
+---
+
+##### ~~`peerDependencyOptions`~~<sup>Optional</sup> <a name="peerDependencyOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.peerDependencyOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly peerDependencyOptions: PeerDependencyOptions;
+```
+
+- *Type:* projen.javascript.PeerDependencyOptions
+
+Options for `peerDeps`.
+
+---
+
+##### ~~`peerDeps`~~<sup>Optional</sup> <a name="peerDeps" id="@wbce/projen-d9.DirectusProjectOptions.property.peerDeps"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly peerDeps: string[];
+```
+
+- *Type:* string[]
+- *Default:* []
+
+Peer dependencies for this module.
+
+Dependencies listed here are required to
+be installed (and satisfied) by the _consumer_ of this library. Using peer
+dependencies allows you to ensure that only a single module of a certain
+library exists in the `node_modules` tree of your consumers.
+
+Note that prior to npm@7, peer dependencies are _not_ automatically
+installed, which means that adding peer dependencies to a library will be a
+breaking change for your customers.
+
+Unless `peerDependencyOptions.pinnedDevDependency` is disabled (it is
+enabled by default), projen will automatically add a dev dependency with a
+pinned version for each peer dependency. This will ensure that you build &
+test your module against the lowest peer version required.
+
+---
+
+##### ~~`pnpmVersion`~~<sup>Optional</sup> <a name="pnpmVersion" id="@wbce/projen-d9.DirectusProjectOptions.property.pnpmVersion"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly pnpmVersion: string;
+```
+
+- *Type:* string
+- *Default:* "9"
+
+The version of PNPM to use if using PNPM as a package manager.
+
+---
+
+##### ~~`repository`~~<sup>Optional</sup> <a name="repository" id="@wbce/projen-d9.DirectusProjectOptions.property.repository"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly repository: string;
+```
+
+- *Type:* string
+
+The repository is the location where the actual code for your package lives.
+
+See https://classic.yarnpkg.com/en/docs/package-json/#toc-repository
+
+---
+
+##### ~~`repositoryDirectory`~~<sup>Optional</sup> <a name="repositoryDirectory" id="@wbce/projen-d9.DirectusProjectOptions.property.repositoryDirectory"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly repositoryDirectory: string;
+```
+
+- *Type:* string
+
+If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives.
+
+---
+
+##### ~~`scopedPackagesOptions`~~<sup>Optional</sup> <a name="scopedPackagesOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.scopedPackagesOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly scopedPackagesOptions: ScopedPackagesOptions[];
+```
+
+- *Type:* projen.javascript.ScopedPackagesOptions[]
+- *Default:* fetch all scoped packages from the public npm registry
+
+Options for privately hosted scoped packages.
+
+---
+
+##### ~~`scripts`~~<sup>Optional</sup> <a name="scripts" id="@wbce/projen-d9.DirectusProjectOptions.property.scripts"></a>
+
+- *Deprecated:* use `project.addTask()` or `package.setScript()`
+
+```typescript
+public readonly scripts: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+- *Default:* {}
+
+npm scripts to include.
+
+If a script has the same name as a standard script,
+the standard script will be overwritten.
+Also adds the script as a task.
+
+---
+
+##### ~~`stability`~~<sup>Optional</sup> <a name="stability" id="@wbce/projen-d9.DirectusProjectOptions.property.stability"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly stability: string;
+```
+
+- *Type:* string
+
+Package's Stability.
+
+---
+
+##### ~~`yarnBerryOptions`~~<sup>Optional</sup> <a name="yarnBerryOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.yarnBerryOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly yarnBerryOptions: YarnBerryOptions;
+```
+
+- *Type:* projen.javascript.YarnBerryOptions
+- *Default:* Yarn Berry v4 with all default options
+
+Options for Yarn Berry.
+
+---
+
+##### ~~`bumpPackage`~~<sup>Optional</sup> <a name="bumpPackage" id="@wbce/projen-d9.DirectusProjectOptions.property.bumpPackage"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly bumpPackage: string;
+```
+
+- *Type:* string
+- *Default:* A recent version of "commit-and-tag-version"
+
+The `commit-and-tag-version` compatible package used to bump the package version, as a dependency string.
+
+This can be any compatible package version, including the deprecated `standard-version@9`.
+
+---
+
+##### ~~`jsiiReleaseVersion`~~<sup>Optional</sup> <a name="jsiiReleaseVersion" id="@wbce/projen-d9.DirectusProjectOptions.property.jsiiReleaseVersion"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly jsiiReleaseVersion: string;
+```
+
+- *Type:* string
+- *Default:* "latest"
+
+Version requirement of `publib` which is used to publish modules to npm.
+
+---
+
+##### ~~`majorVersion`~~<sup>Optional</sup> <a name="majorVersion" id="@wbce/projen-d9.DirectusProjectOptions.property.majorVersion"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly majorVersion: number;
+```
+
+- *Type:* number
+- *Default:* Major version is not enforced.
+
+Major version to release from the default branch.
+
+If this is specified, we bump the latest version of this major version line.
+If not specified, we bump the global latest version.
+
+---
+
+##### ~~`minMajorVersion`~~<sup>Optional</sup> <a name="minMajorVersion" id="@wbce/projen-d9.DirectusProjectOptions.property.minMajorVersion"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly minMajorVersion: number;
+```
+
+- *Type:* number
+- *Default:* No minimum version is being enforced
+
+Minimal Major version to release.
+
+This can be useful to set to 1, as breaking changes before the 1.x major
+release are not incrementing the major version number.
+
+Can not be set together with `majorVersion`.
+
+---
+
+##### ~~`nextVersionCommand`~~<sup>Optional</sup> <a name="nextVersionCommand" id="@wbce/projen-d9.DirectusProjectOptions.property.nextVersionCommand"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly nextVersionCommand: string;
+```
+
+- *Type:* string
+- *Default:* The next version will be determined based on the commit history and project settings.
+
+A shell command to control the next version to release.
+
+If present, this shell command will be run before the bump is executed, and
+it determines what version to release. It will be executed in the following
+environment:
+
+- Working directory: the project directory.
+- `$VERSION`: the current version. Looks like `1.2.3`.
+- `$LATEST_TAG`: the most recent tag. Looks like `prefix-v1.2.3`, or may be unset.
+- `$SUGGESTED_BUMP`: the suggested bump action based on commits. One of `major|minor|patch|none`.
+
+The command should print one of the following to `stdout`:
+
+- Nothing: the next version number will be determined based on commit history.
+- `x.y.z`: the next version number will be `x.y.z`.
+- `major|minor|patch`: the next version number will be the current version number
+  with the indicated component bumped.
+
+This setting cannot be specified together with `minMajorVersion`; the invoked
+script can be used to achieve the effects of `minMajorVersion`.
+
+---
+
+##### ~~`npmDistTag`~~<sup>Optional</sup> <a name="npmDistTag" id="@wbce/projen-d9.DirectusProjectOptions.property.npmDistTag"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly npmDistTag: string;
+```
+
+- *Type:* string
+- *Default:* "latest"
+
+The npmDistTag to use when publishing from the default branch.
+
+To set the npm dist-tag for release branches, set the `npmDistTag` property
+for each branch.
+
+---
+
+##### ~~`postBuildSteps`~~<sup>Optional</sup> <a name="postBuildSteps" id="@wbce/projen-d9.DirectusProjectOptions.property.postBuildSteps"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly postBuildSteps: JobStep[];
+```
+
+- *Type:* projen.github.workflows.JobStep[]
+- *Default:* []
+
+Steps to execute after build as part of the release workflow.
+
+---
+
+##### ~~`prerelease`~~<sup>Optional</sup> <a name="prerelease" id="@wbce/projen-d9.DirectusProjectOptions.property.prerelease"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly prerelease: string;
+```
+
+- *Type:* string
+- *Default:* normal semantic versions
+
+Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
+
+---
+
+##### ~~`publishDryRun`~~<sup>Optional</sup> <a name="publishDryRun" id="@wbce/projen-d9.DirectusProjectOptions.property.publishDryRun"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly publishDryRun: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Instead of actually publishing to package managers, just print the publishing command.
+
+---
+
+##### ~~`publishTasks`~~<sup>Optional</sup> <a name="publishTasks" id="@wbce/projen-d9.DirectusProjectOptions.property.publishTasks"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly publishTasks: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Define publishing tasks that can be executed manually as well as workflows.
+
+Normally, publishing only happens within automated workflows. Enable this
+in order to create a publishing task for each publishing activity.
+
+---
+
+##### ~~`releasableCommits`~~<sup>Optional</sup> <a name="releasableCommits" id="@wbce/projen-d9.DirectusProjectOptions.property.releasableCommits"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly releasableCommits: ReleasableCommits;
+```
+
+- *Type:* projen.ReleasableCommits
+- *Default:* ReleasableCommits.everyCommit()
+
+Find commits that should be considered releasable Used to decide if a release is required.
+
+---
+
+##### ~~`releaseBranches`~~<sup>Optional</sup> <a name="releaseBranches" id="@wbce/projen-d9.DirectusProjectOptions.property.releaseBranches"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly releaseBranches: {[ key: string ]: BranchOptions};
+```
+
+- *Type:* {[ key: string ]: projen.release.BranchOptions}
+- *Default:* no additional branches are used for release. you can use `addBranch()` to add additional branches.
+
+Defines additional release branches.
+
+A workflow will be created for each
+release branch which will publish releases from commits in this branch.
+Each release branch _must_ be assigned a major version number which is used
+to enforce that versions published from that branch always use that major
+version. If multiple branches are used, the `majorVersion` field must also
+be provided for the default branch.
+
+---
+
+##### ~~`releaseEnvironment`~~<sup>Optional</sup> <a name="releaseEnvironment" id="@wbce/projen-d9.DirectusProjectOptions.property.releaseEnvironment"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly releaseEnvironment: string;
+```
+
+- *Type:* string
+- *Default:* no environment used, unless set at the artifact level
+
+The GitHub Actions environment used for the release.
+
+This can be used to add an explicit approval step to the release
+or limit who can initiate a release through environment protection rules.
+
+When multiple artifacts are released, the environment can be overwritten
+on a per artifact basis.
+
+---
+
+##### ~~`releaseEveryCommit`~~<sup>Optional</sup> <a name="releaseEveryCommit" id="@wbce/projen-d9.DirectusProjectOptions.property.releaseEveryCommit"></a>
+
+- *Deprecated:* Use `releaseTrigger: ReleaseTrigger.continuous()` instead
+
+```typescript
+public readonly releaseEveryCommit: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically release new versions every commit to one of branches in `releaseBranches`.
+
+---
+
+##### ~~`releaseFailureIssue`~~<sup>Optional</sup> <a name="releaseFailureIssue" id="@wbce/projen-d9.DirectusProjectOptions.property.releaseFailureIssue"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly releaseFailureIssue: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Create a github issue on every failed publishing task.
+
+---
+
+##### ~~`releaseFailureIssueLabel`~~<sup>Optional</sup> <a name="releaseFailureIssueLabel" id="@wbce/projen-d9.DirectusProjectOptions.property.releaseFailureIssueLabel"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly releaseFailureIssueLabel: string;
+```
+
+- *Type:* string
+- *Default:* "failed-release"
+
+The label to apply to issues indicating publish failures.
+
+Only applies if `releaseFailureIssue` is true.
+
+---
+
+##### ~~`releaseSchedule`~~<sup>Optional</sup> <a name="releaseSchedule" id="@wbce/projen-d9.DirectusProjectOptions.property.releaseSchedule"></a>
+
+- *Deprecated:* Use `releaseTrigger: ReleaseTrigger.scheduled()` instead
+
+```typescript
+public readonly releaseSchedule: string;
+```
+
+- *Type:* string
+- *Default:* no scheduled releases
+
+CRON schedule to trigger new releases.
+
+---
+
+##### ~~`releaseTagPrefix`~~<sup>Optional</sup> <a name="releaseTagPrefix" id="@wbce/projen-d9.DirectusProjectOptions.property.releaseTagPrefix"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly releaseTagPrefix: string;
+```
+
+- *Type:* string
+- *Default:* "v"
+
+Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers.
+
+Note: this prefix is used to detect the latest tagged version
+when bumping, so if you change this on a project with an existing version
+history, you may need to manually tag your latest release
+with the new prefix.
+
+---
+
+##### ~~`releaseTrigger`~~<sup>Optional</sup> <a name="releaseTrigger" id="@wbce/projen-d9.DirectusProjectOptions.property.releaseTrigger"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly releaseTrigger: ReleaseTrigger;
+```
+
+- *Type:* projen.release.ReleaseTrigger
+- *Default:* Continuous releases (`ReleaseTrigger.continuous()`)
+
+The release trigger to use.
+
+---
+
+##### ~~`releaseWorkflowEnv`~~<sup>Optional</sup> <a name="releaseWorkflowEnv" id="@wbce/projen-d9.DirectusProjectOptions.property.releaseWorkflowEnv"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly releaseWorkflowEnv: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+- *Default:* {}
+
+Build environment variables for release workflows.
+
+---
+
+##### ~~`releaseWorkflowName`~~<sup>Optional</sup> <a name="releaseWorkflowName" id="@wbce/projen-d9.DirectusProjectOptions.property.releaseWorkflowName"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly releaseWorkflowName: string;
+```
+
+- *Type:* string
+- *Default:* "release"
+
+The name of the default release workflow.
+
+---
+
+##### ~~`releaseWorkflowSetupSteps`~~<sup>Optional</sup> <a name="releaseWorkflowSetupSteps" id="@wbce/projen-d9.DirectusProjectOptions.property.releaseWorkflowSetupSteps"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly releaseWorkflowSetupSteps: JobStep[];
+```
+
+- *Type:* projen.github.workflows.JobStep[]
+
+A set of workflow steps to execute in order to setup the workflow container.
+
+---
+
+##### ~~`versionrcOptions`~~<sup>Optional</sup> <a name="versionrcOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.versionrcOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly versionrcOptions: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+- *Default:* standard configuration applicable for GitHub repositories
+
+Custom configuration used when creating changelog with commit-and-tag-version package.
+
+Given values either append to default configuration or overwrite values in it.
+
+---
+
+##### ~~`workflowContainerImage`~~<sup>Optional</sup> <a name="workflowContainerImage" id="@wbce/projen-d9.DirectusProjectOptions.property.workflowContainerImage"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly workflowContainerImage: string;
+```
+
+- *Type:* string
+- *Default:* default image
+
+Container image to use for GitHub workflows.
+
+---
+
+##### ~~`workflowRunsOn`~~<sup>Optional</sup> <a name="workflowRunsOn" id="@wbce/projen-d9.DirectusProjectOptions.property.workflowRunsOn"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly workflowRunsOn: string[];
+```
+
+- *Type:* string[]
+- *Default:* ["ubuntu-latest"]
+
+Github Runner selection labels.
+
+---
+
+##### ~~`workflowRunsOnGroup`~~<sup>Optional</sup> <a name="workflowRunsOnGroup" id="@wbce/projen-d9.DirectusProjectOptions.property.workflowRunsOnGroup"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly workflowRunsOnGroup: GroupRunnerOptions;
+```
+
+- *Type:* projen.GroupRunnerOptions
+
+Github Runner Group selection options.
+
+---
+
+##### ~~`defaultReleaseBranch`~~<sup>Required</sup> <a name="defaultReleaseBranch" id="@wbce/projen-d9.DirectusProjectOptions.property.defaultReleaseBranch"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly defaultReleaseBranch: string;
+```
+
+- *Type:* string
+- *Default:* "main"
+
+The name of the main release branch.
+
+---
+
+##### ~~`artifactsDirectory`~~<sup>Optional</sup> <a name="artifactsDirectory" id="@wbce/projen-d9.DirectusProjectOptions.property.artifactsDirectory"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly artifactsDirectory: string;
+```
+
+- *Type:* string
+- *Default:* "dist"
+
+A directory which will contain build artifacts.
+
+---
+
+##### ~~`auditDeps`~~<sup>Optional</sup> <a name="auditDeps" id="@wbce/projen-d9.DirectusProjectOptions.property.auditDeps"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly auditDeps: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Run security audit on dependencies.
+
+When enabled, creates an "audit" task that checks for known security vulnerabilities
+in dependencies. By default, runs during every build and checks for "high" severity
+vulnerabilities or above in all dependencies (including dev dependencies).
+
+---
+
+##### ~~`auditDepsOptions`~~<sup>Optional</sup> <a name="auditDepsOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.auditDepsOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly auditDepsOptions: AuditOptions;
+```
+
+- *Type:* projen.javascript.AuditOptions
+- *Default:* default options
+
+Security audit options.
+
+---
+
+##### ~~`autoApproveUpgrades`~~<sup>Optional</sup> <a name="autoApproveUpgrades" id="@wbce/projen-d9.DirectusProjectOptions.property.autoApproveUpgrades"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly autoApproveUpgrades: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configured).
+
+Throw if set to true but `autoApproveOptions` are not defined.
+
+---
+
+##### ~~`biome`~~<sup>Optional</sup> <a name="biome" id="@wbce/projen-d9.DirectusProjectOptions.property.biome"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly biome: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Setup Biome.
+
+---
+
+##### ~~`biomeOptions`~~<sup>Optional</sup> <a name="biomeOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.biomeOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly biomeOptions: BiomeOptions;
+```
+
+- *Type:* projen.javascript.BiomeOptions
+- *Default:* default options
+
+Biome options.
+
+---
+
+##### ~~`buildWorkflow`~~<sup>Optional</sup> <a name="buildWorkflow" id="@wbce/projen-d9.DirectusProjectOptions.property.buildWorkflow"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly buildWorkflow: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true if not a subproject
+
+Define a GitHub workflow for building PRs.
+
+---
+
+##### ~~`buildWorkflowOptions`~~<sup>Optional</sup> <a name="buildWorkflowOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.buildWorkflowOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly buildWorkflowOptions: BuildWorkflowOptions;
+```
+
+- *Type:* projen.javascript.BuildWorkflowOptions
+
+Options for PR build workflow.
+
+---
+
+##### ~~`buildWorkflowTriggers`~~<sup>Optional</sup> <a name="buildWorkflowTriggers" id="@wbce/projen-d9.DirectusProjectOptions.property.buildWorkflowTriggers"></a>
+
+- *Deprecated:* - Use `buildWorkflowOptions.workflowTriggers`
+
+```typescript
+public readonly buildWorkflowTriggers: Triggers;
+```
+
+- *Type:* projen.github.workflows.Triggers
+- *Default:* "{ pullRequest: {}, workflowDispatch: {} }"
+
+Build workflow triggers.
+
+---
+
+##### ~~`bundlerOptions`~~<sup>Optional</sup> <a name="bundlerOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.bundlerOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly bundlerOptions: BundlerOptions;
+```
+
+- *Type:* projen.javascript.BundlerOptions
+
+Options for `Bundler`.
+
+---
+
+##### ~~`checkLicenses`~~<sup>Optional</sup> <a name="checkLicenses" id="@wbce/projen-d9.DirectusProjectOptions.property.checkLicenses"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly checkLicenses: LicenseCheckerOptions;
+```
+
+- *Type:* projen.javascript.LicenseCheckerOptions
+- *Default:* no license checks are run during the build and all licenses will be accepted
+
+Configure which licenses should be deemed acceptable for use by dependencies.
+
+This setting will cause the build to fail, if any prohibited or not allowed licenses ares encountered.
+
+---
+
+##### ~~`codeCov`~~<sup>Optional</sup> <a name="codeCov" id="@wbce/projen-d9.DirectusProjectOptions.property.codeCov"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly codeCov: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v5 By default, OIDC auth is used. Alternatively a token can be provided via `codeCovTokenSecret`.
+
+---
+
+##### ~~`codeCovTokenSecret`~~<sup>Optional</sup> <a name="codeCovTokenSecret" id="@wbce/projen-d9.DirectusProjectOptions.property.codeCovTokenSecret"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly codeCovTokenSecret: string;
+```
+
+- *Type:* string
+- *Default:* OIDC auth is used
+
+Define the secret name for a specified https://codecov.io/ token.
+
+---
+
+##### ~~`copyrightOwner`~~<sup>Optional</sup> <a name="copyrightOwner" id="@wbce/projen-d9.DirectusProjectOptions.property.copyrightOwner"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly copyrightOwner: string;
+```
+
+- *Type:* string
+- *Default:* defaults to the value of authorName or "" if `authorName` is undefined.
+
+License copyright owner.
+
+---
+
+##### ~~`copyrightPeriod`~~<sup>Optional</sup> <a name="copyrightPeriod" id="@wbce/projen-d9.DirectusProjectOptions.property.copyrightPeriod"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly copyrightPeriod: string;
+```
+
+- *Type:* string
+- *Default:* current year
+
+The copyright years to put in the LICENSE file.
+
+---
+
+##### ~~`dependabot`~~<sup>Optional</sup> <a name="dependabot" id="@wbce/projen-d9.DirectusProjectOptions.property.dependabot"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly dependabot: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Use dependabot to handle dependency upgrades.
+
+Cannot be used in conjunction with `depsUpgrade`.
+
+---
+
+##### ~~`dependabotOptions`~~<sup>Optional</sup> <a name="dependabotOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.dependabotOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly dependabotOptions: DependabotOptions;
+```
+
+- *Type:* projen.github.DependabotOptions
+- *Default:* default options
+
+Options for dependabot.
+
+---
+
+##### ~~`depsUpgrade`~~<sup>Optional</sup> <a name="depsUpgrade" id="@wbce/projen-d9.DirectusProjectOptions.property.depsUpgrade"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly depsUpgrade: boolean;
+```
+
+- *Type:* boolean
+- *Default:* `true` for root projects, `false` for subprojects
+
+Use tasks and github workflows to handle dependency upgrades.
+
+Cannot be used in conjunction with `dependabot`.
+
+---
+
+##### ~~`depsUpgradeOptions`~~<sup>Optional</sup> <a name="depsUpgradeOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.depsUpgradeOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly depsUpgradeOptions: UpgradeDependenciesOptions;
+```
+
+- *Type:* projen.javascript.UpgradeDependenciesOptions
+- *Default:* default options
+
+Options for `UpgradeDependencies`.
+
+---
+
+##### ~~`gitignore`~~<sup>Optional</sup> <a name="gitignore" id="@wbce/projen-d9.DirectusProjectOptions.property.gitignore"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly gitignore: string[];
+```
+
+- *Type:* string[]
+
+Additional entries to .gitignore.
+
+---
+
+##### ~~`jest`~~<sup>Optional</sup> <a name="jest" id="@wbce/projen-d9.DirectusProjectOptions.property.jest"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly jest: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Setup jest unit tests.
+
+---
+
+##### ~~`jestOptions`~~<sup>Optional</sup> <a name="jestOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.jestOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly jestOptions: JestOptions;
+```
+
+- *Type:* projen.javascript.JestOptions
+- *Default:* default options
+
+Jest options.
+
+---
+
+##### ~~`mutableBuild`~~<sup>Optional</sup> <a name="mutableBuild" id="@wbce/projen-d9.DirectusProjectOptions.property.mutableBuild"></a>
+
+- *Deprecated:* - Use `buildWorkflowOptions.mutableBuild`
+
+```typescript
+public readonly mutableBuild: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically update files modified during builds to pull-request branches.
+
+This means
+that any files synthesized by projen or e.g. test snapshots will always be up-to-date
+before a PR is merged.
+
+Implies that PR builds do not have anti-tamper checks.
+
+---
+
+##### ~~`npmignore`~~<sup>Optional</sup> <a name="npmignore" id="@wbce/projen-d9.DirectusProjectOptions.property.npmignore"></a>
+
+- *Deprecated:* - use `project.addPackageIgnore`
+
+```typescript
+public readonly npmignore: string[];
+```
+
+- *Type:* string[]
+
+Additional entries to .npmignore.
+
+---
+
+##### ~~`npmignoreEnabled`~~<sup>Optional</sup> <a name="npmignoreEnabled" id="@wbce/projen-d9.DirectusProjectOptions.property.npmignoreEnabled"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly npmignoreEnabled: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
+
+---
+
+##### ~~`npmIgnoreOptions`~~<sup>Optional</sup> <a name="npmIgnoreOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.npmIgnoreOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly npmIgnoreOptions: IgnoreFileOptions;
+```
+
+- *Type:* projen.IgnoreFileOptions
+
+Configuration options for .npmignore file.
+
+---
+
+##### ~~`package`~~<sup>Optional</sup> <a name="package" id="@wbce/projen-d9.DirectusProjectOptions.property.package"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly package: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
+
+---
+
+##### ~~`prettier`~~<sup>Optional</sup> <a name="prettier" id="@wbce/projen-d9.DirectusProjectOptions.property.prettier"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly prettier: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Setup prettier.
+
+---
+
+##### ~~`prettierOptions`~~<sup>Optional</sup> <a name="prettierOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.prettierOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly prettierOptions: PrettierOptions;
+```
+
+- *Type:* projen.javascript.PrettierOptions
+- *Default:* default options
+
+Prettier options.
+
+---
+
+##### ~~`projenDevDependency`~~<sup>Optional</sup> <a name="projenDevDependency" id="@wbce/projen-d9.DirectusProjectOptions.property.projenDevDependency"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly projenDevDependency: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true if not a subproject
+
+Indicates of "projen" should be installed as a devDependency.
+
+---
+
+##### ~~`projenrcJs`~~<sup>Optional</sup> <a name="projenrcJs" id="@wbce/projen-d9.DirectusProjectOptions.property.projenrcJs"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly projenrcJs: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true if projenrcJson is false
+
+Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation.
+
+---
+
+##### ~~`projenrcJsOptions`~~<sup>Optional</sup> <a name="projenrcJsOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.projenrcJsOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly projenrcJsOptions: ProjenrcOptions;
+```
+
+- *Type:* projen.javascript.ProjenrcOptions
+- *Default:* default options
+
+Options for .projenrc.js.
+
+---
+
+##### ~~`projenVersion`~~<sup>Optional</sup> <a name="projenVersion" id="@wbce/projen-d9.DirectusProjectOptions.property.projenVersion"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly projenVersion: string;
+```
+
+- *Type:* string
+- *Default:* Defaults to the latest version.
+
+Version of projen to install.
+
+---
+
+##### ~~`pullRequestTemplate`~~<sup>Optional</sup> <a name="pullRequestTemplate" id="@wbce/projen-d9.DirectusProjectOptions.property.pullRequestTemplate"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly pullRequestTemplate: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Include a GitHub pull request template.
+
+---
+
+##### ~~`pullRequestTemplateContents`~~<sup>Optional</sup> <a name="pullRequestTemplateContents" id="@wbce/projen-d9.DirectusProjectOptions.property.pullRequestTemplateContents"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly pullRequestTemplateContents: string[];
+```
+
+- *Type:* string[]
+- *Default:* default content
+
+The contents of the pull request template.
+
+---
+
+##### ~~`release`~~<sup>Optional</sup> <a name="release" id="@wbce/projen-d9.DirectusProjectOptions.property.release"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly release: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true (false for subprojects)
+
+Add release management to this project.
+
+---
+
+##### ~~`releaseToNpm`~~<sup>Optional</sup> <a name="releaseToNpm" id="@wbce/projen-d9.DirectusProjectOptions.property.releaseToNpm"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly releaseToNpm: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Automatically release to npm when new versions are introduced.
+
+---
+
+##### ~~`releaseWorkflow`~~<sup>Optional</sup> <a name="releaseWorkflow" id="@wbce/projen-d9.DirectusProjectOptions.property.releaseWorkflow"></a>
+
+- *Deprecated:* see `release`.
+
+```typescript
+public readonly releaseWorkflow: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true if not a subproject
+
+DEPRECATED: renamed to `release`.
+
+---
+
+##### ~~`workflowBootstrapSteps`~~<sup>Optional</sup> <a name="workflowBootstrapSteps" id="@wbce/projen-d9.DirectusProjectOptions.property.workflowBootstrapSteps"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly workflowBootstrapSteps: JobStep[];
+```
+
+- *Type:* projen.github.workflows.JobStep[]
+- *Default:* "yarn install --frozen-lockfile && yarn projen"
+
+Workflow steps to use in order to bootstrap this repo.
+
+---
+
+##### ~~`workflowGitIdentity`~~<sup>Optional</sup> <a name="workflowGitIdentity" id="@wbce/projen-d9.DirectusProjectOptions.property.workflowGitIdentity"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly workflowGitIdentity: GitIdentity;
+```
+
+- *Type:* projen.github.GitIdentity
+- *Default:* default GitHub Actions user
+
+The git identity to use in workflows.
+
+---
+
+##### ~~`workflowNodeVersion`~~<sup>Optional</sup> <a name="workflowNodeVersion" id="@wbce/projen-d9.DirectusProjectOptions.property.workflowNodeVersion"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly workflowNodeVersion: string;
+```
+
+- *Type:* string
+- *Default:* `minNodeVersion` if set, otherwise `lts/*`.
+
+The node version used in GitHub Actions workflows.
+
+Always use this option if your GitHub Actions workflows require a specific to run.
+
+---
+
+##### ~~`workflowPackageCache`~~<sup>Optional</sup> <a name="workflowPackageCache" id="@wbce/projen-d9.DirectusProjectOptions.property.workflowPackageCache"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly workflowPackageCache: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Enable Node.js package cache in GitHub workflows.
+
+---
+
+##### ~~`disableTsconfig`~~<sup>Optional</sup> <a name="disableTsconfig" id="@wbce/projen-d9.DirectusProjectOptions.property.disableTsconfig"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly disableTsconfig: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler).
+
+---
+
+##### ~~`disableTsconfigDev`~~<sup>Optional</sup> <a name="disableTsconfigDev" id="@wbce/projen-d9.DirectusProjectOptions.property.disableTsconfigDev"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly disableTsconfigDev: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Do not generate a `tsconfig.dev.json` file.
+
+---
+
+##### ~~`docgen`~~<sup>Optional</sup> <a name="docgen" id="@wbce/projen-d9.DirectusProjectOptions.property.docgen"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly docgen: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Docgen by Typedoc.
+
+---
+
+##### ~~`docsDirectory`~~<sup>Optional</sup> <a name="docsDirectory" id="@wbce/projen-d9.DirectusProjectOptions.property.docsDirectory"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly docsDirectory: string;
+```
+
+- *Type:* string
+- *Default:* "docs"
+
+Docs directory.
+
+---
+
+##### ~~`entrypointTypes`~~<sup>Optional</sup> <a name="entrypointTypes" id="@wbce/projen-d9.DirectusProjectOptions.property.entrypointTypes"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly entrypointTypes: string;
+```
+
+- *Type:* string
+- *Default:* .d.ts file derived from the project's entrypoint (usually lib/index.d.ts)
+
+The .d.ts file that includes the type declarations for this module.
+
+---
+
+##### ~~`eslint`~~<sup>Optional</sup> <a name="eslint" id="@wbce/projen-d9.DirectusProjectOptions.property.eslint"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly eslint: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true, unless biome is enabled
+
+Setup eslint.
+
+---
+
+##### ~~`eslintOptions`~~<sup>Optional</sup> <a name="eslintOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.eslintOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly eslintOptions: EslintOptions;
+```
+
+- *Type:* projen.javascript.EslintOptions
+- *Default:* opinionated default options
+
+Eslint options.
+
+---
+
+##### ~~`libdir`~~<sup>Optional</sup> <a name="libdir" id="@wbce/projen-d9.DirectusProjectOptions.property.libdir"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly libdir: string;
+```
+
+- *Type:* string
+- *Default:* "lib"
+
+Typescript  artifacts output directory.
+
+---
+
+##### ~~`projenrcTs`~~<sup>Optional</sup> <a name="projenrcTs" id="@wbce/projen-d9.DirectusProjectOptions.property.projenrcTs"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly projenrcTs: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Use TypeScript for your projenrc file (`.projenrc.ts`).
+
+---
+
+##### ~~`projenrcTsOptions`~~<sup>Optional</sup> <a name="projenrcTsOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.projenrcTsOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly projenrcTsOptions: ProjenrcOptions;
+```
+
+- *Type:* projen.typescript.ProjenrcOptions
+
+Options for .projenrc.ts.
+
+---
+
+##### ~~`sampleCode`~~<sup>Optional</sup> <a name="sampleCode" id="@wbce/projen-d9.DirectusProjectOptions.property.sampleCode"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly sampleCode: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Generate one-time sample in `src/` and `test/` if there are no files there.
+
+---
+
+##### ~~`srcdir`~~<sup>Optional</sup> <a name="srcdir" id="@wbce/projen-d9.DirectusProjectOptions.property.srcdir"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly srcdir: string;
+```
+
+- *Type:* string
+- *Default:* "src"
+
+Typescript sources directory.
+
+---
+
+##### ~~`testdir`~~<sup>Optional</sup> <a name="testdir" id="@wbce/projen-d9.DirectusProjectOptions.property.testdir"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly testdir: string;
+```
+
+- *Type:* string
+- *Default:* "test"
+
+Jest tests directory. Tests files should be named `xxx.test.ts`.
+
+If this directory is under `srcdir` (e.g. `src/test`, `src/__tests__`),
+then tests are going to be compiled into `lib/` and executed as javascript.
+If the test directory is outside of `src`, then we configure jest to
+compile the code in-memory.
+
+---
+
+##### ~~`tsconfig`~~<sup>Optional</sup> <a name="tsconfig" id="@wbce/projen-d9.DirectusProjectOptions.property.tsconfig"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly tsconfig: TypescriptConfigOptions;
+```
+
+- *Type:* projen.javascript.TypescriptConfigOptions
+- *Default:* default options
+
+Custom TSConfig.
+
+---
+
+##### ~~`tsconfigDev`~~<sup>Optional</sup> <a name="tsconfigDev" id="@wbce/projen-d9.DirectusProjectOptions.property.tsconfigDev"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly tsconfigDev: TypescriptConfigOptions;
+```
+
+- *Type:* projen.javascript.TypescriptConfigOptions
+- *Default:* use the production tsconfig options
+
+Custom tsconfig options for the development tsconfig.json file (used for testing).
+
+---
+
+##### ~~`tsconfigDevFile`~~<sup>Optional</sup> <a name="tsconfigDevFile" id="@wbce/projen-d9.DirectusProjectOptions.property.tsconfigDevFile"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly tsconfigDevFile: string;
+```
+
+- *Type:* string
+- *Default:* "tsconfig.dev.json"
+
+The name of the development tsconfig.json file.
+
+---
+
+##### ~~`tsJestOptions`~~<sup>Optional</sup> <a name="tsJestOptions" id="@wbce/projen-d9.DirectusProjectOptions.property.tsJestOptions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly tsJestOptions: TsJestOptions;
+```
+
+- *Type:* projen.typescript.TsJestOptions
+
+Options for ts-jest.
+
+---
+
+##### ~~`typescriptVersion`~~<sup>Optional</sup> <a name="typescriptVersion" id="@wbce/projen-d9.DirectusProjectOptions.property.typescriptVersion"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly typescriptVersion: string;
+```
+
+- *Type:* string
+- *Default:* "latest"
+
+TypeScript version to use.
+
+NOTE: Typescript is not semantically versioned and should remain on the
+same minor, so we recommend using a `~` dependency (e.g. `~1.2.3`).
+
+---
+
+##### ~~`extensionsFolderName`~~<sup>Optional</sup> <a name="extensionsFolderName" id="@wbce/projen-d9.DirectusProjectOptions.property.extensionsFolderName"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly extensionsFolderName: string;
+```
+
+- *Type:* string
+- *Default:* "extension-packages"
+
+The name of the extensions folder.
+
+---
+
+##### ~~`githubConfig`~~<sup>Optional</sup> <a name="githubConfig" id="@wbce/projen-d9.DirectusProjectOptions.property.githubConfig"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly githubConfig: boolean | GitHubConfigOptions;
+```
+
+- *Type:* boolean | @wbce/projen-shared.GitHubConfigOptions
+- *Default:* default GitHubConfig with project defaults
+
+Options for the GitHub configuration.
+
+Set to false to disable GitHub config entirely.
+
+---
+
+##### ~~`packageVersions`~~<sup>Optional</sup> <a name="packageVersions" id="@wbce/projen-d9.DirectusProjectOptions.property.packageVersions"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly packageVersions: PackageVersions;
+```
+
+- *Type:* <a href="#@wbce/projen-d9.PackageVersions">PackageVersions</a>
+
+---
+
+### PackageVersions <a name="PackageVersions" id="@wbce/projen-d9.PackageVersions"></a>
+
+#### Initializer <a name="Initializer" id="@wbce/projen-d9.PackageVersions.Initializer"></a>
+
+```typescript
+import { PackageVersions } from '@wbce/projen-d9'
 
 const packageVersions: PackageVersions = { ... }
 ```
@@ -4023,12 +8440,12 @@ const packageVersions: PackageVersions = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@wbce/projen-directus.PackageVersions.property.atlas">atlas</a></code> | <code>string</code> | The version of. |
-| <code><a href="#@wbce/projen-directus.PackageVersions.property.d9">d9</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.PackageVersions.property.atlas">atlas</a></code> | <code>string</code> | The version of. |
+| <code><a href="#@wbce/projen-d9.PackageVersions.property.d9">d9</a></code> | <code>string</code> | *No description.* |
 
 ---
 
-##### `atlas`<sup>Optional</sup> <a name="atlas" id="@wbce/projen-directus.PackageVersions.property.atlas"></a>
+##### `atlas`<sup>Optional</sup> <a name="atlas" id="@wbce/projen-d9.PackageVersions.property.atlas"></a>
 
 ```typescript
 public readonly atlas: string;
@@ -4041,7 +8458,7 @@ The version of.
 
 ---
 
-##### `d9`<sup>Optional</sup> <a name="d9" id="@wbce/projen-directus.PackageVersions.property.d9"></a>
+##### `d9`<sup>Optional</sup> <a name="d9" id="@wbce/projen-d9.PackageVersions.property.d9"></a>
 
 ```typescript
 public readonly d9: string;

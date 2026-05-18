@@ -24,7 +24,7 @@
       "type": "build"
     },
     {
-      "name": "@wbce/projen-directus-extension",
+      "name": "@wbce/projen-d9-extension",
       "version": "workspace:*",
       "type": "build"
     },
@@ -107,7 +107,7 @@
       "type": "bundled"
     },
     {
-      "name": "@wbce/projen-directus-extension",
+      "name": "@wbce/projen-d9-extension",
       "type": "peer"
     },
     {

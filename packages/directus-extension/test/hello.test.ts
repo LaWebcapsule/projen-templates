@@ -1,10 +1,10 @@
 import { Testing } from 'projen/lib/testing';
-import { DirectusExtensionProject, DirectusExtensionType } from '../src';
+import { D9ExtensionProject, D9ExtensionType } from '../src';
 
-test('DirectusExtensionProject can be instantiated', () => {
-  const project = new DirectusExtensionProject({
+test('D9ExtensionProject can be instantiated', () => {
+  const project = new D9ExtensionProject({
     name: 'test-extension',
-    extensionTypes: [DirectusExtensionType.HOOK],
+    extensionTypes: [D9ExtensionType.HOOK],
     defaultReleaseBranch: 'main',
   });
   const snapshot = Testing.synth(project);

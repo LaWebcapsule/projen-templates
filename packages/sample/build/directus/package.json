@@ -25,14 +25,13 @@
   },
   "devDependencies": {
     "@ariga/atlas": "0.32.0",
-    "@wbce/projen-directus": "file:../../../directus",
-    "@wbce/projen-directus-extension": "file:../../../directus-extension",
-    "@wbce/projen-shared": "file:../../../shared",
+    "@wbce/projen-d9": "file:../../../directus",
+    "@wbce/projen-d9-extension": "file:../../../directus-extension",
     "commit-and-tag-version": "^12",
     "constructs": "^10.0.0",
-    "jest": "^30.3.0",
+    "jest": "^30.4.2",
     "jest-junit": "^16",
-    "projen": "^0.99.36"
+    "projen": "^0.99.61"
   },
   "dependencies": {
     "@wbce-d9/directus9": "12.0.1"

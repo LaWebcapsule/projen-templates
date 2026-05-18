@@ -1,6 +1,6 @@
 import { PnpmWorkspace } from '@wbce/projen-shared';
 import { Project, ProjectOptions } from 'projen';
-import { DirectusExtensionProject, DirectusExtensionType } from './directus-extension-project';
+import { D9ExtensionProject, D9ExtensionType } from './directus-extension-project';
 
 /**
  * Options passed to addExtension.
@@ -30,8 +30,8 @@ export interface ExtensionFolderOptions extends ProjectOptions {
  * declared in extensions.json and loaded automatically.
  *
  * @example
- * const project = new DirectusProject({ name: 'my-app', defaultReleaseBranch: 'main' });
- * project.extensions.addExtension('my-hook', DirectusExtensionType.HOOK);
+ * const project = new D9Project({ name: 'my-app', defaultReleaseBranch: 'main' });
+ * project.extensions.addExtension('my-hook', D9ExtensionType.HOOK);
  */
 export class ExtensionFolder extends Project {
 
@@ -53,8 +53,8 @@ export class ExtensionFolder extends Project {
   /**
    * Add a Directus extension to this folder.
    */
-  public add(name: string, extensionTypes: DirectusExtensionType[], options?: AddExtensionOptions): DirectusExtensionProject {
-    return new DirectusExtensionProject({
+  public add(name: string, extensionTypes: D9ExtensionType[], options?: AddExtensionOptions): D9ExtensionProject {
+    return new D9ExtensionProject({
       name,
       extensionTypes,
       parent: this,

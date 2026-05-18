@@ -1,13 +1,14 @@
-# @wbce/projen-directus
+# @wbce/projen-d9
 
 Projen template for [d9](https://github.com/LaWebcapsule/d9) projects (fork of Directus v9). Scaffolds a local development setup with Docker Compose (Postgres + Redis), extension management, and GitHub workflows — then produces a Docker image you can deploy to any environment.
 
-Companion package: [`@wbce/projen-directus-extension`](../directus-extension) for authoring extensions.
+
+Companion package: [`@wbce/projen-d9-extension`](../directus-extension) for authoring extensions.
 
 ## Bootstrap a new project
 
 ```sh
-npx projen new --from @wbce/projen-directus
+npx projen new --from @wbce/projen-d9
 ```
 
 This creates a `.projenrc.js` and synthesizes the project.
@@ -17,10 +18,10 @@ This creates a `.projenrc.js` and synthesizes the project.
 `.projenrc.js`:
 
 ```js
-import { DirectusProject } from '@wbce/projen-directus';
-import { DirectusExtensionType } from '@wbce/projen-directus-extension';
+import { D9Project } from '@wbce/projen-d9';
+import { D9ExtensionType } from '@wbce/projen-d9-extension';
 
-const project = new DirectusProject({
+const project = new D9Project({
   name: 'my-d9',
   defaultReleaseBranch: 'main',
   eslintOptions: {
@@ -33,7 +34,7 @@ const project = new DirectusProject({
 project.addExtension('shared', []);
 
 // A hook extension that depends on the shared package
-const myHook = project.addExtension('my-hook', [DirectusExtensionType.HOOK]);
+const myHook = project.addExtension('my-hook', [D9ExtensionType.HOOK]);
 myHook.addDeps('shared@workspace:');
 
 project.synth();
@@ -51,7 +52,7 @@ The default admin user is `admin@example.com` / `totototo`.
 
 ### Extension types
 
-`DirectusExtensionType` values: `INTERFACE`, `DISPLAY`, `LAYOUT`, `MODULE`, `PANEL`, `ENDPOINT`, `HOOK`, `OPERATION`. Pass an empty array for a shared (non-extension) package.
+`D9ExtensionType` values: `INTERFACE`, `DISPLAY`, `LAYOUT`, `MODULE`, `PANEL`, `ENDPOINT`, `HOOK`, `OPERATION`. Pass an empty array for a shared (non-extension) package.
 
 Extensions live under `./plugins/` (configurable via `extensionsFolderName`) and are built by the `build-extensions` task.
 
@@ -73,7 +74,7 @@ Extensions live under `./plugins/` (configurable via `extensionsFolderName`) and
 
 ## Options
 
-See [API.md](./API.md) for the full `DirectusProjectOptions` reference. Highlights:
+See [API.md](./API.md) for the full `D9ProjectOptions` reference. Highlights:
 
 - `extensionsFolderName` — folder for extension packages (default: `plugins`)
 - `packageVersions.d9` — version of `@wbce-d9/directus9` (default: `12.0.1`)

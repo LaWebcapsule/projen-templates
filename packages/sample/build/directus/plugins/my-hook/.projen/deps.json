@@ -32,7 +32,7 @@
       "type": "build"
     },
     {
-      "name": "@wbce/projen-directus-extension",
+      "name": "@wbce/projen-d9-extension",
       "type": "build"
     },
     {

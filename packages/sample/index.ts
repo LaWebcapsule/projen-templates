@@ -23,7 +23,7 @@ Projects.createProject({
 
 Projects.createProject({
     dir: './build/directus',
-    projectFqn: '@wbce/projen-directus.DirectusProject',
+    projectFqn: '@wbce/projen-d9.D9Project',
     projectOptions: {
       name: 'my-test-project',
       defaultReleaseBranch: 'main',

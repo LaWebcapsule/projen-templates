@@ -2,4 +2,4 @@
 
 packages:
   - shared
-  - test
+  - my-hook

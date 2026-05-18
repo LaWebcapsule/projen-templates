@@ -33,7 +33,8 @@ junit.xml
 /coverage/
 /dist/changelog.md
 /dist/version.txt
-extensions
+extensions/*
+!extensions/templates/
 !/docker-compose.yml
 !/Dockerfile
 !/CLAUDE.md

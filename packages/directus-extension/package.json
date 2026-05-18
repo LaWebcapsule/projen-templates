@@ -1,5 +1,5 @@
 {
-  "name": "@wbce/projen-directus-extension",
+  "name": "@wbce/projen-d9-extension",
   "repository": {
     "type": "git",
     "url": "git@github.com:LaWebcapsule/projen-templates.git"
