@@ -1,5 +1,11 @@
 # @wbce/projen-directus-extension
 
+## 0.0.15
+
+### Patch Changes
+
+- e348f46: test an automatic update
+
 ## 0.0.14
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @wbce/projen-directus
 
+## 0.0.28
+
+### Patch Changes
+
+- Updated dependencies [e348f46]
+  - @wbce/projen-d9-extension@0.0.15
+
 ## 0.0.27
 
 ### Patch Changes
