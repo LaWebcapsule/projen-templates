@@ -1,6 +1,6 @@
 # @wbce/projen-d9-extension
 
-Projen constructs for authoring [d9](https://github.com/LaWebcapsule/d9) (Directus 9) extensions. Provides:
+Projen constructs for authoring [d9](https://github.com/LaWebcapsule/d9) (Directus 9) extensions. It provides:
 
 - `ExtensionFolder` — a pnpm workspace that holds extension packages
 - `D9ExtensionProject` — a TypeScript project for a single extension or a bundle of related extensions
