@@ -1,5 +1,5 @@
 {
-  "name": "test",
+  "name": "my-hook",
   "scripts": {
     "build": "npx projen build",
     "compile": "npx projen compile",
@@ -29,6 +29,9 @@
     "jest-junit": "^16",
     "ts-jest": "*",
     "typescript": "*"
+  },
+  "dependencies": {
+    "shared": "workspace:"
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",

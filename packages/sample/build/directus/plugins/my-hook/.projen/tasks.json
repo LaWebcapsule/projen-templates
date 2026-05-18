@@ -11,10 +11,10 @@
           "exec": "directus-extension build"
         },
         {
-          "exec": "mkdir -p ../../extensions/hooks/test"
+          "exec": "mkdir -p ../../extensions/hooks/my-hook"
         },
         {
-          "exec": "cp -r dist/* ../../extensions/hooks/test"
+          "exec": "cp -r dist/* ../../extensions/hooks/my-hook"
         }
       ]
     },
