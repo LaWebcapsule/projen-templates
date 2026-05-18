@@ -12,8 +12,8 @@ const project = new D9Project({
   // packageName: undefined,  /* The "name" in package.json. */
 });
 
-project.addDevDeps('@wbce/projen-directus@file:../../../directus');
-project.addDevDeps('@wbce/projen-directus-extension@file:../../../directus-extension');
+project.addDevDeps('@wbce/projen-d9@file:../../../directus');
+project.addDevDeps('@wbce/projen-d9-extension@file:../../../directus-extension');
 project.addDevDeps('@wbce/projen-shared@file:../../../shared');
 project.addExtension("shared", []);
 const myExtension = project.addExtension("my-hook", [D9ExtensionType.HOOK]);

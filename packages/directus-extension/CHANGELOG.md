@@ -1,5 +1,11 @@
 # @wbce/projen-directus-extension
 
+## 0.0.14
+
+### Patch Changes
+
+- Rename the packages
+
 ## 0.0.13
 
 ### Patch Changes
