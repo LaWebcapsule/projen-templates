@@ -8,8 +8,8 @@ import * as path from 'path';
  */
 
 const packageFolders: Record<string, string> = {
-  '@wbce/projen-directus': 'directus',
-  '@wbce/projen-directus-extension': 'directus-extension',
+  '@wbce/projen-d9': 'directus',
+  '@wbce/projen-d9-extension': 'directus-extension',
   '@wbce/projen-blank': 'blank',
   '@wbce/projen-shared': 'shared',
 };

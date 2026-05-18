@@ -6,18 +6,11 @@
       "type": "build"
     },
     {
-      "name": "@wbce/projen-directus-extension",
-      "version": "file:../../../directus-extension",
+      "name": "@wbce/projen-d9",
       "type": "build"
     },
     {
-      "name": "@wbce/projen-directus",
-      "version": "file:../../../directus",
-      "type": "build"
-    },
-    {
-      "name": "@wbce/projen-shared",
-      "version": "file:../../../shared",
+      "name": "@wbce/projen-d9-extension",
       "type": "build"
     },
     {

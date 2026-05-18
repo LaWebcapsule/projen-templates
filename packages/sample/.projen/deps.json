@@ -10,7 +10,7 @@
       "type": "build"
     },
     {
-      "name": "@wbce/projen-directus",
+      "name": "@wbce/projen-d9",
       "version": "workspace:*",
       "type": "build"
     },

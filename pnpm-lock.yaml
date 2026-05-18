@@ -126,8 +126,8 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^8
         version: 8.57.2(eslint@9.39.4)(typescript@5.9.3)
-      '@wbce/projen-directus-extension':
-        specifier: 0.0.12
+      '@wbce/projen-d9-extension':
+        specifier: '*'
         version: link:../directus-extension
       '@wbce/projen-shared':
         specifier: 0.0.3
@@ -370,7 +370,7 @@ importers:
       '@wbce/projen-blank':
         specifier: workspace:*
         version: link:../blank
-      '@wbce/projen-directus':
+      '@wbce/projen-d9':
         specifier: workspace:*
         version: link:../directus
       typescript:

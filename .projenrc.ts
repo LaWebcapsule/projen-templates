@@ -123,9 +123,9 @@ const directus = new cdk.JsiiProject({
   ...commonJsiiOptions,
   parent: root,
   outdir: './packages/directus',
-  name: '@wbce/projen-directus',
-  peerDeps: ['constructs', 'projen', '@wbce/projen-shared', '@wbce/projen-directus-extension'],
-  devDeps: ['@wbce/projen-shared@workspace:*', '@wbce/projen-directus-extension@workspace:*'],
+  name: '@wbce/projen-d9',
+  peerDeps: ['constructs', 'projen', '@wbce/projen-shared', '@wbce/projen-d9-extension'],
+  devDeps: ['@wbce/projen-shared@workspace:*', '@wbce/projen-d9-extension@workspace:*'],
 });
 directus.package.addVersion(readPackageVersion('./packages/directus'));
 directus.npmrc.addConfig('node-linker', 'hoisted');
@@ -134,7 +134,10 @@ directus.addBundledDeps("pg");
 directus.addBundledDeps("pg-copy-streams");
 directus.addBundledDeps("@types/pg");
 directus.addBundledDeps("@types/pg-copy-streams");
-directus.addBins({"wbce-directus": "lib/cli/index.js"})
+directus.addBins({
+  "wbce-d9": "lib/cli/index.js",
+  "wbce-directus": "lib/cli/index.js", // deprecated alias, kept for backward compatibility
+});
 
 
 // --- directus extension ---
@@ -142,7 +145,7 @@ const directusExtension = new cdk.JsiiProject({
   ...commonJsiiOptions,
   parent: root,
   outdir: './packages/directus-extension',
-  name: '@wbce/projen-directus-extension',
+  name: '@wbce/projen-d9-extension',
   peerDeps: ['constructs', 'projen', '@wbce/projen-shared'],
   devDeps: ['@wbce/projen-shared@workspace:*'],
 });
@@ -188,7 +191,7 @@ const sample = new typescript.TypeScriptProject({
   github: false,
   devDeps: [
     '@wbce/projen-blank@workspace:*',
-    '@wbce/projen-directus@workspace:*',
+    '@wbce/projen-d9@workspace:*',
   ],
   deps: ['tsx'],
 });

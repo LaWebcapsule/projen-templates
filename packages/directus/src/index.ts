@@ -1,4 +1,4 @@
-import { AddExtensionOptions, DirectusExtensionType, ExtensionFolder } from '@wbce/projen-directus-extension';
+import { AddExtensionOptions, D9ExtensionType, ExtensionFolder } from '@wbce/projen-d9-extension';
 import { GitHubConfig, GitHubConfigOptions, Dockerfile } from '@wbce/projen-shared';
 import { AiAgent, AiInstructions, DockerCompose, DockerComposeService, javascript, SampleFile, Task, typescript } from 'projen';
 import { JobPermission } from 'projen/lib/github/workflows-model';
@@ -14,7 +14,7 @@ export interface PackageVersions {
 }
 
 
-export interface DirectusProjectOptions extends typescript.TypeScriptProjectOptions {
+export interface D9ProjectOptions extends typescript.TypeScriptProjectOptions {
   /**
    * Options for the GitHub configuration.
    * Set to false to disable GitHub config entirely.
@@ -30,7 +30,7 @@ export interface DirectusProjectOptions extends typescript.TypeScriptProjectOpti
   readonly packageVersions?: PackageVersions;
 }
 
-export class DirectusProject extends javascript.NodeProject {
+export class D9Project extends javascript.NodeProject {
 
   public readonly githubConfig?: GitHubConfig;
   public extensions!: ExtensionFolder;
@@ -43,7 +43,7 @@ export class DirectusProject extends javascript.NodeProject {
   public databaseService!: DockerComposeService;
   public cacheService!: DockerComposeService;
 
-  constructor(protected options: DirectusProjectOptions) {
+  constructor(protected options: D9ProjectOptions) {
     const d9Version = options.packageVersions?.d9 || '12.0.1';
     const atlasVersion = options.packageVersions?.atlas || '0.32.0';
     super({
@@ -61,7 +61,7 @@ export class DirectusProject extends javascript.NodeProject {
         contents: [
           `# ${options.name}`,
           '',
-          'A [d9](https://github.com/LaWebcapsule/d9) (Directus 9 fork) project scaffolded with [`@wbce/projen-directus`](https://www.npmjs.com/package/@wbce/projen-directus). Develop locally against Docker Compose, then build a Docker image to deploy anywhere.',
+          'A [d9](https://github.com/LaWebcapsule/d9) (Directus 9 fork) project scaffolded with [`@wbce/projen-d9`](https://www.npmjs.com/package/@wbce/projen-d9). Develop locally against Docker Compose, then build a Docker image to deploy anywhere.',
           '',
           '## Local development',
           '',
@@ -102,17 +102,17 @@ export class DirectusProject extends javascript.NodeProject {
           'Extensions live under `./plugins/`. Add new ones in `.projenrc.js`:',
           '',
           '```js',
-          "import { DirectusExtensionType } from '@wbce/projen-directus-extension';",
+          "import { D9ExtensionType } from '@wbce/projen-d9-extension';",
           '',
-          "project.addExtension('my-hook', [DirectusExtensionType.HOOK]);",
+          "project.addExtension('my-hook', [D9ExtensionType.HOOK]);",
           '```',
           '',
           'Then `npx projen && npx projen build-extensions`.',
         ].join('\n'),
       },
       devDeps: [
-        '@wbce/projen-directus',
-        '@wbce/projen-directus-extension',
+        '@wbce/projen-d9',
+        '@wbce/projen-d9-extension',
         `@ariga/atlas@${atlasVersion}`,
         ...(options.devDeps ?? []),
       ],
@@ -155,7 +155,7 @@ export class DirectusProject extends javascript.NodeProject {
     this.gitignore.include('extensions/templates/');
   }
 
-  public addExtension(name: string, extensionTypes: DirectusExtensionType[], options?: AddExtensionOptions ) {
+  public addExtension(name: string, extensionTypes: D9ExtensionType[], options?: AddExtensionOptions ) {
     return this.extensions.add(name, extensionTypes, options);
   }
 
@@ -367,3 +367,14 @@ export class DirectusProject extends javascript.NodeProject {
   }
 
 }
+
+/**
+ * @deprecated Use {@link D9ProjectOptions} instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+ */
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+export interface DirectusProjectOptions extends D9ProjectOptions {}
+
+/**
+ * @deprecated Use {@link D9Project} instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+ */
+export class DirectusProject extends D9Project {}

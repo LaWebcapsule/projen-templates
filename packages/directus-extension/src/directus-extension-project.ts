@@ -14,7 +14,7 @@ function readTemplate(type: string): string {
 /**
  * Supported Directus v9 extension types.
  */
-export enum DirectusExtensionType {
+export enum D9ExtensionType {
   INTERFACE = 'interface',
   DISPLAY = 'display',
   LAYOUT = 'layout',
@@ -25,27 +25,27 @@ export enum DirectusExtensionType {
   OPERATION = 'operation',
 }
 
-export interface DirectusExtensionProjectOptions extends typescript.TypeScriptProjectOptions {
+export interface D9ExtensionProjectOptions extends typescript.TypeScriptProjectOptions {
   /**
    * The type of Directus extension.
    */
-  readonly extensionTypes: DirectusExtensionType[];
+  readonly extensionTypes: D9ExtensionType[];
 }
 
 /**
  * Whether the extension type is a UI (frontend) extension.
  */
-function isUiExtension(type: DirectusExtensionType): boolean {
+function isUiExtension(type: D9ExtensionType): boolean {
   return [
-    DirectusExtensionType.INTERFACE,
-    DirectusExtensionType.DISPLAY,
-    DirectusExtensionType.LAYOUT,
-    DirectusExtensionType.MODULE,
-    DirectusExtensionType.PANEL,
+    D9ExtensionType.INTERFACE,
+    D9ExtensionType.DISPLAY,
+    D9ExtensionType.LAYOUT,
+    D9ExtensionType.MODULE,
+    D9ExtensionType.PANEL,
   ].includes(type);
 }
 
-function includeUiExtension(types: DirectusExtensionType[]) {
+function includeUiExtension(types: D9ExtensionType[]) {
   for (const type of types) {
     if (isUiExtension(type)) {
       return true;
@@ -57,33 +57,33 @@ function includeUiExtension(types: DirectusExtensionType[]) {
 /**
  * Returns the target directory where the built extension should be copied.
  */
-function extensionTargetDir(type: DirectusExtensionType, name: string): string {
+function extensionTargetDir(type: D9ExtensionType, name: string): string {
   switch (type) {
-    case DirectusExtensionType.ENDPOINT:
+    case D9ExtensionType.ENDPOINT:
       return `endpoints/${name}`;
-    case DirectusExtensionType.HOOK:
+    case D9ExtensionType.HOOK:
       return `hooks/${name}`;
-    case DirectusExtensionType.OPERATION:
+    case D9ExtensionType.OPERATION:
       return `operations/${name}`;
-    case DirectusExtensionType.INTERFACE:
+    case D9ExtensionType.INTERFACE:
       return `interfaces/${name}`;
-    case DirectusExtensionType.DISPLAY:
+    case D9ExtensionType.DISPLAY:
       return `displays/${name}`;
-    case DirectusExtensionType.LAYOUT:
+    case D9ExtensionType.LAYOUT:
       return `layouts/${name}`;
-    case DirectusExtensionType.MODULE:
+    case D9ExtensionType.MODULE:
       return `modules/${name}`;
-    case DirectusExtensionType.PANEL:
+    case D9ExtensionType.PANEL:
       return `panels/${name}`;
   }
 }
 
-export class DirectusExtensionProject extends typescript.TypeScriptProject {
+export class D9ExtensionProject extends typescript.TypeScriptProject {
 
-  public readonly extensionTypes: DirectusExtensionType[];
+  public readonly extensionTypes: D9ExtensionType[];
   public readonly extensionName: string;
 
-  constructor(options: DirectusExtensionProjectOptions) {
+  constructor(options: D9ExtensionProjectOptions) {
     const extensionTypes = options.extensionTypes;
     const ui = includeUiExtension(extensionTypes);
 
@@ -101,7 +101,7 @@ export class DirectusExtensionProject extends typescript.TypeScriptProject {
           ? [
             `# ${options.name}`,
             '',
-            `Shared library used by sibling [d9](https://github.com/LaWebcapsule/d9) extensions in this workspace.`,
+            'Shared library used by sibling [d9](https://github.com/LaWebcapsule/d9) extensions in this workspace.',
             '',
             'Built via `tsc`; consumers depend on it with `<name>@workspace:`.',
           ].join('\n')
@@ -122,7 +122,7 @@ export class DirectusExtensionProject extends typescript.TypeScriptProject {
           ].join('\n'),
       },
       devDeps: [
-        '@wbce/projen-directus-extension',
+        '@wbce/projen-d9-extension',
         '@wbce-d9/extensions-sdk',
         '@wbce-d9/types',
         '@types/node',
@@ -202,7 +202,7 @@ export class DirectusExtensionProject extends typescript.TypeScriptProject {
     if (extensionTypes.length) {
 
       const extensionSubDir = extensionTypes.length === 1 ? extensionTargetDir(extensionTypes[0], this.extensionName):this.extensionName;
-      // Compute relative path from this extension project to the DirectusProject root (grandparent)
+      // Compute relative path from this extension project to the D9Project root (grandparent)
       const grandParentOutdir = options.parent?.parent?.outdir ?? '../..';
       const relativeToRoot = path.relative(this.outdir, grandParentOutdir);
       let targetDir = path.join(relativeToRoot, 'extensions', extensionSubDir);
@@ -221,3 +221,24 @@ export class DirectusExtensionProject extends typescript.TypeScriptProject {
 
   }
 }
+
+/**
+ * @deprecated Use {@link D9ExtensionType} instead. The package was renamed to `@wbce/projen-d9-extension` to reflect that it targets the d9 fork, not upstream Directus.
+ */
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const DirectusExtensionType = D9ExtensionType;
+/**
+ * @deprecated Use {@link D9ExtensionType} instead.
+ */
+export type DirectusExtensionType = D9ExtensionType;
+
+/**
+ * @deprecated Use {@link D9ExtensionProjectOptions} instead. The package was renamed to `@wbce/projen-d9-extension`.
+ */
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+export interface DirectusExtensionProjectOptions extends D9ExtensionProjectOptions {}
+
+/**
+ * @deprecated Use {@link D9ExtensionProject} instead. The package was renamed to `@wbce/projen-d9-extension`.
+ */
+export class DirectusExtensionProject extends D9ExtensionProject {}
