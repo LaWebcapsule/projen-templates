@@ -87,6 +87,11 @@
       "type": "build"
     },
     {
+      "name": "@cedar-policy/cedar-wasm",
+      "version": "^4.9.0",
+      "type": "bundled"
+    },
+    {
       "name": "@types/pg",
       "type": "bundled"
     },

@@ -208,6 +208,12 @@ export class D9Project extends javascript.NodeProject {
     this.applySchemaTask = this.addTask('apply-schema', {
       description: 'Apply SQL snapshot to the local Directus database',
     });
+    // Merge Cedar policies back into directus_permissions.csv BEFORE the
+    // snapshot is loaded, so the COPY in apply-snapshot ingests the rewritten
+    // CSV. Runs only when a ./permissions folder is present.
+    this.applySchemaTask.exec('npx wbce-d9 cedar-to-d9 --permissions ./permissions --sql ./sql/data --overwrite', {
+      condition: 'test -d ./permissions && test -f ./sql/data/directus_permissions.csv',
+    });
     this.applySchemaTask.exec('npx wbce-directus apply-snapshot --host localhost --user directus --password directus --database directus', {
       condition: 'test -d ./sql',
     });
