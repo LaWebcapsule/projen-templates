@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import { promisify } from 'util';
 
 const readFile = promisify(fs.readFile);
+const writeFile = promisify(fs.writeFile);
 
 export const deepCopy = (src: Record<string, any>, dest: Record<string, any>) => {
   for (const key in src) {
@@ -123,8 +124,17 @@ export const readCsvFile: (filePath: string) => Promise<
     .filter((line: string) => line); // Trim and remove empty lines;
   const firstLine = lines[0].split(',').map((key: string) => key.trim());
   const otherLines = lines.slice(1);
+  // This Regex matches commas that are NOT inside double quotes
+  const csvSplitRegex = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/;
   for (const line of otherLines) {
-    const values = line.split(',');
+    const values = line.split(csvSplitRegex).map((val: string) => {
+      let trimmed = val.trim();
+      // Remove surrounding quotes and unescape double-double quotes ("")
+      if (trimmed.startsWith('"') && trimmed.endsWith('"')) {
+        trimmed = trimmed.slice(1, -1).replace(/""/g, '"');
+      }
+      return trimmed;
+    });
     const item: Record<string, string> = {};
     for (let i = 0; i < values.length; i++) {
       const key = firstLine[i];
@@ -134,4 +144,28 @@ export const readCsvFile: (filePath: string) => Promise<
     result.push(item);
   }
   return result;
+};
+
+const escapeCsvCell = (value?: string): string => {
+  if (!value) return '';
+  if (value.includes('"') || value.includes(',') || value.includes('\n')) {
+    return `"${value.replace(/"/g, '""')}"`;
+  }
+  return value;
+};
+
+/**
+ * Write rows as CSV (inverse of {@link readCsvFile}): same comma + `""`
+ * escaping, columns in `header` order, trailing newline.
+ */
+export const writeCsvFile = async (
+  filePath: string,
+  header: string[],
+  rows: Record<string, string>[],
+): Promise<void> => {
+  const lines = [header.join(',')];
+  for (const row of rows) {
+    lines.push(header.map((col) => escapeCsvCell(row[col])).join(','));
+  }
+  await writeFile(filePath, `${lines.join('\n')}\n`);
 };

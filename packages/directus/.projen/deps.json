@@ -11,6 +11,7 @@
     },
     {
       "name": "@types/node",
+      "version": "^22",
       "type": "build"
     },
     {
@@ -85,6 +86,11 @@
     {
       "name": "typescript",
       "type": "build"
+    },
+    {
+      "name": "@cedar-policy/cedar-wasm",
+      "version": "^4.9.0",
+      "type": "bundled"
     },
     {
       "name": "@types/pg",
