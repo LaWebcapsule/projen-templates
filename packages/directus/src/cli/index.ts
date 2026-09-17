@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import { cedarToD9 } from './commands/cedar-to-d9';
+import { cedarToD9 } from './commands/cedar/cedar-to-d9';
+import { d9ToCedar } from './commands/cedar/d9-to-cedar';
 import { init } from './commands/init';
 import { applySQLSnapshot } from './commands/save/apply-snapshot';
 import { sync } from './commands/sync';
@@ -29,14 +30,24 @@ program
   .description('Merge Cedar policies back into directus_permissions.csv')
   .option('--permissions <path>', 'path to the permissions folder', './permissions')
   .option('--sql <path>', 'path to the sql/data folder', './sql/data')
-  .option('--output <path>', 'output CSV path (ignored when --overwrite)')
-  .option('--overwrite', 'overwrite directus_permissions.csv in place', false)
-  .action(async (opts: { permissions: string; sql: string; output?: string; overwrite: boolean }) => {
+  .option('--output <path>', 'output CSV path (defaults to rewriting directus_permissions.csv in place)')
+  .action(async (opts: { permissions: string; sql: string; output?: string }) => {
     await cedarToD9({
       permissionPath: opts.permissions,
       sqlPath: opts.sql,
       outputPath: opts.output,
-      overwrite: opts.overwrite,
+    });
+  });
+
+program
+  .command('d9-to-cedar')
+  .description('Generate the Cedar policy folders from directus_permissions.csv')
+  .option('--permissions <path>', 'path to the permissions folder', './permissions')
+  .option('--sql <path>', 'path to the sql/data folder', './sql/data')
+  .action(async (opts: { permissions: string; sql: string }) => {
+    await d9ToCedar({
+      permissionPath: opts.permissions,
+      sqlPath: opts.sql,
     });
   });
 
