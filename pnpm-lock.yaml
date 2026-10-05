@@ -95,6 +95,9 @@ importers:
 
   packages/directus:
     dependencies:
+      '@cedar-policy/cedar-wasm':
+        specifier: ^4.9.0
+        version: 4.11.0
       '@types/pg':
         specifier: ^8.20.0
         version: 8.20.0
@@ -118,8 +121,8 @@ importers:
         specifier: ^30.0.0
         version: 30.0.0
       '@types/node':
-        specifier: ^12.20.55
-        version: 12.20.55
+        specifier: ^22
+        version: 22.19.15
       '@typescript-eslint/eslint-plugin':
         specifier: ^8
         version: 8.57.2(@typescript-eslint/parser@8.57.2(eslint@9.39.4)(typescript@5.9.3))(eslint@9.39.4)(typescript@5.9.3)
@@ -146,7 +149,7 @@ importers:
         version: 2.32.0(@typescript-eslint/parser@8.57.2(eslint@9.39.4)(typescript@5.9.3))(eslint-import-resolver-typescript@4.4.4)(eslint@9.39.4)
       jest:
         specifier: ^30.3.0
-        version: 30.3.0(@types/node@12.20.55)(ts-node@10.9.2(@types/node@12.20.55)(typescript@5.9.3))
+        version: 30.3.0(@types/node@22.19.15)(ts-node@10.9.2(@types/node@22.19.15)(typescript@5.9.3))
       jest-junit:
         specifier: ^16
         version: 16.0.0
@@ -170,7 +173,7 @@ importers:
         version: 0.99.24(constructs@10.6.0)
       ts-jest:
         specifier: ^29.4.6
-        version: 29.4.6(@babel/core@7.29.0)(@jest/transform@30.3.0)(@jest/types@30.3.0)(babel-jest@30.3.0(@babel/core@7.29.0))(jest-util@30.3.0)(jest@30.3.0(@types/node@12.20.55)(ts-node@10.9.2(@types/node@12.20.55)(typescript@5.9.3)))(typescript@5.9.3)
+        version: 29.4.6(@babel/core@7.29.0)(@jest/transform@30.3.0)(@jest/types@30.3.0)(babel-jest@30.3.0(@babel/core@7.29.0))(jest-util@30.3.0)(jest@30.3.0(@types/node@22.19.15)(ts-node@10.9.2(@types/node@22.19.15)(typescript@5.9.3)))(typescript@5.9.3)
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -607,6 +610,9 @@ packages:
 
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
+
+  '@cedar-policy/cedar-wasm@4.11.0':
+    resolution: {integrity: sha512-jIpMGPXKu6spe9PMXdSUqFMK5nJmAyTxRKRA2eegxQhGRRjDrbPuQB2C0+ARGs2OjqhoexgGODf8Y/rPACQI7A==}
 
   '@changesets/apply-release-plan@7.1.0':
     resolution: {integrity: sha512-yq8ML3YS7koKQ/9bk1PqO0HMzApIFNwjlwCnwFEXMzNe8NpzeeYYKCmnhWJGkN8g7E51MnWaSbqRcTcdIxUgnQ==}
@@ -3500,6 +3506,8 @@ snapshots:
       '@babel/helper-validator-identifier': 7.28.5
 
   '@bcoe/v8-coverage@0.2.3': {}
+
+  '@cedar-policy/cedar-wasm@4.11.0': {}
 
   '@changesets/apply-release-plan@7.1.0':
     dependencies:
