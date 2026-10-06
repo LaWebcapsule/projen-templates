@@ -1,0 +1,22 @@
+{
+  "name": "directus-extension-keycloak-sync",
+  "version": "1.0.0",
+  "description": "User sync between d9 and Keycloak (d9→KC, KC→d9, role).",
+  "keywords": ["directus-extension", "directus-custom-hook"],
+  "directus:extension": {
+    "type": "hook",
+    "path": "dist/index.js",
+    "source": "src/index.ts",
+    "host": "^9.0.0"
+  },
+  "scripts": {
+    "build": "directus-extension build"
+  },
+  "dependencies": {
+    "@keycloak/keycloak-admin-client": "^24.0.1"
+  },
+  "devDependencies": {
+    "@wbce-d9/extensions-sdk": "^10.0.2",
+    "typescript": "^5.5.4"
+  }
+}

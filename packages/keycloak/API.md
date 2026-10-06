@@ -1,21 +1,51 @@
 # API Reference <a name="API Reference" id="api-reference"></a>
 
+## Constructs <a name="Constructs" id="Constructs"></a>
 
+### Keycloak <a name="Keycloak" id="@wbce/projen-keycloak.Keycloak"></a>
 
-## Classes <a name="Classes" id="Classes"></a>
+Adds Keycloak OpenID Connect SSO + MFA to a {@link D9Project}: the OIDC env on the d9 service, the `keycloak-sync` user-provisioning hook, and a preconfigured realm (browser-sms MFA flow) + a Keycloak image with the MFA plugins — assets you deploy to your own Keycloak.
 
-### Hello <a name="Hello" id="@wbce/projen-keycloak.Hello"></a>
+Production path. For a zero-config local demo, use the standalone starter instead:
+https://github.com/LaWebcapsule/d9-sso-starter
 
-#### Initializers <a name="Initializers" id="@wbce/projen-keycloak.Hello.Initializer"></a>
+*Example*
 
 ```typescript
-import { Hello } from '@wbce/projen-keycloak'
+const project = new D9Project({ name: 'my-d9', defaultReleaseBranch: 'main' });
+new Keycloak(project, {
+  issuerUrl: 'https://auth.example.com',
+  apiUrl: 'https://api.example.com',
+  frontUrl: 'https://app.example.com',
+});
+project.synth();
+```
 
-new Hello()
+
+#### Initializers <a name="Initializers" id="@wbce/projen-keycloak.Keycloak.Initializer"></a>
+
+```typescript
+import { Keycloak } from '@wbce/projen-keycloak'
+
+new Keycloak(project: D9Project, options: KeycloakOptions)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@wbce/projen-keycloak.Keycloak.Initializer.parameter.project">project</a></code> | <code>@wbce/projen-d9.D9Project</code> | *No description.* |
+| <code><a href="#@wbce/projen-keycloak.Keycloak.Initializer.parameter.options">options</a></code> | <code><a href="#@wbce/projen-keycloak.KeycloakOptions">KeycloakOptions</a></code> | *No description.* |
+
+---
+
+##### `project`<sup>Required</sup> <a name="project" id="@wbce/projen-keycloak.Keycloak.Initializer.parameter.project"></a>
+
+- *Type:* @wbce/projen-d9.D9Project
+
+---
+
+##### `options`<sup>Required</sup> <a name="options" id="@wbce/projen-keycloak.Keycloak.Initializer.parameter.options"></a>
+
+- *Type:* <a href="#@wbce/projen-keycloak.KeycloakOptions">KeycloakOptions</a>
 
 ---
 
@@ -23,17 +53,444 @@ new Hello()
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@wbce/projen-keycloak.Hello.sayHello">sayHello</a></code> | *No description.* |
+| <code><a href="#@wbce/projen-keycloak.Keycloak.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@wbce/projen-keycloak.Keycloak.with">with</a></code> | Applies one or more mixins to this construct. |
+| <code><a href="#@wbce/projen-keycloak.Keycloak.postSynthesize">postSynthesize</a></code> | Called after synthesis. |
+| <code><a href="#@wbce/projen-keycloak.Keycloak.preSynthesize">preSynthesize</a></code> | Called before synthesis. |
+| <code><a href="#@wbce/projen-keycloak.Keycloak.synthesize">synthesize</a></code> | Synthesizes files to the project output directory. |
 
 ---
 
-##### `sayHello` <a name="sayHello" id="@wbce/projen-keycloak.Hello.sayHello"></a>
+##### `toString` <a name="toString" id="@wbce/projen-keycloak.Keycloak.toString"></a>
 
 ```typescript
-public sayHello(): string
+public toString(): string
 ```
 
+Returns a string representation of this construct.
 
+##### `with` <a name="with" id="@wbce/projen-keycloak.Keycloak.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@wbce/projen-keycloak.Keycloak.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
+
+##### `postSynthesize` <a name="postSynthesize" id="@wbce/projen-keycloak.Keycloak.postSynthesize"></a>
+
+```typescript
+public postSynthesize(): void
+```
+
+Called after synthesis.
+
+Order is *not* guaranteed.
+
+##### `preSynthesize` <a name="preSynthesize" id="@wbce/projen-keycloak.Keycloak.preSynthesize"></a>
+
+```typescript
+public preSynthesize(): void
+```
+
+Called before synthesis.
+
+##### `synthesize` <a name="synthesize" id="@wbce/projen-keycloak.Keycloak.synthesize"></a>
+
+```typescript
+public synthesize(): void
+```
+
+Synthesizes files to the project output directory.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@wbce/projen-keycloak.Keycloak.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@wbce/projen-keycloak.Keycloak.isComponent">isComponent</a></code> | Test whether the given construct is a component. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@wbce/projen-keycloak.Keycloak.isConstruct"></a>
+
+```typescript
+import { Keycloak } from '@wbce/projen-keycloak'
+
+Keycloak.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@wbce/projen-keycloak.Keycloak.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+##### `isComponent` <a name="isComponent" id="@wbce/projen-keycloak.Keycloak.isComponent"></a>
+
+```typescript
+import { Keycloak } from '@wbce/projen-keycloak'
+
+Keycloak.isComponent(x: any)
+```
+
+Test whether the given construct is a component.
+
+###### `x`<sup>Required</sup> <a name="x" id="@wbce/projen-keycloak.Keycloak.isComponent.parameter.x"></a>
+
+- *Type:* any
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@wbce/projen-keycloak.Keycloak.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@wbce/projen-keycloak.Keycloak.property.project">project</a></code> | <code>projen.Project</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@wbce/projen-keycloak.Keycloak.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `project`<sup>Required</sup> <a name="project" id="@wbce/projen-keycloak.Keycloak.property.project"></a>
+
+```typescript
+public readonly project: Project;
+```
+
+- *Type:* projen.Project
+
+---
+
+
+## Structs <a name="Structs" id="Structs"></a>
+
+### KeycloakOptions <a name="KeycloakOptions" id="@wbce/projen-keycloak.KeycloakOptions"></a>
+
+#### Initializer <a name="Initializer" id="@wbce/projen-keycloak.KeycloakOptions.Initializer"></a>
+
+```typescript
+import { KeycloakOptions } from '@wbce/projen-keycloak'
+
+const keycloakOptions: KeycloakOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.apiUrl">apiUrl</a></code> | <code>string</code> | Public URL of the d9 API (sets PUBLIC_URL, determines the OIDC redirect_uri), e.g. `https://api.example.com`. |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.issuerUrl">issuerUrl</a></code> | <code>string</code> | Public base URL of your Keycloak, e.g. `https://auth.example.com`. |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.clientId">clientId</a></code> | <code>string</code> | OIDC client id (must match the Keycloak client). |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.clientSecret">clientSecret</a></code> | <code>string</code> | OIDC client secret. |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.defaultRole">defaultRole</a></code> | <code>string</code> | Baseline d9 role granted to SSO users with no mapped role (KEYCLOAK_SYNC_DEFAULT_ROLE). |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.frontUrl">frontUrl</a></code> | <code>string</code> | Front-end URL allowed as a post-login redirect (AUTH_KEYCLOAK_REDIRECT_ALLOW_LIST). |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.publicRegistration">publicRegistration</a></code> | <code>boolean</code> | Auto-create a d9 user on first SSO login (Keycloak → d9 direction). |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.realm">realm</a></code> | <code>string</code> | Keycloak realm name. |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.smtp">smtp</a></code> | <code><a href="#@wbce/projen-keycloak.KeycloakSmtp">KeycloakSmtp</a></code> | Real SMTP server for Keycloak emails (invitations/reset). |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.userSync">userSync</a></code> | <code>boolean</code> | Install the keycloak-sync hook (two-way user sync d9 ⇄ Keycloak). |
+
+---
+
+##### `apiUrl`<sup>Required</sup> <a name="apiUrl" id="@wbce/projen-keycloak.KeycloakOptions.property.apiUrl"></a>
+
+```typescript
+public readonly apiUrl: string;
+```
+
+- *Type:* string
+
+Public URL of the d9 API (sets PUBLIC_URL, determines the OIDC redirect_uri), e.g. `https://api.example.com`.
+
+---
+
+##### `issuerUrl`<sup>Required</sup> <a name="issuerUrl" id="@wbce/projen-keycloak.KeycloakOptions.property.issuerUrl"></a>
+
+```typescript
+public readonly issuerUrl: string;
+```
+
+- *Type:* string
+
+Public base URL of your Keycloak, e.g. `https://auth.example.com`.
+
+---
+
+##### `clientId`<sup>Optional</sup> <a name="clientId" id="@wbce/projen-keycloak.KeycloakOptions.property.clientId"></a>
+
+```typescript
+public readonly clientId: string;
+```
+
+- *Type:* string
+- *Default:* "d9"
+
+OIDC client id (must match the Keycloak client).
+
+---
+
+##### `clientSecret`<sup>Optional</sup> <a name="clientSecret" id="@wbce/projen-keycloak.KeycloakOptions.property.clientSecret"></a>
+
+```typescript
+public readonly clientSecret: string;
+```
+
+- *Type:* string
+- *Default:* "d9-local-dev-secret"
+
+OIDC client secret.
+
+Inject a real, regenerated secret via your secret manager — don't ship it in git.
+
+---
+
+##### `defaultRole`<sup>Optional</sup> <a name="defaultRole" id="@wbce/projen-keycloak.KeycloakOptions.property.defaultRole"></a>
+
+```typescript
+public readonly defaultRole: string;
+```
+
+- *Type:* string
+- *Default:* ""
+
+Baseline d9 role granted to SSO users with no mapped role (KEYCLOAK_SYNC_DEFAULT_ROLE).
+
+---
+
+##### `frontUrl`<sup>Optional</sup> <a name="frontUrl" id="@wbce/projen-keycloak.KeycloakOptions.property.frontUrl"></a>
+
+```typescript
+public readonly frontUrl: string;
+```
+
+- *Type:* string
+- *Default:* the apiUrl
+
+Front-end URL allowed as a post-login redirect (AUTH_KEYCLOAK_REDIRECT_ALLOW_LIST).
+
+---
+
+##### `publicRegistration`<sup>Optional</sup> <a name="publicRegistration" id="@wbce/projen-keycloak.KeycloakOptions.property.publicRegistration"></a>
+
+```typescript
+public readonly publicRegistration: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Auto-create a d9 user on first SSO login (Keycloak → d9 direction).
+
+---
+
+##### `realm`<sup>Optional</sup> <a name="realm" id="@wbce/projen-keycloak.KeycloakOptions.property.realm"></a>
+
+```typescript
+public readonly realm: string;
+```
+
+- *Type:* string
+- *Default:* "main"
+
+Keycloak realm name.
+
+---
+
+##### `smtp`<sup>Optional</sup> <a name="smtp" id="@wbce/projen-keycloak.KeycloakOptions.property.smtp"></a>
+
+```typescript
+public readonly smtp: KeycloakSmtp;
+```
+
+- *Type:* <a href="#@wbce/projen-keycloak.KeycloakSmtp">KeycloakSmtp</a>
+
+Real SMTP server for Keycloak emails (invitations/reset).
+
+If omitted, no SMTP is set — configure it in Keycloak later.
+
+---
+
+##### `userSync`<sup>Optional</sup> <a name="userSync" id="@wbce/projen-keycloak.KeycloakOptions.property.userSync"></a>
+
+```typescript
+public readonly userSync: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Install the keycloak-sync hook (two-way user sync d9 ⇄ Keycloak).
+
+---
+
+### KeycloakSmtp <a name="KeycloakSmtp" id="@wbce/projen-keycloak.KeycloakSmtp"></a>
+
+Real SMTP server for Keycloak emails (invitations, password reset).
+
+No local Mailpit in production.
+
+#### Initializer <a name="Initializer" id="@wbce/projen-keycloak.KeycloakSmtp.Initializer"></a>
+
+```typescript
+import { KeycloakSmtp } from '@wbce/projen-keycloak'
+
+const keycloakSmtp: KeycloakSmtp = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.from">from</a></code> | <code>string</code> | Sender address (must be verified with your provider). |
+| <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.host">host</a></code> | <code>string</code> | SMTP host, e.g. `email-smtp.eu-west-3.amazonaws.com` (AWS SES). |
+| <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.fromDisplayName">fromDisplayName</a></code> | <code>string</code> | Display name for the sender. |
+| <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.password">password</a></code> | <code>string</code> | SMTP password. |
+| <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.port">port</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.ssl">ssl</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.starttls">starttls</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.user">user</a></code> | <code>string</code> | SMTP username. |
+
+---
+
+##### `from`<sup>Required</sup> <a name="from" id="@wbce/projen-keycloak.KeycloakSmtp.property.from"></a>
+
+```typescript
+public readonly from: string;
+```
+
+- *Type:* string
+
+Sender address (must be verified with your provider).
+
+---
+
+##### `host`<sup>Required</sup> <a name="host" id="@wbce/projen-keycloak.KeycloakSmtp.property.host"></a>
+
+```typescript
+public readonly host: string;
+```
+
+- *Type:* string
+
+SMTP host, e.g. `email-smtp.eu-west-3.amazonaws.com` (AWS SES).
+
+---
+
+##### `fromDisplayName`<sup>Optional</sup> <a name="fromDisplayName" id="@wbce/projen-keycloak.KeycloakSmtp.property.fromDisplayName"></a>
+
+```typescript
+public readonly fromDisplayName: string;
+```
+
+- *Type:* string
+- *Default:* ""
+
+Display name for the sender.
+
+---
+
+##### `password`<sup>Optional</sup> <a name="password" id="@wbce/projen-keycloak.KeycloakSmtp.property.password"></a>
+
+```typescript
+public readonly password: string;
+```
+
+- *Type:* string
+
+SMTP password.
+
+Inject via a secret manager — don't commit it.
+
+---
+
+##### `port`<sup>Optional</sup> <a name="port" id="@wbce/projen-keycloak.KeycloakSmtp.property.port"></a>
+
+```typescript
+public readonly port: string;
+```
+
+- *Type:* string
+- *Default:* "587"
+
+---
+
+##### `ssl`<sup>Optional</sup> <a name="ssl" id="@wbce/projen-keycloak.KeycloakSmtp.property.ssl"></a>
+
+```typescript
+public readonly ssl: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+---
+
+##### `starttls`<sup>Optional</sup> <a name="starttls" id="@wbce/projen-keycloak.KeycloakSmtp.property.starttls"></a>
+
+```typescript
+public readonly starttls: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+---
+
+##### `user`<sup>Optional</sup> <a name="user" id="@wbce/projen-keycloak.KeycloakSmtp.property.user"></a>
+
+```typescript
+public readonly user: string;
+```
+
+- *Type:* string
+
+SMTP username.
+
+Enables auth when set. Inject via a secret manager — don't commit it.
+
+---
 
 
 

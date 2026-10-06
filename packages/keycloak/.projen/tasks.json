@@ -128,6 +128,9 @@
       "steps": [
         {
           "spawn": "docgen"
+        },
+        {
+          "exec": "cp -r templates lib/"
         }
       ]
     },

@@ -163,9 +163,11 @@ const keycloak = new cdk.JsiiProject({
   parent: root,
   outdir: './packages/keycloak',
   name: '@wbce/projen-keycloak',
-  peerDeps: ['constructs', 'projen'],
+  peerDeps: ['constructs', 'projen', '@wbce/projen-shared', '@wbce/projen-d9'],
+  devDeps: ['@wbce/projen-shared@workspace:*', '@wbce/projen-d9@workspace:*', '@types/node@^22'],
 });
 keycloak.package.addVersion(readPackageVersion('./packages/keycloak'));
+keycloak.postCompileTask.exec('cp -r templates lib/');
 
 // --- react ---
 const react = new cdk.JsiiProject({
