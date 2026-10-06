@@ -70,9 +70,9 @@
   ],
   "localizationTexts": {
     "en": {
-      "executeActionsSubject": "Finalize your sign-up for d9",
-      "executeActionsBody": "Hello, an account has been created for you on d9. To finalize your sign-up and set your password, click the following link: {0} This link expires in {4}. If this message does not concern you, you can ignore it.",
-      "executeActionsBodyHtml": "<p>Hello,</p><p>An account has been created for you on <strong>d9</strong>.</p><p>To finalize your sign-up and set your password, click the link below:</p><p><a href=\"{0}\">Finalize my sign-up</a></p><p>This link expires in {4}.</p><p>If this message does not concern you, you can ignore it.</p>"
+      "executeActionsSubject": "Finalize your account sign-up",
+      "executeActionsBody": "Hello, an account has been created for you. To finalize your sign-up and set your password, click the following link: {0} This link expires in {4}. If this message does not concern you, you can ignore it.",
+      "executeActionsBodyHtml": "<p>Hello,</p><p>An account has been created for you.</p><p>To finalize your sign-up and set your password, click the link below:</p><p><a href=\"{0}\">Finalize my sign-up</a></p><p>This link expires in {4}.</p><p>If this message does not concern you, you can ignore it.</p>"
     }
   },
   "webAuthnPolicyRpEntityName": "keycloak",
