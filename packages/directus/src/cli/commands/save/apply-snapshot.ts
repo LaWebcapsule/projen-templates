@@ -140,7 +140,7 @@ export async function applySQLSnapshot(dbConfig: {
     //always be sure the ci user exists
     await pgClient.query(`
             INSERT INTO public.directus_users (id, first_name, last_name, email)
-            VALUES ('49bcde5d-90aa-4be8-ab10-f9ae1a07546f', 'CI', 'Webcapsule', 'ci@webcapsule.io')
+            VALUES ('49bcde5d-90aa-4be8-ab10-f9ae1a07546f', 'CI', 'D9-plumbing', 'd9@webcapsule.io')
             ON CONFLICT DO NOTHING
         `);
 

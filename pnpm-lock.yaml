@@ -129,6 +129,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^8
         version: 8.57.2(eslint@9.39.4)(typescript@5.9.3)
+      '@wbce-d9/storage':
+        specifier: '*'
+        version: 10.0.0
       '@wbce/projen-d9-extension':
         specifier: 0.0.15
         version: link:../directus-extension
@@ -1302,6 +1305,9 @@ packages:
     resolution: {integrity: sha512-lrW200hZdbfRtztbygyaq/6jP6AKE8qQN2KvPcJ+x7wiD038YtnYtZ82IMNJ69GJibV7bwL3y9FgK+5w/pYt6g==}
     cpu: [x64]
     os: [win32]
+
+  '@wbce-d9/storage@10.0.0':
+    resolution: {integrity: sha512-YPIgOxlkdVryWf4NmhzHBSFTLYYHtyE8231E0Hhk9Z8xvVeE7Ql6VKAD/nQ8Ryz4XAARnUDl1gR47VD6xLzIpg==}
 
   '@xmldom/xmldom@0.9.8':
     resolution: {integrity: sha512-p96FSY54r+WJ50FIOsCOjyj/wavs8921hG5+kVMmZgKcvIKxMXHTrjNJvRgWa/zuX3B6t2lijLNFaOyuxUH+2A==}
@@ -4371,6 +4377,8 @@ snapshots:
 
   '@unrs/resolver-binding-win32-x64-msvc@1.11.1':
     optional: true
+
+  '@wbce-d9/storage@10.0.0': {}
 
   '@xmldom/xmldom@0.9.8': {}
 

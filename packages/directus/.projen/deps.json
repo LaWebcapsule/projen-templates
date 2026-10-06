@@ -25,6 +25,10 @@
       "type": "build"
     },
     {
+      "name": "@wbce-d9/storage",
+      "type": "build"
+    },
+    {
       "name": "@wbce/projen-d9-extension",
       "version": "workspace:*",
       "type": "build"
