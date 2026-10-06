@@ -1,6 +1,6 @@
 import { AddExtensionOptions, D9ExtensionType, ExtensionFolder } from '@wbce/projen-d9-extension';
 import { GitHubConfig, GitHubConfigOptions, Dockerfile } from '@wbce/projen-shared';
-import { AiAgent, AiInstructions, DockerCompose, DockerComposeService, javascript, SampleFile, Task, typescript } from 'projen';
+import { AiAgent, AiInstructions, DockerCompose, DockerComposeService, javascript, JsonFile, SampleFile, Task, typescript } from 'projen';
 import { JobPermission } from 'projen/lib/github/workflows-model';
 import { UpgradeDependenciesSchedule } from 'projen/lib/javascript';
 
@@ -11,6 +11,25 @@ export interface PackageVersions {
    * @default "0.32.0"
    */
   readonly atlas?: string;
+}
+
+/**
+ * Storage shared between environments, used by `wbce-d9 save` and `wbce-d9 apply-schema` to transfer files.
+ */
+export interface IntermediateStorageOptions {
+  /**
+   * The storage driver: s3, gcs, azure, local or cloudinary.
+   */
+  readonly driver: string;
+  /**
+   * Non-secret driver options (root, bucket, region, endpoint...).
+   */
+  readonly options?: { [key: string]: string };
+  /**
+   * Secret driver options, as the names of the environment variables holding them (never the values).
+   * @example { key: 'MY_S3_KEY', secret: 'MY_S3_SECRET' }
+   */
+  readonly secretEnv?: { [key: string]: string };
 }
 
 
@@ -28,6 +47,12 @@ export interface D9ProjectOptions extends typescript.TypeScriptProjectOptions {
    */
   readonly extensionsFolderName?: string;
   readonly packageVersions?: PackageVersions;
+
+  /**
+   * Storage shared between environments, written to `intermediate-storage.json`.
+   * @default - none, the intermediate storage is configured with INTERMEDIATE_STORAGE_* variables or flags
+   */
+  readonly intermediateStorage?: IntermediateStorageOptions;
 }
 
 export class D9Project extends javascript.NodeProject {
@@ -130,6 +155,10 @@ export class D9Project extends javascript.NodeProject {
     this.addRunTask();
     this.addDockerfile();
     this.addCreateAdminUserTask();
+
+    if (options.intermediateStorage) {
+      new JsonFile(this, 'intermediate-storage.json', { obj: options.intermediateStorage });
+    }
 
     new AiInstructions(this, {
       agents: [AiAgent.CLAUDE],
