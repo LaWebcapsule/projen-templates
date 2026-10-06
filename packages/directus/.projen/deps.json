@@ -117,6 +117,16 @@
       "type": "bundled"
     },
     {
+      "name": "pino-pretty",
+      "version": "^13.2.0",
+      "type": "bundled"
+    },
+    {
+      "name": "pino",
+      "version": "^10.4.0",
+      "type": "bundled"
+    },
+    {
       "name": "@wbce/projen-d9-extension",
       "type": "peer"
     },

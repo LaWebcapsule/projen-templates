@@ -132,6 +132,8 @@ const directus = new cdk.JsiiProject({
 directus.package.addVersion(readPackageVersion('./packages/directus'));
 directus.npmrc.addConfig('node-linker', 'hoisted');
 directus.addBundledDeps("commander");
+directus.addBundledDeps("pino@^10.4.0");
+directus.addBundledDeps("pino-pretty@^13.2.0");
 directus.addBundledDeps("pg");
 directus.addBundledDeps("pg-copy-streams");
 directus.addBundledDeps("@types/pg");

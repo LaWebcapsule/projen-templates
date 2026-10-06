@@ -1,5 +1,6 @@
 import type { DriverConfig } from '@wbce-d9/storage';
 import { readCsvFile } from './utils';
+import { logger } from '../../logger';
 
 const drivers: Record<string, string> = {
   local: '@wbce-d9/storage-driver-local',
@@ -22,17 +23,17 @@ export async function syncFiles(opts: { origin: DriverConfig; destination: Drive
   const destination = storage.location('destination');
 
   const files = await readCsvFile('./sql/data/directus_files.csv');
-  console.log(`will deal with ${files.length} files`);
+  logger.info(`will deal with ${files.length} files`);
   for (const { filename_disk: fileId } of files) {
     if (await destination.exists(fileId)) {
-      console.log(`${fileId} already exists in destination`);
+      logger.info(`${fileId} already exists in destination`);
       continue;
     }
     if (!(await origin.exists(fileId))) {
-      console.log(`${fileId} does not exist in origin`);
+      logger.info(`${fileId} does not exist in origin`);
       continue;
     }
     await destination.write(fileId, await origin.read(fileId));
-    console.log(`${fileId} synced`);
+    logger.info(`${fileId} synced`);
   }
 }

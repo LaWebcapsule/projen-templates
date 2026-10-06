@@ -5,6 +5,7 @@ import { d9ToCedar } from './commands/cedar/d9-to-cedar';
 import { init } from './commands/init';
 import { applySQLSnapshot } from './commands/save/apply-snapshot';
 import { sync } from './commands/sync';
+import { logger } from './logger';
 
 const program = new Command();
 
@@ -70,6 +71,6 @@ program
   });
 
 void program.parseAsync().catch((err) => {
-  console.error(err);
+  logger.error({ err }, 'command failed');
   process.exit(1);
 });

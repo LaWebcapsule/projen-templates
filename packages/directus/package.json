@@ -66,7 +66,9 @@
     "@types/pg-copy-streams": "^1.2.5",
     "commander": "^14.0.3",
     "pg": "^8.20.0",
-    "pg-copy-streams": "^7.0.0"
+    "pg-copy-streams": "^7.0.0",
+    "pino": "^10.4.0",
+    "pino-pretty": "^13.2.0"
   },
   "bundledDependencies": [
     "@cedar-policy/cedar-wasm",
@@ -74,7 +76,9 @@
     "@types/pg-copy-streams",
     "commander",
     "pg",
-    "pg-copy-streams"
+    "pg-copy-streams",
+    "pino",
+    "pino-pretty"
   ],
   "main": "lib/index.js",
   "license": "GPL-3.0-or-later",

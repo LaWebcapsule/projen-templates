@@ -4,6 +4,7 @@ import type { PolicyJson } from '@cedar-policy/cedar-wasm/nodejs';
 import { translateToCedar } from './cedar-translations';
 import { D9Permission } from './d9-permission';
 import { RolesTable } from './roles-table';
+import { logger } from '../../logger';
 import { readCsvFile } from '../save/utils';
 
 export class CedarManager {
@@ -144,8 +145,7 @@ export class CedarManager {
       if (result.type === 'success') {
         return result.text;
       } else {
-        console.error('failed to transform policy into text');
-        console.error(policy);
+        logger.error({ policy }, 'failed to transform policy into text');
         throw new Error(result.errors as any);
       }
     });
@@ -174,22 +174,22 @@ export class CedarManager {
   }
 
   public async readCsvAndWriteAllFiles() {
-    console.log('read permission file');
+    logger.info('read permission file');
     await this.readPermissionFile();
-    console.log(`found ${this.d9Permissions.length} permissions`);
-    console.log('read role file');
+    logger.info(`found ${this.d9Permissions.length} permissions`);
+    logger.info('read role file');
     await this.readRoleFile();
-    console.log('roles imported');
-    console.log('grouping and sorting permissions');
+    logger.info('roles imported');
+    logger.info('grouping and sorting permissions');
     await this.translateAndSortPermission();
-    console.log(
+    logger.info(
       `having ${this.mainPolicies.size} main policies and ${this.fieldsPolicies.size} fields policies`,
     );
-    console.log('writing cedar policies files');
+    logger.info('writing cedar policies files');
     await this.writePolicies('mainPolicies', 'authorize.cedar');
     await this.writePolicies('fieldsPolicies', 'check-fields.cedar');
     await this.writePolicies('validationPolicies', 'validate.cedar');
-    console.log('files wroten');
+    logger.info('files wroten');
   }
 }
 

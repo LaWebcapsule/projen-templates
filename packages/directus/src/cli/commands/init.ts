@@ -1,4 +1,6 @@
+import { logger } from '../logger';
+
 export async function init(directory: string) {
-  console.log(`Initializing Directus project in "${directory}"...`);
+  logger.info(`Initializing Directus project in "${directory}"...`);
   // TODO: implement
 }
