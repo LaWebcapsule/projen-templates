@@ -224,7 +224,7 @@ const keycloakOptions: KeycloakOptions = { ... }
 | <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.apiUrl">apiUrl</a></code> | <code>string</code> | Public URL of the d9 API (sets PUBLIC_URL, determines the OIDC redirect_uri), e.g. `https://api.example.com`. |
 | <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.issuerUrl">issuerUrl</a></code> | <code>string</code> | Public base URL of your Keycloak, e.g. `https://auth.example.com`. |
 | <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.clientId">clientId</a></code> | <code>string</code> | OIDC client id (must match the Keycloak client). |
-| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.clientSecret">clientSecret</a></code> | <code>string</code> | OIDC client secret. |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.clientSecretEnv">clientSecretEnv</a></code> | <code>string</code> | Name of the environment variable that carries the OIDC client secret. |
 | <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.defaultRole">defaultRole</a></code> | <code>string</code> | Baseline d9 role granted to SSO users with no mapped role (KEYCLOAK_SYNC_DEFAULT_ROLE). |
 | <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.frontUrl">frontUrl</a></code> | <code>string</code> | Front-end URL allowed as a post-login redirect (AUTH_KEYCLOAK_REDIRECT_ALLOW_LIST). |
 | <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.publicRegistration">publicRegistration</a></code> | <code>boolean</code> | Auto-create a d9 user on first SSO login (Keycloak → d9 direction). |
@@ -271,18 +271,20 @@ OIDC client id (must match the Keycloak client).
 
 ---
 
-##### `clientSecret`<sup>Optional</sup> <a name="clientSecret" id="@wbce/projen-keycloak.KeycloakOptions.property.clientSecret"></a>
+##### `clientSecretEnv`<sup>Optional</sup> <a name="clientSecretEnv" id="@wbce/projen-keycloak.KeycloakOptions.property.clientSecretEnv"></a>
 
 ```typescript
-public readonly clientSecret: string;
+public readonly clientSecretEnv: string;
 ```
 
 - *Type:* string
-- *Default:* "d9-local-dev-secret"
+- *Default:* "KEYCLOAK_CLIENT_SECRET"
 
-OIDC client secret.
+Name of the environment variable that carries the OIDC client secret.
 
-Inject a real, regenerated secret via your secret manager — don't ship it in git.
+The secret itself is never
+written to git: the d9 service reads `${<clientSecretEnv>}` (interpolated by Docker Compose at run
+time from your secret manager), and the realm ships a placeholder you regenerate in Keycloak.
 
 ---
 

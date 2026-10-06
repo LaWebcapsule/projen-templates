@@ -339,7 +339,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "d9-local-dev-secret",
+      "secret": "REGENERATE_IN_KEYCLOAK",
       "redirectUris": [
         "https://app.example.com/*",
         "http://localhost:8055/*",

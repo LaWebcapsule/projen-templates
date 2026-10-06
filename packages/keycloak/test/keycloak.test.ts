@@ -45,6 +45,26 @@ describe('Keycloak component', () => {
     expect(compose).toContain('AUTH_KEYCLOAK_REDIRECT_ALLOW_LIST: https://app.example.com');
   });
 
+  test('the client secret is an env reference, never a hardcoded value', () => {
+    const project = new D9Project({ name: 'test-secret', defaultReleaseBranch: 'main' });
+    new Keycloak(project, opts);
+    const out = Testing.synth(project);
+    const compose = out['docker-compose.yml'] as unknown as string;
+    const realm = JSON.stringify(out['keycloak/realm-export.json']);
+
+    expect(compose).toContain('KEYCLOAK_CLIENT_SECRET}'); // ${KEYCLOAK_CLIENT_SECRET}, resolved at run time
+    expect(compose).not.toContain('d9-local-dev-secret');
+    expect(realm).not.toContain('d9-local-dev-secret');
+  });
+
+  test('clientSecretEnv overrides the referenced env var name', () => {
+    const project = new D9Project({ name: 'test-secret-env', defaultReleaseBranch: 'main' });
+    new Keycloak(project, { ...opts, clientSecretEnv: 'MY_SECRET' });
+    expect(Testing.synth(project)['docker-compose.yml'] as unknown as string).toContain(
+      'AUTH_KEYCLOAK_CLIENT_SECRET: ${MY_SECRET}',
+    );
+  });
+
   test('custom realm/clientId are applied to the realm and the issuer', () => {
     const project = new D9Project({ name: 'test-custom', defaultReleaseBranch: 'main' });
     new Keycloak(project, { ...opts, realm: 'corp', clientId: 'backend' });

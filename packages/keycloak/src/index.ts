@@ -46,8 +46,13 @@ export interface KeycloakOptions {
   readonly realm?: string;
   /** OIDC client id (must match the Keycloak client). @default "d9" */
   readonly clientId?: string;
-  /** OIDC client secret. Inject a real, regenerated secret via your secret manager — don't ship it in git. @default "d9-local-dev-secret" */
-  readonly clientSecret?: string;
+  /**
+   * Name of the environment variable that carries the OIDC client secret. The secret itself is never
+   * written to git: the d9 service reads `${<clientSecretEnv>}` (interpolated by Docker Compose at run
+   * time from your secret manager), and the realm ships a placeholder you regenerate in Keycloak.
+   * @default "KEYCLOAK_CLIENT_SECRET"
+   */
+  readonly clientSecretEnv?: string;
   /** Front-end URL allowed as a post-login redirect (AUTH_KEYCLOAK_REDIRECT_ALLOW_LIST). @default the apiUrl */
   readonly frontUrl?: string;
   /** Auto-create a d9 user on first SSO login (Keycloak → d9 direction). @default true */
@@ -83,7 +88,7 @@ export class Keycloak extends Component {
 
     const realm = options.realm ?? 'main';
     const clientId = options.clientId ?? 'd9';
-    const clientSecret = options.clientSecret ?? 'd9-local-dev-secret';
+    const clientSecretEnv = options.clientSecretEnv ?? 'KEYCLOAK_CLIENT_SECRET';
     const frontUrl = options.frontUrl ?? options.apiUrl;
     const issuerBase = options.issuerUrl.replace(/\/+$/, '');
     const issuerUrl = `${issuerBase}/realms/${realm}/.well-known/openid-configuration`;
@@ -96,7 +101,8 @@ export class Keycloak extends Component {
     env('AUTH_PROVIDERS', 'keycloak');
     env('AUTH_KEYCLOAK_DRIVER', 'openid');
     env('AUTH_KEYCLOAK_CLIENT_ID', clientId);
-    env('AUTH_KEYCLOAK_CLIENT_SECRET', clientSecret);
+    // Never a literal: Docker Compose interpolates this from the deploy environment / secret manager.
+    env('AUTH_KEYCLOAK_CLIENT_SECRET', `\${${clientSecretEnv}}`);
     env('AUTH_KEYCLOAK_ISSUER_URL', issuerUrl);
     env('AUTH_KEYCLOAK_IDENTIFIER_KEY', 'sub');
     env('AUTH_KEYCLOAK_ALLOW_PUBLIC_REGISTRATION', String(options.publicRegistration ?? true));
@@ -115,7 +121,8 @@ export class Keycloak extends Component {
     for (const client of realmJson.clients ?? []) {
       if (client.clientId === 'd9') {
         client.clientId = clientId;
-        client.secret = clientSecret;
+        // No secret in git: regenerate it in Keycloak after import, then set it as `clientSecretEnv`.
+        client.secret = 'REGENERATE_IN_KEYCLOAK';
       }
     }
     for (const user of realmJson.users ?? []) {
