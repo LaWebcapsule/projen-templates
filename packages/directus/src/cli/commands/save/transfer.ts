@@ -6,10 +6,10 @@ import { saveSQLSnapshot } from './save-snapshot';
 import { syncFiles } from './sync-files';
 import { cedarToD9 } from '../cedar/cedar-to-d9';
 
-export async function save(flags: DbFlags & StorageFlags) {
+export async function save(flags: DbFlags & StorageFlags & { cedar?: boolean }) {
   const db = await resolveDbConfig(flags);
   // after the snapshot, so that syncFiles reads the freshly dumped directus_files.csv
-  await saveSQLSnapshot(db);
+  await saveSQLSnapshot(db, { cedar: flags.cedar });
   await syncFiles({
     origin: await resolveCurrentStorage(flags),
     destination: await resolveIntermediateStorage(flags),

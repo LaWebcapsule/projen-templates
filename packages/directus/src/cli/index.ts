@@ -84,6 +84,7 @@ const withTransferOptions = (command: Command) => command
 
 withTransferOptions(program.command('save'))
   .description('Save the SQL snapshot of the current Directus, then sync files to the intermediate storage')
+  .option('--no-cedar', 'do not generate the Cedar policies from directus_permissions.csv')
   .action(save);
 
 withTransferOptions(program.command('apply-schema'))

@@ -27,7 +27,7 @@ export async function saveSQLSnapshot(dbConfig: {
   pwd: string;
   database: string;
   ssl?: boolean;
-}) {
+}, opts: { cedar?: boolean } = {}) {
   const connectionProps: pg.ClientConfig = {
     user: dbConfig.user,
     host: dbConfig.host,
@@ -243,5 +243,7 @@ export async function saveSQLSnapshot(dbConfig: {
   } finally {
     await pgClient.end();
   }
-  await d9ToCedar({ permissionPath: './permissions', sqlPath: './sql/data' });
+  if (opts.cedar !== false) {
+    await d9ToCedar({ permissionPath: './permissions', sqlPath: './sql/data' });
+  }
 }
