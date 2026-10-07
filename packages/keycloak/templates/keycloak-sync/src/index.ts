@@ -3,8 +3,8 @@ import { KcManager } from "./kc-manager.js";
 // d9 SSO provider name (= AUTH_PROVIDERS + prefix of the AUTH_KEYCLOAK_* variables).
 const clientName = "keycloak";
 
-// d9 ⇄ Keycloak user-sync plugin. Ported (sanitized) from our production d9 backends. Scope is kept
-// deliberately small: create a user in d9 → create it in Keycloak (users.create/update); create a user in
+// d9 ⇄ Keycloak user-sync plugin. Scope is kept deliberately small:
+// create a user in d9 → create it in Keycloak (users.create/update); create a user in
 // Keycloak → provision it into d9 at login (auth.create); and sync the role. Nothing more.
 export default (
   { filter }: any,
@@ -34,9 +34,7 @@ export default (
 
       // ── Invitation email ──────────────────────────────────────────────────────────────────
       // Sends a link that lets the user set their password (MFA enrollment then happens at first login).
-      // Requires an SMTP server on the Keycloak side: here Mailpit locally (inbox at
-      // http://localhost:8025), to be replaced by a real SMTP (AWS SES) in prod — see
-      // the d9 projen component. A send failure does not block user creation (it's just logged).
+      // Requires an SMTP server on the Keycloak side.
       try {
         await kcManager.sendInvitationEmail(clientName, kcUser.id);
         logger.info(`[keycloak-sync] invitation email sent to ${payload.email}`);
@@ -77,8 +75,7 @@ export default (
   // ── Direction 2: Keycloak → d9 (SSO login of a user created in Keycloak) ──────────────────────
   // d9 auto-creates the account (AUTH_KEYCLOAK_ALLOW_PUBLIC_REGISTRATION=true). By default the new user
   // gets NO role: an admin then assigns it from the d9 admin UI (recommended — identity lives in Keycloak,
-  // authorization in d9). Set KEYCLOAK_SYNC_DEFAULT_ROLE to grant a baseline role to every SSO user instead.
-  //
+  // authorization in d9).
   // Want to drive the role from the identity side (e.g. a brokered enterprise IdP's groups, or a Keycloak
   // realm role exposed as a claim)? The claims are available on `meta.providerPayload.userInfo` — read your
   // claim there and map it to a d9 role by name. See the d9 projen component.
