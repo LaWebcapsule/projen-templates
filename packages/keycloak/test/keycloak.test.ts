@@ -72,11 +72,11 @@ describe('Keycloak component', () => {
     const project = new D9Project({ name: 'test-smtp', defaultReleaseBranch: 'main' });
     new Keycloak(project, {
       ...opts,
-      smtp: { host: 'email-smtp.eu-west-3.amazonaws.com', from: 'no-reply@example.com', user: 'U', password: 'P' },
+      smtp: { host: 'smtp.example.com', from: 'no-reply@example.com', user: 'U', password: 'P' },
     });
     const smtp = Testing.synth(project)['keycloak/realm-export.json'].smtpServer;
 
-    expect(smtp.host).toBe('email-smtp.eu-west-3.amazonaws.com');
+    expect(smtp.host).toBe('smtp.example.com');
     expect(smtp.auth).toBe('true');
     expect(smtp.starttls).toBe('true');
   });
