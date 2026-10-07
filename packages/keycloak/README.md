@@ -41,7 +41,7 @@ Then `npx projen` to regenerate. `issuerUrl` and `apiUrl` are the only required 
 | Path | What it is |
 | --- | --- |
 | `docker-compose.yml` (d9 service env) | The `AUTH_KEYCLOAK_*` OIDC variables, `PUBLIC_URL`, and the redirect allow-list are injected onto the existing d9 service. |
-| `keycloak/Dockerfile` | A Keycloak **26.4** image that builds the open-source [netzbegruenung MFA plugins](https://github.com/netzbegruenung/keycloak-mfa-plugins) (`enforce-mfa` + `sms-authenticator`) from source and imports the realm on first start (`--import-realm`). |
+| `keycloak/Dockerfile` | A pinned Keycloak image (the version lives in the Dockerfile) that builds the open-source [netzbegruenung MFA plugins](https://github.com/netzbegruenung/keycloak-mfa-plugins) (`enforce-mfa` + `sms-authenticator`) from source and imports the realm on first start (`--import-realm`). |
 | `keycloak/realm-export.json` | The realm (`main` by default): the OIDC client, the **browser-sms MFA flow**, `enforce-mfa`, a hardened password-reset flow, and neutral invitation-email texts. SSL required = `external`. |
 | `plugins/keycloak-sync/` | The d9 ⇄ Keycloak user-sync hook, built by the existing `build-extensions` task. Skip it with `userSync: false`. |
 
@@ -113,7 +113,7 @@ To validate the **generated assets** end-to-end:
 # 3. From a consumer project that uses the component: regenerate, then build the Keycloak image
 #    (proves the Dockerfile + realm import are valid).
 npx projen                 # regenerate with your `new Keycloak(...)` block
-docker build keycloak/     # builds Keycloak 26.4 + MFA plugins + realm import
+docker build keycloak/     # builds the pinned Keycloak + MFA plugins + realm import
 ```
 
 A full **SSO + MFA login** E2E needs a running Keycloak reachable at `issuerUrl`. For a zero-infra local run, the [d9-sso-starter](https://github.com/LaWebcapsule/d9-sso-starter) is the local-demo twin of this component (same realm + hook, HTTP, self-contained) — use it to exercise the full flow, and this component to ship it to production.
