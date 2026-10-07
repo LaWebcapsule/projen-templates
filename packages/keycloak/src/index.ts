@@ -15,26 +15,44 @@ function template(file: string, vars: { [key: string]: string } = {}): string[] 
   return content.replace(/\n$/, '').split('\n');
 }
 
+/** Real SMTP server for Keycloak emails (invitations, password reset). */
 export interface KeycloakSmtp {
+  /** SMTP host of your email provider, e.g. `smtp.example.com`. */
   readonly host: string;
+  /** Sender address (must be verified with your provider). */
   readonly from: string;
+  /** @default "587" */
   readonly port?: string;
+  /** Display name for the sender. @default "" */
   readonly fromDisplayName?: string;
+  /** SMTP username. Enables auth when set. Inject via a secret manager — don't commit it. */
   readonly user?: string;
+  /** SMTP password. Inject via a secret manager — don't commit it. */
   readonly password?: string;
+  /** @default true */
   readonly starttls?: boolean;
+  /** @default false */
   readonly ssl?: boolean;
 }
 
 export interface KeycloakOptions {
+  /** Public base URL of your Keycloak, e.g. `https://auth.example.com`. */
   readonly issuerUrl: string;
+  /** Public URL of the d9 API (sets PUBLIC_URL, determines the OIDC redirect_uri), e.g. `https://api.example.com`. */
   readonly apiUrl: string;
+  /** Keycloak realm name. @default "main" */
   readonly realm?: string;
+  /** OIDC client id (must match the Keycloak client). @default "d9" */
   readonly clientId?: string;
+  /** Front-end URL allowed as a post-login redirect (AUTH_KEYCLOAK_REDIRECT_ALLOW_LIST). @default the apiUrl */
   readonly frontUrl?: string;
+  /** Auto-create a d9 user on first SSO login (Keycloak → d9 direction). @default true */
   readonly publicRegistration?: boolean;
+  /** Baseline d9 role granted to SSO users with no mapped role (KEYCLOAK_SYNC_DEFAULT_ROLE). @default "" */
   readonly defaultRole?: string;
+  /** Install the keycloak-sync hook (two-way user sync d9 ⇄ Keycloak). @default true */
   readonly userSync?: boolean;
+  /** Real SMTP server for Keycloak emails (invitations/reset). If omitted, no SMTP is set — configure it in Keycloak later. */
   readonly smtp?: KeycloakSmtp;
 }
 
@@ -42,6 +60,10 @@ export interface KeycloakOptions {
  * Adds Keycloak OpenID Connect SSO + MFA to a {@link D9Project}: the OIDC env on the d9 service, the
  * `keycloak-sync` user-provisioning hook, and a preconfigured realm (browser-sms MFA flow) + a Keycloak
  * image with the MFA plugins — assets you deploy to your own Keycloak.
+ *
+ * Production path. For a zero-config local demo, use the standalone starter instead:
+ * https://github.com/LaWebcapsule/d9-sso-starter
+ *
  * @example
  * const project = new D9Project({ name: 'my-d9', defaultReleaseBranch: 'main' });
  * new Keycloak(project, {

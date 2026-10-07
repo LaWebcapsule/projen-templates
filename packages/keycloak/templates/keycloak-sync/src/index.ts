@@ -78,7 +78,7 @@ export default (
   // authorization in d9).
   // Want to drive the role from the identity side (e.g. a brokered enterprise IdP's groups, or a Keycloak
   // realm role exposed as a claim)? The claims are available on `meta.providerPayload.userInfo` — read your
-  // claim there and map it to a d9 role by name. See the d9 projen component.
+  // claim there and map it to a d9 role by name.
   filter(
     "auth.create",
     async (payload: any) => {

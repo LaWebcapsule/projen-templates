@@ -6,6 +6,9 @@
 
 Adds Keycloak OpenID Connect SSO + MFA to a {@link D9Project}: the OIDC env on the d9 service, the `keycloak-sync` user-provisioning hook, and a preconfigured realm (browser-sms MFA flow) + a Keycloak image with the MFA plugins — assets you deploy to your own Keycloak.
 
+Production path. For a zero-config local demo, use the standalone starter instead:
+https://github.com/LaWebcapsule/d9-sso-starter
+
 *Example*
 
 ```typescript
@@ -218,15 +221,15 @@ const keycloakOptions: KeycloakOptions = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.apiUrl">apiUrl</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.issuerUrl">issuerUrl</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.clientId">clientId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.defaultRole">defaultRole</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.frontUrl">frontUrl</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.publicRegistration">publicRegistration</a></code> | <code>boolean</code> | *No description.* |
-| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.realm">realm</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.smtp">smtp</a></code> | <code><a href="#@wbce/projen-keycloak.KeycloakSmtp">KeycloakSmtp</a></code> | *No description.* |
-| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.userSync">userSync</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.apiUrl">apiUrl</a></code> | <code>string</code> | Public URL of the d9 API (sets PUBLIC_URL, determines the OIDC redirect_uri), e.g. `https://api.example.com`. |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.issuerUrl">issuerUrl</a></code> | <code>string</code> | Public base URL of your Keycloak, e.g. `https://auth.example.com`. |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.clientId">clientId</a></code> | <code>string</code> | OIDC client id (must match the Keycloak client). |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.defaultRole">defaultRole</a></code> | <code>string</code> | Baseline d9 role granted to SSO users with no mapped role (KEYCLOAK_SYNC_DEFAULT_ROLE). |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.frontUrl">frontUrl</a></code> | <code>string</code> | Front-end URL allowed as a post-login redirect (AUTH_KEYCLOAK_REDIRECT_ALLOW_LIST). |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.publicRegistration">publicRegistration</a></code> | <code>boolean</code> | Auto-create a d9 user on first SSO login (Keycloak → d9 direction). |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.realm">realm</a></code> | <code>string</code> | Keycloak realm name. |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.smtp">smtp</a></code> | <code><a href="#@wbce/projen-keycloak.KeycloakSmtp">KeycloakSmtp</a></code> | Real SMTP server for Keycloak emails (invitations/reset). |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.userSync">userSync</a></code> | <code>boolean</code> | Install the keycloak-sync hook (two-way user sync d9 ⇄ Keycloak). |
 
 ---
 
@@ -238,6 +241,8 @@ public readonly apiUrl: string;
 
 - *Type:* string
 
+Public URL of the d9 API (sets PUBLIC_URL, determines the OIDC redirect_uri), e.g. `https://api.example.com`.
+
 ---
 
 ##### `issuerUrl`<sup>Required</sup> <a name="issuerUrl" id="@wbce/projen-keycloak.KeycloakOptions.property.issuerUrl"></a>
@@ -248,6 +253,8 @@ public readonly issuerUrl: string;
 
 - *Type:* string
 
+Public base URL of your Keycloak, e.g. `https://auth.example.com`.
+
 ---
 
 ##### `clientId`<sup>Optional</sup> <a name="clientId" id="@wbce/projen-keycloak.KeycloakOptions.property.clientId"></a>
@@ -257,6 +264,9 @@ public readonly clientId: string;
 ```
 
 - *Type:* string
+- *Default:* "d9"
+
+OIDC client id (must match the Keycloak client).
 
 ---
 
@@ -267,6 +277,9 @@ public readonly defaultRole: string;
 ```
 
 - *Type:* string
+- *Default:* ""
+
+Baseline d9 role granted to SSO users with no mapped role (KEYCLOAK_SYNC_DEFAULT_ROLE).
 
 ---
 
@@ -277,6 +290,9 @@ public readonly frontUrl: string;
 ```
 
 - *Type:* string
+- *Default:* the apiUrl
+
+Front-end URL allowed as a post-login redirect (AUTH_KEYCLOAK_REDIRECT_ALLOW_LIST).
 
 ---
 
@@ -287,6 +303,9 @@ public readonly publicRegistration: boolean;
 ```
 
 - *Type:* boolean
+- *Default:* true
+
+Auto-create a d9 user on first SSO login (Keycloak → d9 direction).
 
 ---
 
@@ -297,6 +316,9 @@ public readonly realm: string;
 ```
 
 - *Type:* string
+- *Default:* "main"
+
+Keycloak realm name.
 
 ---
 
@@ -308,6 +330,10 @@ public readonly smtp: KeycloakSmtp;
 
 - *Type:* <a href="#@wbce/projen-keycloak.KeycloakSmtp">KeycloakSmtp</a>
 
+Real SMTP server for Keycloak emails (invitations/reset).
+
+If omitted, no SMTP is set — configure it in Keycloak later.
+
 ---
 
 ##### `userSync`<sup>Optional</sup> <a name="userSync" id="@wbce/projen-keycloak.KeycloakOptions.property.userSync"></a>
@@ -317,10 +343,15 @@ public readonly userSync: boolean;
 ```
 
 - *Type:* boolean
+- *Default:* true
+
+Install the keycloak-sync hook (two-way user sync d9 ⇄ Keycloak).
 
 ---
 
 ### KeycloakSmtp <a name="KeycloakSmtp" id="@wbce/projen-keycloak.KeycloakSmtp"></a>
+
+Real SMTP server for Keycloak emails (invitations, password reset).
 
 #### Initializer <a name="Initializer" id="@wbce/projen-keycloak.KeycloakSmtp.Initializer"></a>
 
@@ -334,14 +365,14 @@ const keycloakSmtp: KeycloakSmtp = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.from">from</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.host">host</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.fromDisplayName">fromDisplayName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.password">password</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.from">from</a></code> | <code>string</code> | Sender address (must be verified with your provider). |
+| <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.host">host</a></code> | <code>string</code> | SMTP host of your email provider, e.g. `smtp.example.com`. |
+| <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.fromDisplayName">fromDisplayName</a></code> | <code>string</code> | Display name for the sender. |
+| <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.password">password</a></code> | <code>string</code> | SMTP password. |
 | <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.port">port</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.ssl">ssl</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.starttls">starttls</a></code> | <code>boolean</code> | *No description.* |
-| <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.user">user</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@wbce/projen-keycloak.KeycloakSmtp.property.user">user</a></code> | <code>string</code> | SMTP username. |
 
 ---
 
@@ -353,6 +384,8 @@ public readonly from: string;
 
 - *Type:* string
 
+Sender address (must be verified with your provider).
+
 ---
 
 ##### `host`<sup>Required</sup> <a name="host" id="@wbce/projen-keycloak.KeycloakSmtp.property.host"></a>
@@ -363,6 +396,8 @@ public readonly host: string;
 
 - *Type:* string
 
+SMTP host of your email provider, e.g. `smtp.example.com`.
+
 ---
 
 ##### `fromDisplayName`<sup>Optional</sup> <a name="fromDisplayName" id="@wbce/projen-keycloak.KeycloakSmtp.property.fromDisplayName"></a>
@@ -372,6 +407,9 @@ public readonly fromDisplayName: string;
 ```
 
 - *Type:* string
+- *Default:* ""
+
+Display name for the sender.
 
 ---
 
@@ -383,6 +421,10 @@ public readonly password: string;
 
 - *Type:* string
 
+SMTP password.
+
+Inject via a secret manager — don't commit it.
+
 ---
 
 ##### `port`<sup>Optional</sup> <a name="port" id="@wbce/projen-keycloak.KeycloakSmtp.property.port"></a>
@@ -392,6 +434,7 @@ public readonly port: string;
 ```
 
 - *Type:* string
+- *Default:* "587"
 
 ---
 
@@ -402,6 +445,7 @@ public readonly ssl: boolean;
 ```
 
 - *Type:* boolean
+- *Default:* false
 
 ---
 
@@ -412,6 +456,7 @@ public readonly starttls: boolean;
 ```
 
 - *Type:* boolean
+- *Default:* true
 
 ---
 
@@ -422,6 +467,10 @@ public readonly user: string;
 ```
 
 - *Type:* string
+
+SMTP username.
+
+Enables auth when set. Inject via a secret manager — don't commit it.
 
 ---
 
