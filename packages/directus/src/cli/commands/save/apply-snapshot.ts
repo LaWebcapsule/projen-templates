@@ -61,6 +61,7 @@ export async function applySQLSnapshot(dbConfig: {
             create extension if not exists postgis_raster ;
             create extension if not exists postgis_topology ;
             create extension if not exists address_standardizer ;
+            create extension if not exists pgaudit;
         `;
     //there is a problem with the dump in atlas : schema are created with CREATE and not create if not exits...
     //so we insert extension creation after schema creation in order to avoid getting "schema already exists"
@@ -315,5 +316,8 @@ export async function applySQLSnapshot(dbConfig: {
     await pgClient.end();
     await pgTmpClient.end();
   }
+  //schema (collections, fields, relations) and permissions are read through the cache: a purge is enough.
+  //flows, operations and webhooks are loaded in memory at startup and only reloaded by their own services: a restart is needed.
+  logger.warn('Purge the Directus cache (POST /utils/cache/clear) to take the new schema and permissions into account. If flows, operations or webhooks changed, restart Directus instead.');
 }
 
