@@ -6,7 +6,7 @@ import { DbConfig } from './env';
 import { saveSQLSnapshot } from './save-snapshot';
 import { logger } from '../../logger';
 
-const WORKTREE = 'node_modules/.cache/wbce-d9/last-save';
+const WORKTREE = 'node_modules/.cache/d9-plumbing/last-save';
 
 async function confirm(yes: boolean) {
   if (yes) {
@@ -34,7 +34,7 @@ export async function checkUnsaved(opts: { lastSave?: string | false; yes: boole
     throw new Error('--last-save <commit> is required (or --no-last-save to bypass the check)');
   }
   if (opts.lastSave === false) {
-    logger.warn('Des modifications non sauvegardées vont probablement être écrasées sur cet environnement.');
+    logger.warn('Non saved updates may be erased in this environment. Are you sure ?');
     await confirm(opts.yes);
     return;
   }
@@ -48,9 +48,9 @@ export async function checkUnsaved(opts: { lastSave?: string | false; yes: boole
   const cwd = process.cwd();
   try {
     process.chdir(WORKTREE);
-    await saveSQLSnapshot(opts.db);
+    await saveSQLSnapshot(opts.db, { cedar: false });
     process.chdir(cwd);
-    await cli.command('git', ['-C', WORKTREE, 'status', '--porcelain', '--', 'sql', 'permissions'], {
+    await cli.command('git', ['-C', WORKTREE, 'status', '--porcelain', '--', 'sql'], {
       stdout: new Writable({
         write: (chunk, _encoding, next) => {
           status += chunk.toString();

@@ -77,6 +77,6 @@ Extensions live under `./plugins/` (configurable via `extensionsFolderName`) and
 See [API.md](./API.md) for the full `D9ProjectOptions` reference. Highlights:
 
 - `extensionsFolderName` — folder for extension packages (default: `plugins`)
-- `packageVersions.d9` — version of `@wbce-d9/directus9` (default: `12.0.1`)
+- `packageVersions.d9` — version of `@wbce-d9/directus9` (default: `12.0.15`)
 - `packageVersions.atlas` — version of `@ariga/atlas` (default: `0.32.0`)
 - `githubConfig` — `GitHubConfigOptions` or `false` to disable

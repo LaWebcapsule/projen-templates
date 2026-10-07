@@ -30,6 +30,10 @@ class TupleKeyMap<Value> {
     this.entries.set(this.keyOf(parts), value);
   }
 
+  public delete(parts: string[]): void {
+    this.entries.delete(this.keyOf(parts));
+  }
+
   /** Return the value for `parts`, creating and storing it via the factory if absent. */
   public getOrCreate(parts: string[]): Value {
     const key = this.keyOf(parts);
@@ -173,6 +177,8 @@ export class CedarToD9Manager {
     let merged = 0;
     let updated = 0;
     let added = 0;
+    let removed = 0;
+    const seen = new TupleKeyMap<true>();
 
     for (const perm of this.reconstructed) {
       const roleId = this.roles.getIdFromName(perm.roleName);
@@ -185,6 +191,7 @@ export class CedarToD9Manager {
         );
       }
 
+      seen.set([roleId!, perm.collection, perm.action], true);
       const row = this.baseRowsByTuple.get([roleId!, perm.collection, perm.action]);
       if (!row) {
         // New tuple added in the Cedar files; the role exists, so create a row.
@@ -217,8 +224,19 @@ export class CedarToD9Manager {
       merged++;
     }
 
+    // Every row is written to authorize.cedar by d9-to-cedar, so a row no longer
+    // produced by the Cedar files has been removed from them.
+    for (const row of this.baseRowsByTuple.values()) {
+      const tuple = [row.role, row.collection, row.action];
+      if (seen.get(tuple)) continue;
+      this.baseRowsByTuple.delete(tuple);
+      const roleName = row.role ? this.roles.getNameFromId(row.role) : 'Public';
+      logger.info(`removed ${roleName}/${row.collection}/${row.action} (id ${row.id})`);
+      removed++;
+    }
+
     logger.info(
-      `merged ${merged} permissions, ${updated} row(s) updated, ${added} new row(s) added`,
+      `merged ${merged} permissions, ${updated} row(s) updated, ${added} new row(s) added, ${removed} row(s) removed`,
     );
   }
 

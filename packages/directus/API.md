@@ -759,7 +759,6 @@ When given a project, this it the project itself.
 | <code><a href="#@wbce/projen-d9.D9Project.property.release">release</a></code> | <code>projen.release.Release</code> | Release management. |
 | <code><a href="#@wbce/projen-d9.D9Project.property.upgradeWorkflow">upgradeWorkflow</a></code> | <code>projen.javascript.UpgradeDependencies</code> | The upgrade workflow. |
 | <code><a href="#@wbce/projen-d9.D9Project.property.githubConfig">githubConfig</a></code> | <code>@wbce/projen-shared.GitHubConfig</code> | *No description.* |
-| <code><a href="#@wbce/projen-d9.D9Project.property.applySchemaTask">applySchemaTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.D9Project.property.buildExtensionTask">buildExtensionTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.D9Project.property.cacheService">cacheService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.D9Project.property.databaseService">databaseService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
@@ -1428,16 +1427,6 @@ public readonly githubConfig: GitHubConfig;
 ```
 
 - *Type:* @wbce/projen-shared.GitHubConfig
-
----
-
-##### `applySchemaTask`<sup>Required</sup> <a name="applySchemaTask" id="@wbce/projen-d9.D9Project.property.applySchemaTask"></a>
-
-```typescript
-public readonly applySchemaTask: Task;
-```
-
-- *Type:* projen.Task
 
 ---
 
@@ -2301,7 +2290,6 @@ When given a project, this it the project itself.
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.release">release</a></code> | <code>projen.release.Release</code> | Release management. |
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.upgradeWorkflow">upgradeWorkflow</a></code> | <code>projen.javascript.UpgradeDependencies</code> | The upgrade workflow. |
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.githubConfig">githubConfig</a></code> | <code>@wbce/projen-shared.GitHubConfig</code> | *No description.* |
-| <code><a href="#@wbce/projen-d9.DirectusProject.property.applySchemaTask">applySchemaTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.buildExtensionTask">buildExtensionTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.cacheService">cacheService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.databaseService">databaseService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
@@ -3071,18 +3059,6 @@ public readonly githubConfig: GitHubConfig;
 
 ---
 
-##### ~~`applySchemaTask`~~<sup>Required</sup> <a name="applySchemaTask" id="@wbce/projen-d9.DirectusProject.property.applySchemaTask"></a>
-
-- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
-
-```typescript
-public readonly applySchemaTask: Task;
-```
-
-- *Type:* projen.Task
-
----
-
 ##### ~~`buildExtensionTask`~~<sup>Required</sup> <a name="buildExtensionTask" id="@wbce/projen-d9.DirectusProject.property.buildExtensionTask"></a>
 
 - *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
@@ -3378,6 +3354,7 @@ const d9ProjectOptions: D9ProjectOptions = { ... }
 | <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
 | <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.extensionsFolderName">extensionsFolderName</a></code> | <code>string</code> | The name of the extensions folder. |
 | <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.githubConfig">githubConfig</a></code> | <code>boolean \| @wbce/projen-shared.GitHubConfigOptions</code> | Options for the GitHub configuration. |
+| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.intermediateStorage">intermediateStorage</a></code> | <code><a href="#@wbce/projen-d9.IntermediateStorageOptions">IntermediateStorageOptions</a></code> | Storage shared between environments, written to `intermediate-storage.json`. |
 | <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.packageVersions">packageVersions</a></code> | <code><a href="#@wbce/projen-d9.PackageVersions">PackageVersions</a></code> | *No description.* |
 
 ---
@@ -5659,6 +5636,19 @@ Set to false to disable GitHub config entirely.
 
 ---
 
+##### `intermediateStorage`<sup>Optional</sup> <a name="intermediateStorage" id="@wbce/projen-d9.D9ProjectOptions.property.intermediateStorage"></a>
+
+```typescript
+public readonly intermediateStorage: IntermediateStorageOptions;
+```
+
+- *Type:* <a href="#@wbce/projen-d9.IntermediateStorageOptions">IntermediateStorageOptions</a>
+- *Default:* none, the intermediate storage is configured with INTERMEDIATE_STORAGE_* variables or flags
+
+Storage shared between environments, written to `intermediate-storage.json`.
+
+---
+
 ##### `packageVersions`<sup>Optional</sup> <a name="packageVersions" id="@wbce/projen-d9.D9ProjectOptions.property.packageVersions"></a>
 
 ```typescript
@@ -5841,6 +5831,7 @@ const directusProjectOptions: DirectusProjectOptions = { ... }
 | <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
 | <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.extensionsFolderName">extensionsFolderName</a></code> | <code>string</code> | The name of the extensions folder. |
 | <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.githubConfig">githubConfig</a></code> | <code>boolean \| @wbce/projen-shared.GitHubConfigOptions</code> | Options for the GitHub configuration. |
+| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.intermediateStorage">intermediateStorage</a></code> | <code><a href="#@wbce/projen-d9.IntermediateStorageOptions">IntermediateStorageOptions</a></code> | Storage shared between environments, written to `intermediate-storage.json`. |
 | <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.packageVersions">packageVersions</a></code> | <code><a href="#@wbce/projen-d9.PackageVersions">PackageVersions</a></code> | *No description.* |
 
 ---
@@ -8414,6 +8405,21 @@ Set to false to disable GitHub config entirely.
 
 ---
 
+##### ~~`intermediateStorage`~~<sup>Optional</sup> <a name="intermediateStorage" id="@wbce/projen-d9.DirectusProjectOptions.property.intermediateStorage"></a>
+
+- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
+
+```typescript
+public readonly intermediateStorage: IntermediateStorageOptions;
+```
+
+- *Type:* <a href="#@wbce/projen-d9.IntermediateStorageOptions">IntermediateStorageOptions</a>
+- *Default:* none, the intermediate storage is configured with INTERMEDIATE_STORAGE_* variables or flags
+
+Storage shared between environments, written to `intermediate-storage.json`.
+
+---
+
 ##### ~~`packageVersions`~~<sup>Optional</sup> <a name="packageVersions" id="@wbce/projen-d9.DirectusProjectOptions.property.packageVersions"></a>
 
 - *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
@@ -8425,6 +8431,71 @@ public readonly packageVersions: PackageVersions;
 - *Type:* <a href="#@wbce/projen-d9.PackageVersions">PackageVersions</a>
 
 ---
+
+### IntermediateStorageOptions <a name="IntermediateStorageOptions" id="@wbce/projen-d9.IntermediateStorageOptions"></a>
+
+Storage shared between environments, used by `d9-plumbing save` and `d9-plumbing apply-schema` to transfer files.
+
+#### Initializer <a name="Initializer" id="@wbce/projen-d9.IntermediateStorageOptions.Initializer"></a>
+
+```typescript
+import { IntermediateStorageOptions } from '@wbce/projen-d9'
+
+const intermediateStorageOptions: IntermediateStorageOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@wbce/projen-d9.IntermediateStorageOptions.property.driver">driver</a></code> | <code>string</code> | The storage driver: s3, gcs, azure, local or cloudinary. |
+| <code><a href="#@wbce/projen-d9.IntermediateStorageOptions.property.options">options</a></code> | <code>{[ key: string ]: string}</code> | Non-secret driver options (root, bucket, region, endpoint...). |
+| <code><a href="#@wbce/projen-d9.IntermediateStorageOptions.property.secretEnv">secretEnv</a></code> | <code>{[ key: string ]: string}</code> | Secret driver options, as the names of the environment variables holding them (never the values). |
+
+---
+
+##### `driver`<sup>Required</sup> <a name="driver" id="@wbce/projen-d9.IntermediateStorageOptions.property.driver"></a>
+
+```typescript
+public readonly driver: string;
+```
+
+- *Type:* string
+
+The storage driver: s3, gcs, azure, local or cloudinary.
+
+---
+
+##### `options`<sup>Optional</sup> <a name="options" id="@wbce/projen-d9.IntermediateStorageOptions.property.options"></a>
+
+```typescript
+public readonly options: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Non-secret driver options (root, bucket, region, endpoint...).
+
+---
+
+##### `secretEnv`<sup>Optional</sup> <a name="secretEnv" id="@wbce/projen-d9.IntermediateStorageOptions.property.secretEnv"></a>
+
+```typescript
+public readonly secretEnv: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Secret driver options, as the names of the environment variables holding them (never the values).
+
+---
+
+*Example*
+
+```typescript
+{ key: 'MY_S3_KEY', secret: 'MY_S3_SECRET' }
+```
+
 
 ### PackageVersions <a name="PackageVersions" id="@wbce/projen-d9.PackageVersions"></a>
 

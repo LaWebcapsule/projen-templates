@@ -1,0 +1,2 @@
+action,collection,fields,id,permissions,presets,role,validation
+read,test,*,4,"{""_or"":[{""status"":{""_eq"":""draf""}},{""user_created"":{""_eq"":""$CURRENT_USER""}}]}",,c5415da3-c6d1-4422-8acd-d2fa067786ac,{}

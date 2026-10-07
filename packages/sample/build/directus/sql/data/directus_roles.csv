@@ -1,0 +1,3 @@
+admin_access,app_access,description,enforce_tfa,icon,id,ip_access,name
+f,f,,f,supervised_user_circle,c5415da3-c6d1-4422-8acd-d2fa067786ac,,User
+t,t,$t:admin_description,f,verified,f1739916-371c-4a94-a926-a6445ea27dbc,,Administrator

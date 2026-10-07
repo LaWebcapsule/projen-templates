@@ -21,7 +21,7 @@
     "@typescript-eslint/parser": "^8",
     "@wbce-d9/extensions-sdk": "*",
     "@wbce-d9/types": "*",
-    "@wbce/projen-d9-extension": "*",
+    "@wbce/projen-d9-extension": "file:../../../../../directus-extension",
     "eslint": "^9",
     "eslint-import-resolver-typescript": "*",
     "eslint-plugin-import": "*",

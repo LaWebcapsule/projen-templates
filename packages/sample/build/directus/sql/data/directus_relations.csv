@@ -1,0 +1,3 @@
+id,junction_field,many_collection,many_field,one_allowed_collections,one_collection,one_collection_field,one_deselect_action,one_field,sort_field
+1,,test,user_created,,directus_users,,nullify,,
+2,,test,user_updated,,directus_users,,nullify,,

@@ -141,7 +141,7 @@ directus.addBundledDeps("@types/pg-copy-streams");
 directus.addBundledDeps("@cedar-policy/cedar-wasm@^4.9.0"); // Pinned to the same major as app-api2's d9-to-cedar
 directus.addDevDeps("@wbce-d9/storage");
 directus.addBins({
-  "wbce-d9": "lib/cli/index.js",
+  "d9-plumbing": "lib/cli/index.js",
   "wbce-directus": "lib/cli/index.js", // deprecated alias, kept for backward compatibility
 });
 

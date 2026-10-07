@@ -14,7 +14,7 @@ export interface PackageVersions {
 }
 
 /**
- * Storage shared between environments, used by `wbce-d9 save` and `wbce-d9 apply-schema` to transfer files.
+ * Storage shared between environments, used by `d9-plumbing save` and `d9-plumbing apply-schema` to transfer files.
  */
 export interface IntermediateStorageOptions {
   /**
@@ -60,7 +60,6 @@ export class D9Project extends javascript.NodeProject {
   public readonly githubConfig?: GitHubConfig;
   public extensions!: ExtensionFolder;
   public extensionFolder!: string;
-  public applySchemaTask!: Task;
   public buildExtensionTask!: Task;
   public dockerfile!: Dockerfile;
   public dockerComposeFile!: DockerCompose;
@@ -69,7 +68,7 @@ export class D9Project extends javascript.NodeProject {
   public cacheService!: DockerComposeService;
 
   constructor(protected options: D9ProjectOptions) {
-    const d9Version = options.packageVersions?.d9 || '12.0.1';
+    const d9Version = options.packageVersions?.d9 || '12.0.15';
     const atlasVersion = options.packageVersions?.atlas || '0.32.0';
     super({
       ...options,
@@ -149,10 +148,10 @@ export class D9Project extends javascript.NodeProject {
 
     this.addExtensionFolder();
     this.addDockerCompose();
-    this.addApplySchemaTask();
     this.addFirstRunTask();
     this.addBuildExtensionTask();
     this.addRunTask();
+    this.addD9PlumbingTask();
     this.addDockerfile();
     this.addCreateAdminUserTask();
 
@@ -194,8 +193,14 @@ export class D9Project extends javascript.NodeProject {
     });
     const adminEmail = 'admin@example.com';
     const userNotExistsCondition = `docker compose exec database psql -U directus -d directus -tAc "SELECT count(*) FROM directus_users WHERE email = '${adminEmail}'" | grep -q '^0$'`;
+    const emptyDatabaseCondition = 'docker compose exec database psql -U directus -d directus -tAc "SELECT count(*) FROM information_schema.tables WHERE table_name LIKE \'directus_%\'" | grep -q \'^0$\'';
     task.exec('docker compose up -d --wait database cache');
-    task.spawn(this.applySchemaTask);
+    task.exec('npx d9-plumbing first-import --host localhost --user directus --password directus --database directus', {
+      condition: 'test -d ./sql',
+    });
+    task.exec('docker compose run --rm directus npx directus bootstrap', {
+      condition: `test ! -d ./sql && ${emptyDatabaseCondition}`,
+    });
     task.exec(`ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc "SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1") && docker compose run --rm directus npx directus users create --email ${adminEmail} --password totototo --role "$ADMIN_ROLE_ID"`, {
       condition: userNotExistsCondition,
     });
@@ -233,22 +238,12 @@ export class D9Project extends javascript.NodeProject {
     task.exec('docker compose up directus');
   }
 
-  private addApplySchemaTask() {
-    this.applySchemaTask = this.addTask('apply-schema', {
-      description: 'Apply SQL snapshot to the local Directus database',
+  private addD9PlumbingTask() {
+    const task = this.addTask('d9-plumbing', {
+      description: 'Run the d9-plumbing CLI (save, apply-schema, first-import...). Use --help to list all subcommands.',
     });
-    // Merge Cedar policies back into directus_permissions.csv BEFORE the
-    // snapshot is loaded, so the COPY in apply-snapshot ingests the rewritten
-    // CSV. Runs only when a ./permissions folder is present.
-    this.applySchemaTask.exec('npx wbce-d9 cedar-to-d9 --permissions ./permissions --sql ./sql/data', {
-      condition: 'test -d ./permissions && test -f ./sql/data/directus_permissions.csv',
-    });
-    this.applySchemaTask.exec('npx wbce-directus apply-snapshot --host localhost --user directus --password directus --database directus', {
-      condition: 'test -d ./sql',
-    });
-    this.applySchemaTask.exec('docker compose run --rm directus npx directus bootstrap', {
-      condition: 'test ! -d ./sql',
-    });
+    task.say('Tip: you can also call it directly with `npx d9-plumbing <command>`');
+    task.exec('npx d9-plumbing "$@"', { receiveArgs: true });
   }
 
   private addBuildExtensionTask() {

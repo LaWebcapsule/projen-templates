@@ -5,7 +5,7 @@
     "url": "git@github.com:LaWebcapsule/projen-templates.git"
   },
   "bin": {
-    "wbce-d9": "lib/cli/index.js",
+    "d9-plumbing": "lib/cli/index.js",
     "wbce-directus": "lib/cli/index.js"
   },
   "scripts": {

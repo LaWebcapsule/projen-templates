@@ -95,7 +95,8 @@ function applyConfigFlags(config: Record<string, any>, flag: string, entries: st
   }
 }
 
-export async function resolveIntermediateStorage(flags: StorageFlags): Promise<DriverConfig> {
+/** The intermediate storage, or `undefined` when no driver is configured. */
+export async function findIntermediateStorage(flags: StorageFlags): Promise<DriverConfig | undefined> {
   const { env, getConfigFromEnv } = await loadDirectusEnv();
   let config: Record<string, any> = {};
 
@@ -111,8 +112,13 @@ export async function resolveIntermediateStorage(flags: StorageFlags): Promise<D
 
   applyConfigFlags(config, '--intermediate-storage-config', flags.intermediateStorageConfig);
 
-  if (!config.driver) {
+  return config.driver ? toDriverConfig(config) : undefined;
+}
+
+export async function resolveIntermediateStorage(flags: StorageFlags): Promise<DriverConfig> {
+  const config = await findIntermediateStorage(flags);
+  if (!config) {
     throw new Error(`no intermediate storage driver found (use ${INTERMEDIATE_STORAGE_FILE}, INTERMEDIATE_STORAGE_DRIVER or --intermediate-storage-config driver=...)`);
   }
-  return toDriverConfig(config);
+  return config;
 }
