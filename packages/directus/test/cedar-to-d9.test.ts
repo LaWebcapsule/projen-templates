@@ -100,9 +100,14 @@ describe('policyToCedarText', () => {
     );
   });
 
-  test('keeps a single condition on one line', () => {
+  test('puts a single condition on its own line', () => {
     expect(policyToCedarText(policyWith({ archived_at: { _null: true } }))).toBe(
-      'permit (principal, action, resource)\nwhen { !(resource has archived_at) };',
+      [
+        'permit (principal, action, resource)',
+        'when {',
+        '     !(resource has archived_at)',
+        '};',
+      ].join('\n'),
     );
   });
 

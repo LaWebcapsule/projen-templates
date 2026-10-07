@@ -61,7 +61,6 @@ export async function applySQLSnapshot(dbConfig: {
             create extension if not exists postgis_raster ;
             create extension if not exists postgis_topology ;
             create extension if not exists address_standardizer ;
-            create extension if not exists pgaudit;
         `;
     //there is a problem with the dump in atlas : schema are created with CREATE and not create if not exits...
     //so we insert extension creation after schema creation in order to avoid getting "schema already exists"
@@ -109,9 +108,9 @@ export async function applySQLSnapshot(dbConfig: {
       'schema',
       'diff',
       '--from',
-      `postgres://${dbConfig.user}:${dbConfig.pwd}@${dbConfig.host}/${dbConfig.database}?sslmode=${dbConfig.ssl ? 'require' : 'disable'}`,
+      `postgres://${encodeURIComponent(dbConfig.user)}:${encodeURIComponent(dbConfig.pwd)}@${dbConfig.host}/${dbConfig.database}?sslmode=${dbConfig.ssl ? 'require' : 'disable'}`,
       '--to',
-      `postgres://${dbConfig.user}:${dbConfig.pwd}@${dbConfig.host}/${dbConfig.database}_tmp_bis?sslmode=${dbConfig.ssl ? 'require' : 'disable'}`,
+      `postgres://${encodeURIComponent(dbConfig.user)}:${encodeURIComponent(dbConfig.pwd)}@${dbConfig.host}/${dbConfig.database}_tmp_bis?sslmode=${dbConfig.ssl ? 'require' : 'disable'}`,
     ],
     {
       env: {

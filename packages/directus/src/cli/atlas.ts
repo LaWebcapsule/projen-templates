@@ -1,14 +1,15 @@
 import { createHash } from 'crypto';
 import { existsSync } from 'fs';
 import { chmod, mkdir, rename, writeFile } from 'fs/promises';
-import { join } from 'path';
+import { join, resolve } from 'path';
 import { logger } from './logger';
 import { readPlumbingConfig } from './plumbing-config';
 
 export const DEFAULT_ATLAS_VERSION = '1.3.3';
 
 const RELEASE_SERVER = 'https://release.ariga.io/atlas';
-const CACHE_DIR = './node_modules/.cache/d9-plumbing';
+// resolved at startup: check-unsaved changes the cwd to a worktree without node_modules
+const CACHE_DIR = resolve('./node_modules/.cache/d9-plumbing');
 
 const PLATFORMS: Record<string, string> = { darwin: 'darwin', linux: 'linux' };
 const ARCHS: Record<string, string> = { x64: 'amd64', arm64: 'arm64' };

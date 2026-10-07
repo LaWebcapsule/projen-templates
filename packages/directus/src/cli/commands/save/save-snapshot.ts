@@ -49,7 +49,7 @@ export async function saveSQLSnapshot(dbConfig: {
       'schema', //schema only
       'inspect',
       '-u',
-      `postgres://${dbConfig.user}:${dbConfig.pwd}@${dbConfig.host}/${dbConfig.database}?sslmode=${dbConfig.ssl ? 'require' : 'disable'}`, //output file
+      `postgres://${encodeURIComponent(dbConfig.user)}:${encodeURIComponent(dbConfig.pwd)}@${dbConfig.host}/${dbConfig.database}?sslmode=${dbConfig.ssl ? 'require' : 'disable'}`, //output file
       '--format',
       '{{ sql . "  " }}',
     ],
