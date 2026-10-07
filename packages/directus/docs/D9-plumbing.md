@@ -119,6 +119,8 @@ npx d9-plumbing check-unsaved --last-save 1b3387a
 
 Syncs the files listed in `sql/data/directus_files.csv` from the current storage to the intermediate storage (`push-files`), or the other way (`pull-files`). Run by `save` and `apply-schema`.
 
+Only the files of the d9 folder named `common` and its subfolders are saved and transferred: `save` dumps only those rows of `directus_files` and `directus_folders`, so everything else stays local to its environment. Put the files shared by all environments (logos, default images...) in `common`.
+
 Options: [storage](#current-storage), [intermediate storage](#intermediate-storage).
 
 ```sh
