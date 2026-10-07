@@ -138,7 +138,7 @@ directus.addBundledDeps("pg");
 directus.addBundledDeps("pg-copy-streams");
 directus.addBundledDeps("@types/pg");
 directus.addBundledDeps("@types/pg-copy-streams");
-directus.addBundledDeps("@cedar-policy/cedar-wasm@^4.9.0"); // Pinned to the same major as app-api2's d9-to-cedar
+directus.addBundledDeps("@cedar-policy/cedar-wasm@^4.13.0"); // Pinned to the same major as app-api2's d9-to-cedar
 directus.addDevDeps("@wbce-d9/storage");
 directus.addBins({
   "d9-plumbing": "lib/cli/index.js",

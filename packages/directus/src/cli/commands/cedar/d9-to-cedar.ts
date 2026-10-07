@@ -1,6 +1,7 @@
 import { mkdir, rm, writeFile } from 'fs/promises';
 import * as cedar from '@cedar-policy/cedar-wasm/nodejs';
 import type { PolicyJson } from '@cedar-policy/cedar-wasm/nodejs';
+import { policyToCedarText } from './cedar-format';
 import { translateToCedar } from './cedar-translations';
 import { D9Permission } from './d9-permission';
 import { RolesTable } from './roles-table';
@@ -140,27 +141,16 @@ export class CedarManager {
     policies: PolicyJson[],
   ) {
     await mkdir(`${this.permissionPath}/${roleName}`, { recursive: true });
-    const policiesText = policies.map((policy) => {
-      const result = cedar.policyToText(policy);
-      if (result.type === 'success') {
-        return result.text;
-      } else {
-        logger.error({ policy }, 'failed to transform policy into text');
-        throw new Error(result.errors as any);
-      }
-    });
-    const policiesCombined = policiesText.join('\n\n');
-    const formattedPolicies = cedar.formatPolicies({
-      policyText: policiesCombined,
-      lineWidth: 100,
-      indentWidth: 2,
-    });
-    if (formattedPolicies.type === 'failure') {
-      throw new Error(formattedPolicies as any);
+    const policiesText = policies.map(policyToCedarText).join('\n\n') + '\n';
+    // Our own condition layout must still be valid Cedar.
+    const parsed = cedar.policySetTextToParts(policiesText);
+    if (parsed.type === 'failure') {
+      logger.error({ policiesText }, 'generated policies are not valid Cedar');
+      throw new Error(parsed.errors as any);
     }
     await writeFile(
       `${this.permissionPath}/${roleName}/${fileTitle}`,
-      formattedPolicies.formatted_policy,
+      policiesText,
     );
   }
 

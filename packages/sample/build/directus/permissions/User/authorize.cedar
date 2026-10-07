@@ -3,4 +3,11 @@ permit (
   action == Db::test::Action::"read",
   resource
 )
-when { ((resource.status) == "draf") || ((resource.user_created) == principal) };
+when {
+     resource.user_created == principal
+  || resource.date_created like "*2025*"
+  || (
+          resource.user_created == principal
+       && resource.status == "draf"
+     )
+};

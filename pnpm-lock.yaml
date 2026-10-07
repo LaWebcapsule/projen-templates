@@ -96,8 +96,8 @@ importers:
   packages/directus:
     dependencies:
       '@cedar-policy/cedar-wasm':
-        specifier: ^4.9.0
-        version: 4.11.0
+        specifier: ^4.13.0
+        version: 4.13.0
       '@types/pg':
         specifier: ^8.20.0
         version: 8.20.0
@@ -620,8 +620,8 @@ packages:
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  '@cedar-policy/cedar-wasm@4.11.0':
-    resolution: {integrity: sha512-jIpMGPXKu6spe9PMXdSUqFMK5nJmAyTxRKRA2eegxQhGRRjDrbPuQB2C0+ARGs2OjqhoexgGODf8Y/rPACQI7A==}
+  '@cedar-policy/cedar-wasm@4.13.0':
+    resolution: {integrity: sha512-1omEd/J0c7RjcfSUWiXZc6zk6XUs1IuY7Yk9TVysoKV/LpFWIk45RpjvRFVioPUR3RQmgA/DaqKhK3pucbBx1A==}
 
   '@changesets/apply-release-plan@7.1.0':
     resolution: {integrity: sha512-yq8ML3YS7koKQ/9bk1PqO0HMzApIFNwjlwCnwFEXMzNe8NpzeeYYKCmnhWJGkN8g7E51MnWaSbqRcTcdIxUgnQ==}
@@ -3599,7 +3599,7 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@cedar-policy/cedar-wasm@4.11.0': {}
+  '@cedar-policy/cedar-wasm@4.13.0': {}
 
   '@changesets/apply-release-plan@7.1.0':
     dependencies:

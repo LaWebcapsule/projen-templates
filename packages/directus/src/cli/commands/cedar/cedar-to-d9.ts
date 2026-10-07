@@ -266,6 +266,7 @@ export class CedarToD9Manager {
     await this.writeOutput();
     logger.info('done');
   }
+
 }
 
 /** CLI action: merge Cedar policies back into directus_permissions.csv. */

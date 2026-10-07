@@ -2,8 +2,10 @@ import { mkdtempSync, mkdirSync, writeFileSync } from 'fs';
 import { tmpdir } from 'os';
 import { join } from 'path';
 import * as cedar from '@cedar-policy/cedar-wasm/nodejs';
+import { policyToCedarText } from '../src/cli/commands/cedar/cedar-format';
 import { cedarToD9 } from '../src/cli/commands/cedar/cedar-to-d9';
-import { expandPolicy } from '../src/cli/commands/cedar/cedar-to-d9-translations';
+import { expandPolicy, exprToFilter } from '../src/cli/commands/cedar/cedar-to-d9-translations';
+import { addWhenClauses } from '../src/cli/commands/cedar/cedar-translations';
 import { d9ToCedar } from '../src/cli/commands/cedar/d9-to-cedar';
 import { readCsvFile } from '../src/cli/commands/save/utils';
 
@@ -63,5 +65,50 @@ describe('expandPolicy', () => {
 
   test('throws on an unexpected action constraint', () => {
     expect(() => expand('action')).toThrow('Unexpected action constraint');
+  });
+});
+
+describe('policyToCedarText', () => {
+  const policyWith = (filter: Record<string, any>) => ({
+    effect: 'permit' as const,
+    principal: { op: 'All' as const },
+    action: { op: 'All' as const },
+    resource: { op: 'All' as const },
+    conditions: [{ kind: 'when' as const, body: addWhenClauses(JSON.parse(JSON.stringify(filter))) }],
+  });
+  const nested = {
+    _or: [
+      { status: { _eq: 'draft' } },
+      { user_created: { _eq: '$CURRENT_USER' } },
+      { _and: [{ owner: { department: { name: { _eq: 'marketing' } } } }, { title: { _contains: '(a)' } }] },
+    ],
+  };
+
+  test('puts the boolean operator first and indents each logical level', () => {
+    expect(policyToCedarText(policyWith(nested))).toBe(
+      [
+        'permit (principal, action, resource)',
+        'when {',
+        '     resource.status == "draft"',
+        '  || resource.user_created == principal',
+        '  || (',
+        '          resource.owner.department.name == "marketing"',
+        '       && resource.title like "*(a)*"',
+        '     )',
+        '};',
+      ].join('\n'),
+    );
+  });
+
+  test('keeps a single condition on one line', () => {
+    expect(policyToCedarText(policyWith({ archived_at: { _null: true } }))).toBe(
+      'permit (principal, action, resource)\nwhen { !(resource has archived_at) };',
+    );
+  });
+
+  test('round-trips to the same D9 filter', () => {
+    const parsed = cedar.policyToJson(policyToCedarText(policyWith(nested)));
+    if (parsed.type === 'failure') throw new Error(JSON.stringify(parsed.errors));
+    expect(exprToFilter(parsed.json.conditions[0]!.body)).toEqual(nested);
   });
 });
