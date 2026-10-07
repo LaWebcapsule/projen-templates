@@ -61,7 +61,7 @@ Extensions live under `./plugins/` (configurable via `extensionsFolderName`) and
 | Task | Description |
 | --- | --- |
 | `first-run` | Boot the stack, create admin, start d9 |
-| `run` | Start d9 (`docker compose up directus`) |
+| `run` | Start d9 (`docker compose up d9`) |
 | `build-extensions` | Install and build all extensions |
 | `create-an-admin` | Create the default admin user |
 

@@ -10,12 +10,12 @@ const program = new Command();
 
 program
   .name('d9-plumbing')
-  .description('CLI tools for Directus project management')
+  .description('CLI tools for d9 project management')
   .version('0.0.1');
 
 program
   .command('sync')
-  .description('Sync Directus schema and extensions')
+  .description('Sync d9 schema and extensions')
   .option('--dry-run', 'show what would be synced without making changes')
   .action(sync);
 
@@ -55,7 +55,7 @@ const withDbOptions = (command: Command) => command
   .option('--ssl', 'enable SSL for database connections (default: DB_SSL)');
 
 const withStorageOptions = (command: Command) => command
-  .option('--storage-config <key=value>', 'Directus storage config entry, overrides STORAGE_<LOCATION>_*, repeatable (e.g. driver=s3)', collect)
+  .option('--storage-config <key=value>', 'd9 storage config entry, overrides STORAGE_<LOCATION>_*, repeatable (e.g. driver=s3)', collect)
   .option('--intermediate-storage-config <key=value>', 'intermediate storage config entry, repeatable (e.g. driver=s3)', collect);
 
 const withCheckOptions = (command: Command) => command
@@ -72,20 +72,20 @@ withStorageOptions(program.command('pull-files'))
   .action(pullFiles);
 
 withCheckOptions(withDbOptions(program.command('check-unsaved')))
-  .description('Fail if the current Directus differs from the --last-save commit')
+  .description('Fail if the current d9 differs from the --last-save commit')
   .action(checkUnsavedChanges);
 
 withStorageOptions(withDbOptions(program.command('first-import')))
-  .description('Apply the SQL snapshot of ./sql to an empty Directus database, then sync files from the intermediate storage if one is configured')
+  .description('Apply the SQL snapshot of ./sql to an empty d9 database, then sync files from the intermediate storage if one is configured')
   .action(firstImport);
 
 withStorageOptions(withDbOptions(program.command('save')))
-  .description('Save the SQL snapshot of the current Directus, then sync files to the intermediate storage')
+  .description('Save the SQL snapshot of the current d9, then sync files to the intermediate storage')
   .option('--no-cedar', 'do not generate the Cedar policies from directus_permissions.csv')
   .action(save);
 
 withCheckOptions(withStorageOptions(withDbOptions(program.command('apply-schema'))))
-  .description('Check for unsaved changes, sync files from the intermediate storage, then apply the SQL snapshot to the current Directus')
+  .description('Check for unsaved changes, sync files from the intermediate storage, then apply the SQL snapshot to the current d9')
   .action(applySchema);
 
 void program.parseAsync().catch((err) => {

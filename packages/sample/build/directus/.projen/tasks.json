@@ -26,7 +26,7 @@
     },
     "build-extensions": {
       "name": "build-extensions",
-      "description": "Build the directus extensions",
+      "description": "Build the d9 extensions",
       "steps": [
         {
           "exec": "cd plugins && pnpm install"
@@ -99,16 +99,16 @@
           "exec": "docker compose up -d --wait database cache"
         },
         {
-          "exec": "ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc \"SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1\") && docker compose run --rm directus npx directus users create --email admin@example.com --password totototo --role \"$ADMIN_ROLE_ID\"",
-          "condition": "docker compose exec database psql -U directus -d directus -tAc \"SELECT count(*) FROM directus_users WHERE email = 'admin@example.com'\" | grep -q '^0$'"
+          "exec": "ADMIN_ROLE_ID=$(docker compose exec database psql -U d9 -d d9 -tAc \"SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1\") && docker compose run --rm d9 npx directus users create --email admin@example.com --password totototo --role \"$ADMIN_ROLE_ID\"",
+          "condition": "docker compose exec database psql -U d9 -d d9 -tAc \"SELECT count(*) FROM directus_users WHERE email = 'admin@example.com'\" | grep -q '^0$'"
         },
         {
           "say": "User admin@example.com has been created with password totototo",
-          "condition": "docker compose exec database psql -U directus -d directus -tAc \"SELECT count(*) FROM directus_users WHERE email = 'admin@example.com'\" | grep -q '^0$'"
+          "condition": "docker compose exec database psql -U d9 -d d9 -tAc \"SELECT count(*) FROM directus_users WHERE email = 'admin@example.com'\" | grep -q '^0$'"
         },
         {
           "say": "User admin@example.com already exists, skipping creation",
-          "condition": "! docker compose exec database psql -U directus -d directus -tAc \"SELECT count(*) FROM directus_users WHERE email = 'admin@example.com'\" | grep -q '^0$'"
+          "condition": "! docker compose exec database psql -U d9 -d d9 -tAc \"SELECT count(*) FROM directus_users WHERE email = 'admin@example.com'\" | grep -q '^0$'"
         }
       ]
     },
@@ -148,33 +148,33 @@
     },
     "first-run": {
       "name": "first-run",
-      "description": "Initialize and start a fresh Directus instance",
+      "description": "Initialize and start a fresh d9 instance",
       "steps": [
         {
           "exec": "docker compose up -d --wait database cache"
         },
         {
-          "exec": "npx d9-plumbing first-import --host localhost --user directus --password directus --database directus",
+          "exec": "npx d9-plumbing first-import --host localhost --user d9 --password d9 --database d9",
           "condition": "test -d ./sql"
         },
         {
-          "exec": "docker compose run --rm directus npx directus bootstrap",
-          "condition": "test ! -d ./sql && docker compose exec database psql -U directus -d directus -tAc \"SELECT count(*) FROM information_schema.tables WHERE table_name LIKE 'directus_%'\" | grep -q '^0$'"
+          "exec": "docker compose run --rm d9 npx directus bootstrap",
+          "condition": "test ! -d ./sql && docker compose exec database psql -U d9 -d d9 -tAc \"SELECT count(*) FROM information_schema.tables WHERE table_name LIKE 'directus_%'\" | grep -q '^0$'"
         },
         {
-          "exec": "ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc \"SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1\") && docker compose run --rm directus npx directus users create --email admin@example.com --password totototo --role \"$ADMIN_ROLE_ID\"",
-          "condition": "docker compose exec database psql -U directus -d directus -tAc \"SELECT count(*) FROM directus_users WHERE email = 'admin@example.com'\" | grep -q '^0$'"
+          "exec": "ADMIN_ROLE_ID=$(docker compose exec database psql -U d9 -d d9 -tAc \"SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1\") && docker compose run --rm d9 npx directus users create --email admin@example.com --password totototo --role \"$ADMIN_ROLE_ID\"",
+          "condition": "docker compose exec database psql -U d9 -d d9 -tAc \"SELECT count(*) FROM directus_users WHERE email = 'admin@example.com'\" | grep -q '^0$'"
         },
         {
           "say": "User admin@example.com has been created with password totototo",
-          "condition": "docker compose exec database psql -U directus -d directus -tAc \"SELECT count(*) FROM directus_users WHERE email = 'admin@example.com'\" | grep -q '^0$'"
+          "condition": "docker compose exec database psql -U d9 -d d9 -tAc \"SELECT count(*) FROM directus_users WHERE email = 'admin@example.com'\" | grep -q '^0$'"
         },
         {
           "say": "User admin@example.com already exists, skipping creation",
-          "condition": "! docker compose exec database psql -U directus -d directus -tAc \"SELECT count(*) FROM directus_users WHERE email = 'admin@example.com'\" | grep -q '^0$'"
+          "condition": "! docker compose exec database psql -U d9 -d d9 -tAc \"SELECT count(*) FROM directus_users WHERE email = 'admin@example.com'\" | grep -q '^0$'"
         },
         {
-          "exec": "docker compose up directus"
+          "exec": "docker compose up d9"
         }
       ]
     },
@@ -246,10 +246,10 @@
     },
     "run": {
       "name": "run",
-      "description": "start the Directus instance",
+      "description": "start the d9 instance",
       "steps": [
         {
-          "exec": "docker compose up directus"
+          "exec": "docker compose up d9"
         }
       ]
     },

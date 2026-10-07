@@ -8,7 +8,7 @@ export async function sync(options: SyncOptions) {
   if (options.dryRun) {
     logger.info('Dry run — showing what would be synced...');
   } else {
-    logger.info('Syncing Directus schema and extensions...');
+    logger.info('Syncing d9 schema and extensions...');
   }
   // TODO: implement
 }

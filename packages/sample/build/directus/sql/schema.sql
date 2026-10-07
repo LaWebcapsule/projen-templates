@@ -382,29 +382,3 @@ CREATE TABLE "public"."directus_settings" (
   CONSTRAINT "directus_settings_public_foreground_foreign" FOREIGN KEY ("public_foreground") REFERENCES "public"."directus_files" ("id") ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT "directus_settings_storage_default_folder_foreign" FOREIGN KEY ("storage_default_folder") REFERENCES "public"."directus_folders" ("id") ON UPDATE NO ACTION ON DELETE SET NULL
 );
--- Create "test" table
-CREATE TABLE "public"."test" (
-  "id" uuid NOT NULL,
-  "status" character varying(255) NOT NULL DEFAULT 'draft',
-  "sort" integer NULL,
-  "user_created" uuid NULL,
-  "date_created" timestamptz NULL,
-  "user_updated" uuid NULL,
-  "date_updated" timestamptz NULL,
-  PRIMARY KEY ("id"),
-  CONSTRAINT "test_user_created_foreign" FOREIGN KEY ("user_created") REFERENCES "public"."directus_users" ("id") ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT "test_user_updated_foreign" FOREIGN KEY ("user_updated") REFERENCES "public"."directus_users" ("id") ON UPDATE NO ACTION ON DELETE NO ACTION
-);
--- Create "test_serial" table
-CREATE TABLE "public"."test_serial" (
-  "id" serial NOT NULL,
-  "status" character varying(255) NOT NULL DEFAULT 'draft',
-  "sort" integer NULL,
-  "user_created" uuid NULL,
-  "date_created" timestamptz NULL,
-  "user_updated" uuid NULL,
-  "date_updated" timestamptz NULL,
-  PRIMARY KEY ("id"),
-  CONSTRAINT "test_serial_user_created_foreign" FOREIGN KEY ("user_created") REFERENCES "public"."directus_users" ("id") ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT "test_serial_user_updated_foreign" FOREIGN KEY ("user_updated") REFERENCES "public"."directus_users" ("id") ON UPDATE NO ACTION ON DELETE NO ACTION
-);

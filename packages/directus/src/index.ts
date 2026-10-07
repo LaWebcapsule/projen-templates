@@ -72,7 +72,7 @@ export class D9Project extends javascript.NodeProject {
   public buildExtensionTask!: Task;
   public dockerfile!: Dockerfile;
   public dockerComposeFile!: DockerCompose;
-  public directusService!: DockerComposeService;
+  public d9Service!: DockerComposeService;
   public databaseService!: DockerComposeService;
   public cacheService!: DockerComposeService;
   private plumbingConfig!: JsonFile;
@@ -121,7 +121,7 @@ export class D9Project extends javascript.NodeProject {
           '',
           '| Task | Description |',
           '| --- | --- |',
-          '| `npx projen run` | Start d9 (`docker compose up directus`) |',
+          '| `npx projen run` | Start d9 (`docker compose up d9`) |',
           '| `npx projen build-extensions [name]` | Install and build all extensions (or only `name`) |',
           '| `npx projen create-an-admin` | Create the default admin user |',
           '',
@@ -181,7 +181,7 @@ export class D9Project extends javascript.NodeProject {
     this.gitignore.addPatterns('.env.local');
 
     // Create an empty .env.local if it doesn't exist, so Docker doesn't mount a directory
-    new SampleFile(this, '.env.local', { contents: '# Local environment overrides for Directus' });
+    new SampleFile(this, '.env.local', { contents: '# Local environment overrides for d9' });
   }
 
   private addExtensionFolder() {
@@ -204,19 +204,19 @@ export class D9Project extends javascript.NodeProject {
 
   private addFirstRunTask() {
     const task = this.addTask('first-run', {
-      description: 'Initialize and start a fresh Directus instance',
+      description: 'Initialize and start a fresh d9 instance',
     });
     const adminEmail = 'admin@example.com';
-    const userNotExistsCondition = `docker compose exec database psql -U directus -d directus -tAc "SELECT count(*) FROM directus_users WHERE email = '${adminEmail}'" | grep -q '^0$'`;
-    const emptyDatabaseCondition = 'docker compose exec database psql -U directus -d directus -tAc "SELECT count(*) FROM information_schema.tables WHERE table_name LIKE \'directus_%\'" | grep -q \'^0$\'';
+    const userNotExistsCondition = `docker compose exec database psql -U d9 -d d9 -tAc "SELECT count(*) FROM directus_users WHERE email = '${adminEmail}'" | grep -q '^0$'`;
+    const emptyDatabaseCondition = 'docker compose exec database psql -U d9 -d d9 -tAc "SELECT count(*) FROM information_schema.tables WHERE table_name LIKE \'directus_%\'" | grep -q \'^0$\'';
     task.exec('docker compose up -d --wait database cache');
-    task.exec('npx d9-plumbing first-import --host localhost --user directus --password directus --database directus', {
+    task.exec('npx d9-plumbing first-import --host localhost --user d9 --password d9 --database d9', {
       condition: 'test -d ./sql',
     });
-    task.exec('docker compose run --rm directus npx directus bootstrap', {
+    task.exec('docker compose run --rm d9 npx directus bootstrap', {
       condition: `test ! -d ./sql && ${emptyDatabaseCondition}`,
     });
-    task.exec(`ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc "SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1") && docker compose run --rm directus npx directus users create --email ${adminEmail} --password totototo --role "$ADMIN_ROLE_ID"`, {
+    task.exec(`ADMIN_ROLE_ID=$(docker compose exec database psql -U d9 -d d9 -tAc "SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1") && docker compose run --rm d9 npx directus users create --email ${adminEmail} --password totototo --role "$ADMIN_ROLE_ID"`, {
       condition: userNotExistsCondition,
     });
     task.say(`User ${adminEmail} has been created with password totototo`, {
@@ -225,7 +225,7 @@ export class D9Project extends javascript.NodeProject {
     task.say(`User ${adminEmail} already exists, skipping creation`, {
       condition: `! ${userNotExistsCondition}`,
     });
-    task.exec('docker compose up directus');
+    task.exec('docker compose up d9');
   }
 
   private addCreateAdminUserTask() {
@@ -233,9 +233,9 @@ export class D9Project extends javascript.NodeProject {
       description: 'Create an admin user',
     });
     const adminEmail = 'admin@example.com';
-    const userNotExistsCondition = `docker compose exec database psql -U directus -d directus -tAc "SELECT count(*) FROM directus_users WHERE email = '${adminEmail}'" | grep -q '^0$'`;
+    const userNotExistsCondition = `docker compose exec database psql -U d9 -d d9 -tAc "SELECT count(*) FROM directus_users WHERE email = '${adminEmail}'" | grep -q '^0$'`;
     task.exec('docker compose up -d --wait database cache');
-    task.exec(`ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc "SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1") && docker compose run --rm directus npx directus users create --email ${adminEmail} --password totototo --role "$ADMIN_ROLE_ID"`, {
+    task.exec(`ADMIN_ROLE_ID=$(docker compose exec database psql -U d9 -d d9 -tAc "SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1") && docker compose run --rm d9 npx directus users create --email ${adminEmail} --password totototo --role "$ADMIN_ROLE_ID"`, {
       condition: userNotExistsCondition,
     });
     task.say(`User ${adminEmail} has been created with password totototo`, {
@@ -248,9 +248,9 @@ export class D9Project extends javascript.NodeProject {
 
   private addRunTask() {
     const task = this.addTask('run', {
-      description: 'start the Directus instance',
+      description: 'start the d9 instance',
     });
-    task.exec('docker compose up directus');
+    task.exec('docker compose up d9');
   }
 
   private addD9PlumbingTask() {
@@ -263,7 +263,7 @@ export class D9Project extends javascript.NodeProject {
 
   private addBuildExtensionTask() {
     this.buildExtensionTask = this.addTask('build-extensions', {
-      description: 'Build the directus extensions',
+      description: 'Build the d9 extensions',
     });
     this.buildExtensionTask.exec(`cd ${this.extensionFolder} && pnpm install`);
     // projen replaces "$@" with the quoted task args; `set --` turns them back into $1
@@ -286,9 +286,9 @@ export class D9Project extends javascript.NodeProject {
         DockerCompose.portMapping(5432, 5432),
       ],
       environment: {
-        POSTGRES_USER: 'directus',
-        POSTGRES_PASSWORD: 'directus',
-        POSTGRES_DB: 'directus',
+        POSTGRES_USER: 'd9',
+        POSTGRES_PASSWORD: 'd9',
+        POSTGRES_DB: 'd9',
       },
     });
 
@@ -302,7 +302,7 @@ export class D9Project extends javascript.NodeProject {
       ],
     });
 
-    this.directusService = dc.addService('directus', {
+    this.d9Service = dc.addService('d9', {
       imageBuild: { context: '.' },
       ports: [
         DockerCompose.portMapping(8055, 8055),
@@ -319,9 +319,9 @@ export class D9Project extends javascript.NodeProject {
         DB_CLIENT: 'pg',
         DB_HOST: 'database',
         DB_PORT: '5432',
-        DB_DATABASE: 'directus',
-        DB_USER: 'directus',
-        DB_PASSWORD: 'directus',
+        DB_DATABASE: 'd9',
+        DB_USER: 'd9',
+        DB_PASSWORD: 'd9',
         CACHE_ENABLED: 'false',
         CACHE_STORE: 'redis',
         CACHE_REDIS_HOST: 'cache',
@@ -340,11 +340,11 @@ export class D9Project extends javascript.NodeProject {
       command: ['sh', '-c', 'npx directus start'],
     });
 
-    this.directusService.addVolume(DockerCompose.bindVolume('./.env.local', '/app/.env.local'));
+    this.d9Service.addVolume(DockerCompose.bindVolume('./.env.local', '/app/.env.local'));
 
     // Add healthcheck for database (not natively supported by projen DockerCompose)
     dc.file.addOverride('services.database.healthcheck', {
-      test: ['CMD', 'pg_isready', '--host=localhost', '--username=directus'],
+      test: ['CMD', 'pg_isready', '--host=localhost', '--username=d9'],
       interval: '10s',
       timeout: '5s',
       retries: 5,
@@ -363,7 +363,7 @@ export class D9Project extends javascript.NodeProject {
     });
 
     // Override depends_on to use condition syntax
-    dc.file.addOverride('services.directus.depends_on', {
+    dc.file.addOverride('services.d9.depends_on', {
       cache: { condition: 'service_healthy' },
       database: { condition: 'service_healthy' },
     });
@@ -413,7 +413,7 @@ export class D9Project extends javascript.NodeProject {
       .copy('.', '.')
       .step('build-extension', 'build extensions')
       .run('npx projen build-extensions')
-      .step('start', 'Start Directus server')
+      .step('start', 'Start d9 server')
       .cmdExec(['npx', 'directus', 'start']);
     return this.dockerfile;
   }

@@ -1,15 +1,1 @@
 collection,conditions,display,display_options,field,group,hidden,id,interface,note,options,readonly,required,sort,special,translations,validation,validation_message,width
-test,,,,id,,t,3,input,,,t,f,,uuid,,,,full
-test,,labels,"{""showAsDot"":true,""choices"":[{""text"":""$t:published"",""value"":""published"",""foreground"":""#FFFFFF"",""background"":""var(--primary)""},{""text"":""$t:draft"",""value"":""draft"",""foreground"":""#18222F"",""background"":""#D3DAE4""},{""text"":""$t:archived"",""value"":""archived"",""foreground"":""#FFFFFF"",""background"":""var(--warning)""}]}",status,,f,4,select-dropdown,,"{""choices"":[{""text"":""$t:published"",""value"":""published""},{""text"":""$t:draft"",""value"":""draft""},{""text"":""$t:archived"",""value"":""archived""}]}",f,f,,,,,,full
-test,,,,sort,,t,5,input,,"{""min"":0}",f,f,,,,,,full
-test,,user,,user_created,,t,6,select-dropdown-m2o,,"{""template"":""{{avatar.$thumbnail}} {{first_name}} {{last_name}}""}",t,f,,user-created,,,,half
-test,,datetime,"{""relative"":true}",date_created,,t,7,datetime,,,t,f,,date-created,,,,half
-test,,user,,user_updated,,t,8,select-dropdown-m2o,,"{""template"":""{{avatar.$thumbnail}} {{first_name}} {{last_name}}""}",t,f,,user-updated,,,,half
-test,,datetime,"{""relative"":true}",date_updated,,t,9,datetime,,,t,f,,date-updated,,,,half
-test_serial,,,,id,,t,10,input,,,t,f,,,,,,full
-test_serial,,labels,"{""showAsDot"":true,""choices"":[{""text"":""$t:published"",""value"":""published"",""foreground"":""#FFFFFF"",""background"":""var(--primary)""},{""text"":""$t:draft"",""value"":""draft"",""foreground"":""#18222F"",""background"":""#D3DAE4""},{""text"":""$t:archived"",""value"":""archived"",""foreground"":""#FFFFFF"",""background"":""var(--warning)""}]}",status,,f,11,select-dropdown,,"{""choices"":[{""text"":""$t:published"",""value"":""published""},{""text"":""$t:draft"",""value"":""draft""},{""text"":""$t:archived"",""value"":""archived""}]}",f,f,,,,,,full
-test_serial,,,,sort,,t,12,input,,,f,f,,,,,,full
-test_serial,,user,,user_created,,t,13,select-dropdown-m2o,,"{""template"":""{{avatar.$thumbnail}} {{first_name}} {{last_name}}""}",t,f,,user-created,,,,half
-test_serial,,datetime,"{""relative"":true}",date_created,,t,14,datetime,,,t,f,,date-created,,,,half
-test_serial,,user,,user_updated,,t,15,select-dropdown-m2o,,"{""template"":""{{avatar.$thumbnail}} {{first_name}} {{last_name}}""}",t,f,,user-updated,,,,half
-test_serial,,datetime,"{""relative"":true}",date_updated,,t,16,datetime,,,t,f,,date-updated,,,,half

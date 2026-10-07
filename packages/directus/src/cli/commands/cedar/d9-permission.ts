@@ -6,7 +6,7 @@ function parseStringFieldToJSON(field?: string) {
 }
 
 /**
- * A directus permission, shared by both translation directions:
+ * A d9 permission, shared by both translation directions:
  *  - forward (d9-to-cedar): `new D9Permission(row)` parses a CSV row;
  *  - reverse (cedar-to-d9): `D9Permission.empty(...)` starts a blank permission that
  *    is filled as each `.cedar` file is parsed, then rendered back via `*Cell()`.

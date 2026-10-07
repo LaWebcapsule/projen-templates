@@ -22,12 +22,12 @@ export interface StorageFlags {
   intermediateStorageConfig?: string[];
 }
 
-// @wbce-d9/api is not a dependency of this package: it is resolved from the user's Directus project.
+// @wbce-d9/api is not a dependency of this package: it is resolved from the user's d9 project.
 // Specifiers are kept in variables so tsc does not try to resolve them.
 const envModule = '@wbce-d9/api/env';
 const configFromEnvModule = '@wbce-d9/api/utils/get-config-from-env';
 
-async function loadDirectusEnv() {
+async function loadD9Env() {
   const { getEnv } = (await import(envModule)) as { getEnv: () => Record<string, any> };
   const { getConfigFromEnv } = (await import(configFromEnvModule)) as {
     getConfigFromEnv: (prefix: string) => Record<string, any>;
@@ -36,7 +36,7 @@ async function loadDirectusEnv() {
 }
 
 export async function resolveDbConfig(flags: DbFlags): Promise<DbConfig> {
-  const { env, getConfigFromEnv } = await loadDirectusEnv();
+  const { env, getConfigFromEnv } = await loadD9Env();
   const config = {
     host: flags.host ?? env.DB_HOST,
     user: flags.user ?? env.DB_USER,
@@ -57,7 +57,7 @@ function toDriverConfig({ driver, ...options }: Record<string, any>): DriverConf
 }
 
 export async function resolveCurrentStorage(flags: StorageFlags): Promise<DriverConfig> {
-  const { env, getConfigFromEnv } = await loadDirectusEnv();
+  const { env, getConfigFromEnv } = await loadD9Env();
   const location = String(env.STORAGE_LOCATIONS ?? '').split(',')[0].trim();
   const config = location ? getConfigFromEnv(`STORAGE_${location.toUpperCase()}_`) : {};
   applyConfigFlags(config, '--storage-config', flags.storageConfig);
@@ -90,7 +90,7 @@ function applyConfigFlags(config: Record<string, any>, flag: string, entries: st
 
 /** The intermediate storage, or `undefined` when no driver is configured. */
 export async function findIntermediateStorage(flags: StorageFlags): Promise<DriverConfig | undefined> {
-  const { env, getConfigFromEnv } = await loadDirectusEnv();
+  const { env, getConfigFromEnv } = await loadD9Env();
   let config: Record<string, any> = {};
 
   const file = readPlumbingConfig().intermediateStorage;

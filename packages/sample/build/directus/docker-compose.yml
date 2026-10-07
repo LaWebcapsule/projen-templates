@@ -4,9 +4,9 @@ services:
   database:
     image: postgis/postgis:13-master
     environment:
-      POSTGRES_USER: directus
-      POSTGRES_PASSWORD: directus
-      POSTGRES_DB: directus
+      POSTGRES_USER: d9
+      POSTGRES_PASSWORD: d9
+      POSTGRES_DB: d9
     ports:
       - target: 5432
         published: 5432
@@ -21,7 +21,7 @@ services:
         - CMD
         - pg_isready
         - --host=localhost
-        - --username=directus
+        - --username=d9
       interval: 10s
       timeout: 5s
       retries: 5
@@ -47,7 +47,7 @@ services:
       retries: 5
       start_interval: 5s
       start_period: 30s
-  directus:
+  d9:
     build:
       context: .
     command:
@@ -61,11 +61,14 @@ services:
       DB_CLIENT: pg
       DB_HOST: database
       DB_PORT: "5432"
-      DB_DATABASE: directus
-      DB_USER: directus
-      DB_PASSWORD: directus
+      DB_DATABASE: d9
+      DB_USER: d9
+      DB_PASSWORD: d9
       CACHE_ENABLED: "false"
+      CACHE_STORE: redis
       CACHE_REDIS_HOST: cache
+      MESSENGER_STORE: redis
+      MESSENGER_REDIS: redis://cache:6379
       CACHE_STATUS_HEADER: cache-hit
       CORS_ENABLED: "true"
       CORS_ORIGIN: "true"

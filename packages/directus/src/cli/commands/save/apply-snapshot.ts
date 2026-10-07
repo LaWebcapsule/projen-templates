@@ -73,7 +73,7 @@ export async function applySQLSnapshot(dbConfig: {
       ) //only first occurrence will be replaced
       .replace(/CREATE SCHEMA IF NOT EXISTS/g, 'CREATE SCHEMA')
       .replace(/CREATE SCHEMA/g, 'CREATE SCHEMA IF NOT EXISTS'); //ensure all create schema use "if not exists"
-    //if target database does not contain any directus tables we just need to populate the base schema.
+    //if target database does not contain any d9 tables we just need to populate the base schema.
     const countTablesReq = `
             SELECT COUNT(*) 
             FROM information_schema.tables 
@@ -81,8 +81,8 @@ export async function applySQLSnapshot(dbConfig: {
         `;
     const countTables = await endDbClient.query(countTablesReq);
     if (Number(countTables.rows[0].count) === 0) {
-      //we drop the extension and reapply the schema with directus
-      logger.info('Target database has no Directus tables: creating the schema directly');
+      //we drop the extension and reapply the schema with d9
+      logger.info('Target database has no d9 tables: creating the schema directly');
       //note that finally block will be executed, even if we return
       await endDbClient.query(sqlSchemaWithExtension);
     }
@@ -315,8 +315,8 @@ export async function applySQLSnapshot(dbConfig: {
     await pgClient.end();
     await pgTmpClient.end();
   }
-  //schema (collections, fields, relations) and permissions are read through the cache: a purge is enough.
+  //schema (collections, fields, relations) is always cached (CACHE_SCHEMA), permissions only when CACHE_ENABLED: a purge is enough.
   //flows, operations and webhooks are loaded in memory at startup and only reloaded by their own services: a restart is needed.
-  logger.warn('Purge the Directus cache (POST /utils/cache/clear) to take the new schema and permissions into account. If flows, operations or webhooks changed, restart Directus instead.');
+  logger.warn('Purge the d9 cache (POST /utils/cache/clear) to take the new schema (and permissions, if CACHE_ENABLED) into account. If flows, operations or webhooks changed, also restart d9.');
 }
 
