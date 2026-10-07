@@ -40,6 +40,7 @@ export async function saveSQLSnapshot(dbConfig: {
   await Promise.all([await mkdir('sql/data', { recursive: true })]); //with recursive, there is no error if folder already exists
 
   //atlas documentation : https://atlasgo.io/
+  logger.info('Dumping the schema with atlas into ./sql/schema.sql');
   const writeFileStream = createWriteStream('./sql/schema.sql');
   await cli.command(
     'npx',
@@ -67,20 +68,23 @@ export async function saveSQLSnapshot(dbConfig: {
     customTablesToDump = readFileSync('./sql/tables_to_dump.txt')
       .toString()
       .split('\n');
+    logger.info(`Using sql/tables_to_dump.txt (${customTablesToDump.length} tables)`);
   } catch (e) {
-    logger.info('there is no tables_to_dump to use.');
+    logger.debug('no sql/tables_to_dump.txt');
   }
   try {
     customTablesNotToDump = readFileSync('./sql/tables_not_to_dump.txt')
       .toString()
       .split('\n');
+    logger.info(`Using sql/tables_not_to_dump.txt (${customTablesNotToDump.length} tables)`);
   } catch (e) {
-    logger.info('there is no tables_not_to_dump to use');
+    logger.debug('no sql/tables_not_to_dump.txt');
   }
   const pgClient = new pg.Client(connectionProps);
   await pgClient.connect();
   try {
-
+    logger.info('Dumping the data into ./sql/data');
+    let dumpedTables = 0;
     const tables = await pgClient.query(`
           SELECT table_name
           FROM information_schema.tables
@@ -235,15 +239,19 @@ export async function saveSQLSnapshot(dbConfig: {
           `./sql/data/${table.table_name}.csv`,
         );
         await pipeline(dbStream, fileStream);
+        logger.debug(`dumped ${table.table_name}`);
+        dumpedTables++;
       }
     }
+    logger.info(`Dumped ${dumpedTables} tables into ./sql/data`);
   } catch (e) {
-    logger.error('error while saving the SQL snapshot');
+    logger.error('Error while dumping the data');
     throw e;
   } finally {
     await pgClient.end();
   }
   if (opts.cedar !== false) {
+    logger.info('Generating the Cedar policies into ./permissions');
     await d9ToCedar({ permissionPath: './permissions', sqlPath: './sql/data' });
   }
 }

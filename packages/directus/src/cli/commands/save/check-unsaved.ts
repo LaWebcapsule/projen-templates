@@ -1,4 +1,5 @@
 import { rm } from 'fs/promises';
+import { join } from 'path';
 import { createInterface } from 'readline/promises';
 import { Writable } from 'stream';
 import { Cli } from './cli';
@@ -7,6 +8,15 @@ import { saveSQLSnapshot } from './save-snapshot';
 import { logger } from '../../logger';
 
 const WORKTREE = 'node_modules/.cache/d9-plumbing/last-save';
+
+function collect(onData: (data: string) => void) {
+  return new Writable({
+    write: (chunk, _encoding, next) => {
+      onData(chunk.toString());
+      next();
+    },
+  });
+}
 
 async function confirm(yes: boolean) {
   if (yes) {
@@ -17,7 +27,7 @@ async function confirm(yes: boolean) {
   }
   const rl = createInterface({ input: process.stdin, output: process.stdout });
   try {
-    const answer = await rl.question('Êtes-vous sûr ? (y/N) ');
+    const answer = await rl.question('Are you sure? (y/N) ');
     if (answer.trim().toLowerCase() !== 'y') {
       throw new Error('aborted');
     }
@@ -39,7 +49,12 @@ export async function checkUnsaved(opts: { lastSave?: string | false; yes: boole
     return;
   }
 
+  logger.info(`Checking out the last save ${opts.lastSave} into a temporary worktree`);
   const cli = new Cli();
+  // the worktree holds the whole repository: the project lives at the same path inside it as in the current checkout
+  let prefix = '';
+  await cli.command('git', ['rev-parse', '--show-prefix'], { stdout: collect((data) => prefix += data) });
+  const projectInWorktree = join(WORKTREE, prefix.trim());
   await rm(WORKTREE, { recursive: true, force: true });
   await cli.command('git', ['worktree', 'prune']);
   await cli.command('git', ['worktree', 'add', '--detach', WORKTREE, opts.lastSave]);
@@ -47,16 +62,12 @@ export async function checkUnsaved(opts: { lastSave?: string | false; yes: boole
   let status = '';
   const cwd = process.cwd();
   try {
-    process.chdir(WORKTREE);
+    process.chdir(projectInWorktree);
+    logger.info(`Dumping the current database to compare it with ${opts.lastSave}`);
     await saveSQLSnapshot(opts.db, { cedar: false });
     process.chdir(cwd);
-    await cli.command('git', ['-C', WORKTREE, 'status', '--porcelain', '--', 'sql'], {
-      stdout: new Writable({
-        write: (chunk, _encoding, next) => {
-          status += chunk.toString();
-          next();
-        },
-      }),
+    await cli.command('git', ['-C', projectInWorktree, 'status', '--porcelain', '--', 'sql'], {
+      stdout: collect((data) => status += data),
     });
   } finally {
     process.chdir(cwd);
@@ -66,8 +77,9 @@ export async function checkUnsaved(opts: { lastSave?: string | false; yes: boole
   if (status.trim()) {
     logger.error(`\n${status}`);
     throw new Error(
-      'Vous avez des modifications non sauvegardées sur cet environnement (diff ci-dessus). '
-      + 'Lancez `save` depuis cet environnement, commit, merge, puis relancez `apply-schema`.',
+      'This environment has unsaved changes (see the files above). '
+      + 'Run `save` from this environment, commit, merge, then run `apply-schema` again.',
     );
   }
+  logger.info(`No unsaved changes since ${opts.lastSave}`);
 }

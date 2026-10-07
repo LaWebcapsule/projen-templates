@@ -85,7 +85,7 @@ withStorageOptions(withDbOptions(program.command('save')))
   .action(save);
 
 withCheckOptions(withStorageOptions(withDbOptions(program.command('apply-schema'))))
-  .description('Sync files from the intermediate storage, then apply the SQL snapshot to the current Directus')
+  .description('Check for unsaved changes, sync files from the intermediate storage, then apply the SQL snapshot to the current Directus')
   .action(applySchema);
 
 void program.parseAsync().catch((err) => {

@@ -31,7 +31,7 @@ export async function applySQLSnapshot(dbConfig: {
     //2. we populate with the schema
     //3. we calculate the diff
   pgClient = new pg.Client(connectionProps);
-  logger.info('creating empty tmp database');
+  logger.info(`Creating the temporary database ${dbConfig.database}_tmp_bis`);
   await pgClient.connect();
   try {
     await pgClient.query(`DROP DATABASE IF EXISTS ${dbConfig.database}_tmp_bis`);
@@ -51,7 +51,7 @@ export async function applySQLSnapshot(dbConfig: {
 
   let sqlMigration = '';
   try {
-    logger.info('populating with target schema');
+    logger.info('Loading the target schema into the temporary database');
     //we manually install postgis and some extensions. We should do a dump of sql extensions but we are waiting for atlasgo to support this (time of writing : 19/03 - atlasgo released extensions support but not in the community version)
     let extensionQuery = `
             create extension if not exists postgis;
@@ -81,7 +81,7 @@ export async function applySQLSnapshot(dbConfig: {
     const countTables = await endDbClient.query(countTablesReq);
     if (Number(countTables.rows[0].count) === 0) {
       //we drop the extension and reapply the schema with directus
-      logger.info('Target database is empty ; populating it and exiting.');
+      logger.info('Target database has no Directus tables: creating the schema directly');
       //note that finally block will be executed, even if we return
       await endDbClient.query(sqlSchemaWithExtension);
     }
@@ -99,7 +99,7 @@ export async function applySQLSnapshot(dbConfig: {
       next();
     },
   });
-  logger.info('calculating migration diff');
+  logger.info('Computing the schema diff with atlas');
   const cli = new Cli();
   await cli.command(
     'npx',
@@ -123,6 +123,13 @@ export async function applySQLSnapshot(dbConfig: {
   if (sqlMigration.includes('no changes to be made')) {
     sqlMigration = '';
   }
+  if (sqlMigration.trim()) {
+    const statements = sqlMigration.split('\n').filter((line) => line.trim().endsWith(';')).length;
+    logger.info(`Schema migration: ${statements} statements`);
+    logger.debug(sqlMigration);
+  } else {
+    logger.info('Schema is up to date');
+  }
   //we apply the diffs in schema and data in one transaction
   const pgTmpClient = new pg.Client(connectionProps);
   connectionProps.database = dbConfig.database;
@@ -130,9 +137,8 @@ export async function applySQLSnapshot(dbConfig: {
   await Promise.all([pgClient.connect(), pgTmpClient.connect()]);
   try {
     await pgClient.query('BEGIN');
-    logger.info('apply schema');
+    logger.info('Applying the schema migration');
     await pgClient.query(sqlMigration);
-    logger.info('apply data');
     //strategy to apply data :
     //- remove the constraint
     //- upsert the data
@@ -148,7 +154,6 @@ export async function applySQLSnapshot(dbConfig: {
     //for constraints see this :
     //https://confluence.atlassian.com/kb/how-to-drop-and-recreate-the-database-constraints-on-postgresql-776812450.html
     //we get all the constraints except the primary keys
-    logger.info('remove the constraints on the table');
     const constraints = await pgClient.query(`
             SELECT nspname, relname, conname, pg_get_constraintdef(pg_constraint.oid)
             FROM pg_constraint
@@ -159,6 +164,7 @@ export async function applySQLSnapshot(dbConfig: {
         `);
 
     //remove the constraints
+    logger.info(`Dropping ${constraints.rows.length} constraints`);
     //the query above is both for adding or dropping order. For dropping, we need to reverse the order
     for (let i = 0; i < constraints.rows.length; i++) {
       const constraint = constraints.rows[constraints.rows.length - 1 - i];
@@ -168,9 +174,8 @@ export async function applySQLSnapshot(dbConfig: {
     }
 
     //replace data
-    logger.info('replacing with data');
     const csvFiles = await readdir('./sql/data');
-    logger.debug({ csvFiles }, 'csv files');
+    logger.info(`Importing ${csvFiles.filter((file) => file.endsWith('.csv')).length} CSV files from ./sql/data`);
     for (const file of csvFiles) {
       if (file.endsWith('.csv')) {
         const nonParsedTableName = file.slice(0, -4);
@@ -225,9 +230,9 @@ export async function applySQLSnapshot(dbConfig: {
         );
         const sourceStream = fs.createReadStream(`./sql/data/${file}`);
         ingestStream.on('close', () => {
-          logger.info(`ingested ${file}`);
+          logger.debug(`ingested ${file}`);
         });
-        logger.info(`ingesting ${file}`);
+        logger.debug(`ingesting ${file}`);
 
         await pipeline(sourceStream, ingestStream);
         if (existingRowsCanCauseConflict) {
@@ -244,7 +249,7 @@ export async function applySQLSnapshot(dbConfig: {
     }
 
     //reestablish the constraints
-    logger.info('reestablish the constraints');
+    logger.info(`Restoring ${constraints.rows.length} constraints`);
     for (const constraint of constraints.rows) {
       await pgClient.query(`
                 ALTER TABLE ${constraint.nspname}."${constraint.relname}" ADD CONSTRAINT "${constraint.conname}"  ${constraint.pg_get_constraintdef}
@@ -255,7 +260,6 @@ export async function applySQLSnapshot(dbConfig: {
     //when adding with COPY, all sequences are not up to date
     //we need to find all sequences and then to find the max on the managed column and then to update the sequence
 
-    logger.info('find sequences');
     const sequences = await pgClient.query(`
             SELECT n.nspname as "schema",
                 c.relname as "name",
@@ -271,8 +275,9 @@ export async function applySQLSnapshot(dbConfig: {
             ORDER BY 1,2;
         `);
 
+    logger.info(`Resetting ${sequences.rows.length} sequences`);
     for (const seq of sequences.rows) {
-      logger.info(`find column managed by ${seq.name}`);
+      logger.debug(`find column managed by ${seq.name}`);
       const relation = await pgClient.query(`
                 SELECT d.refobjid::regclass as "table", a.attname as "field"
                 FROM   pg_depend    d
@@ -282,7 +287,7 @@ export async function applySQLSnapshot(dbConfig: {
                 AND    d.refobjsubid > 0
                 AND    d.classid = 'pg_class'::regclass;
             `);
-      logger.info(
+      logger.debug(
         `find max of ${relation.rows[0].table} ${relation.rows[0].field}`,
       );
       const max = await pgClient.query(`
@@ -291,7 +296,7 @@ export async function applySQLSnapshot(dbConfig: {
             `);
 
       if (max.rows[0].max !== null) {
-        logger.info('alter the sequence');
+        logger.debug(`restart ${seq.name} at ${max.rows[0].max + 1}`);
         await pgClient.query(
           `alter sequence ${seq.schema}."${seq.name}" restart with ${max.rows[0].max + 1};`,
         );
@@ -299,17 +304,16 @@ export async function applySQLSnapshot(dbConfig: {
     }
 
     await pgClient.query('COMMIT');
-    logger.info('success');
+    logger.info('Transaction committed');
 
   } catch (e) {
+    logger.error('Error while applying the snapshot, rolling back the transaction');
     await pgClient.query('ROLLBACK');
-    logger.info('error');
 
     throw e;
   } finally {
     await pgClient.end();
     await pgTmpClient.end();
-    logger.info('end of the query');
   }
 }
 

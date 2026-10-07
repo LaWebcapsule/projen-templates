@@ -111,6 +111,19 @@
         }
       ]
     },
+    "d9-plumbing": {
+      "name": "d9-plumbing",
+      "description": "Run the d9-plumbing CLI (save, apply-schema, first-import...). Use --help to list all subcommands.",
+      "steps": [
+        {
+          "say": "Tip: you can also call it directly with `npx d9-plumbing <command>`"
+        },
+        {
+          "exec": "npx d9-plumbing \"$@\"",
+          "receiveArgs": true
+        }
+      ]
+    },
     "default": {
       "name": "default",
       "description": "Synthesize project files",

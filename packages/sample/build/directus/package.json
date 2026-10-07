@@ -7,6 +7,7 @@
     "clobber": "npx projen clobber",
     "compile": "npx projen compile",
     "create-an-admin": "npx projen create-an-admin",
+    "d9-plumbing": "npx projen d9-plumbing",
     "default": "npx projen default",
     "eject": "npx projen eject",
     "first-run": "npx projen first-run",

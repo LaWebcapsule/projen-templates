@@ -35,15 +35,34 @@ export async function checkUnsavedChanges(flags: DbFlags & CheckFlags) {
 }
 
 export async function save(flags: DbFlags & StorageFlags & { cedar?: boolean }) {
+  const db = await resolveDbConfig(flags);
+  const origin = await resolveCurrentStorage(flags);
+  const destination = await resolveIntermediateStorage(flags);
+
   // after the snapshot, so that syncFiles reads the freshly dumped directus_files.csv
-  await saveSqlSchema(flags);
-  await pushFiles(flags);
+  logger.info(`[1/2] Saving the SQL snapshot of ${describeDb(db)} into ./sql`);
+  await saveSQLSnapshot(db, { cedar: flags.cedar });
+  logger.info(`[2/2] Pushing files to the intermediate storage (${origin.driver} → ${destination.driver})`);
+  await syncFiles({ origin, destination });
+  logger.info('Save completed');
 }
 
 export async function applySchema(flags: DbFlags & StorageFlags & CheckFlags) {
-  await pullFiles(flags);
-  await checkUnsavedChanges(flags);
-  await applySqlSchema(flags);
+  const db = await resolveDbConfig(flags);
+  const origin = await resolveIntermediateStorage(flags);
+  const destination = await resolveCurrentStorage(flags);
+
+  logger.info(`[1/3] Checking for unsaved changes on ${describeDb(db)}`);
+  await checkUnsaved({ lastSave: flags.lastSave, yes: flags.yes ?? false, db });
+  logger.info(`[2/3] Pulling files from the intermediate storage (${origin.driver} → ${destination.driver})`);
+  await syncFiles({ origin, destination });
+  logger.info(`[3/3] Applying the SQL snapshot to ${describeDb(db)}`);
+  await applySQLSnapshot(db);
+  logger.info('Schema applied');
+}
+
+function describeDb(db: DbConfig) {
+  return `${db.database}@${db.host}`;
 }
 
 async function isDatabaseEmpty(db: DbConfig) {

@@ -23,17 +23,24 @@ export async function syncFiles(opts: { origin: DriverConfig; destination: Drive
   const destination = storage.location('destination');
 
   const files = await readCsvFile('./sql/data/directus_files.csv');
-  logger.info(`will deal with ${files.length} files`);
+  logger.info(`Syncing ${files.length} files from ${opts.origin.driver} to ${opts.destination.driver}`);
+  let copied = 0;
+  let present = 0;
+  let missing = 0;
   for (const { filename_disk: fileId } of files) {
     if (await destination.exists(fileId)) {
-      logger.info(`${fileId} already exists in destination`);
+      logger.debug(`${fileId} already exists in destination`);
+      present++;
       continue;
     }
     if (!(await origin.exists(fileId))) {
-      logger.info(`${fileId} does not exist in origin`);
+      logger.warn(`${fileId} does not exist in origin`);
+      missing++;
       continue;
     }
     await destination.write(fileId, await origin.read(fileId));
-    logger.info(`${fileId} synced`);
+    logger.debug(`${fileId} synced`);
+    copied++;
   }
+  logger.info(`Files synced: ${copied} copied, ${present} already present, ${missing} missing in origin`);
 }
