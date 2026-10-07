@@ -2,6 +2,7 @@
 
 Projen template for [d9](https://github.com/LaWebcapsule/d9) projects (fork of Directus v9). Scaffolds a local development setup with Docker Compose (Postgres + Redis), extension management, and GitHub workflows — then produces a Docker image you can deploy to any environment.
 
+The generated stack (Docker Compose, first run) and `d9-plumbing` assume PostgreSQL as the d9 database; extensions, the Dockerfile and the GitHub workflows do not depend on it. Support for other databases may be added in the future.
 
 Companion package: [`@wbce/projen-d9-extension`](../directus-extension) for authoring extensions.
 
@@ -68,6 +69,8 @@ Extensions live under `./plugins/` (configurable via `extensionsFolderName`) and
 ## d9-plumbing CLI
 
 The package ships the `d9-plumbing` CLI to save a d9 instance (schema, data, files, Cedar permissions) into the repository and apply it to other environments. See [docs/D9-plumbing.md](./docs/D9-plumbing.md).
+
+`d9-plumbing` currently supports PostgreSQL only. Support for other databases may be added in the future.
 
 ## What gets generated
 
