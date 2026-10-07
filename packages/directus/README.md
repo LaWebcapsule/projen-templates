@@ -65,6 +65,10 @@ Extensions live under `./plugins/` (configurable via `extensionsFolderName`) and
 | `build-extensions` | Install and build all extensions |
 | `create-an-admin` | Create the default admin user |
 
+## d9-plumbing CLI
+
+The package ships the `d9-plumbing` CLI to save a d9 instance (schema, data, files, Cedar permissions) into the repository and apply it to other environments. See [docs/D9-plumbing.md](./docs/D9-plumbing.md).
+
 ## What gets generated
 
 - `docker-compose.yml` — d9, Postgres (PostGIS), Redis with healthchecks
