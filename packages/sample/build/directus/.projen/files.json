@@ -16,6 +16,7 @@
     ".projen/files.json",
     ".projen/tasks.json",
     "CLAUDE.md",
+    "d9-plumbing.json",
     "docker-compose.yml",
     "Dockerfile"
   ],

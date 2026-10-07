@@ -1,5 +1,5 @@
-import { existsSync, readFileSync } from 'fs';
 import type { DriverConfig } from '@wbce-d9/storage';
+import { PLUMBING_CONFIG_FILE, readPlumbingConfig } from '../../plumbing-config';
 
 export interface DbConfig {
   host: string;
@@ -21,14 +21,6 @@ export interface StorageFlags {
   storageConfig?: string[];
   intermediateStorageConfig?: string[];
 }
-
-interface IntermediateStorageFile {
-  driver?: string;
-  options?: Record<string, string>;
-  secretEnv?: Record<string, string>;
-}
-
-const INTERMEDIATE_STORAGE_FILE = './intermediate-storage.json';
 
 // @wbce-d9/api is not a dependency of this package: it is resolved from the user's Directus project.
 // Specifiers are kept in variables so tsc does not try to resolve them.
@@ -100,8 +92,8 @@ export async function findIntermediateStorage(flags: StorageFlags): Promise<Driv
   const { env, getConfigFromEnv } = await loadDirectusEnv();
   let config: Record<string, any> = {};
 
-  if (existsSync(INTERMEDIATE_STORAGE_FILE)) {
-    const file: IntermediateStorageFile = JSON.parse(readFileSync(INTERMEDIATE_STORAGE_FILE).toString());
+  const file = readPlumbingConfig().intermediateStorage;
+  if (file) {
     config = { driver: file.driver, ...file.options };
     for (const [key, envName] of Object.entries(file.secretEnv ?? {})) {
       config[key] = env[envName];
@@ -118,7 +110,7 @@ export async function findIntermediateStorage(flags: StorageFlags): Promise<Driv
 export async function resolveIntermediateStorage(flags: StorageFlags): Promise<DriverConfig> {
   const config = await findIntermediateStorage(flags);
   if (!config) {
-    throw new Error(`no intermediate storage driver found (use ${INTERMEDIATE_STORAGE_FILE}, INTERMEDIATE_STORAGE_DRIVER or --intermediate-storage-config driver=...)`);
+    throw new Error(`no intermediate storage driver found (use intermediateStorage in ${PLUMBING_CONFIG_FILE}, INTERMEDIATE_STORAGE_DRIVER or --intermediate-storage-config driver=...)`);
   }
   return config;
 }

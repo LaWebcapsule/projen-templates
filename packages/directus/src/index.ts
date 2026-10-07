@@ -32,6 +32,21 @@ export interface IntermediateStorageOptions {
   readonly secretEnv?: { [key: string]: string };
 }
 
+/**
+ * Configuration of the d9-plumbing CLI, written to `d9-plumbing.json`.
+ */
+export interface PlumbingOptions {
+  /**
+   * Storage shared between environments.
+   * @default - none, the intermediate storage is configured with INTERMEDIATE_STORAGE_* variables or flags
+   */
+  readonly intermediateStorage?: IntermediateStorageOptions;
+  /**
+   * Default log level of the CLI, overridden by the LOG_LEVEL environment variable.
+   * @default "debug"
+   */
+  readonly logLevel?: string;
+}
 
 export interface D9ProjectOptions extends typescript.TypeScriptProjectOptions {
   /**
@@ -47,12 +62,6 @@ export interface D9ProjectOptions extends typescript.TypeScriptProjectOptions {
    */
   readonly extensionsFolderName?: string;
   readonly packageVersions?: PackageVersions;
-
-  /**
-   * Storage shared between environments, written to `intermediate-storage.json`.
-   * @default - none, the intermediate storage is configured with INTERMEDIATE_STORAGE_* variables or flags
-   */
-  readonly intermediateStorage?: IntermediateStorageOptions;
 }
 
 export class D9Project extends javascript.NodeProject {
@@ -112,7 +121,7 @@ export class D9Project extends javascript.NodeProject {
           '| Task | Description |',
           '| --- | --- |',
           '| `npx projen run` | Start d9 (`docker compose up directus`) |',
-          '| `npx projen build-extensions` | Install and build all extensions |',
+          '| `npx projen build-extensions [name]` | Install and build all extensions (or only `name`) |',
           '| `npx projen create-an-admin` | Create the default admin user |',
           '',
           'See `.projen/tasks.json` for the full list.',
@@ -155,10 +164,6 @@ export class D9Project extends javascript.NodeProject {
     this.addDockerfile();
     this.addCreateAdminUserTask();
 
-    if (options.intermediateStorage) {
-      new JsonFile(this, 'intermediate-storage.json', { obj: options.intermediateStorage });
-    }
-
     new AiInstructions(this, {
       agents: [AiAgent.CLAUDE],
     });
@@ -185,6 +190,10 @@ export class D9Project extends javascript.NodeProject {
 
   public addExtension(name: string, extensionTypes: D9ExtensionType[], options?: AddExtensionOptions ) {
     return this.extensions.add(name, extensionTypes, options);
+  }
+
+  public configurePlumbing(options: PlumbingOptions) {
+    new JsonFile(this, 'd9-plumbing.json', { obj: options });
   }
 
   private addFirstRunTask() {
@@ -251,7 +260,11 @@ export class D9Project extends javascript.NodeProject {
       description: 'Build the directus extensions',
     });
     this.buildExtensionTask.exec(`cd ${this.extensionFolder} && pnpm install`);
-    this.buildExtensionTask.exec(`cd ${this.extensionFolder} && pnpm run --recursive build`);
+    // projen replaces "$@" with the quoted task args; `set --` turns them back into $1
+    this.buildExtensionTask.exec(
+      `cd ${this.extensionFolder} && set -- "$@" && if [ -n "$1" ]; then pnpm --recursive --filter "$1..." run build; else pnpm run --recursive build; fi`,
+      { receiveArgs: true },
+    );
   }
 
 

@@ -32,7 +32,8 @@
           "exec": "cd plugins && pnpm install"
         },
         {
-          "exec": "cd plugins && pnpm run --recursive build"
+          "exec": "cd plugins && set -- \"$@\" && if [ -n \"$1\" ]; then pnpm --recursive --filter \"$1...\" run build; else pnpm run --recursive build; fi",
+          "receiveArgs": true
         }
       ]
     },

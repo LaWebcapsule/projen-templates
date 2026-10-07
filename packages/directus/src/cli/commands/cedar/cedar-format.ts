@@ -72,7 +72,7 @@ export function policyToCedarText(policy: PolicyJson): string {
   if (condition) {
     const when = toLines(condition.body);
     lines.push(
-      ['when {', ...when.map((line) => `  ${line}`), '}'].join('\n')
+      ['when {', ...when.map((line) => `  ${line}`), '}'].join('\n'),
     );
   }
   return lines.join('\n') + ';';

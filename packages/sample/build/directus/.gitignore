@@ -50,4 +50,5 @@ extensions/*
 uploads
 **/.DS_Store
 .env.local
+!/d9-plumbing.json
 !/.projenrc.js
