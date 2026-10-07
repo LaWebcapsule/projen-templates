@@ -52,7 +52,6 @@ describe('Keycloak component', () => {
     const compose = out['docker-compose.yml'] as unknown as string;
     const realm = JSON.stringify(out['keycloak/realm-export.json']);
 
-    // Directus-native var, resolved at run time from the secret manager (cf. AUTH_GOUV_CLIENT_SECRET).
     expect(compose).toContain('AUTH_KEYCLOAK_CLIENT_SECRET: ${AUTH_KEYCLOAK_CLIENT_SECRET}');
     expect(compose).not.toContain('d9-local-dev-secret');
     expect(realm).not.toContain('d9-local-dev-secret');
