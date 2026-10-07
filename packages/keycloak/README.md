@@ -65,6 +65,10 @@ Its Keycloak `sub` is stored as the d9 `external_identifier` (the matching key a
 
 The realm ships the **browser-sms** authentication flow: after the password step, Keycloak enforces a second factor via the `sms-authenticator` plugin, and `enforce-mfa` makes it mandatory. Users can also enroll a TOTP app — [FreeOTP](https://freeotp.github.io/) (open source) or Google Authenticator for example.
 
+## Theming
+
+The login, MFA and account screens are standard Keycloak themes, so they can be fully branded to match your front-ends. Build a custom theme with [Keycloakify](https://keycloakify.dev) — author it in React against your existing design system — add it to the `keycloak/` image, and point the realm at it via its login theme. The SSO screens then share the look and layout of your app instead of the default Keycloak skin.
+
 ## Deploying
 
 The component emits **assets you deploy to your own Keycloak** — it does not add a Keycloak (or its database) to the d9 compose stack, on purpose: Keycloak is a separate product with its own lifecycle, which can run on its own instance, not part of the d9 runtime.
