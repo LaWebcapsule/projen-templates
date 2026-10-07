@@ -44,13 +44,13 @@ The storage of the d9 instance: the first location of `STORAGE_LOCATIONS`, confi
 
 A storage shared between environments, used to transfer the files referenced by `sql/data/directus_files.csv`. It is resolved from, by increasing priority:
 
-1. `intermediateStorage` in `d9-plumbing.json` (`driver`, `options`, and `secretEnv` which maps an option to the name of the environment variable holding its value). Set it with the `plumbing.intermediateStorage` option of `D9Project`.
+1. `intermediateStorage` in `d9-plumbing.json` (`driver`, `options`, and `secretEnv` which maps an option to the name of the environment variable holding its value). Set it with `project.configurePlumbing({ intermediateStorage })` in `.projenrc`.
 2. `INTERMEDIATE_STORAGE_*` environment variables (e.g. `INTERMEDIATE_STORAGE_DRIVER=s3`).
 3. The repeatable `--intermediate-storage-config key=value` flag.
 
 ### Logging
 
-The log level is `LOG_LEVEL`, else `logLevel` in `d9-plumbing.json` (`plumbing.logLevel` option), else `debug`.
+The log level is `LOG_LEVEL`, else `logLevel` in `d9-plumbing.json` (`project.configurePlumbing({ logLevel })`), else `debug`.
 
 ### Atlas
 
