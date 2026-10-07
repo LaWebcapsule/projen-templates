@@ -24,7 +24,6 @@
     "projen": "npx projen"
   },
   "devDependencies": {
-    "@ariga/atlas": "0.32.0",
     "@wbce/projen-d9": "file:../../../directus",
     "@wbce/projen-d9-extension": "file:../../../directus-extension",
     "@wbce/projen-shared": "file:../../../shared",

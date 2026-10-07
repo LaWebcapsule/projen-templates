@@ -36,13 +36,14 @@ async function loadDirectusEnv() {
 }
 
 export async function resolveDbConfig(flags: DbFlags): Promise<DbConfig> {
-  const { env } = await loadDirectusEnv();
+  const { env, getConfigFromEnv } = await loadDirectusEnv();
   const config = {
     host: flags.host ?? env.DB_HOST,
     user: flags.user ?? env.DB_USER,
     pwd: flags.password ?? env.DB_PASSWORD,
     database: flags.database ?? env.DB_DATABASE,
-    ssl: flags.ssl ?? Boolean(env.DB_SSL),
+    // getConfigFromEnv also picks up nested DB_SSL__* keys (e.g. DB_SSL__REJECT_UNAUTHORIZED)
+    ssl: flags.ssl ?? Boolean(getConfigFromEnv('DB_').ssl),
   };
   const missing = Object.entries(config).filter(([, value]) => value === undefined).map(([key]) => key);
   if (missing.length > 0) {

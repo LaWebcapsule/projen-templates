@@ -25,7 +25,7 @@ project.configurePlumbing({
   intermediateStorage: {
     driver: 'local',
     options: { root: '/tmp/wbce-intermediate2' }
-  }
+  },
 })
 
 project.synth();

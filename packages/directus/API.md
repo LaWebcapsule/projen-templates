@@ -60,6 +60,7 @@ new D9Project(options: D9ProjectOptions)
 | <code><a href="#@wbce/projen-d9.D9Project.renderWorkflowSetup">renderWorkflowSetup</a></code> | Returns the set of workflow steps which should be executed to bootstrap a workflow. |
 | <code><a href="#@wbce/projen-d9.D9Project.setScript">setScript</a></code> | Replaces the contents of an npm package.json script. |
 | <code><a href="#@wbce/projen-d9.D9Project.addExtension">addExtension</a></code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.configurePlumbing">configurePlumbing</a></code> | *No description.* |
 
 ---
 
@@ -622,6 +623,18 @@ public addExtension(name: string, extensionTypes: D9ExtensionType[], options?: A
 ###### `options`<sup>Optional</sup> <a name="options" id="@wbce/projen-d9.D9Project.addExtension.parameter.options"></a>
 
 - *Type:* @wbce/projen-d9-extension.AddExtensionOptions
+
+---
+
+##### `configurePlumbing` <a name="configurePlumbing" id="@wbce/projen-d9.D9Project.configurePlumbing"></a>
+
+```typescript
+public configurePlumbing(options: PlumbingOptions): void
+```
+
+###### `options`<sup>Required</sup> <a name="options" id="@wbce/projen-d9.D9Project.configurePlumbing.parameter.options"></a>
+
+- *Type:* <a href="#@wbce/projen-d9.PlumbingOptions">PlumbingOptions</a>
 
 ---
 
@@ -1591,6 +1604,7 @@ new DirectusProject(options: D9ProjectOptions)
 | <code><a href="#@wbce/projen-d9.DirectusProject.renderWorkflowSetup">renderWorkflowSetup</a></code> | Returns the set of workflow steps which should be executed to bootstrap a workflow. |
 | <code><a href="#@wbce/projen-d9.DirectusProject.setScript">setScript</a></code> | Replaces the contents of an npm package.json script. |
 | <code><a href="#@wbce/projen-d9.DirectusProject.addExtension">addExtension</a></code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.configurePlumbing">configurePlumbing</a></code> | *No description.* |
 
 ---
 
@@ -2153,6 +2167,18 @@ public addExtension(name: string, extensionTypes: D9ExtensionType[], options?: A
 ###### `options`<sup>Optional</sup> <a name="options" id="@wbce/projen-d9.DirectusProject.addExtension.parameter.options"></a>
 
 - *Type:* @wbce/projen-d9-extension.AddExtensionOptions
+
+---
+
+##### ~~`configurePlumbing`~~ <a name="configurePlumbing" id="@wbce/projen-d9.DirectusProject.configurePlumbing"></a>
+
+```typescript
+public configurePlumbing(options: PlumbingOptions): void
+```
+
+###### `options`<sup>Required</sup> <a name="options" id="@wbce/projen-d9.DirectusProject.configurePlumbing.parameter.options"></a>
+
+- *Type:* <a href="#@wbce/projen-d9.PlumbingOptions">PlumbingOptions</a>
 
 ---
 
@@ -3354,7 +3380,6 @@ const d9ProjectOptions: D9ProjectOptions = { ... }
 | <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
 | <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.extensionsFolderName">extensionsFolderName</a></code> | <code>string</code> | The name of the extensions folder. |
 | <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.githubConfig">githubConfig</a></code> | <code>boolean \| @wbce/projen-shared.GitHubConfigOptions</code> | Options for the GitHub configuration. |
-| <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.intermediateStorage">intermediateStorage</a></code> | <code><a href="#@wbce/projen-d9.IntermediateStorageOptions">IntermediateStorageOptions</a></code> | Storage shared between environments, written to `intermediate-storage.json`. |
 | <code><a href="#@wbce/projen-d9.D9ProjectOptions.property.packageVersions">packageVersions</a></code> | <code><a href="#@wbce/projen-d9.PackageVersions">PackageVersions</a></code> | *No description.* |
 
 ---
@@ -5636,19 +5661,6 @@ Set to false to disable GitHub config entirely.
 
 ---
 
-##### `intermediateStorage`<sup>Optional</sup> <a name="intermediateStorage" id="@wbce/projen-d9.D9ProjectOptions.property.intermediateStorage"></a>
-
-```typescript
-public readonly intermediateStorage: IntermediateStorageOptions;
-```
-
-- *Type:* <a href="#@wbce/projen-d9.IntermediateStorageOptions">IntermediateStorageOptions</a>
-- *Default:* none, the intermediate storage is configured with INTERMEDIATE_STORAGE_* variables or flags
-
-Storage shared between environments, written to `intermediate-storage.json`.
-
----
-
 ##### `packageVersions`<sup>Optional</sup> <a name="packageVersions" id="@wbce/projen-d9.D9ProjectOptions.property.packageVersions"></a>
 
 ```typescript
@@ -5831,7 +5843,6 @@ const directusProjectOptions: DirectusProjectOptions = { ... }
 | <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
 | <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.extensionsFolderName">extensionsFolderName</a></code> | <code>string</code> | The name of the extensions folder. |
 | <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.githubConfig">githubConfig</a></code> | <code>boolean \| @wbce/projen-shared.GitHubConfigOptions</code> | Options for the GitHub configuration. |
-| <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.intermediateStorage">intermediateStorage</a></code> | <code><a href="#@wbce/projen-d9.IntermediateStorageOptions">IntermediateStorageOptions</a></code> | Storage shared between environments, written to `intermediate-storage.json`. |
 | <code><a href="#@wbce/projen-d9.DirectusProjectOptions.property.packageVersions">packageVersions</a></code> | <code><a href="#@wbce/projen-d9.PackageVersions">PackageVersions</a></code> | *No description.* |
 
 ---
@@ -8405,21 +8416,6 @@ Set to false to disable GitHub config entirely.
 
 ---
 
-##### ~~`intermediateStorage`~~<sup>Optional</sup> <a name="intermediateStorage" id="@wbce/projen-d9.DirectusProjectOptions.property.intermediateStorage"></a>
-
-- *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
-
-```typescript
-public readonly intermediateStorage: IntermediateStorageOptions;
-```
-
-- *Type:* <a href="#@wbce/projen-d9.IntermediateStorageOptions">IntermediateStorageOptions</a>
-- *Default:* none, the intermediate storage is configured with INTERMEDIATE_STORAGE_* variables or flags
-
-Storage shared between environments, written to `intermediate-storage.json`.
-
----
-
 ##### ~~`packageVersions`~~<sup>Optional</sup> <a name="packageVersions" id="@wbce/projen-d9.DirectusProjectOptions.property.packageVersions"></a>
 
 - *Deprecated:* Use {@link D9ProjectOptions } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
@@ -8511,7 +8507,7 @@ const packageVersions: PackageVersions = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@wbce/projen-d9.PackageVersions.property.atlas">atlas</a></code> | <code>string</code> | The version of. |
+| <code><a href="#@wbce/projen-d9.PackageVersions.property.atlas">atlas</a></code> | <code>string</code> | The version of the Atlas binary downloaded by d9-plumbing. |
 | <code><a href="#@wbce/projen-d9.PackageVersions.property.d9">d9</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -8523,9 +8519,9 @@ public readonly atlas: string;
 ```
 
 - *Type:* string
-- *Default:* "0.32.0"
+- *Default:* "1.3.3"
 
-The version of.
+The version of the Atlas binary downloaded by d9-plumbing.
 
 ---
 
@@ -8536,6 +8532,53 @@ public readonly d9: string;
 ```
 
 - *Type:* string
+
+---
+
+### PlumbingOptions <a name="PlumbingOptions" id="@wbce/projen-d9.PlumbingOptions"></a>
+
+Configuration of the d9-plumbing CLI, written to `d9-plumbing.json`.
+
+#### Initializer <a name="Initializer" id="@wbce/projen-d9.PlumbingOptions.Initializer"></a>
+
+```typescript
+import { PlumbingOptions } from '@wbce/projen-d9'
+
+const plumbingOptions: PlumbingOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@wbce/projen-d9.PlumbingOptions.property.intermediateStorage">intermediateStorage</a></code> | <code><a href="#@wbce/projen-d9.IntermediateStorageOptions">IntermediateStorageOptions</a></code> | Storage shared between environments. |
+| <code><a href="#@wbce/projen-d9.PlumbingOptions.property.logLevel">logLevel</a></code> | <code>string</code> | Default log level of the CLI, overridden by the LOG_LEVEL environment variable. |
+
+---
+
+##### `intermediateStorage`<sup>Optional</sup> <a name="intermediateStorage" id="@wbce/projen-d9.PlumbingOptions.property.intermediateStorage"></a>
+
+```typescript
+public readonly intermediateStorage: IntermediateStorageOptions;
+```
+
+- *Type:* <a href="#@wbce/projen-d9.IntermediateStorageOptions">IntermediateStorageOptions</a>
+- *Default:* none, the intermediate storage is configured with INTERMEDIATE_STORAGE_* variables or flags
+
+Storage shared between environments.
+
+---
+
+##### `logLevel`<sup>Optional</sup> <a name="logLevel" id="@wbce/projen-d9.PlumbingOptions.property.logLevel"></a>
+
+```typescript
+public readonly logLevel: string;
+```
+
+- *Type:* string
+- *Default:* "debug"
+
+Default log level of the CLI, overridden by the LOG_LEVEL environment variable.
 
 ---
 

@@ -303,7 +303,7 @@
           "exec": "npm install"
         },
         {
-          "exec": "npm update @ariga/atlas @wbce/projen-d9-extension @wbce/projen-d9 @wbce/projen-shared commit-and-tag-version constructs jest jest-junit projen @wbce-d9/directus9"
+          "exec": "npm update @wbce/projen-d9-extension @wbce/projen-d9 @wbce/projen-shared commit-and-tag-version constructs jest jest-junit projen @wbce-d9/directus9"
         },
         {
           "exec": "npx projen"

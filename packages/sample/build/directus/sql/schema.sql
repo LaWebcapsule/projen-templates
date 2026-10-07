@@ -395,3 +395,16 @@ CREATE TABLE "public"."test" (
   CONSTRAINT "test_user_created_foreign" FOREIGN KEY ("user_created") REFERENCES "public"."directus_users" ("id") ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT "test_user_updated_foreign" FOREIGN KEY ("user_updated") REFERENCES "public"."directus_users" ("id") ON UPDATE NO ACTION ON DELETE NO ACTION
 );
+-- Create "test_serial" table
+CREATE TABLE "public"."test_serial" (
+  "id" serial NOT NULL,
+  "status" character varying(255) NOT NULL DEFAULT 'draft',
+  "sort" integer NULL,
+  "user_created" uuid NULL,
+  "date_created" timestamptz NULL,
+  "user_updated" uuid NULL,
+  "date_updated" timestamptz NULL,
+  PRIMARY KEY ("id"),
+  CONSTRAINT "test_serial_user_created_foreign" FOREIGN KEY ("user_created") REFERENCES "public"."directus_users" ("id") ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT "test_serial_user_updated_foreign" FOREIGN KEY ("user_updated") REFERENCES "public"."directus_users" ("id") ON UPDATE NO ACTION ON DELETE NO ACTION
+);

@@ -78,5 +78,5 @@ See [API.md](./API.md) for the full `D9ProjectOptions` reference. Highlights:
 
 - `extensionsFolderName` — folder for extension packages (default: `plugins`)
 - `packageVersions.d9` — version of `@wbce-d9/directus9` (default: `12.0.15`)
-- `packageVersions.atlas` — version of `@ariga/atlas` (default: `0.32.0`)
+- `packageVersions.atlas` — version of the Atlas Community Edition binary (Apache 2.0) that `d9-plumbing` downloads from release.ariga.io on first use, cached in `node_modules/.cache/d9-plumbing` (default: `1.3.3`)
 - `githubConfig` — `GitHubConfigOptions` or `false` to disable

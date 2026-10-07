@@ -7,8 +7,8 @@ import { UpgradeDependenciesSchedule } from 'projen/lib/javascript';
 export interface PackageVersions {
   readonly d9?: string;
   /**
-   * The version of @ariga/atlas to use.
-   * @default "0.32.0"
+   * The version of the Atlas binary downloaded by d9-plumbing.
+   * @default "1.3.3"
    */
   readonly atlas?: string;
 }
@@ -75,10 +75,11 @@ export class D9Project extends javascript.NodeProject {
   public directusService!: DockerComposeService;
   public databaseService!: DockerComposeService;
   public cacheService!: DockerComposeService;
+  private plumbingConfig!: JsonFile;
 
   constructor(protected options: D9ProjectOptions) {
     const d9Version = options.packageVersions?.d9 || '12.0.15';
-    const atlasVersion = options.packageVersions?.atlas || '0.32.0';
+    const atlasVersion = options.packageVersions?.atlas || '1.3.3';
     super({
       ...options,
       packageManager: options.packageManager ?? javascript.NodePackageManager.NPM,
@@ -146,7 +147,6 @@ export class D9Project extends javascript.NodeProject {
       devDeps: [
         '@wbce/projen-d9',
         '@wbce/projen-d9-extension',
-        `@ariga/atlas@${atlasVersion}`,
         ...(options.devDeps ?? []),
       ],
       deps: [`@wbce-d9/directus9@${d9Version}`],
@@ -154,6 +154,10 @@ export class D9Project extends javascript.NodeProject {
 
     // No tsconfig means no tsc --build in compile
     this.compileTask.reset();
+
+    this.plumbingConfig = new JsonFile(this, 'd9-plumbing.json', {
+      obj: { atlasVersion },
+    });
 
     this.addExtensionFolder();
     this.addDockerCompose();
@@ -193,7 +197,9 @@ export class D9Project extends javascript.NodeProject {
   }
 
   public configurePlumbing(options: PlumbingOptions) {
-    new JsonFile(this, 'd9-plumbing.json', { obj: options });
+    for (const [key, value] of Object.entries(options)) {
+      this.plumbingConfig.addOverride(key, value);
+    }
   }
 
   private addFirstRunTask() {

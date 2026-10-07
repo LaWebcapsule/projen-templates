@@ -4,6 +4,7 @@ import { pipeline } from 'stream/promises';
 import * as pg from 'pg';
 import { to as copyTo } from 'pg-copy-streams';
 import { Cli } from './cli';
+import { ensureAtlas } from '../../atlas';
 import { logger } from '../../logger';
 import { d9ToCedar } from '../cedar/d9-to-cedar';
 
@@ -43,9 +44,8 @@ export async function saveSQLSnapshot(dbConfig: {
   logger.info('Dumping the schema with atlas into ./sql/schema.sql');
   const writeFileStream = createWriteStream('./sql/schema.sql');
   await cli.command(
-    'npx',
+    await ensureAtlas(),
     [
-      'atlas',
       'schema', //schema only
       'inspect',
       '-u',

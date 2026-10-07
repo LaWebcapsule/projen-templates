@@ -7,6 +7,7 @@ export interface PlumbingConfig {
     secretEnv?: Record<string, string>;
   };
   logLevel?: string;
+  atlasVersion?: string;
 }
 
 export const PLUMBING_CONFIG_FILE = './d9-plumbing.json';

@@ -5,6 +5,7 @@ import * as pg from 'pg';
 import { from as copyFrom } from 'pg-copy-streams';
 import { Cli } from './cli';
 import { readFirstLineOfFile } from './utils';
+import { ensureAtlas } from '../../atlas';
 import { logger } from '../../logger';
 
 const readdir = promisify(fs.readdir);
@@ -102,9 +103,8 @@ export async function applySQLSnapshot(dbConfig: {
   logger.info('Computing the schema diff with atlas');
   const cli = new Cli();
   await cli.command(
-    'npx',
+    await ensureAtlas(),
     [
-      'atlas',
       'schema',
       'diff',
       '--from',
