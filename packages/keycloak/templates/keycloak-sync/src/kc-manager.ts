@@ -1,7 +1,6 @@
 import KcAdminClient from "@keycloak/keycloak-admin-client";
 
 // Helper around the Keycloak admin API.
-// Ported (sanitized) from our production d9 backends:
 //  - derives the client credentials from d9's AUTH_<CLIENT>_* variables;
 //  - authenticates with client_credentials (the Keycloak client must have "Service accounts" enabled
 //    + the realm-management role `manage-users`);
