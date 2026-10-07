@@ -76,6 +76,7 @@ The component emits **assets you deploy to your own Keycloak** — it does not a
 1. Build & push the Keycloak image from `keycloak/Dockerfile` and run it with `--import-realm` (first start only).
 2. **Client secret — nothing in git.** The d9 service reads `AUTH_KEYCLOAK_CLIENT_SECRET` straight from the environment : the compose file only passes it through (`${AUTH_KEYCLOAK_CLIENT_SECRET}`), and the realm ships a `REGENERATE_IN_KEYCLOAK` placeholder. After importing the realm, **regenerate the client secret in the Keycloak admin console** and provide the value as `AUTH_KEYCLOAK_CLIENT_SECRET` through your secret manager.
 3. Configure SMTP (via the `smtp` option, or directly in Keycloak) so invitation / reset emails are delivered.
+4. **SMS MFA.** The realm ships the SMS second factor in `simulation: true` mode — the one-time code is written to the Keycloak log instead of being sent — so you can run the full login end-to-end out of the box. **Before production, set `simulation: false` and configure a real SMS gateway** (the `sms-2fa` / `reset-sms-config` authenticator config: `apiurl`, credentials, sender…).
 
 ## Options
 

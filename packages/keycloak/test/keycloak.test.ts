@@ -81,6 +81,16 @@ describe('Keycloak component', () => {
     expect(smtp.starttls).toBe('true');
   });
 
+  test('the realm ships SMS MFA in simulation mode (out-of-the-box E2E)', () => {
+    const project = new D9Project({ name: 'test-sms', defaultReleaseBranch: 'main' });
+    new Keycloak(project, opts);
+    const realm = Testing.synth(project)['keycloak/realm-export.json'];
+    const smsCfgs = (realm.authenticatorConfig || []).filter((c: any) => c.config && 'simulation' in c.config);
+
+    expect(smsCfgs.length).toBeGreaterThan(0);
+    expect(smsCfgs.every((c: any) => c.config.simulation === 'true')).toBe(true);
+  });
+
   test('userSync:false skips the hook', () => {
     const project = new D9Project({ name: 'test-nosync', defaultReleaseBranch: 'main' });
     new Keycloak(project, { ...opts, userSync: false });
