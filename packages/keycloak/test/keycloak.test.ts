@@ -91,6 +91,26 @@ describe('Keycloak component', () => {
     expect(smsCfgs.every((c: any) => c.config.simulation === 'true')).toBe(true);
   });
 
+  test('mfa defaults to on (custom browser-sms + hardened reset flows)', () => {
+    const project = new D9Project({ name: 'test-mfa-on', defaultReleaseBranch: 'main' });
+    new Keycloak(project, opts);
+    const realm = Testing.synth(project)['keycloak/realm-export.json'];
+    expect(realm.browserFlow).toBe('browser-sms');
+    expect(realm.resetCredentialsFlow).toBe('Reset - Conditional OTP / reset-otp');
+  });
+
+  test('mfa:false uses the standard login flow (SSO only, no second factor)', () => {
+    const project = new D9Project({ name: 'test-mfa-off', defaultReleaseBranch: 'main' });
+    new Keycloak(project, { ...opts, mfa: false });
+    const out = Testing.synth(project);
+    const realm = out['keycloak/realm-export.json'];
+
+    expect(realm.browserFlow).toBe('browser'); // original, non-custom login
+    expect(realm.resetCredentialsFlow).toBe('reset credentials'); // original, non-custom reset
+    // the OIDC wiring + sync hook are unchanged
+    expect(Object.keys(out)).toContain('plugins/keycloak-sync/src/index.ts');
+  });
+
   test('userSync:false skips the hook', () => {
     const project = new D9Project({ name: 'test-nosync', defaultReleaseBranch: 'main' });
     new Keycloak(project, { ...opts, userSync: false });

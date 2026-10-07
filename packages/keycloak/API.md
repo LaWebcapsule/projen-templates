@@ -226,6 +226,7 @@ const keycloakOptions: KeycloakOptions = { ... }
 | <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.clientId">clientId</a></code> | <code>string</code> | OIDC client id (must match the Keycloak client). |
 | <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.defaultRole">defaultRole</a></code> | <code>string</code> | Baseline d9 role granted to SSO users with no mapped role (KEYCLOAK_SYNC_DEFAULT_ROLE). |
 | <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.frontUrl">frontUrl</a></code> | <code>string</code> | Front-end URL allowed as a post-login redirect (AUTH_KEYCLOAK_REDIRECT_ALLOW_LIST). |
+| <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.mfa">mfa</a></code> | <code>boolean</code> | Enforce MFA: the realm uses the browser-sms flow (password + SMS/TOTP second factor). |
 | <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.publicRegistration">publicRegistration</a></code> | <code>boolean</code> | Auto-create a d9 user on first SSO login (Keycloak → d9 direction). |
 | <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.realm">realm</a></code> | <code>string</code> | Keycloak realm name. |
 | <code><a href="#@wbce/projen-keycloak.KeycloakOptions.property.smtp">smtp</a></code> | <code><a href="#@wbce/projen-keycloak.KeycloakSmtp">KeycloakSmtp</a></code> | Real SMTP server for Keycloak emails (invitations/reset). |
@@ -293,6 +294,23 @@ public readonly frontUrl: string;
 - *Default:* the apiUrl
 
 Front-end URL allowed as a post-login redirect (AUTH_KEYCLOAK_REDIRECT_ALLOW_LIST).
+
+---
+
+##### `mfa`<sup>Optional</sup> <a name="mfa" id="@wbce/projen-keycloak.KeycloakOptions.property.mfa"></a>
+
+```typescript
+public readonly mfa: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enforce MFA: the realm uses the browser-sms flow (password + SMS/TOTP second factor).
+
+Set `false` for
+SSO only — the realm then uses Keycloak's standard login flow (password, no second factor). The d9 ⇄
+Keycloak OIDC wiring and the two-way user sync are identical either way.
 
 ---
 

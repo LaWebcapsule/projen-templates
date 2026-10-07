@@ -54,6 +54,13 @@ export interface KeycloakOptions {
   readonly userSync?: boolean;
   /** Real SMTP server for Keycloak emails (invitations/reset). If omitted, no SMTP is set — configure it in Keycloak later. */
   readonly smtp?: KeycloakSmtp;
+  /**
+   * Enforce MFA: the realm uses the browser-sms flow (password + SMS/TOTP second factor). Set `false` for
+   * SSO only — the realm then uses Keycloak's standard login flow (password, no second factor). The d9 ⇄
+   * Keycloak OIDC wiring and the two-way user sync are identical either way.
+   * @default true
+   */
+  readonly mfa?: boolean;
 }
 
 /**
@@ -107,6 +114,12 @@ export class Keycloak extends Component {
     const realmJson: any = JSON.parse(fs.readFileSync(path.join(TEMPLATES_DIR, 'realm-export.json'), 'utf-8'));
     realmJson.realm = realm;
     realmJson.sslRequired = 'external';
+    if (options.mfa === false) {
+      // SSO only: bind login + reset to Keycloak's original (non-custom) flows. The realm's custom MFA
+      // flows (browser-sms + the hardened reset) and the SMS plugin are simply left unused.
+      realmJson.browserFlow = 'browser';
+      realmJson.resetCredentialsFlow = 'reset credentials';
+    }
     for (const client of realmJson.clients ?? []) {
       if (client.clientId === 'd9') {
         client.clientId = clientId;
