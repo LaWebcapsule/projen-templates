@@ -34,6 +34,8 @@ project.synth();
 
 Then `npx projen` to regenerate. `issuerUrl` and `apiUrl` are the only required options.
 
+> **The issuer must be HTTPS.** d9's OIDC client (openid-client v6) only accepts an `https://` `issuerUrl` — a plain `http://` issuer is refused at boot (`only requests to HTTPS are allowed`). That's why every example here uses `https://`, and why the [local-demo starter](https://github.com/LaWebcapsule/d9-sso-starter) takes a different, http-patched route instead. In production you terminate TLS in front of Keycloak as usual.
+
 ## What gets generated
 
 | Path | What it is |
