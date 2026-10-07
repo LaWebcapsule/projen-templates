@@ -1,2 +1,3 @@
 action,collection,fields,id,permissions,presets,role,validation
-read,test,*,4,"{""_or"":[{""user_created"":{""_eq"":""$CURRENT_USER""}},{""date_created"":{""_contains"":""2025""}},{""_and"":[{""user_created"":{""_eq"":""$CURRENT_USER""}},{""status"":{""_eq"":""draf""}}]}]}",,c5415da3-c6d1-4422-8acd-d2fa067786ac,{}
+read,test,*,4,"{""_and"":[{""_or"":[{""_or"":[{""user_created"":{""_eq"":""$CURRENT_USER""}},{""date_created"":{""_contains"":""2025""}}]},{""_and"":[{""user_created"":{""_eq"":""$CURRENT_USER""}},{""status"":{""_eq"":""draf""}}]}]}]}",,c5415da3-c6d1-4422-8acd-d2fa067786ac,{}
+update,test,,6,"{""_and"":[{""status"":{""_eq"":""draft""}}]}",,c5415da3-c6d1-4422-8acd-d2fa067786ac,

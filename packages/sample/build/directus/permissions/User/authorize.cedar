@@ -11,3 +11,12 @@ when {
        && resource.status == "draf"
      )
 };
+
+permit (
+  principal in d9::UserGroup::"User",
+  action == Db::test::Action::"update",
+  resource
+)
+when {
+     resource.status == "draft"
+};

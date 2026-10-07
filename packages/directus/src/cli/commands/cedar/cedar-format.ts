@@ -5,37 +5,9 @@ import { logger } from '../../logger';
 /** Width of one logical level: the operator column (`|| `) plus the base gap. */
 const LEVEL_INDENT = ' '.repeat(5);
 
-
-function recursive(expr: any, level = 0, lastOperator = ''){
-  const currentOperator = Object.keys(expr)[0]
-  if(['&&', '||'].includes(currentOperator)){
-    if(currentOperator === lastOperator){
-      return `
-${lastOperator} ${leafToText(expr.Right)}
-${recursive(expr.left, level, lastOperator)}`
-    }
-    else{
-      return `
-${currentOperator} (
-  ${recursive(expr.left, level ++, currentOperator)}
-)`
-    }
-  }
-  else{
-    return `${} ${lastOperator} ${leafToText(expr)}`
-  }
-}
-
 function booleanOperator(expr: any): '&&' | '||' | undefined {
   const key = Object.keys(expr)[0];
   return key === '&&' || key === '||' ? key : undefined;
-}
-
-/** `a || (b || c)` → `[a, b, c]`: siblings of one logical level. */
-function operands(expr: any, operator: '&&' | '||'): any[] {
-  if (booleanOperator(expr) !== operator) return [expr];
-  const { left, right } = expr[operator];
-  return [...operands(left, operator), ...operands(right, operator)];
 }
 
 /** Cedar's text for a policy with `All` scopes and a single `when` clause. */
@@ -58,36 +30,20 @@ function leafToText(expr: any): string {
   return result.text.slice(LEAF_PREFIX.length, -LEAF_SUFFIX.length);
 }
 
-/** One logical level; a nested group always has the other operator. */
-function blockToLines(
-  operator: '&&' | '||',
-  expressions: any[],
-  indent: string,
-): string[] {
-  return expressions.flatMap((expr, i) => {
-    const prefix = `${indent}${i === 0 ? '   ' : `${operator} `}`;
-    const nestedOperator = booleanOperator(expr);
-    if (!nestedOperator) return [prefix + leafToText(expr)];
-    return [
-      `${prefix}(`,
-      ...blockToLines(
-        nestedOperator,
-        operands(expr, nestedOperator),
-        indent + LEVEL_INDENT,
-      ),
-      `${indent}   )`,
-    ];
-  });
-}
-
-function whenToText(body: any): string {
-  const operator = booleanOperator(body);
-  if (!operator) return `when { ${leafToText(body)} }`;
-  return [
-    'when {',
-    ...blockToLines(operator, operands(body, operator), '  '),
-    '}',
-  ].join('\n');
+/**
+ * Lines of `expr` within a group of `parent`, each starting with a 3-character
+ * operator column; a nested group (other operator) goes one level deeper in parentheses.
+ */
+function toLines(expr: any, parent?: string): string[] {
+  const operator = booleanOperator(expr);
+  if (!operator) return [`   ${leafToText(expr)}`];
+  // the top level (no parent) is a group without parentheses
+  if (parent && operator !== parent) {
+    return ['   (', ...toLines(expr, operator).map((line) => LEVEL_INDENT + line), '   )'];
+  }
+  // the operator joins the two sides, on the line where the right side starts
+  const [first, ...rest] = toLines(expr[operator].right, operator);
+  return [...toLines(expr[operator].left, operator), `${operator} ${first!.slice(3)}`, ...rest];
 }
 
 /**
@@ -113,6 +69,11 @@ export function policyToCedarText(policy: PolicyJson): string {
   const lines = [formattedHead.formatted_policy.slice(0, -2)];
   // translateToCedar writes at most one `when` clause
   const [condition] = policy.conditions;
-  if (condition) lines.push(whenToText(condition.body));
+  if (condition) {
+    const when = toLines(condition.body);
+    lines.push(
+      ['when {', ...when.map((line) => `  ${line}`), '}'].join('\n')
+    );
+  }
   return lines.join('\n') + ';';
 }
