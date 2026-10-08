@@ -26,8 +26,9 @@ export interface IntermediateStorageOptions {
    */
   readonly options?: { [key: string]: string };
   /**
-   * Secret driver options, as the names of the environment variables holding them (never the values).
-   * @example { key: 'MY_S3_KEY', secret: 'MY_S3_SECRET' }
+   * Secret driver options, mapping each option name to the name of the environment variable holding its value.
+   * Only the variable name is written to `d9-plumbing.json`, never the value: it is read from the environment (or `.env`) at runtime.
+   * @example { key: 'S3_ACCESS_KEY_ID_ENV_VAR', secret: 'S3_SECRET_ACCESS_KEY_ENV_VAR' } // the `secret` option is read from $S3_SECRET_ACCESS_KEY_ENV_VAR
    */
   readonly secretEnv?: { [key: string]: string };
 }

@@ -774,8 +774,8 @@ When given a project, this it the project itself.
 | <code><a href="#@wbce/projen-d9.D9Project.property.githubConfig">githubConfig</a></code> | <code>@wbce/projen-shared.GitHubConfig</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.D9Project.property.buildExtensionTask">buildExtensionTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.D9Project.property.cacheService">cacheService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.d9Service">d9Service</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.D9Project.property.databaseService">databaseService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
-| <code><a href="#@wbce/projen-d9.D9Project.property.directusService">directusService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.D9Project.property.dockerComposeFile">dockerComposeFile</a></code> | <code>projen.DockerCompose</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.D9Project.property.dockerfile">dockerfile</a></code> | <code>@wbce/projen-shared.Dockerfile</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.D9Project.property.extensionFolder">extensionFolder</a></code> | <code>string</code> | *No description.* |
@@ -1463,20 +1463,20 @@ public readonly cacheService: DockerComposeService;
 
 ---
 
-##### `databaseService`<sup>Required</sup> <a name="databaseService" id="@wbce/projen-d9.D9Project.property.databaseService"></a>
+##### `d9Service`<sup>Required</sup> <a name="d9Service" id="@wbce/projen-d9.D9Project.property.d9Service"></a>
 
 ```typescript
-public readonly databaseService: DockerComposeService;
+public readonly d9Service: DockerComposeService;
 ```
 
 - *Type:* projen.DockerComposeService
 
 ---
 
-##### `directusService`<sup>Required</sup> <a name="directusService" id="@wbce/projen-d9.D9Project.property.directusService"></a>
+##### `databaseService`<sup>Required</sup> <a name="databaseService" id="@wbce/projen-d9.D9Project.property.databaseService"></a>
 
 ```typescript
-public readonly directusService: DockerComposeService;
+public readonly databaseService: DockerComposeService;
 ```
 
 - *Type:* projen.DockerComposeService
@@ -2318,8 +2318,8 @@ When given a project, this it the project itself.
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.githubConfig">githubConfig</a></code> | <code>@wbce/projen-shared.GitHubConfig</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.buildExtensionTask">buildExtensionTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.cacheService">cacheService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.d9Service">d9Service</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.databaseService">databaseService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
-| <code><a href="#@wbce/projen-d9.DirectusProject.property.directusService">directusService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.dockerComposeFile">dockerComposeFile</a></code> | <code>projen.DockerCompose</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.dockerfile">dockerfile</a></code> | <code>@wbce/projen-shared.Dockerfile</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.extensionFolder">extensionFolder</a></code> | <code>string</code> | *No description.* |
@@ -3109,24 +3109,24 @@ public readonly cacheService: DockerComposeService;
 
 ---
 
-##### ~~`databaseService`~~<sup>Required</sup> <a name="databaseService" id="@wbce/projen-d9.DirectusProject.property.databaseService"></a>
+##### ~~`d9Service`~~<sup>Required</sup> <a name="d9Service" id="@wbce/projen-d9.DirectusProject.property.d9Service"></a>
 
 - *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
-public readonly databaseService: DockerComposeService;
+public readonly d9Service: DockerComposeService;
 ```
 
 - *Type:* projen.DockerComposeService
 
 ---
 
-##### ~~`directusService`~~<sup>Required</sup> <a name="directusService" id="@wbce/projen-d9.DirectusProject.property.directusService"></a>
+##### ~~`databaseService`~~<sup>Required</sup> <a name="databaseService" id="@wbce/projen-d9.DirectusProject.property.databaseService"></a>
 
 - *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
-public readonly directusService: DockerComposeService;
+public readonly databaseService: DockerComposeService;
 ```
 
 - *Type:* projen.DockerComposeService
@@ -8446,7 +8446,7 @@ const intermediateStorageOptions: IntermediateStorageOptions = { ... }
 | --- | --- | --- |
 | <code><a href="#@wbce/projen-d9.IntermediateStorageOptions.property.driver">driver</a></code> | <code>string</code> | The storage driver: s3, gcs, azure, local or cloudinary. |
 | <code><a href="#@wbce/projen-d9.IntermediateStorageOptions.property.options">options</a></code> | <code>{[ key: string ]: string}</code> | Non-secret driver options (root, bucket, region, endpoint...). |
-| <code><a href="#@wbce/projen-d9.IntermediateStorageOptions.property.secretEnv">secretEnv</a></code> | <code>{[ key: string ]: string}</code> | Secret driver options, as the names of the environment variables holding them (never the values). |
+| <code><a href="#@wbce/projen-d9.IntermediateStorageOptions.property.secretEnv">secretEnv</a></code> | <code>{[ key: string ]: string}</code> | Secret driver options, mapping each option name to the name of the environment variable holding its value. |
 
 ---
 
@@ -8482,14 +8482,16 @@ public readonly secretEnv: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-Secret driver options, as the names of the environment variables holding them (never the values).
+Secret driver options, mapping each option name to the name of the environment variable holding its value.
+
+Only the variable name is written to `d9-plumbing.json`, never the value: it is read from the environment (or `.env`) at runtime.
 
 ---
 
 *Example*
 
 ```typescript
-{ key: 'MY_S3_KEY', secret: 'MY_S3_SECRET' }
+{ key: 'S3_ACCESS_KEY_ID_ENV_VAR', secret: 'S3_SECRET_ACCESS_KEY_ENV_VAR' } // the `secret` option is read from $S3_SECRET_ACCESS_KEY_ENV_VAR
 ```
 
 

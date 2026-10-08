@@ -24,7 +24,7 @@ project.configurePlumbing({
   logLevel: "info",
   intermediateStorage: {
     driver: 'local',
-    options: { root: '/tmp/wbce-intermediate2' }
+    options: { root: '/tmp/wbce-intermediate2' },
   },
 })
 
