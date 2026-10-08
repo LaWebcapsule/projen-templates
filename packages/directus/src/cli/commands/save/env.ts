@@ -1,4 +1,5 @@
 import type { DriverConfig } from '@wbce-d9/storage';
+import { logger } from '../../logger';
 import { PLUMBING_CONFIG_FILE, readPlumbingConfig } from '../../plumbing-config';
 
 export interface DbConfig {
@@ -20,6 +21,7 @@ export interface DbFlags {
 export interface StorageFlags {
   storageConfig?: string[];
   intermediateStorageConfig?: string[];
+  files?: boolean;
 }
 
 // @wbce-d9/api is not a dependency of this package: it is resolved from the user's d9 project.
@@ -114,4 +116,25 @@ export async function resolveIntermediateStorage(flags: StorageFlags): Promise<D
     throw new Error(`no intermediate storage driver found (use intermediateStorage in ${PLUMBING_CONFIG_FILE}, INTERMEDIATE_STORAGE_DRIVER or --intermediate-storage-config driver=...)`);
   }
   return config;
+}
+
+/**
+ * The storages to sync files between, or `undefined` when the sync is disabled
+ * (`--no-files`, SKIP_FILE_SYNC) or no intermediate storage is configured.
+ */
+export async function resolveFileSync(flags: StorageFlags, direction: 'push' | 'pull'): Promise<{ origin: DriverConfig; destination: DriverConfig } | undefined> {
+  const { env } = await loadD9Env();
+  if (flags.files === false || env.SKIP_FILE_SYNC === true || env.SKIP_FILE_SYNC === 'true') {
+    logger.info('File sync disabled, skipping it');
+    return undefined;
+  }
+  const intermediate = await findIntermediateStorage(flags);
+  if (!intermediate) {
+    logger.info('No intermediate storage configured, skipping the file sync');
+    return undefined;
+  }
+  const current = await resolveCurrentStorage(flags);
+  return direction === 'push'
+    ? { origin: current, destination: intermediate }
+    : { origin: intermediate, destination: current };
 }

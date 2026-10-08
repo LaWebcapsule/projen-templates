@@ -1,7 +1,7 @@
 import * as pg from 'pg';
 import { applySQLSnapshot } from './apply-snapshot';
 import { checkUnsaved } from './check-unsaved';
-import { DbConfig, DbFlags, findIntermediateStorage, resolveCurrentStorage, resolveDbConfig, resolveIntermediateStorage, StorageFlags } from './env';
+import { DbConfig, DbFlags, resolveCurrentStorage, resolveDbConfig, resolveFileSync, resolveIntermediateStorage, StorageFlags } from './env';
 import { saveSQLSnapshot } from './save-snapshot';
 import { syncFiles } from './sync-files';
 import { logger } from '../../logger';
@@ -36,26 +36,28 @@ export async function checkUnsavedChanges(flags: DbFlags & CheckFlags) {
 
 export async function save(flags: DbFlags & StorageFlags & { cedar?: boolean }) {
   const db = await resolveDbConfig(flags);
-  const origin = await resolveCurrentStorage(flags);
-  const destination = await resolveIntermediateStorage(flags);
+  const fileSync = await resolveFileSync(flags, 'push');
 
   // after the snapshot, so that syncFiles reads the freshly dumped directus_files.csv
   logger.info(`[1/2] Saving the SQL snapshot of ${describeDb(db)} into ./sql`);
   await saveSQLSnapshot(db, { cedar: flags.cedar });
-  logger.info(`[2/2] Pushing files to the intermediate storage (${origin.driver} → ${destination.driver})`);
-  await syncFiles({ origin, destination });
+  if (fileSync) {
+    logger.info(`[2/2] Pushing files to the intermediate storage (${fileSync.origin.driver} → ${fileSync.destination.driver})`);
+    await syncFiles(fileSync);
+  }
   logger.info('Save completed');
 }
 
 export async function applySchema(flags: DbFlags & StorageFlags & CheckFlags) {
   const db = await resolveDbConfig(flags);
-  const origin = await resolveIntermediateStorage(flags);
-  const destination = await resolveCurrentStorage(flags);
+  const fileSync = await resolveFileSync(flags, 'pull');
 
   logger.info(`[1/3] Checking for unsaved changes on ${describeDb(db)}`);
   await checkUnsaved({ lastSave: flags.lastSave, yes: flags.yes ?? false, db });
-  logger.info(`[2/3] Pulling files from the intermediate storage (${origin.driver} → ${destination.driver})`);
-  await syncFiles({ origin, destination });
+  if (fileSync) {
+    logger.info(`[2/3] Pulling files from the intermediate storage (${fileSync.origin.driver} → ${fileSync.destination.driver})`);
+    await syncFiles(fileSync);
+  }
   logger.info(`[3/3] Applying the SQL snapshot to ${describeDb(db)}`);
   await applySQLSnapshot(db);
   logger.info('Schema applied');
@@ -91,10 +93,8 @@ export async function firstImport(flags: DbFlags & StorageFlags) {
     return;
   }
   await applySQLSnapshot(db);
-  const intermediate = await findIntermediateStorage(flags);
-  if (!intermediate) {
-    logger.info('No intermediate storage configured, skipping the file sync');
-    return;
+  const fileSync = await resolveFileSync(flags, 'pull');
+  if (fileSync) {
+    await syncFiles(fileSync);
   }
-  await syncFiles({ origin: intermediate, destination: await resolveCurrentStorage(flags) });
 }

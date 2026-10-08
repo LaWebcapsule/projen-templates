@@ -77,15 +77,18 @@ withCheckOptions(withDbOptions(program.command('check-unsaved')))
 
 withStorageOptions(withDbOptions(program.command('first-import')))
   .description('Apply the SQL snapshot of ./sql to an empty d9 database, then sync files from the intermediate storage if one is configured')
+  .option('--no-files', 'skip the file sync with the intermediate storage (default: SKIP_FILE_SYNC)')
   .action(firstImport);
 
 withStorageOptions(withDbOptions(program.command('save')))
-  .description('Save the SQL snapshot of the current d9, then sync files to the intermediate storage')
+  .description('Save the SQL snapshot of the current d9, then sync files to the intermediate storage if one is configured')
+  .option('--no-files', 'skip the file sync with the intermediate storage (default: SKIP_FILE_SYNC)')
   .option('--no-cedar', 'do not generate the Cedar policies from directus_permissions.csv')
   .action(save);
 
 withCheckOptions(withStorageOptions(withDbOptions(program.command('apply-schema'))))
-  .description('Check for unsaved changes, sync files from the intermediate storage, then apply the SQL snapshot to the current d9')
+  .description('Check for unsaved changes, sync files from the intermediate storage if one is configured, then apply the SQL snapshot to the current d9')
+  .option('--no-files', 'skip the file sync with the intermediate storage (default: SKIP_FILE_SYNC)')
   .action(applySchema);
 
 void program.parseAsync().catch((err) => {

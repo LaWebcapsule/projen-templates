@@ -48,6 +48,8 @@ A storage shared between environments, used to transfer the files referenced by 
 2. `INTERMEDIATE_STORAGE_*` environment variables (e.g. `INTERMEDIATE_STORAGE_DRIVER=s3`).
 3. The repeatable `--intermediate-storage-config key=value` flag.
 
+`save`, `apply-schema` and `first-import` skip the file sync when no intermediate storage is configured, or when it is disabled with `--no-files` or `SKIP_FILE_SYNC=true`.
+
 ### Logging
 
 The log level is `LOG_LEVEL`, else `logLevel` in `d9-plumbing.json` (`project.configurePlumbing({ logLevel })`), else `debug`.
@@ -65,9 +67,9 @@ Saves the current d9 into the repository, then pushes its files to the intermedi
 1. Dumps the schema into `sql/schema.sql`.
 2. Empties `sql/data` and dumps one CSV per table: every `directus_*` table except `directus_users`, `directus_sessions`, `directus_revisions`, `directus_activity` and `directus_presets`, plus the tables of `sql/tables_to_dump.txt`, minus those of `sql/tables_not_to_dump.txt`. Columns referencing a user are replaced by a fixed CI user. `directus_files` and `directus_folders` are limited to the `common` folder and its subfolders.
 3. Regenerates the Cedar policies in `permissions/` (see [`d9-to-cedar`](#d9-to-cedar)).
-4. Pushes the files to the intermediate storage (see [`push-files`](#push-files--pull-files)).
+4. Pushes the files to the intermediate storage (see [`push-files`](#push-files--pull-files)), unless the [file sync is skipped](#intermediate-storage).
 
-Options: [database](#database), [storage](#current-storage), [intermediate storage](#intermediate-storage), `--no-cedar` to skip step 3.
+Options: [database](#database), [storage](#current-storage), [intermediate storage](#intermediate-storage), `--no-cedar` to skip step 3, `--no-files` to skip step 4.
 
 ```sh
 npx d9-plumbing save
@@ -78,7 +80,7 @@ npx d9-plumbing save
 Applies the saved state of the repository to the current d9.
 
 1. Checks that the current d9 has no unsaved changes (see [`check-unsaved`](#check-unsaved)).
-2. Pulls the files from the intermediate storage.
+2. Pulls the files from the intermediate storage, unless the [file sync is skipped](#intermediate-storage).
 3. Applies the SQL snapshot and imports the reference tables.
 
 Once done, purge the d9 cache (`POST /utils/cache/clear`) so the new schema, and permissions when `CACHE_ENABLED` is set, are taken into account. Restart d9 if flows, operations or webhooks changed.
@@ -90,6 +92,7 @@ Options: [database](#database), [storage](#current-storage), [intermediate stora
 | `--last-save <commit>` | Commit of the last save of this environment, required |
 | `--no-last-save` | Skip the unsaved changes check (asks for confirmation) |
 | `--yes` | Do not ask for confirmation |
+| `--no-files` | Skip step 2 |
 
 ```sh
 npx d9-plumbing apply-schema --last-save 1b3387a
@@ -99,7 +102,7 @@ npx d9-plumbing apply-schema --last-save 1b3387a
 
 Initializes an empty d9 database: applies the snapshot, then pulls the files if an intermediate storage is configured. Does nothing if the database already contains `directus_*` tables. Called by the `first-run` task (`npx projen first-run`).
 
-Options: [database](#database), [storage](#current-storage), [intermediate storage](#intermediate-storage).
+Options: [database](#database), [storage](#current-storage), [intermediate storage](#intermediate-storage), `--no-files` to skip the file sync.
 
 ```sh
 npx d9-plumbing first-import --host localhost --user d9 --password d9 --database d9
