@@ -179,12 +179,12 @@ export async function saveSQLSnapshot(dbConfig: {
         //finish statement
         sqlSelectStatement += `  FROM "${table.table_name}" AS t`;
         //for directus_files and directus_folders, we only want to keep some but not all files.
-        //for now, we keep all files included in the "common" folder
+        //for now, we keep all files included in the "d9-plumbing-common" folder
         if (['directus_files', 'directus_folders'].includes(table.table_name)) {
-          const commonFolderName = 'common';
+          const commonFolderName = 'd9-plumbing-common';
           let recursiveStatement = `
                       WITH RECURSIVE folder_tree AS (
-                      -- Anchor: the "common" folder
+                      -- Anchor: the "d9-plumbing-common" folder
                           SELECT id
                           FROM directus_folders
                           WHERE name = '${commonFolderName}'

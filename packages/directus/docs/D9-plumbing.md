@@ -65,7 +65,7 @@ The schema is dumped and diffed with [Atlas](https://atlasgo.io/) Community Edit
 Saves the current d9 into the repository, then pushes its files to the intermediate storage.
 
 1. Dumps the schema into `sql/schema.sql`.
-2. Empties `sql/data` and dumps one CSV per table: every `directus_*` table except `directus_users`, `directus_sessions`, `directus_revisions`, `directus_activity` and `directus_presets`, plus the tables of `sql/tables_to_dump.txt`, minus those of `sql/tables_not_to_dump.txt`. Columns referencing a user are replaced by a fixed CI user. `directus_files` and `directus_folders` are limited to the `common` folder and its subfolders.
+2. Empties `sql/data` and dumps one CSV per table: every `directus_*` table except `directus_users`, `directus_sessions`, `directus_revisions`, `directus_activity` and `directus_presets`, plus the tables of `sql/tables_to_dump.txt`, minus those of `sql/tables_not_to_dump.txt`. Columns referencing a user are replaced by a fixed CI user. `directus_files` and `directus_folders` are limited to the `d9-plumbing-common` folder and its subfolders.
 3. Regenerates the Cedar policies in `permissions/` (see [`d9-to-cedar`](#d9-to-cedar)).
 4. Pushes the files to the intermediate storage (see [`push-files`](#push-files--pull-files)), unless the [file sync is skipped](#intermediate-storage).
 
@@ -122,7 +122,7 @@ npx d9-plumbing check-unsaved --last-save 1b3387a
 
 Syncs the files listed in `sql/data/directus_files.csv` from the current storage to the intermediate storage (`push-files`), or the other way (`pull-files`). Run by `save` and `apply-schema`.
 
-Only the files of the d9 folder named `common` and its subfolders are saved and transferred: `save` dumps only those rows of `directus_files` and `directus_folders`, so everything else stays local to its environment. Put the files shared by all environments (logos, default images...) in `common`.
+Only the files of the d9 folder named `d9-plumbing-common` and its subfolders are saved and transferred: `save` dumps only those rows of `directus_files` and `directus_folders`, so everything else stays local to its environment. Put the files shared by all environments (logos, default images...) in `d9-plumbing-common`.
 
 Options: [storage](#current-storage), [intermediate storage](#intermediate-storage).
 

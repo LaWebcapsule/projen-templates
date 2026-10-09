@@ -183,15 +183,15 @@ export async function applySQLSnapshot(dbConfig: {
         let copyTableName = originalTableName;
         let existingRowsCanCauseConflict = false;
         if (['directus_files', 'directus_folders'].includes(nonParsedTableName)) {
-          //delete all files and folders that are inside the "common" folder
-          const commonFolderName = 'common';
+          //delete all files and folders that are inside the "d9-plumbing-common" folder
+          const commonFolderName = 'd9-plumbing-common';
           const folderKey: Record<string, string> = {
             directus_files: 'folder',
             directus_folders: 'parent',
           };
           await pgClient.query(` 
                         WITH RECURSIVE folder_tree AS (
-                              -- Anchor: the "common" folder
+                              -- Anchor: the "d9-plumbing-common" folder
                                   SELECT id
                                   FROM directus_folders
                                   WHERE name = '${commonFolderName}'
