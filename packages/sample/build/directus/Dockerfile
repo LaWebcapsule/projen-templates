@@ -26,5 +26,5 @@ COPY . .
 # build extensions (step-id: build-extension)
 RUN npx projen build-extensions
 
-# Start Directus server (step-id: start)
+# Start d9 server (step-id: start)
 CMD ["npx","directus","start"]

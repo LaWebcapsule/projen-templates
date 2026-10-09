@@ -1,9 +1,11 @@
 import { mkdir, rm, writeFile } from 'fs/promises';
 import * as cedar from '@cedar-policy/cedar-wasm/nodejs';
 import type { PolicyJson } from '@cedar-policy/cedar-wasm/nodejs';
+import { policyToCedarText } from './cedar-format';
 import { translateToCedar } from './cedar-translations';
 import { D9Permission } from './d9-permission';
 import { RolesTable } from './roles-table';
+import { logger } from '../../logger';
 import { readCsvFile } from '../save/utils';
 
 export class CedarManager {
@@ -139,28 +141,16 @@ export class CedarManager {
     policies: PolicyJson[],
   ) {
     await mkdir(`${this.permissionPath}/${roleName}`, { recursive: true });
-    const policiesText = policies.map((policy) => {
-      const result = cedar.policyToText(policy);
-      if (result.type === 'success') {
-        return result.text;
-      } else {
-        console.error('failed to transform policy into text');
-        console.error(policy);
-        throw new Error(result.errors as any);
-      }
-    });
-    const policiesCombined = policiesText.join('\n\n');
-    const formattedPolicies = cedar.formatPolicies({
-      policyText: policiesCombined,
-      lineWidth: 100,
-      indentWidth: 2,
-    });
-    if (formattedPolicies.type === 'failure') {
-      throw new Error(formattedPolicies as any);
+    const policiesText = policies.map(policyToCedarText).join('\n\n') + '\n';
+    // Our own condition layout must still be valid Cedar.
+    const parsed = cedar.policySetTextToParts(policiesText);
+    if (parsed.type === 'failure') {
+      logger.error({ policiesText }, 'generated policies are not valid Cedar');
+      throw new Error(parsed.errors as any);
     }
     await writeFile(
       `${this.permissionPath}/${roleName}/${fileTitle}`,
-      formattedPolicies.formatted_policy,
+      policiesText,
     );
   }
 
@@ -174,22 +164,22 @@ export class CedarManager {
   }
 
   public async readCsvAndWriteAllFiles() {
-    console.log('read permission file');
+    logger.info('read permission file');
     await this.readPermissionFile();
-    console.log(`found ${this.d9Permissions.length} permissions`);
-    console.log('read role file');
+    logger.info(`found ${this.d9Permissions.length} permissions`);
+    logger.info('read role file');
     await this.readRoleFile();
-    console.log('roles imported');
-    console.log('grouping and sorting permissions');
+    logger.info('roles imported');
+    logger.info('grouping and sorting permissions');
     await this.translateAndSortPermission();
-    console.log(
+    logger.info(
       `having ${this.mainPolicies.size} main policies and ${this.fieldsPolicies.size} fields policies`,
     );
-    console.log('writing cedar policies files');
+    logger.info('writing cedar policies files');
     await this.writePolicies('mainPolicies', 'authorize.cedar');
     await this.writePolicies('fieldsPolicies', 'check-fields.cedar');
     await this.writePolicies('validationPolicies', 'validate.cedar');
-    console.log('files wroten');
+    logger.info('files wroten');
   }
 }
 

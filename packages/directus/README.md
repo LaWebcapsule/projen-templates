@@ -2,6 +2,7 @@
 
 Projen template for [d9](https://github.com/LaWebcapsule/d9) projects (fork of Directus v9). Scaffolds a local development setup with Docker Compose (Postgres + Redis), extension management, and GitHub workflows — then produces a Docker image you can deploy to any environment.
 
+The generated stack (Docker Compose, first run) and `d9-plumbing` assume PostgreSQL as the d9 database; extensions, the Dockerfile and the GitHub workflows do not depend on it. Support for other databases may be added in the future.
 
 Companion package: [`@wbce/projen-d9-extension`](../directus-extension) for authoring extensions.
 
@@ -61,9 +62,15 @@ Extensions live under `./plugins/` (configurable via `extensionsFolderName`) and
 | Task | Description |
 | --- | --- |
 | `first-run` | Boot the stack, create admin, start d9 |
-| `run` | Start d9 (`docker compose up directus`) |
+| `run` | Start d9 (`docker compose up d9`) |
 | `build-extensions` | Install and build all extensions |
 | `create-an-admin` | Create the default admin user |
+
+## d9-plumbing CLI
+
+The package ships the `d9-plumbing` CLI to save a d9 instance (schema, data, files, Cedar permissions) into the repository and apply it to other environments. See [docs/D9-plumbing.md](./docs/D9-plumbing.md).
+
+`d9-plumbing` currently supports PostgreSQL only. Support for other databases may be added in the future.
 
 ## What gets generated
 
@@ -77,6 +84,6 @@ Extensions live under `./plugins/` (configurable via `extensionsFolderName`) and
 See [API.md](./API.md) for the full `D9ProjectOptions` reference. Highlights:
 
 - `extensionsFolderName` — folder for extension packages (default: `plugins`)
-- `packageVersions.d9` — version of `@wbce-d9/directus9` (default: `12.0.1`)
-- `packageVersions.atlas` — version of `@ariga/atlas` (default: `0.32.0`)
+- `packageVersions.d9` — version of `@wbce-d9/directus9` (default: `12.0.15`)
+- `packageVersions.atlas` — version of the Atlas Community Edition binary (Apache 2.0) that `d9-plumbing` downloads from release.ariga.io on first use, cached in `node_modules/.cache/d9-plumbing` (default: `1.3.3`)
 - `githubConfig` — `GitHubConfigOptions` or `false` to disable

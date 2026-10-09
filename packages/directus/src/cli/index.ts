@@ -2,26 +2,20 @@
 import { Command } from 'commander';
 import { cedarToD9 } from './commands/cedar/cedar-to-d9';
 import { d9ToCedar } from './commands/cedar/d9-to-cedar';
-import { init } from './commands/init';
-import { applySQLSnapshot } from './commands/save/apply-snapshot';
+import { applySchema, checkUnsavedChanges, firstImport, pullFiles, pushFiles, save } from './commands/save/transfer';
 import { sync } from './commands/sync';
+import { logger } from './logger';
 
 const program = new Command();
 
 program
-  .name('wbce-directus')
-  .description('CLI tools for Directus project management')
+  .name('d9-plumbing')
+  .description('CLI tools for d9 project management')
   .version('0.0.1');
 
 program
-  .command('init')
-  .description('Initialize a new Directus project')
-  .argument('[directory]', 'target directory', '.')
-  .action(init);
-
-program
   .command('sync')
-  .description('Sync Directus schema and extensions')
+  .description('Sync d9 schema and extensions')
   .option('--dry-run', 'show what would be synced without making changes')
   .action(sync);
 
@@ -51,25 +45,53 @@ program
     });
   });
 
-program
-  .command('apply-snapshot')
-  .description('Apply a SQL snapshot to a Directus database')
-  .requiredOption('--host <host>', 'database host')
-  .requiredOption('--user <user>', 'database user')
-  .requiredOption('--password <password>', 'database password')
-  .requiredOption('--database <database>', 'database name')
-  .option('--ssl', 'enable SSL for database connections', false)
-  .action(async (opts: { host: string; user: string; password: string; database: string; ssl: boolean }) => {
-    await applySQLSnapshot({
-      host: opts.host,
-      user: opts.user,
-      pwd: opts.password,
-      database: opts.database,
-      ssl: opts.ssl,
-    });
-  });
+const collect = (value: string, previous: string[] = []) => [...previous, value];
+
+const withDbOptions = (command: Command) => command
+  .option('--host <host>', 'database host (default: DB_HOST)')
+  .option('--user <user>', 'database user (default: DB_USER)')
+  .option('--password <password>', 'database password (default: DB_PASSWORD)')
+  .option('--database <database>', 'database name (default: DB_DATABASE)')
+  .option('--ssl', 'enable SSL for database connections (default: DB_SSL)');
+
+const withStorageOptions = (command: Command) => command
+  .option('--storage-config <key=value>', 'd9 storage config entry, overrides STORAGE_<LOCATION>_*, repeatable (e.g. driver=s3)', collect)
+  .option('--intermediate-storage-config <key=value>', 'intermediate storage config entry, repeatable (e.g. driver=s3)', collect);
+
+const withCheckOptions = (command: Command) => command
+  .option('--last-save <commit>', 'commit of the last save of this environment, used to detect unsaved changes')
+  .option('--no-last-save', 'skip the unsaved changes check')
+  .option('--yes', 'do not ask for confirmation');
+
+withStorageOptions(program.command('push-files'))
+  .description('Sync the files listed in directus_files.csv from the current storage to the intermediate storage')
+  .action(pushFiles);
+
+withStorageOptions(program.command('pull-files'))
+  .description('Sync the files listed in directus_files.csv from the intermediate storage to the current storage')
+  .action(pullFiles);
+
+withCheckOptions(withDbOptions(program.command('check-unsaved')))
+  .description('Fail if the current d9 differs from the --last-save commit')
+  .action(checkUnsavedChanges);
+
+withStorageOptions(withDbOptions(program.command('first-import')))
+  .description('Apply the SQL snapshot of ./sql to an empty d9 database, then sync files from the intermediate storage if one is configured')
+  .option('--no-files', 'skip the file sync with the intermediate storage (default: SKIP_FILE_SYNC)')
+  .action(firstImport);
+
+withStorageOptions(withDbOptions(program.command('save')))
+  .description('Save the SQL snapshot of the current d9, then sync files to the intermediate storage if one is configured')
+  .option('--no-files', 'skip the file sync with the intermediate storage (default: SKIP_FILE_SYNC)')
+  .option('--no-cedar', 'do not generate the Cedar policies from directus_permissions.csv')
+  .action(save);
+
+withCheckOptions(withStorageOptions(withDbOptions(program.command('apply-schema'))))
+  .description('Check for unsaved changes, sync files from the intermediate storage if one is configured, then apply the SQL snapshot to the current d9')
+  .option('--no-files', 'skip the file sync with the intermediate storage (default: SKIP_FILE_SYNC)')
+  .action(applySchema);
 
 void program.parseAsync().catch((err) => {
-  console.error(err);
+  logger.error({ err }, 'command failed');
   process.exit(1);
 });

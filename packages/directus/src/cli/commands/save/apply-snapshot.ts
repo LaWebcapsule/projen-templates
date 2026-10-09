@@ -5,6 +5,8 @@ import * as pg from 'pg';
 import { from as copyFrom } from 'pg-copy-streams';
 import { Cli } from './cli';
 import { readFirstLineOfFile } from './utils';
+import { ensureAtlas } from '../../atlas';
+import { logger } from '../../logger';
 
 const readdir = promisify(fs.readdir);
 const pipeline = promisify(streamPipeline);
@@ -30,7 +32,7 @@ export async function applySQLSnapshot(dbConfig: {
     //2. we populate with the schema
     //3. we calculate the diff
   pgClient = new pg.Client(connectionProps);
-  console.info('creating empty tmp database');
+  logger.info(`Creating the temporary database ${dbConfig.database}_tmp_bis`);
   await pgClient.connect();
   try {
     await pgClient.query(`DROP DATABASE IF EXISTS ${dbConfig.database}_tmp_bis`);
@@ -50,7 +52,7 @@ export async function applySQLSnapshot(dbConfig: {
 
   let sqlMigration = '';
   try {
-    console.info('populating with target schema');
+    logger.info('Loading the target schema into the temporary database');
     //we manually install postgis and some extensions. We should do a dump of sql extensions but we are waiting for atlasgo to support this (time of writing : 19/03 - atlasgo released extensions support but not in the community version)
     let extensionQuery = `
             create extension if not exists postgis;
@@ -71,7 +73,7 @@ export async function applySQLSnapshot(dbConfig: {
       ) //only first occurrence will be replaced
       .replace(/CREATE SCHEMA IF NOT EXISTS/g, 'CREATE SCHEMA')
       .replace(/CREATE SCHEMA/g, 'CREATE SCHEMA IF NOT EXISTS'); //ensure all create schema use "if not exists"
-    //if target database does not contain any directus tables we just need to populate the base schema.
+    //if target database does not contain any d9 tables we just need to populate the base schema.
     const countTablesReq = `
             SELECT COUNT(*) 
             FROM information_schema.tables 
@@ -79,8 +81,8 @@ export async function applySQLSnapshot(dbConfig: {
         `;
     const countTables = await endDbClient.query(countTablesReq);
     if (Number(countTables.rows[0].count) === 0) {
-      //we drop the extension and reapply the schema with directus
-      console.info('Target database is empty ; populating it and exiting.');
+      //we drop the extension and reapply the schema with d9
+      logger.info('Target database has no d9 tables: creating the schema directly');
       //note that finally block will be executed, even if we return
       await endDbClient.query(sqlSchemaWithExtension);
     }
@@ -98,18 +100,17 @@ export async function applySQLSnapshot(dbConfig: {
       next();
     },
   });
-  console.info('calculating migration diff');
+  logger.info('Computing the schema diff with atlas');
   const cli = new Cli();
   await cli.command(
-    'npx',
+    await ensureAtlas(),
     [
-      'atlas',
       'schema',
       'diff',
       '--from',
-      `postgres://${dbConfig.user}:${dbConfig.pwd}@${dbConfig.host}/${dbConfig.database}?sslmode=${dbConfig.ssl ? 'require' : 'disable'}`,
+      `postgres://${encodeURIComponent(dbConfig.user)}:${encodeURIComponent(dbConfig.pwd)}@${dbConfig.host}/${dbConfig.database}?sslmode=${dbConfig.ssl ? 'require' : 'disable'}`,
       '--to',
-      `postgres://${dbConfig.user}:${dbConfig.pwd}@${dbConfig.host}/${dbConfig.database}_tmp_bis?sslmode=${dbConfig.ssl ? 'require' : 'disable'}`,
+      `postgres://${encodeURIComponent(dbConfig.user)}:${encodeURIComponent(dbConfig.pwd)}@${dbConfig.host}/${dbConfig.database}_tmp_bis?sslmode=${dbConfig.ssl ? 'require' : 'disable'}`,
     ],
     {
       env: {
@@ -122,6 +123,13 @@ export async function applySQLSnapshot(dbConfig: {
   if (sqlMigration.includes('no changes to be made')) {
     sqlMigration = '';
   }
+  if (sqlMigration.trim()) {
+    const statements = sqlMigration.split('\n').filter((line) => line.trim().endsWith(';')).length;
+    logger.info(`Schema migration: ${statements} statements`);
+    logger.debug(sqlMigration);
+  } else {
+    logger.info('Schema is up to date');
+  }
   //we apply the diffs in schema and data in one transaction
   const pgTmpClient = new pg.Client(connectionProps);
   connectionProps.database = dbConfig.database;
@@ -129,9 +137,8 @@ export async function applySQLSnapshot(dbConfig: {
   await Promise.all([pgClient.connect(), pgTmpClient.connect()]);
   try {
     await pgClient.query('BEGIN');
-    console.info('apply schema');
+    logger.info('Applying the schema migration');
     await pgClient.query(sqlMigration);
-    console.info('apply data');
     //strategy to apply data :
     //- remove the constraint
     //- upsert the data
@@ -140,14 +147,13 @@ export async function applySQLSnapshot(dbConfig: {
     //always be sure the ci user exists
     await pgClient.query(`
             INSERT INTO public.directus_users (id, first_name, last_name, email)
-            VALUES ('49bcde5d-90aa-4be8-ab10-f9ae1a07546f', 'CI', 'Webcapsule', 'ci@webcapsule.io')
+            VALUES ('49bcde5d-90aa-4be8-ab10-f9ae1a07546f', 'CI', 'D9-plumbing', 'd9@webcapsule.io')
             ON CONFLICT DO NOTHING
         `);
 
     //for constraints see this :
     //https://confluence.atlassian.com/kb/how-to-drop-and-recreate-the-database-constraints-on-postgresql-776812450.html
     //we get all the constraints except the primary keys
-    console.info('remove the constraints on the table');
     const constraints = await pgClient.query(`
             SELECT nspname, relname, conname, pg_get_constraintdef(pg_constraint.oid)
             FROM pg_constraint
@@ -158,6 +164,7 @@ export async function applySQLSnapshot(dbConfig: {
         `);
 
     //remove the constraints
+    logger.info(`Dropping ${constraints.rows.length} constraints`);
     //the query above is both for adding or dropping order. For dropping, we need to reverse the order
     for (let i = 0; i < constraints.rows.length; i++) {
       const constraint = constraints.rows[constraints.rows.length - 1 - i];
@@ -167,9 +174,8 @@ export async function applySQLSnapshot(dbConfig: {
     }
 
     //replace data
-    console.info('replacing with data');
     const csvFiles = await readdir('./sql/data');
-    console.log(csvFiles);
+    logger.info(`Importing ${csvFiles.filter((file) => file.endsWith('.csv')).length} CSV files from ./sql/data`);
     for (const file of csvFiles) {
       if (file.endsWith('.csv')) {
         const nonParsedTableName = file.slice(0, -4);
@@ -177,15 +183,15 @@ export async function applySQLSnapshot(dbConfig: {
         let copyTableName = originalTableName;
         let existingRowsCanCauseConflict = false;
         if (['directus_files', 'directus_folders'].includes(nonParsedTableName)) {
-          //delete all files and folders that are inside the "common" folder
-          const commonFolderName = 'common';
+          //delete all files and folders that are inside the "d9-plumbing-common" folder
+          const commonFolderName = 'd9-plumbing-common';
           const folderKey: Record<string, string> = {
             directus_files: 'folder',
             directus_folders: 'parent',
           };
           await pgClient.query(` 
                         WITH RECURSIVE folder_tree AS (
-                              -- Anchor: the "common" folder
+                              -- Anchor: the "d9-plumbing-common" folder
                                   SELECT id
                                   FROM directus_folders
                                   WHERE name = '${commonFolderName}'
@@ -224,9 +230,9 @@ export async function applySQLSnapshot(dbConfig: {
         );
         const sourceStream = fs.createReadStream(`./sql/data/${file}`);
         ingestStream.on('close', () => {
-          console.info(`ingested ${file}`);
+          logger.debug(`ingested ${file}`);
         });
-        console.info(`ingesting ${file}`);
+        logger.debug(`ingesting ${file}`);
 
         await pipeline(sourceStream, ingestStream);
         if (existingRowsCanCauseConflict) {
@@ -243,7 +249,7 @@ export async function applySQLSnapshot(dbConfig: {
     }
 
     //reestablish the constraints
-    console.info('reestablish the constraints');
+    logger.info(`Restoring ${constraints.rows.length} constraints`);
     for (const constraint of constraints.rows) {
       await pgClient.query(`
                 ALTER TABLE ${constraint.nspname}."${constraint.relname}" ADD CONSTRAINT "${constraint.conname}"  ${constraint.pg_get_constraintdef}
@@ -254,7 +260,6 @@ export async function applySQLSnapshot(dbConfig: {
     //when adding with COPY, all sequences are not up to date
     //we need to find all sequences and then to find the max on the managed column and then to update the sequence
 
-    console.info('find sequences');
     const sequences = await pgClient.query(`
             SELECT n.nspname as "schema",
                 c.relname as "name",
@@ -270,8 +275,9 @@ export async function applySQLSnapshot(dbConfig: {
             ORDER BY 1,2;
         `);
 
+    logger.info(`Resetting ${sequences.rows.length} sequences`);
     for (const seq of sequences.rows) {
-      console.info(`find column managed by ${seq.name}`);
+      logger.debug(`find column managed by ${seq.name}`);
       const relation = await pgClient.query(`
                 SELECT d.refobjid::regclass as "table", a.attname as "field"
                 FROM   pg_depend    d
@@ -281,7 +287,7 @@ export async function applySQLSnapshot(dbConfig: {
                 AND    d.refobjsubid > 0
                 AND    d.classid = 'pg_class'::regclass;
             `);
-      console.info(
+      logger.debug(
         `find max of ${relation.rows[0].table} ${relation.rows[0].field}`,
       );
       const max = await pgClient.query(`
@@ -290,7 +296,7 @@ export async function applySQLSnapshot(dbConfig: {
             `);
 
       if (max.rows[0].max !== null) {
-        console.info('alter the sequence');
+        logger.debug(`restart ${seq.name} at ${max.rows[0].max + 1}`);
         await pgClient.query(
           `alter sequence ${seq.schema}."${seq.name}" restart with ${max.rows[0].max + 1};`,
         );
@@ -298,17 +304,19 @@ export async function applySQLSnapshot(dbConfig: {
     }
 
     await pgClient.query('COMMIT');
-    console.log('success');
+    logger.info('Transaction committed');
 
   } catch (e) {
+    logger.error('Error while applying the snapshot, rolling back the transaction');
     await pgClient.query('ROLLBACK');
-    console.log('error');
 
     throw e;
   } finally {
     await pgClient.end();
     await pgTmpClient.end();
-    console.log('end of the query');
   }
+  //schema (collections, fields, relations) is always cached (CACHE_SCHEMA), permissions only when CACHE_ENABLED: a purge is enough.
+  //flows, operations and webhooks are loaded in memory at startup and only reloaded by their own services: a restart is needed.
+  logger.warn('Purge the d9 cache (POST /utils/cache/clear) to take the new schema (and permissions, if CACHE_ENABLED) into account. If flows, operations or webhooks changed, also restart d9.');
 }
 

@@ -8,6 +8,7 @@ import {
 } from './cedar-to-d9-translations';
 import { D9Permission } from './d9-permission';
 import { RolesTable } from './roles-table';
+import { logger } from '../../logger';
 import { readCsvFile, readFirstLineOfFile, writeCsvFile } from '../save/utils';
 
 /** Map keyed by a tuple of strings (Map indexes arrays by identity, hence the join). */
@@ -27,6 +28,10 @@ class TupleKeyMap<Value> {
 
   public set(parts: string[], value: Value): void {
     this.entries.set(this.keyOf(parts), value);
+  }
+
+  public delete(parts: string[]): void {
+    this.entries.delete(this.keyOf(parts));
   }
 
   /** Return the value for `parts`, creating and storing it via the factory if absent. */
@@ -105,7 +110,7 @@ export class CedarToD9Manager {
     const text = (await readFile(filePath)).toString();
     const parts = cedar.policySetTextToParts(text);
     if (parts.type === 'failure') {
-      console.error(`failed to split policy set ${filePath}`);
+      logger.error(`failed to split policy set ${filePath}`);
       throw new Error(parts.errors as any);
     }
     const tuples: Array<{
@@ -116,8 +121,7 @@ export class CedarToD9Manager {
     for (const policyText of parts.policies) {
       const parsed = cedar.policyToJson(policyText);
       if (parsed.type === 'failure') {
-        console.error(`failed to parse policy in ${filePath}`);
-        console.error(policyText);
+        logger.error({ policyText }, `failed to parse policy in ${filePath}`);
         throw new Error(parsed.errors as any);
       }
       tuples.push(...expandPolicy(parsed.json));
@@ -173,6 +177,8 @@ export class CedarToD9Manager {
     let merged = 0;
     let updated = 0;
     let added = 0;
+    let removed = 0;
+    const seen = new TupleKeyMap<true>();
 
     for (const perm of this.reconstructed) {
       const roleId = this.roles.getIdFromName(perm.roleName);
@@ -185,6 +191,7 @@ export class CedarToD9Manager {
         );
       }
 
+      seen.set([roleId!, perm.collection, perm.action], true);
       const row = this.baseRowsByTuple.get([roleId!, perm.collection, perm.action]);
       if (!row) {
         // New tuple added in the Cedar files; the role exists, so create a row.
@@ -199,7 +206,7 @@ export class CedarToD9Manager {
           presets: '',
         };
         this.baseRowsByTuple.set([roleId!, perm.collection, perm.action], newRow);
-        console.log(
+        logger.info(
           `added ${perm.roleName}/${perm.collection}/${perm.action} (id ${newRow.id})`,
         );
         added++;
@@ -217,8 +224,19 @@ export class CedarToD9Manager {
       merged++;
     }
 
-    console.log(
-      `merged ${merged} permissions, ${updated} row(s) updated, ${added} new row(s) added`,
+    // Every row is written to authorize.cedar by d9-to-cedar, so a row no longer
+    // produced by the Cedar files has been removed from them.
+    for (const row of this.baseRowsByTuple.values()) {
+      const tuple = [row.role, row.collection, row.action];
+      if (seen.get(tuple)) continue;
+      this.baseRowsByTuple.delete(tuple);
+      const roleName = row.role ? this.roles.getNameFromId(row.role) : 'Public';
+      logger.info(`removed ${roleName}/${row.collection}/${row.action} (id ${row.id})`);
+      removed++;
+    }
+
+    logger.info(
+      `merged ${merged} permissions, ${updated} row(s) updated, ${added} new row(s) added, ${removed} row(s) removed`,
     );
   }
 
@@ -228,26 +246,27 @@ export class CedarToD9Manager {
       this.header,
       this.baseRowsByTuple.values(),
     );
-    console.log(`wrote ${this.outputPath}`);
+    logger.info(`wrote ${this.outputPath}`);
   }
 
   public async readCedarAndWriteCsv() {
-    console.log('reading base permission file');
+    logger.info('reading base permission file');
     await this.readBasePermissionFile();
-    console.log(`found ${this.baseRowsByTuple.values().length} base permissions`);
-    console.log('reading role file');
+    logger.info(`found ${this.baseRowsByTuple.values().length} base permissions`);
+    logger.info('reading role file');
     await this.readRoleFile();
-    console.log('parsing cedar policy folders');
+    logger.info('parsing cedar policy folders');
     await this.parseAllFolders();
-    console.log(
+    logger.info(
       `reconstructed ${this.reconstructed.length} permissions from cedar`,
     );
-    console.log('merging into base rows');
+    logger.info('merging into base rows');
     this.mergeIntoRows();
-    console.log('writing csv');
+    logger.info('writing csv');
     await this.writeOutput();
-    console.log('done');
+    logger.info('done');
   }
+
 }
 
 /** CLI action: merge Cedar policies back into directus_permissions.csv. */

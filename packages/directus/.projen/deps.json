@@ -25,6 +25,10 @@
       "type": "build"
     },
     {
+      "name": "@wbce-d9/storage",
+      "type": "build"
+    },
+    {
       "name": "@wbce/projen-d9-extension",
       "version": "workspace:*",
       "type": "build"
@@ -89,7 +93,7 @@
     },
     {
       "name": "@cedar-policy/cedar-wasm",
-      "version": "^4.9.0",
+      "version": "^4.13.0",
       "type": "bundled"
     },
     {
@@ -110,6 +114,16 @@
     },
     {
       "name": "pg-copy-streams",
+      "type": "bundled"
+    },
+    {
+      "name": "pino-pretty",
+      "version": "^13.2.0",
+      "type": "bundled"
+    },
+    {
+      "name": "pino",
+      "version": "^10.4.0",
       "type": "bundled"
     },
     {

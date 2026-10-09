@@ -1,18 +1,53 @@
 import { AddExtensionOptions, D9ExtensionType, ExtensionFolder } from '@wbce/projen-d9-extension';
 import { GitHubConfig, GitHubConfigOptions, Dockerfile } from '@wbce/projen-shared';
-import { AiAgent, AiInstructions, DockerCompose, DockerComposeService, javascript, SampleFile, Task, typescript } from 'projen';
+import { AiAgent, AiInstructions, DockerCompose, DockerComposeService, javascript, JsonFile, SampleFile, Task, typescript } from 'projen';
 import { JobPermission } from 'projen/lib/github/workflows-model';
 import { UpgradeDependenciesSchedule } from 'projen/lib/javascript';
 
 export interface PackageVersions {
   readonly d9?: string;
   /**
-   * The version of @ariga/atlas to use.
-   * @default "0.32.0"
+   * The version of the Atlas binary downloaded by d9-plumbing.
+   * @default "1.3.3"
    */
   readonly atlas?: string;
 }
 
+/**
+ * Storage shared between environments, used by `d9-plumbing save` and `d9-plumbing apply-schema` to transfer files.
+ */
+export interface IntermediateStorageOptions {
+  /**
+   * The storage driver: s3, gcs, azure, local or cloudinary.
+   */
+  readonly driver: string;
+  /**
+   * Non-secret driver options (root, bucket, region, endpoint...).
+   */
+  readonly options?: { [key: string]: string };
+  /**
+   * Secret driver options, mapping each option name to the name of the environment variable holding its value.
+   * Only the variable name is written to `d9-plumbing.json`, never the value: it is read from the environment (or `.env`) at runtime.
+   * @example { key: 'S3_ACCESS_KEY_ID_ENV_VAR', secret: 'S3_SECRET_ACCESS_KEY_ENV_VAR' } // the `secret` option is read from $S3_SECRET_ACCESS_KEY_ENV_VAR
+   */
+  readonly secretEnv?: { [key: string]: string };
+}
+
+/**
+ * Configuration of the d9-plumbing CLI, written to `d9-plumbing.json`.
+ */
+export interface PlumbingOptions {
+  /**
+   * Storage shared between environments.
+   * @default - none, the intermediate storage is configured with INTERMEDIATE_STORAGE_* variables or flags
+   */
+  readonly intermediateStorage?: IntermediateStorageOptions;
+  /**
+   * Default log level of the CLI, overridden by the LOG_LEVEL environment variable.
+   * @default "debug"
+   */
+  readonly logLevel?: string;
+}
 
 export interface D9ProjectOptions extends typescript.TypeScriptProjectOptions {
   /**
@@ -35,17 +70,17 @@ export class D9Project extends javascript.NodeProject {
   public readonly githubConfig?: GitHubConfig;
   public extensions!: ExtensionFolder;
   public extensionFolder!: string;
-  public applySchemaTask!: Task;
   public buildExtensionTask!: Task;
   public dockerfile!: Dockerfile;
   public dockerComposeFile!: DockerCompose;
-  public directusService!: DockerComposeService;
+  public d9Service!: DockerComposeService;
   public databaseService!: DockerComposeService;
   public cacheService!: DockerComposeService;
+  private plumbingConfig!: JsonFile;
 
   constructor(protected options: D9ProjectOptions) {
-    const d9Version = options.packageVersions?.d9 || '12.0.1';
-    const atlasVersion = options.packageVersions?.atlas || '0.32.0';
+    const d9Version = options.packageVersions?.d9 || '12.0.15';
+    const atlasVersion = options.packageVersions?.atlas || '1.3.3';
     super({
       ...options,
       packageManager: options.packageManager ?? javascript.NodePackageManager.NPM,
@@ -87,8 +122,8 @@ export class D9Project extends javascript.NodeProject {
           '',
           '| Task | Description |',
           '| --- | --- |',
-          '| `npx projen run` | Start d9 (`docker compose up directus`) |',
-          '| `npx projen build-extensions` | Install and build all extensions |',
+          '| `npx projen run` | Start d9 (`docker compose up d9`) |',
+          '| `npx projen build-extensions [name]` | Install and build all extensions (or only `name`) |',
           '| `npx projen create-an-admin` | Create the default admin user |',
           '',
           'See `.projen/tasks.json` for the full list.',
@@ -113,7 +148,6 @@ export class D9Project extends javascript.NodeProject {
       devDeps: [
         '@wbce/projen-d9',
         '@wbce/projen-d9-extension',
-        `@ariga/atlas@${atlasVersion}`,
         ...(options.devDeps ?? []),
       ],
       deps: [`@wbce-d9/directus9@${d9Version}`],
@@ -122,12 +156,16 @@ export class D9Project extends javascript.NodeProject {
     // No tsconfig means no tsc --build in compile
     this.compileTask.reset();
 
+    this.plumbingConfig = new JsonFile(this, 'd9-plumbing.json', {
+      obj: { atlasVersion },
+    });
+
     this.addExtensionFolder();
     this.addDockerCompose();
-    this.addApplySchemaTask();
     this.addFirstRunTask();
     this.addBuildExtensionTask();
     this.addRunTask();
+    this.addD9PlumbingTask();
     this.addDockerfile();
     this.addCreateAdminUserTask();
 
@@ -144,7 +182,7 @@ export class D9Project extends javascript.NodeProject {
     this.gitignore.addPatterns('.env.local');
 
     // Create an empty .env.local if it doesn't exist, so Docker doesn't mount a directory
-    new SampleFile(this, '.env.local', { contents: '# Local environment overrides for Directus' });
+    new SampleFile(this, '.env.local', { contents: '# Local environment overrides for d9' });
   }
 
   private addExtensionFolder() {
@@ -159,15 +197,27 @@ export class D9Project extends javascript.NodeProject {
     return this.extensions.add(name, extensionTypes, options);
   }
 
+  public configurePlumbing(options: PlumbingOptions) {
+    for (const [key, value] of Object.entries(options)) {
+      this.plumbingConfig.addOverride(key, value);
+    }
+  }
+
   private addFirstRunTask() {
     const task = this.addTask('first-run', {
-      description: 'Initialize and start a fresh Directus instance',
+      description: 'Initialize and start a fresh d9 instance',
     });
     const adminEmail = 'admin@example.com';
-    const userNotExistsCondition = `docker compose exec database psql -U directus -d directus -tAc "SELECT count(*) FROM directus_users WHERE email = '${adminEmail}'" | grep -q '^0$'`;
+    const userNotExistsCondition = `docker compose exec database psql -U d9 -d d9 -tAc "SELECT count(*) FROM directus_users WHERE email = '${adminEmail}'" | grep -q '^0$'`;
+    const emptyDatabaseCondition = 'docker compose exec database psql -U d9 -d d9 -tAc "SELECT count(*) FROM information_schema.tables WHERE table_name LIKE \'directus_%\'" | grep -q \'^0$\'';
     task.exec('docker compose up -d --wait database cache');
-    task.spawn(this.applySchemaTask);
-    task.exec(`ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc "SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1") && docker compose run --rm directus npx directus users create --email ${adminEmail} --password totototo --role "$ADMIN_ROLE_ID"`, {
+    task.exec('npx d9-plumbing first-import --host localhost --user d9 --password d9 --database d9', {
+      condition: 'test -d ./sql',
+    });
+    task.exec('docker compose run --rm d9 npx directus bootstrap', {
+      condition: `test ! -d ./sql && ${emptyDatabaseCondition}`,
+    });
+    task.exec(`ADMIN_ROLE_ID=$(docker compose exec database psql -U d9 -d d9 -tAc "SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1") && docker compose run --rm d9 npx directus users create --email ${adminEmail} --password totototo --role "$ADMIN_ROLE_ID"`, {
       condition: userNotExistsCondition,
     });
     task.say(`User ${adminEmail} has been created with password totototo`, {
@@ -176,7 +226,7 @@ export class D9Project extends javascript.NodeProject {
     task.say(`User ${adminEmail} already exists, skipping creation`, {
       condition: `! ${userNotExistsCondition}`,
     });
-    task.exec('docker compose up directus');
+    task.exec('docker compose up d9');
   }
 
   private addCreateAdminUserTask() {
@@ -184,9 +234,9 @@ export class D9Project extends javascript.NodeProject {
       description: 'Create an admin user',
     });
     const adminEmail = 'admin@example.com';
-    const userNotExistsCondition = `docker compose exec database psql -U directus -d directus -tAc "SELECT count(*) FROM directus_users WHERE email = '${adminEmail}'" | grep -q '^0$'`;
+    const userNotExistsCondition = `docker compose exec database psql -U d9 -d d9 -tAc "SELECT count(*) FROM directus_users WHERE email = '${adminEmail}'" | grep -q '^0$'`;
     task.exec('docker compose up -d --wait database cache');
-    task.exec(`ADMIN_ROLE_ID=$(docker compose exec database psql -U directus -d directus -tAc "SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1") && docker compose run --rm directus npx directus users create --email ${adminEmail} --password totototo --role "$ADMIN_ROLE_ID"`, {
+    task.exec(`ADMIN_ROLE_ID=$(docker compose exec database psql -U d9 -d d9 -tAc "SELECT id FROM directus_roles WHERE admin_access = true LIMIT 1") && docker compose run --rm d9 npx directus users create --email ${adminEmail} --password totototo --role "$ADMIN_ROLE_ID"`, {
       condition: userNotExistsCondition,
     });
     task.say(`User ${adminEmail} has been created with password totototo`, {
@@ -199,35 +249,29 @@ export class D9Project extends javascript.NodeProject {
 
   private addRunTask() {
     const task = this.addTask('run', {
-      description: 'start the Directus instance',
+      description: 'start the d9 instance',
     });
-    task.exec('docker compose up directus');
+    task.exec('docker compose up d9');
   }
 
-  private addApplySchemaTask() {
-    this.applySchemaTask = this.addTask('apply-schema', {
-      description: 'Apply SQL snapshot to the local Directus database',
+  private addD9PlumbingTask() {
+    const task = this.addTask('d9-plumbing', {
+      description: 'Run the d9-plumbing CLI (save, apply-schema, first-import...). Use --help to list all subcommands.',
     });
-    // Merge Cedar policies back into directus_permissions.csv BEFORE the
-    // snapshot is loaded, so the COPY in apply-snapshot ingests the rewritten
-    // CSV. Runs only when a ./permissions folder is present.
-    this.applySchemaTask.exec('npx wbce-d9 cedar-to-d9 --permissions ./permissions --sql ./sql/data', {
-      condition: 'test -d ./permissions && test -f ./sql/data/directus_permissions.csv',
-    });
-    this.applySchemaTask.exec('npx wbce-directus apply-snapshot --host localhost --user directus --password directus --database directus', {
-      condition: 'test -d ./sql',
-    });
-    this.applySchemaTask.exec('docker compose run --rm directus npx directus bootstrap', {
-      condition: 'test ! -d ./sql',
-    });
+    task.say('Tip: you can also call it directly with `npx d9-plumbing <command>`');
+    task.exec('npx d9-plumbing "$@"', { receiveArgs: true });
   }
 
   private addBuildExtensionTask() {
     this.buildExtensionTask = this.addTask('build-extensions', {
-      description: 'Build the directus extensions',
+      description: 'Build the d9 extensions',
     });
     this.buildExtensionTask.exec(`cd ${this.extensionFolder} && pnpm install`);
-    this.buildExtensionTask.exec(`cd ${this.extensionFolder} && pnpm run --recursive build`);
+    // projen replaces "$@" with the quoted task args; `set --` turns them back into $1
+    this.buildExtensionTask.exec(
+      `cd ${this.extensionFolder} && set -- "$@" && if [ -n "$1" ]; then pnpm --recursive --filter "$1..." run build; else pnpm run --recursive build; fi`,
+      { receiveArgs: true },
+    );
   }
 
 
@@ -243,9 +287,9 @@ export class D9Project extends javascript.NodeProject {
         DockerCompose.portMapping(5432, 5432),
       ],
       environment: {
-        POSTGRES_USER: 'directus',
-        POSTGRES_PASSWORD: 'directus',
-        POSTGRES_DB: 'directus',
+        POSTGRES_USER: 'd9',
+        POSTGRES_PASSWORD: 'd9',
+        POSTGRES_DB: 'd9',
       },
     });
 
@@ -259,7 +303,7 @@ export class D9Project extends javascript.NodeProject {
       ],
     });
 
-    this.directusService = dc.addService('directus', {
+    this.d9Service = dc.addService('d9', {
       imageBuild: { context: '.' },
       ports: [
         DockerCompose.portMapping(8055, 8055),
@@ -276,11 +320,14 @@ export class D9Project extends javascript.NodeProject {
         DB_CLIENT: 'pg',
         DB_HOST: 'database',
         DB_PORT: '5432',
-        DB_DATABASE: 'directus',
-        DB_USER: 'directus',
-        DB_PASSWORD: 'directus',
+        DB_DATABASE: 'd9',
+        DB_USER: 'd9',
+        DB_PASSWORD: 'd9',
         CACHE_ENABLED: 'false',
+        CACHE_STORE: 'redis',
         CACHE_REDIS_HOST: 'cache',
+        MESSENGER_STORE: 'redis',
+        MESSENGER_REDIS: 'redis://cache:6379',
         CACHE_STATUS_HEADER: 'cache-hit',
         CORS_ENABLED: 'true',
         CORS_ORIGIN: 'true',
@@ -294,11 +341,11 @@ export class D9Project extends javascript.NodeProject {
       command: ['sh', '-c', 'npx directus start'],
     });
 
-    this.directusService.addVolume(DockerCompose.bindVolume('./.env.local', '/app/.env.local'));
+    this.d9Service.addVolume(DockerCompose.bindVolume('./.env.local', '/app/.env.local'));
 
     // Add healthcheck for database (not natively supported by projen DockerCompose)
     dc.file.addOverride('services.database.healthcheck', {
-      test: ['CMD', 'pg_isready', '--host=localhost', '--username=directus'],
+      test: ['CMD', 'pg_isready', '--host=localhost', '--username=d9'],
       interval: '10s',
       timeout: '5s',
       retries: 5,
@@ -317,7 +364,7 @@ export class D9Project extends javascript.NodeProject {
     });
 
     // Override depends_on to use condition syntax
-    dc.file.addOverride('services.directus.depends_on', {
+    dc.file.addOverride('services.d9.depends_on', {
       cache: { condition: 'service_healthy' },
       database: { condition: 'service_healthy' },
     });
@@ -367,7 +414,7 @@ export class D9Project extends javascript.NodeProject {
       .copy('.', '.')
       .step('build-extension', 'build extensions')
       .run('npx projen build-extensions')
-      .step('start', 'Start Directus server')
+      .step('start', 'Start d9 server')
       .cmdExec(['npx', 'directus', 'start']);
     return this.dockerfile;
   }

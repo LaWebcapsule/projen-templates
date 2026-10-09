@@ -60,6 +60,7 @@ new D9Project(options: D9ProjectOptions)
 | <code><a href="#@wbce/projen-d9.D9Project.renderWorkflowSetup">renderWorkflowSetup</a></code> | Returns the set of workflow steps which should be executed to bootstrap a workflow. |
 | <code><a href="#@wbce/projen-d9.D9Project.setScript">setScript</a></code> | Replaces the contents of an npm package.json script. |
 | <code><a href="#@wbce/projen-d9.D9Project.addExtension">addExtension</a></code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.configurePlumbing">configurePlumbing</a></code> | *No description.* |
 
 ---
 
@@ -625,6 +626,18 @@ public addExtension(name: string, extensionTypes: D9ExtensionType[], options?: A
 
 ---
 
+##### `configurePlumbing` <a name="configurePlumbing" id="@wbce/projen-d9.D9Project.configurePlumbing"></a>
+
+```typescript
+public configurePlumbing(options: PlumbingOptions): void
+```
+
+###### `options`<sup>Required</sup> <a name="options" id="@wbce/projen-d9.D9Project.configurePlumbing.parameter.options"></a>
+
+- *Type:* <a href="#@wbce/projen-d9.PlumbingOptions">PlumbingOptions</a>
+
+---
+
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
 | **Name** | **Description** |
@@ -759,11 +772,10 @@ When given a project, this it the project itself.
 | <code><a href="#@wbce/projen-d9.D9Project.property.release">release</a></code> | <code>projen.release.Release</code> | Release management. |
 | <code><a href="#@wbce/projen-d9.D9Project.property.upgradeWorkflow">upgradeWorkflow</a></code> | <code>projen.javascript.UpgradeDependencies</code> | The upgrade workflow. |
 | <code><a href="#@wbce/projen-d9.D9Project.property.githubConfig">githubConfig</a></code> | <code>@wbce/projen-shared.GitHubConfig</code> | *No description.* |
-| <code><a href="#@wbce/projen-d9.D9Project.property.applySchemaTask">applySchemaTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.D9Project.property.buildExtensionTask">buildExtensionTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.D9Project.property.cacheService">cacheService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.D9Project.property.d9Service">d9Service</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.D9Project.property.databaseService">databaseService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
-| <code><a href="#@wbce/projen-d9.D9Project.property.directusService">directusService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.D9Project.property.dockerComposeFile">dockerComposeFile</a></code> | <code>projen.DockerCompose</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.D9Project.property.dockerfile">dockerfile</a></code> | <code>@wbce/projen-shared.Dockerfile</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.D9Project.property.extensionFolder">extensionFolder</a></code> | <code>string</code> | *No description.* |
@@ -1431,16 +1443,6 @@ public readonly githubConfig: GitHubConfig;
 
 ---
 
-##### `applySchemaTask`<sup>Required</sup> <a name="applySchemaTask" id="@wbce/projen-d9.D9Project.property.applySchemaTask"></a>
-
-```typescript
-public readonly applySchemaTask: Task;
-```
-
-- *Type:* projen.Task
-
----
-
 ##### `buildExtensionTask`<sup>Required</sup> <a name="buildExtensionTask" id="@wbce/projen-d9.D9Project.property.buildExtensionTask"></a>
 
 ```typescript
@@ -1461,20 +1463,20 @@ public readonly cacheService: DockerComposeService;
 
 ---
 
-##### `databaseService`<sup>Required</sup> <a name="databaseService" id="@wbce/projen-d9.D9Project.property.databaseService"></a>
+##### `d9Service`<sup>Required</sup> <a name="d9Service" id="@wbce/projen-d9.D9Project.property.d9Service"></a>
 
 ```typescript
-public readonly databaseService: DockerComposeService;
+public readonly d9Service: DockerComposeService;
 ```
 
 - *Type:* projen.DockerComposeService
 
 ---
 
-##### `directusService`<sup>Required</sup> <a name="directusService" id="@wbce/projen-d9.D9Project.property.directusService"></a>
+##### `databaseService`<sup>Required</sup> <a name="databaseService" id="@wbce/projen-d9.D9Project.property.databaseService"></a>
 
 ```typescript
-public readonly directusService: DockerComposeService;
+public readonly databaseService: DockerComposeService;
 ```
 
 - *Type:* projen.DockerComposeService
@@ -1602,6 +1604,7 @@ new DirectusProject(options: D9ProjectOptions)
 | <code><a href="#@wbce/projen-d9.DirectusProject.renderWorkflowSetup">renderWorkflowSetup</a></code> | Returns the set of workflow steps which should be executed to bootstrap a workflow. |
 | <code><a href="#@wbce/projen-d9.DirectusProject.setScript">setScript</a></code> | Replaces the contents of an npm package.json script. |
 | <code><a href="#@wbce/projen-d9.DirectusProject.addExtension">addExtension</a></code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.configurePlumbing">configurePlumbing</a></code> | *No description.* |
 
 ---
 
@@ -2167,6 +2170,18 @@ public addExtension(name: string, extensionTypes: D9ExtensionType[], options?: A
 
 ---
 
+##### ~~`configurePlumbing`~~ <a name="configurePlumbing" id="@wbce/projen-d9.DirectusProject.configurePlumbing"></a>
+
+```typescript
+public configurePlumbing(options: PlumbingOptions): void
+```
+
+###### `options`<sup>Required</sup> <a name="options" id="@wbce/projen-d9.DirectusProject.configurePlumbing.parameter.options"></a>
+
+- *Type:* <a href="#@wbce/projen-d9.PlumbingOptions">PlumbingOptions</a>
+
+---
+
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
 | **Name** | **Description** |
@@ -2301,11 +2316,10 @@ When given a project, this it the project itself.
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.release">release</a></code> | <code>projen.release.Release</code> | Release management. |
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.upgradeWorkflow">upgradeWorkflow</a></code> | <code>projen.javascript.UpgradeDependencies</code> | The upgrade workflow. |
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.githubConfig">githubConfig</a></code> | <code>@wbce/projen-shared.GitHubConfig</code> | *No description.* |
-| <code><a href="#@wbce/projen-d9.DirectusProject.property.applySchemaTask">applySchemaTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.buildExtensionTask">buildExtensionTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.cacheService">cacheService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
+| <code><a href="#@wbce/projen-d9.DirectusProject.property.d9Service">d9Service</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.databaseService">databaseService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
-| <code><a href="#@wbce/projen-d9.DirectusProject.property.directusService">directusService</a></code> | <code>projen.DockerComposeService</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.dockerComposeFile">dockerComposeFile</a></code> | <code>projen.DockerCompose</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.dockerfile">dockerfile</a></code> | <code>@wbce/projen-shared.Dockerfile</code> | *No description.* |
 | <code><a href="#@wbce/projen-d9.DirectusProject.property.extensionFolder">extensionFolder</a></code> | <code>string</code> | *No description.* |
@@ -3071,18 +3085,6 @@ public readonly githubConfig: GitHubConfig;
 
 ---
 
-##### ~~`applySchemaTask`~~<sup>Required</sup> <a name="applySchemaTask" id="@wbce/projen-d9.DirectusProject.property.applySchemaTask"></a>
-
-- *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
-
-```typescript
-public readonly applySchemaTask: Task;
-```
-
-- *Type:* projen.Task
-
----
-
 ##### ~~`buildExtensionTask`~~<sup>Required</sup> <a name="buildExtensionTask" id="@wbce/projen-d9.DirectusProject.property.buildExtensionTask"></a>
 
 - *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
@@ -3107,24 +3109,24 @@ public readonly cacheService: DockerComposeService;
 
 ---
 
-##### ~~`databaseService`~~<sup>Required</sup> <a name="databaseService" id="@wbce/projen-d9.DirectusProject.property.databaseService"></a>
+##### ~~`d9Service`~~<sup>Required</sup> <a name="d9Service" id="@wbce/projen-d9.DirectusProject.property.d9Service"></a>
 
 - *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
-public readonly databaseService: DockerComposeService;
+public readonly d9Service: DockerComposeService;
 ```
 
 - *Type:* projen.DockerComposeService
 
 ---
 
-##### ~~`directusService`~~<sup>Required</sup> <a name="directusService" id="@wbce/projen-d9.DirectusProject.property.directusService"></a>
+##### ~~`databaseService`~~<sup>Required</sup> <a name="databaseService" id="@wbce/projen-d9.DirectusProject.property.databaseService"></a>
 
 - *Deprecated:* Use {@link D9Project } instead. The package was renamed to `@wbce/projen-d9` to reflect that it targets the d9 fork, not upstream Directus.
 
 ```typescript
-public readonly directusService: DockerComposeService;
+public readonly databaseService: DockerComposeService;
 ```
 
 - *Type:* projen.DockerComposeService
@@ -8426,6 +8428,73 @@ public readonly packageVersions: PackageVersions;
 
 ---
 
+### IntermediateStorageOptions <a name="IntermediateStorageOptions" id="@wbce/projen-d9.IntermediateStorageOptions"></a>
+
+Storage shared between environments, used by `d9-plumbing save` and `d9-plumbing apply-schema` to transfer files.
+
+#### Initializer <a name="Initializer" id="@wbce/projen-d9.IntermediateStorageOptions.Initializer"></a>
+
+```typescript
+import { IntermediateStorageOptions } from '@wbce/projen-d9'
+
+const intermediateStorageOptions: IntermediateStorageOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@wbce/projen-d9.IntermediateStorageOptions.property.driver">driver</a></code> | <code>string</code> | The storage driver: s3, gcs, azure, local or cloudinary. |
+| <code><a href="#@wbce/projen-d9.IntermediateStorageOptions.property.options">options</a></code> | <code>{[ key: string ]: string}</code> | Non-secret driver options (root, bucket, region, endpoint...). |
+| <code><a href="#@wbce/projen-d9.IntermediateStorageOptions.property.secretEnv">secretEnv</a></code> | <code>{[ key: string ]: string}</code> | Secret driver options, mapping each option name to the name of the environment variable holding its value. |
+
+---
+
+##### `driver`<sup>Required</sup> <a name="driver" id="@wbce/projen-d9.IntermediateStorageOptions.property.driver"></a>
+
+```typescript
+public readonly driver: string;
+```
+
+- *Type:* string
+
+The storage driver: s3, gcs, azure, local or cloudinary.
+
+---
+
+##### `options`<sup>Optional</sup> <a name="options" id="@wbce/projen-d9.IntermediateStorageOptions.property.options"></a>
+
+```typescript
+public readonly options: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Non-secret driver options (root, bucket, region, endpoint...).
+
+---
+
+##### `secretEnv`<sup>Optional</sup> <a name="secretEnv" id="@wbce/projen-d9.IntermediateStorageOptions.property.secretEnv"></a>
+
+```typescript
+public readonly secretEnv: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Secret driver options, mapping each option name to the name of the environment variable holding its value.
+
+Only the variable name is written to `d9-plumbing.json`, never the value: it is read from the environment (or `.env`) at runtime.
+
+---
+
+*Example*
+
+```typescript
+{ key: 'S3_ACCESS_KEY_ID_ENV_VAR', secret: 'S3_SECRET_ACCESS_KEY_ENV_VAR' } // the `secret` option is read from $S3_SECRET_ACCESS_KEY_ENV_VAR
+```
+
+
 ### PackageVersions <a name="PackageVersions" id="@wbce/projen-d9.PackageVersions"></a>
 
 #### Initializer <a name="Initializer" id="@wbce/projen-d9.PackageVersions.Initializer"></a>
@@ -8440,7 +8509,7 @@ const packageVersions: PackageVersions = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@wbce/projen-d9.PackageVersions.property.atlas">atlas</a></code> | <code>string</code> | The version of. |
+| <code><a href="#@wbce/projen-d9.PackageVersions.property.atlas">atlas</a></code> | <code>string</code> | The version of the Atlas binary downloaded by d9-plumbing. |
 | <code><a href="#@wbce/projen-d9.PackageVersions.property.d9">d9</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -8452,9 +8521,9 @@ public readonly atlas: string;
 ```
 
 - *Type:* string
-- *Default:* "0.32.0"
+- *Default:* "1.3.3"
 
-The version of.
+The version of the Atlas binary downloaded by d9-plumbing.
 
 ---
 
@@ -8465,6 +8534,53 @@ public readonly d9: string;
 ```
 
 - *Type:* string
+
+---
+
+### PlumbingOptions <a name="PlumbingOptions" id="@wbce/projen-d9.PlumbingOptions"></a>
+
+Configuration of the d9-plumbing CLI, written to `d9-plumbing.json`.
+
+#### Initializer <a name="Initializer" id="@wbce/projen-d9.PlumbingOptions.Initializer"></a>
+
+```typescript
+import { PlumbingOptions } from '@wbce/projen-d9'
+
+const plumbingOptions: PlumbingOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@wbce/projen-d9.PlumbingOptions.property.intermediateStorage">intermediateStorage</a></code> | <code><a href="#@wbce/projen-d9.IntermediateStorageOptions">IntermediateStorageOptions</a></code> | Storage shared between environments. |
+| <code><a href="#@wbce/projen-d9.PlumbingOptions.property.logLevel">logLevel</a></code> | <code>string</code> | Default log level of the CLI, overridden by the LOG_LEVEL environment variable. |
+
+---
+
+##### `intermediateStorage`<sup>Optional</sup> <a name="intermediateStorage" id="@wbce/projen-d9.PlumbingOptions.property.intermediateStorage"></a>
+
+```typescript
+public readonly intermediateStorage: IntermediateStorageOptions;
+```
+
+- *Type:* <a href="#@wbce/projen-d9.IntermediateStorageOptions">IntermediateStorageOptions</a>
+- *Default:* none, the intermediate storage is configured with INTERMEDIATE_STORAGE_* variables or flags
+
+Storage shared between environments.
+
+---
+
+##### `logLevel`<sup>Optional</sup> <a name="logLevel" id="@wbce/projen-d9.PlumbingOptions.property.logLevel"></a>
+
+```typescript
+public readonly logLevel: string;
+```
+
+- *Type:* string
+- *Default:* "debug"
+
+Default log level of the CLI, overridden by the LOG_LEVEL environment variable.
 
 ---
 

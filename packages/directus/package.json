@@ -5,7 +5,7 @@
     "url": "git@github.com:LaWebcapsule/projen-templates.git"
   },
   "bin": {
-    "wbce-d9": "lib/cli/index.js",
+    "d9-plumbing": "lib/cli/index.js",
     "wbce-directus": "lib/cli/index.js"
   },
   "scripts": {
@@ -36,6 +36,7 @@
     "@types/node": "^22",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
+    "@wbce-d9/storage": "*",
     "@wbce/projen-d9-extension": "0.0.15",
     "@wbce/projen-shared": "0.0.3",
     "constructs": "^10.0.0",
@@ -60,12 +61,14 @@
     "projen": "^0.99.24"
   },
   "dependencies": {
-    "@cedar-policy/cedar-wasm": "^4.9.0",
+    "@cedar-policy/cedar-wasm": "^4.13.0",
     "@types/pg": "^8.20.0",
     "@types/pg-copy-streams": "^1.2.5",
     "commander": "^14.0.3",
     "pg": "^8.20.0",
-    "pg-copy-streams": "^7.0.0"
+    "pg-copy-streams": "^7.0.0",
+    "pino": "^10.4.0",
+    "pino-pretty": "^13.2.0"
   },
   "bundledDependencies": [
     "@cedar-policy/cedar-wasm",
@@ -73,7 +76,9 @@
     "@types/pg-copy-streams",
     "commander",
     "pg",
-    "pg-copy-streams"
+    "pg-copy-streams",
+    "pino",
+    "pino-pretty"
   ],
   "main": "lib/index.js",
   "license": "GPL-3.0-or-later",

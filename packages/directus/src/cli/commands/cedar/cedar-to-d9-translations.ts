@@ -130,7 +130,11 @@ export function expandPolicy(
   if (action.op === '==') {
     entities = [action.entity];
   } else if (action.op === 'in') {
-    entities = action.entities;
+    // Cedar parses a single-element `action in [X]` as `{ op: 'in', entity }`
+    entities = action.entities ?? [action.entity];
+  } else {
+    // returning no tuple would silently remove the matching rows from the CSV
+    throw new Error(`Unexpected action constraint: ${JSON.stringify(action)}`);
   }
   return entities.map((e) => {
     const ent = e as EntityRef;
