@@ -2,6 +2,7 @@
 
 * text=auto eol=lf
 *.snap linguist-generated
+/.dockerignore linguist-generated
 /.gitattributes linguist-generated
 /.github/DISCUSSION_TEMPLATE/docs-suggestions.yml linguist-generated
 /.github/DISCUSSION_TEMPLATE/feature-requests.yml linguist-generated

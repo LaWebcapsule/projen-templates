@@ -38,6 +38,7 @@ extensions/*
 !extensions/templates/
 !/docker-compose.yml
 !/Dockerfile
+!/.dockerignore
 !/CLAUDE.md
 !/.github/workflows/pull-request-lint.yml
 !/.github/pull_request_template.md
