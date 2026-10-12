@@ -1,5 +1,11 @@
 # @wbce/projen-directus
 
+## 0.1.1
+
+### Patch Changes
+
+- 5e5ccc8: d9-plumbing: configurable common folder (`commonFolderName`, `COMMON_FOLDER_NAME`, `--common-folder`) and database port (`DB_PORT`, `--port`)
+
 ## 0.1.0
 
 ### Minor Changes
