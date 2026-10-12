@@ -4,6 +4,7 @@ import { pipeline } from 'stream/promises';
 import * as pg from 'pg';
 import { to as copyTo } from 'pg-copy-streams';
 import { Cli } from './cli';
+import { DbConfig } from './env';
 import { ensureAtlas } from '../../atlas';
 import { logger } from '../../logger';
 import { d9ToCedar } from '../cedar/d9-to-cedar';
@@ -22,16 +23,11 @@ async function formateSerial() {
   await writeFile('./sql/schema.sql', endSchema);
 }
 
-export async function saveSQLSnapshot(dbConfig: {
-  host: string;
-  user: string;
-  pwd: string;
-  database: string;
-  ssl?: boolean;
-}, opts: { cedar?: boolean } = {}) {
+export async function saveSQLSnapshot(dbConfig: DbConfig, opts: { cedar?: boolean } = {}) {
   const connectionProps: pg.ClientConfig = {
     user: dbConfig.user,
     host: dbConfig.host,
+    port: dbConfig.port,
     password: dbConfig.pwd,
     database: dbConfig.database,
     ...(dbConfig.ssl ? { ssl: { rejectUnauthorized: false } } : {}),
@@ -49,7 +45,7 @@ export async function saveSQLSnapshot(dbConfig: {
       'schema', //schema only
       'inspect',
       '-u',
-      `postgres://${encodeURIComponent(dbConfig.user)}:${encodeURIComponent(dbConfig.pwd)}@${dbConfig.host}/${dbConfig.database}?sslmode=${dbConfig.ssl ? 'require' : 'disable'}`, //output file
+      `postgres://${encodeURIComponent(dbConfig.user)}:${encodeURIComponent(dbConfig.pwd)}@${dbConfig.host}:${dbConfig.port}/${dbConfig.database}?sslmode=${dbConfig.ssl ? 'require' : 'disable'}`, //output file
       '--format',
       '{{ sql . "  " }}',
     ],
@@ -181,13 +177,13 @@ export async function saveSQLSnapshot(dbConfig: {
         //for directus_files and directus_folders, we only want to keep some but not all files.
         //for now, we keep all files included in the "d9-plumbing-common" folder
         if (['directus_files', 'directus_folders'].includes(table.table_name)) {
-          const commonFolderName = 'd9-plumbing-common';
+          const commonFolderName = pg.escapeLiteral(dbConfig.commonFolderName);
           let recursiveStatement = `
                       WITH RECURSIVE folder_tree AS (
                       -- Anchor: the "d9-plumbing-common" folder
                           SELECT id
                           FROM directus_folders
-                          WHERE name = '${commonFolderName}'
+                          WHERE name = ${commonFolderName}
                       UNION
                       -- Recursive step: find subfolders
                       SELECT f.id
@@ -223,7 +219,7 @@ export async function saveSQLSnapshot(dbConfig: {
                           )
                       `;
             sqlSelectStatement += ' OR t.id IN (SELECT id FROM folder_from_fields_tree) ';
-            sqlSelectStatement += ` OR t.name = '${commonFolderName}' `; //also include the common folder
+            sqlSelectStatement += ` OR t.name = ${commonFolderName} `; //also include the common folder
           }
           sqlSelectStatement = recursiveStatement + sqlSelectStatement;
         }

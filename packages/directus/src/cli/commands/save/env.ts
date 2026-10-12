@@ -4,18 +4,22 @@ import { PLUMBING_CONFIG_FILE, readPlumbingConfig } from '../../plumbing-config'
 
 export interface DbConfig {
   host: string;
+  port: number;
   user: string;
   pwd: string;
   database: string;
   ssl?: boolean;
+  commonFolderName: string;
 }
 
 export interface DbFlags {
   host?: string;
+  port?: string;
   user?: string;
   password?: string;
   database?: string;
   ssl?: boolean;
+  commonFolder?: string;
 }
 
 export interface StorageFlags {
@@ -41,11 +45,13 @@ export async function resolveDbConfig(flags: DbFlags): Promise<DbConfig> {
   const { env, getConfigFromEnv } = await loadD9Env();
   const config = {
     host: flags.host ?? env.DB_HOST,
+    port: Number(flags.port ?? env.DB_PORT ?? 5432),
     user: flags.user ?? env.DB_USER,
     pwd: flags.password ?? env.DB_PASSWORD,
     database: flags.database ?? env.DB_DATABASE,
     // getConfigFromEnv also picks up nested DB_SSL__* keys (e.g. DB_SSL__REJECT_UNAUTHORIZED)
     ssl: flags.ssl ?? Boolean(getConfigFromEnv('DB_').ssl),
+    commonFolderName: flags.commonFolder ?? env.COMMON_FOLDER_NAME ?? readPlumbingConfig().commonFolderName ?? 'd9-plumbing-common',
   };
   const missing = Object.entries(config).filter(([, value]) => value === undefined).map(([key]) => key);
   if (missing.length > 0) {

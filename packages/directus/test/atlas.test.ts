@@ -23,6 +23,6 @@ test('d9-plumbing.json keeps the atlas version when plumbing is configured', () 
     defaultReleaseBranch: 'main',
     packageVersions: { atlas: '1.2.0' },
   });
-  project.configurePlumbing({ logLevel: 'info' });
-  expect(plumbingJson(project)).toMatchObject({ atlasVersion: '1.2.0', logLevel: 'info' });
+  project.configurePlumbing({ logLevel: 'info', commonFolderName: 'shared' });
+  expect(plumbingJson(project)).toMatchObject({ atlasVersion: '1.2.0', logLevel: 'info', commonFolderName: 'shared' });
 });

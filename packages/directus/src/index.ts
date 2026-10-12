@@ -47,6 +47,11 @@ export interface PlumbingOptions {
    * @default "debug"
    */
   readonly logLevel?: string;
+  /**
+   * Name of the d9 folder kept in the snapshot, overridden by the COMMON_FOLDER_NAME environment variable.
+   * @default "d9-plumbing-common"
+   */
+  readonly commonFolderName?: string;
 }
 
 export interface D9ProjectOptions extends typescript.TypeScriptProjectOptions {

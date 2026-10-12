@@ -7,6 +7,7 @@ export interface PlumbingConfig {
     secretEnv?: Record<string, string>;
   };
   logLevel?: string;
+  commonFolderName?: string;
   atlasVersion?: string;
 }
 
