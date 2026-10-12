@@ -8553,8 +8553,22 @@ const plumbingOptions: PlumbingOptions = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@wbce/projen-d9.PlumbingOptions.property.commonFolderName">commonFolderName</a></code> | <code>string</code> | Name of the d9 folder kept in the snapshot, overridden by the COMMON_FOLDER_NAME environment variable. |
 | <code><a href="#@wbce/projen-d9.PlumbingOptions.property.intermediateStorage">intermediateStorage</a></code> | <code><a href="#@wbce/projen-d9.IntermediateStorageOptions">IntermediateStorageOptions</a></code> | Storage shared between environments. |
 | <code><a href="#@wbce/projen-d9.PlumbingOptions.property.logLevel">logLevel</a></code> | <code>string</code> | Default log level of the CLI, overridden by the LOG_LEVEL environment variable. |
+
+---
+
+##### `commonFolderName`<sup>Optional</sup> <a name="commonFolderName" id="@wbce/projen-d9.PlumbingOptions.property.commonFolderName"></a>
+
+```typescript
+public readonly commonFolderName: string;
+```
+
+- *Type:* string
+- *Default:* "d9-plumbing-common"
+
+Name of the d9 folder kept in the snapshot, overridden by the COMMON_FOLDER_NAME environment variable.
 
 ---
 

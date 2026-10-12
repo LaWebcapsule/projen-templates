@@ -71,6 +71,7 @@ async function isDatabaseEmpty(db: DbConfig) {
   const client = new pg.Client({
     user: db.user,
     host: db.host,
+    port: db.port,
     password: db.pwd,
     database: db.database,
     ...(db.ssl ? { ssl: { rejectUnauthorized: false } } : {}),

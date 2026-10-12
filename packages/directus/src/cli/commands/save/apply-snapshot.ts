@@ -4,6 +4,7 @@ import { promisify } from 'util';
 import * as pg from 'pg';
 import { from as copyFrom } from 'pg-copy-streams';
 import { Cli } from './cli';
+import { DbConfig } from './env';
 import { readFirstLineOfFile } from './utils';
 import { ensureAtlas } from '../../atlas';
 import { logger } from '../../logger';
@@ -12,17 +13,12 @@ const readdir = promisify(fs.readdir);
 const pipeline = promisify(streamPipeline);
 
 
-export async function applySQLSnapshot(dbConfig: {
-  host: string;
-  user: string;
-  pwd: string;
-  database: string;
-  ssl?: boolean;
-}): Promise<void> {
+export async function applySQLSnapshot(dbConfig: DbConfig): Promise<void> {
   let pgClient: pg.Client;
   const connectionProps: pg.ClientConfig = {
     user: dbConfig.user,
     host: dbConfig.host,
+    port: dbConfig.port,
     password: dbConfig.pwd,
     database: 'postgres',
     ...(dbConfig.ssl ? { ssl: { rejectUnauthorized: false } } : {}),
@@ -108,9 +104,9 @@ export async function applySQLSnapshot(dbConfig: {
       'schema',
       'diff',
       '--from',
-      `postgres://${encodeURIComponent(dbConfig.user)}:${encodeURIComponent(dbConfig.pwd)}@${dbConfig.host}/${dbConfig.database}?sslmode=${dbConfig.ssl ? 'require' : 'disable'}`,
+      `postgres://${encodeURIComponent(dbConfig.user)}:${encodeURIComponent(dbConfig.pwd)}@${dbConfig.host}:${dbConfig.port}/${dbConfig.database}?sslmode=${dbConfig.ssl ? 'require' : 'disable'}`,
       '--to',
-      `postgres://${encodeURIComponent(dbConfig.user)}:${encodeURIComponent(dbConfig.pwd)}@${dbConfig.host}/${dbConfig.database}_tmp_bis?sslmode=${dbConfig.ssl ? 'require' : 'disable'}`,
+      `postgres://${encodeURIComponent(dbConfig.user)}:${encodeURIComponent(dbConfig.pwd)}@${dbConfig.host}:${dbConfig.port}/${dbConfig.database}_tmp_bis?sslmode=${dbConfig.ssl ? 'require' : 'disable'}`,
     ],
     {
       env: {
@@ -184,7 +180,7 @@ export async function applySQLSnapshot(dbConfig: {
         let existingRowsCanCauseConflict = false;
         if (['directus_files', 'directus_folders'].includes(nonParsedTableName)) {
           //delete all files and folders that are inside the "d9-plumbing-common" folder
-          const commonFolderName = 'd9-plumbing-common';
+          const commonFolderName = pg.escapeLiteral(dbConfig.commonFolderName);
           const folderKey: Record<string, string> = {
             directus_files: 'folder',
             directus_folders: 'parent',
@@ -194,7 +190,7 @@ export async function applySQLSnapshot(dbConfig: {
                               -- Anchor: the "d9-plumbing-common" folder
                                   SELECT id
                                   FROM directus_folders
-                                  WHERE name = '${commonFolderName}'
+                                  WHERE name = ${commonFolderName}
                               UNION
                             -- Recursive step: find subfolders
                             SELECT f.id

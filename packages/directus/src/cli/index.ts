@@ -49,10 +49,12 @@ const collect = (value: string, previous: string[] = []) => [...previous, value]
 
 const withDbOptions = (command: Command) => command
   .option('--host <host>', 'database host (default: DB_HOST)')
+  .option('--port <port>', 'database port (default: DB_PORT or 5432)')
   .option('--user <user>', 'database user (default: DB_USER)')
   .option('--password <password>', 'database password (default: DB_PASSWORD)')
   .option('--database <database>', 'database name (default: DB_DATABASE)')
-  .option('--ssl', 'enable SSL for database connections (default: DB_SSL)');
+  .option('--ssl', 'enable SSL for database connections (default: DB_SSL)')
+  .option('--common-folder <name>', 'd9 folder whose files and subfolders are kept in the snapshot (default: COMMON_FOLDER_NAME, then commonFolderName in d9-plumbing.json, then d9-plumbing-common)');
 
 const withStorageOptions = (command: Command) => command
   .option('--storage-config <key=value>', 'd9 storage config entry, overrides STORAGE_<LOCATION>_*, repeatable (e.g. driver=s3)', collect)
