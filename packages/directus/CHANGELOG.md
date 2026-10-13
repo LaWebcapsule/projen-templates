@@ -1,5 +1,11 @@
 # @wbce/projen-directus
 
+## 0.1.2
+
+### Patch Changes
+
+- 1700a54: Build extensions in a multi-stage Dockerfile with the locked projen version, and generate a `.dockerignore`.
+
 ## 0.1.1
 
 ### Patch Changes
