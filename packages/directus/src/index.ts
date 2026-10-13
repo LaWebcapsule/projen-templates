@@ -414,7 +414,7 @@ export class D9Project extends javascript.NodeProject {
       .step('builder-workdir', 'Set working directory')
       .workdir('/app')
       .step('builder-install-deps', 'Install dependencies - with dev dependencies, for projen')
-      .run('npm ci')
+      .run('npm install')
       .step('builder-copy-source', 'Copy the rest of the application code')
       .copy('.', '.')
       .step('build-extension', 'build extensions')
