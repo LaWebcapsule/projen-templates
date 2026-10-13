@@ -28,4 +28,13 @@ project.configurePlumbing({
   },
 })
 
+// the local file: deps are not reachable from the docker context: ship the extensions built on the host
+project.dockerfile
+  .removeStep('builder-install-deps')
+  .removeStep('builder-copy-source')
+  .overrideStep('build-extension')
+  .copy('extensions', '/app/extensions')
+  .overrideStep('install-deps')
+  .run('npm pkg delete devDependencies && rm package-lock.json && NODE_ENV=production npm install');
+
 project.synth();

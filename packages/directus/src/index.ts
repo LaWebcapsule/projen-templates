@@ -1,6 +1,6 @@
 import { AddExtensionOptions, D9ExtensionType, ExtensionFolder } from '@wbce/projen-d9-extension';
 import { GitHubConfig, GitHubConfigOptions, Dockerfile } from '@wbce/projen-shared';
-import { AiAgent, AiInstructions, DockerCompose, DockerComposeService, javascript, JsonFile, SampleFile, Task, typescript } from 'projen';
+import { AiAgent, AiInstructions, DockerCompose, DockerComposeService, IgnoreFile, javascript, JsonFile, SampleFile, Task, typescript } from 'projen';
 import { JobPermission } from 'projen/lib/github/workflows-model';
 import { UpgradeDependenciesSchedule } from 'projen/lib/javascript';
 
@@ -77,6 +77,7 @@ export class D9Project extends javascript.NodeProject {
   public extensionFolder!: string;
   public buildExtensionTask!: Task;
   public dockerfile!: Dockerfile;
+  public dockerignore!: IgnoreFile;
   public dockerComposeFile!: DockerCompose;
   public d9Service!: DockerComposeService;
   public databaseService!: DockerComposeService;
@@ -402,11 +403,26 @@ export class D9Project extends javascript.NodeProject {
 
   private addDockerfile() {
     this.dockerfile = new Dockerfile(this)
+      // builder stage: dev dependencies are installed so `npx projen` runs the version locked in package-lock.json
+      .fromAs('node', '22-bookworm-slim', 'builder')
+      .step('builder-update-npm', 'Update npm to fix dependencies')
+      .run('npm install -g npm@11.8.0')
+      .step('builder-install-pnpm', 'install pnpm')
+      .run('npm install -g pnpm@10.33.0')
+      .step('builder-copy-package', 'Copy package.json and package-lock.json first to leverage Docker layer caching')
+      .copy('package*.json', '/app/')
+      .step('builder-workdir', 'Set working directory')
+      .workdir('/app')
+      .step('builder-install-deps', 'Install dependencies - with dev dependencies, for projen')
+      .run('npm ci')
+      .step('builder-copy-source', 'Copy the rest of the application code')
+      .copy('.', '.')
+      .step('build-extension', 'build extensions')
+      .run('npx projen build-extensions')
+      // final stage
       .from('node', '22-bookworm-slim')
       .step('update-npm', 'Update npm to fix dependencies')
       .run('npm install -g npm@11.8.0')
-      .step('install-pnpm', 'install pnpm')
-      .run('npm install -g pnpm@10.33.0')
       .step('copy-package', 'Copy package.json and package-lock.json first to leverage Docker layer caching')
       .copy('package*.json', '/app/')
       .step('workdir', 'Set working directory')
@@ -417,10 +433,11 @@ export class D9Project extends javascript.NodeProject {
       .run('rm -rf node_modules/tedious/benchmarks')
       .step('copy-source', 'Copy the rest of the application code')
       .copy('.', '.')
-      .step('build-extension', 'build extensions')
-      .run('npx projen build-extensions')
+      .step('copy-extensions', 'Copy the built extensions from the builder stage')
+      .copy('/app/extensions', './extensions', { from: 'builder' })
       .step('start', 'Start d9 server')
       .cmdExec(['npx', 'directus', 'start']);
+    this.dockerignore = new IgnoreFile(this, '.dockerignore', { ignorePatterns: ['**/node_modules', '.git'] });
     return this.dockerfile;
   }
 

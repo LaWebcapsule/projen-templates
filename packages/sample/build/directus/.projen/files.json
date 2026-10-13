@@ -1,5 +1,6 @@
 {
   "files": [
+    ".dockerignore",
     ".gitattributes",
     ".github/DISCUSSION_TEMPLATE/docs-suggestions.yml",
     ".github/DISCUSSION_TEMPLATE/feature-requests.yml",
