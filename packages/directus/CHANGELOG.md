@@ -1,5 +1,11 @@
 # @wbce/projen-directus
 
+## 0.1.3
+
+### Patch Changes
+
+- d998abb: Use `npm install` instead of `npm ci` in the Dockerfile builder stage, which failed with `Missing: sonic-boom@5.0.2 from lock file`.
+
 ## 0.1.2
 
 ### Patch Changes
