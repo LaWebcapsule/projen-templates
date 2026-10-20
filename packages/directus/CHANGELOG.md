@@ -1,5 +1,11 @@
 # @wbce/projen-directus
 
+## 0.1.4
+
+### Patch Changes
+
+- ee3b9c9: Ensure `/app/extensions` exists in the Dockerfile builder stage, so the final stage's copy no longer fails when no extension is built.
+
 ## 0.1.3
 
 ### Patch Changes
