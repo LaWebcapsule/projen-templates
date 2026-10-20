@@ -1,0 +1,3 @@
+albums
+albums_members
+photos

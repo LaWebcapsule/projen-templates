@@ -1,1 +1,15 @@
 collection,conditions,display,display_options,field,group,hidden,id,interface,note,options,readonly,required,sort,special,translations,validation,validation_message,width
+albums,,,,id,,t,1,,,,f,f,,,,,,full
+albums,,,,name,,f,2,input,,,f,t,,,,,,full
+albums,,,,owner,,f,3,select-dropdown-m2o,,"{""template"":""{{first_name}} {{last_name}}""}",f,f,,m2o,,,,full
+albums,,,,parent,,f,4,select-dropdown-m2o,,"{""template"":""{{name}}""}",f,f,,m2o,,,,full
+albums,,,,public,,f,5,boolean,,,f,f,,,,,,full
+albums_members,,,,id,,t,6,,,,f,f,,,,,,full
+albums_members,,,,album_id,,t,7,,,,f,f,,,,,,full
+albums_members,,,,user_id,,t,8,,,,f,f,,,,,,full
+albums,,,,members,,f,9,list-m2m,,"{""template"":""{{user_id.first_name}} {{user_id.last_name}}""}",f,f,,m2m,,,,full
+photos,,,,id,,t,10,,,,f,f,,,,,,full
+photos,,,,title,,f,11,input,,,f,t,,,,,,full
+photos,,,,owner,,f,12,select-dropdown-m2o,,"{""template"":""{{first_name}} {{last_name}}""}",f,f,,m2o,,,,full
+photos,,,,album,,f,13,select-dropdown-m2o,,"{""template"":""{{name}}""}",f,f,,m2o,,,,full
+photos,,,,private,,f,14,boolean,,,f,f,,,,,,full

@@ -1,1 +1,4 @@
 accountability,archive_app_filter,archive_field,archive_value,check_filter,collapse,collection,color,display_template,group,hidden,icon,item_duplication_fields,note,singleton,sort,sort_field,translations,unarchive_value
+all,t,,,,open,albums,,{{name}},,f,photo_album,,,f,,,,
+all,t,,,,open,albums_members,,,,t,import_export,,,f,,,,
+all,t,,,,open,photos,,{{title}},,f,photo,,,f,,,,

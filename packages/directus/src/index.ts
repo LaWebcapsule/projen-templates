@@ -419,6 +419,8 @@ export class D9Project extends javascript.NodeProject {
       .copy('.', '.')
       .step('build-extension', 'build extensions')
       .run('npx projen build-extensions')
+      .step('ensure-extensions-folder', 'Ensure the extensions folder exists, even when no extension is built')
+      .run('mkdir -p /app/extensions')
       // final stage
       .from('node', '22-bookworm-slim')
       .step('update-npm', 'Update npm to fix dependencies')
