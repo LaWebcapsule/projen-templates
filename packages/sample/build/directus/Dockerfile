@@ -5,7 +5,7 @@ FROM node:22-bookworm-slim AS builder
 # Update npm to fix dependencies (step-id: builder-update-npm)
 RUN npm install -g npm@11.8.0
 
-# install pnpm (step-id: install-pnpm)
+# install pnpm (step-id: builder-install-pnpm)
 RUN npm install -g pnpm@10.33.0
 
 # Copy package.json and package-lock.json first to leverage Docker layer caching (step-id: builder-copy-package)
@@ -16,6 +16,9 @@ WORKDIR /app
 
 # build extensions (step-id: build-extension)
 COPY extensions /app/extensions
+
+# Ensure the extensions folder exists, even when no extension is built (step-id: ensure-extensions-folder)
+RUN mkdir -p /app/extensions
 
 FROM node:22-bookworm-slim
 

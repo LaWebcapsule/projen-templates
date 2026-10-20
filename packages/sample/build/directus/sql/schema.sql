@@ -10,33 +10,6 @@ CREATE SCHEMA "tiger_data";
 CREATE SCHEMA "topology";
 -- Set comment to schema: "topology"
 COMMENT ON SCHEMA "topology" IS 'PostGIS Topology schema';
--- Create "directus_relations" table
-CREATE TABLE "public"."directus_relations" (
-  "id" serial NOT NULL,
-  "many_collection" character varying(64) NOT NULL,
-  "many_field" character varying(64) NOT NULL,
-  "one_collection" character varying(64) NULL,
-  "one_field" character varying(64) NULL,
-  "one_collection_field" character varying(64) NULL,
-  "one_allowed_collections" text NULL,
-  "junction_field" character varying(64) NULL,
-  "sort_field" character varying(64) NULL,
-  "one_deselect_action" character varying(255) NOT NULL DEFAULT 'nullify',
-  PRIMARY KEY ("id")
-);
--- Create "directus_webhooks" table
-CREATE TABLE "public"."directus_webhooks" (
-  "id" serial NOT NULL,
-  "name" character varying(255) NOT NULL,
-  "method" character varying(10) NOT NULL DEFAULT 'POST',
-  "url" character varying(255) NOT NULL,
-  "status" character varying(10) NOT NULL DEFAULT 'active',
-  "data" boolean NOT NULL DEFAULT true,
-  "actions" character varying(100) NOT NULL,
-  "collections" character varying(255) NOT NULL,
-  "headers" json NULL,
-  PRIMARY KEY ("id")
-);
 -- Create "directus_fields" table
 CREATE TABLE "public"."directus_fields" (
   "id" serial NOT NULL,
@@ -60,13 +33,6 @@ CREATE TABLE "public"."directus_fields" (
   "validation_message" text NULL,
   PRIMARY KEY ("id")
 );
--- Create "directus_migrations" table
-CREATE TABLE "public"."directus_migrations" (
-  "version" character varying(255) NOT NULL,
-  "name" character varying(255) NOT NULL,
-  "timestamp" timestamptz NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY ("version")
-);
 -- Create "directus_roles" table
 CREATE TABLE "public"."directus_roles" (
   "id" uuid NOT NULL,
@@ -78,6 +44,40 @@ CREATE TABLE "public"."directus_roles" (
   "admin_access" boolean NOT NULL DEFAULT false,
   "app_access" boolean NOT NULL DEFAULT true,
   PRIMARY KEY ("id")
+);
+-- Create "directus_webhooks" table
+CREATE TABLE "public"."directus_webhooks" (
+  "id" serial NOT NULL,
+  "name" character varying(255) NOT NULL,
+  "method" character varying(10) NOT NULL DEFAULT 'POST',
+  "url" character varying(255) NOT NULL,
+  "status" character varying(10) NOT NULL DEFAULT 'active',
+  "data" boolean NOT NULL DEFAULT true,
+  "actions" character varying(100) NOT NULL,
+  "collections" character varying(255) NOT NULL,
+  "headers" json NULL,
+  PRIMARY KEY ("id")
+);
+-- Create "directus_relations" table
+CREATE TABLE "public"."directus_relations" (
+  "id" serial NOT NULL,
+  "many_collection" character varying(64) NOT NULL,
+  "many_field" character varying(64) NOT NULL,
+  "one_collection" character varying(64) NULL,
+  "one_field" character varying(64) NULL,
+  "one_collection_field" character varying(64) NULL,
+  "one_allowed_collections" text NULL,
+  "junction_field" character varying(64) NULL,
+  "sort_field" character varying(64) NULL,
+  "one_deselect_action" character varying(255) NOT NULL DEFAULT 'nullify',
+  PRIMARY KEY ("id")
+);
+-- Create "directus_migrations" table
+CREATE TABLE "public"."directus_migrations" (
+  "version" character varying(255) NOT NULL,
+  "name" character varying(255) NOT NULL,
+  "timestamp" timestamptz NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY ("version")
 );
 -- Create "directus_users" table
 CREATE TABLE "public"."directus_users" (
@@ -110,6 +110,26 @@ CREATE TABLE "public"."directus_users" (
   CONSTRAINT "directus_users_external_identifier_unique" UNIQUE ("external_identifier"),
   CONSTRAINT "directus_users_token_unique" UNIQUE ("token"),
   CONSTRAINT "directus_users_role_foreign" FOREIGN KEY ("role") REFERENCES "public"."directus_roles" ("id") ON UPDATE NO ACTION ON DELETE SET NULL
+);
+-- Create "albums" table
+CREATE TABLE "public"."albums" (
+  "id" serial NOT NULL,
+  "name" character varying(255) NULL,
+  "owner" uuid NULL,
+  "parent" integer NULL,
+  "public" boolean NULL DEFAULT false,
+  PRIMARY KEY ("id"),
+  CONSTRAINT "albums_owner_foreign" FOREIGN KEY ("owner") REFERENCES "public"."directus_users" ("id") ON UPDATE NO ACTION ON DELETE SET NULL,
+  CONSTRAINT "albums_parent_foreign" FOREIGN KEY ("parent") REFERENCES "public"."albums" ("id") ON UPDATE NO ACTION ON DELETE SET NULL
+);
+-- Create "albums_members" table
+CREATE TABLE "public"."albums_members" (
+  "id" serial NOT NULL,
+  "album_id" integer NULL,
+  "user_id" uuid NULL,
+  PRIMARY KEY ("id"),
+  CONSTRAINT "albums_members_album_id_foreign" FOREIGN KEY ("album_id") REFERENCES "public"."albums" ("id") ON UPDATE NO ACTION ON DELETE CASCADE,
+  CONSTRAINT "albums_members_user_id_foreign" FOREIGN KEY ("user_id") REFERENCES "public"."directus_users" ("id") ON UPDATE NO ACTION ON DELETE CASCADE
 );
 -- Create "directus_dashboards" table
 CREATE TABLE "public"."directus_dashboards" (
@@ -381,4 +401,15 @@ CREATE TABLE "public"."directus_settings" (
   CONSTRAINT "directus_settings_public_background_foreign" FOREIGN KEY ("public_background") REFERENCES "public"."directus_files" ("id") ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT "directus_settings_public_foreground_foreign" FOREIGN KEY ("public_foreground") REFERENCES "public"."directus_files" ("id") ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT "directus_settings_storage_default_folder_foreign" FOREIGN KEY ("storage_default_folder") REFERENCES "public"."directus_folders" ("id") ON UPDATE NO ACTION ON DELETE SET NULL
+);
+-- Create "photos" table
+CREATE TABLE "public"."photos" (
+  "id" serial NOT NULL,
+  "title" character varying(255) NULL,
+  "owner" uuid NULL,
+  "album" integer NULL,
+  "private" boolean NULL DEFAULT false,
+  PRIMARY KEY ("id"),
+  CONSTRAINT "photos_album_foreign" FOREIGN KEY ("album") REFERENCES "public"."albums" ("id") ON UPDATE NO ACTION ON DELETE SET NULL,
+  CONSTRAINT "photos_owner_foreign" FOREIGN KEY ("owner") REFERENCES "public"."directus_users" ("id") ON UPDATE NO ACTION ON DELETE SET NULL
 );

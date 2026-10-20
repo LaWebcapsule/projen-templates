@@ -1,2 +1,4 @@
 admin_access,app_access,description,enforce_tfa,icon,id,ip_access,name
+f,t,,f,shield,2efa7ca6-bfff-41b3-9597-1a90a8ac603c,,Moderator
+f,t,,f,person,3a0e757f-adf2-4e26-992b-614e2a809c20,,User
 t,t,$t:admin_description,f,verified,62e2d4c5-cf63-48c8-8f08-c446602b880c,,Administrator

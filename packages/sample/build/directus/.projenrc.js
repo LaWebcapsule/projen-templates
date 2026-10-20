@@ -20,6 +20,9 @@ project.addExtension("shared", []);
 const myExtension = project.addExtension("my-hook", [D9ExtensionType.HOOK]);
 myExtension.addDeps("shared@workspace:")
 
+// d9-plumbing is symlinked from ../../../directus: let it resolve @wbce-d9/* from this project
+project.tasks.addEnvironment('NODE_PATH', '$(echo "$PWD/node_modules")');
+
 project.configurePlumbing({
   logLevel: "info",
   intermediateStorage: {
