@@ -9,7 +9,7 @@ Companion package: [`@wbce/projen-d9-extension`](../directus-extension) for auth
 ## Bootstrap a new project
 
 ```sh
-npx projen new --from @wbce/projen-d9 --projen-version 0.99.24
+npx projen@0.99.24 new --from @wbce/projen-d9 --projen-version 0.99.24
 ```
 
 This creates a `.projenrc.js` and synthesizes the project. `--projen-version` pins projen to the version this template is built and tested against; without it, `projen new` installs the latest projen release.
